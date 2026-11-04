@@ -1,0 +1,6609 @@
+// Dataset 300+ câu hỏi Mạng Máy Tính & CCNA 200-301 Đầy Đủ Đáp Án & Lý Thuyết Chuẩn
+window.QUIZ_DATA = [
+  {
+    "id": 1,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Tổng quan về MMT và Internet",
+    "question": "Mạng máy tính là mạng Internet?",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- **Mạng máy tính (Computer Network):** Khái niệm tổng quát chỉ hai hay nhiều máy tính kết nối với nhau để chia sẻ tài nguyên và trao đổi thông tin.\n- **Internet:** Chỉ là một mạng toàn cầu cụ thể (mạng của các mạng - network of networks).\n- Do đó, không thể đồng nhất mọi mạng máy tính đều là mạng Internet. Phát biểu trên là **Sai** (B)."
+  },
+  {
+    "id": 2,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Tổng quan về MMT và Internet",
+    "question": "Thuật ngữ MAN là viết tắt của cụm từ nào?",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Metropolitan Area Network",
+      "B. Metropolitan Area Networking"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- **MAN:** Viết tắt của **Metropolitan Area Network** (Mạng đô thị), có phạm vi địa lý trong một thành phố hoặc khu đô thị (lớn hơn LAN nhưng nhỏ hơn WAN).\n- Đáp án đúng là **A** (Metropolitan Area Network)."
+  },
+  {
+    "id": 3,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Tổng quan về MMT và Internet",
+    "question": "LAN là thuật ngữ dùng để chỉ các máy tính kết nối với nhau trong phạm vi hẹp (dạng như trong văn phòng hay toà nhà)",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- **LAN (Local Area Network):** Mạng cục bộ kết nối các thiết bị trong phạm vi hẹp như văn phòng, tòa nhà, trường học với tốc độ truyền cao và tỷ lệ lỗi thấp.\n- Phát biểu này là hoàn toàn **Đúng** (A)."
+  },
+  {
+    "id": 4,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Tổng quan về MMT và Internet",
+    "question": "Mạng Internet được hình thành từ sự kết nối của rất nhiều mạng, nhiều loại mạng khác nhau trên toàn thế giới.",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- Internet là hệ thống thông tin toàn cầu được liên kết bởi các mạng máy tính sử dụng bộ giao thức TCP/IP để truyền thông điệp chuyển mạch gói.\n- Phát biểu mạng Internet hình thành từ sự kết nối của nhiều mạng trên toàn thế giới là **Đúng** (A)."
+  },
+  {
+    "id": 5,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Tổng quan về MMT và Internet",
+    "question": "Các dạng mạng máy tính có cấu trúc liên kết (dạng như Bus, Star, Ring,...) được phân loại dựa trên hình dạng kết nối các thiết bị?",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- **Topology (Tô-pô mạng):** Là sự sắp xếp hình học của các nút mạng và đường liên kết (Physical topology) hoặc cách tín hiệu di chuyển (Logical topology).\n- Các dạng Bus, Star, Ring được phân loại dựa trên hình dạng kết nối vật lý giữa các thiết bị. Phát biểu là **Đúng** (A)."
+  },
+  {
+    "id": 6,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Tổng quan về MMT và Internet",
+    "question": "Hub là một thiết bị đầu cuối.",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- **Thiết bị đầu cuối (End Devices / Hosts):** Nguồn gửi hoặc đích nhận dữ liệu (PC, máy chủ, máy in, camera IP, smartphone).\n- **Hub:** Là thiết bị truyền dẫn trung gian (Intermediary Device) hoạt động ở tầng 1 (Physical) để khuếch đại và phân phối tín hiệu, không phải thiết bị đầu cuối. Phát biểu là **Sai** (B)."
+  },
+  {
+    "id": 7,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Tổng quan về MMT và Internet",
+    "question": "Thuật ngữ LAN (mạng cục bộ) là viết tắt của cụm từ nào?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Local Access Network",
+      "B. Local Access Networking",
+      "C. Local Area Network",
+      "D. Local Area Networking"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- **LAN** là viết tắt của **Local Area Network** (Mạng cục bộ).\n- 'Local Access Network' hay 'Networking' là các cách viết sai. Đáp án chính xác là **C**."
+  },
+  {
+    "id": 8,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Tổng quan về MMT và Internet",
+    "question": "Sự sắp xếp hình học của các thiết bị trên mạng được gọi là",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Topology",
+      "B. Protocols",
+      "C. Network",
+      "D. Medium"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- **Topology (Tô-pô mạng):** Định nghĩa cấu trúc sắp xếp hình học của các nút và đường truyền trong mạng.\n- **Protocols:** Giao thức truyền thông. **Medium:** Môi trường truyền dẫn. Đáp án đúng là **A** (Topology)."
+  },
+  {
+    "id": 9,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Tổng quan về MMT và Internet",
+    "question": "Thuật ngữ IANA là viết tắt của?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Internet Assigned Numbers Authority",
+      "B. Internal Assigned Numbers Authority",
+      "C. Internet Associative Numbers Authoritative",
+      "D. Internal Associative Numbers Authority"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- **IANA:** Viết tắt của **Internet Assigned Numbers Authority** (Tổ chức cấp phát số hiệu Internet), chịu trách nhiệm quản lý không gian địa chỉ IP toàn cầu, số hiệu AS và các cổng dịch vụ Well-known port. Đáp án đúng là **A**."
+  },
+  {
+    "id": 10,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Tổng quan về MMT và Internet",
+    "question": "Node là một tên khác của",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Link",
+      "B. Device",
+      "C. Medium",
+      "D. Mode"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- Trong mạng máy tính, **Node (Nút mạng):** Thuật ngữ chung dùng để chỉ một thiết bị (**Device**) kết nối vào mạng có khả năng tạo, nhận hoặc chuyển giao thông tin. Đáp án đúng là **B** (Device)."
+  },
+  {
+    "id": 11,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Tổng quan về MMT và Internet",
+    "question": "Tên của mạng đầu tiên (tiền thân của Internet) là gì?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. ASAPNET",
+      "B. ARPANET",
+      "C. CNNET",
+      "D. NSFNET"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- **ARPANET** (Advanced Research Projects Agency Network) do Bộ Quốc phòng Mỹ tài trợ thử nghiệm năm 1969, là mạng chuyển mạch gói đầu tiên và là tiền thân trực tiếp của mạng Internet hiện nay. Đáp án đúng là **B**."
+  },
+  {
+    "id": 12,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Tổng quan về MMT và Internet",
+    "question": "ISP là chữ viết tắt của?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. International Service Provider",
+      "B. International System Provider",
+      "C. Internet Service Provider",
+      "D. Internetwork System Provider"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- **ISP:** Viết tắt của **Internet Service Provider** (Nhà cung cấp dịch vụ Internet), cung cấp kết nối truy cập Internet cho cá nhân và tổ chức. Đáp án đúng là **C**."
+  },
+  {
+    "id": 13,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Tổng quan về MMT và Internet",
+    "question": "Tổ chức nào sau đây KHÔNG phải là nhà cung cấp dịch vụ truy cập Internet tại Việt Nam?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Viettel",
+      "B. FPT",
+      "C. VNPT",
+      "D. Vodaphone"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- Tại Việt Nam, các ISP lớn gồm Viettel, VNPT, FPT, CMC, Mobifone.\n- **Vodafone** là tập đoàn viễn thông đa quốc gia có trụ sở tại Anh, không phải nhà cung cấp dịch vụ Internet nội địa tại Việt Nam. Đáp án đúng là **D**."
+  },
+  {
+    "id": 14,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Tổng quan về MMT và Internet",
+    "question": "Hai máy tính khác nhau có thể truyền thông với nhau nếu (Chọn phát biểu phù hợp nhất)",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Chúng cài đặt cùng hệ điều hành mạng",
+      "B. Chúng cùng tuân thủ theo một mô hình",
+      "C. Chúng cùng dùng một bộ giao thức",
+      "D. Chúng có phần cứng giống nhau"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- Hai máy tính có thể khác nhau về phần cứng (Hardware) và hệ điều hành (Windows, Linux, macOS), nhưng chỉ cần **cùng tuân thủ một bộ giao thức truyền thông (Protocol Suite như TCP/IP)** thì đều có thể giao tiếp và trao đổi dữ liệu với nhau. Đáp án đúng là **C**."
+  },
+  {
+    "id": 15,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Tổng quan về MMT và Internet",
+    "question": "Các kiểu mạng LAN, MAN, WAN, GAN được phân biệt với nhau bởi tiêu chí nào dưới đây?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Khoảng cách địa lý",
+      "B. Giao thức truyền thông",
+      "C. Thiết bị mạng",
+      "D. Đường truyền mạng"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- Tiêu chí phân loại chính giữa LAN (vài trăm mét), MAN (đô thị vài chục km), WAN (quốc gia/châu lục hàng nghìn km), GAN (toàn cầu) là **Khoảng cách địa lý (Geographical scale)**. Đáp án đúng là **A**."
+  },
+  {
+    "id": 16,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Tổng quan về MMT và Internet",
+    "question": "Chọn các thành phần bên dưới là các thành phần chính của hệ thống mạng máy tính? (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. Thiết bị đầu cuối",
+      "B. Thiết bị mạng",
+      "C. Kết nối",
+      "D. Thiết bị làm mát"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- Ba thành phần thiết yếu cấu thành một mạng máy tính là:\n  1. **Thiết bị đầu cuối (End Devices):** Máy tính, điện thoại, máy chủ.\n  2. **Thiết bị mạng (Intermediary Devices):** Switch, Router, Hub, Access Point.\n  3. **Kết nối (Media & Links):** Cáp đồng, cáp quang, sóng vô tuyến.\n- Thiết bị làm mát chỉ là phụ trợ phòng máy. Đáp án đúng là **A, B, C**."
+  },
+  {
+    "id": 17,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Tổng quan về MMT và Internet",
+    "question": "Kiến trúc mô hình phân cấp 3 lớp truyền thống gồm có lớp nào? (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. Core",
+      "B. Boder",
+      "C. Aggregation",
+      "D. Access"
+    ],
+    "correctAnswers": [
+      "A",
+      "C",
+      "D"
+    ],
+    "explanation": "**Lý thuyết cốt lõi (Cisco 3-tier Hierarchical Model):**\n- **Core Layer (Lớp lõi):** Chuyển mạch tốc độ cực cao làm xương sống của mạng.\n- **Distribution / Aggregation Layer (Lớp phân phối / tích tụ):** Định tuyến, phân tách VLAN, áp chính sách bảo mật ACL.\n- **Access Layer (Lớp truy cập):** Kết nối trực tiếp các thiết bị người dùng cuối vào mạng.\n- Đáp án đúng gồm: **Core, Aggregation, Access** (A, C, D)."
+  },
+  {
+    "id": 18,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Tổng quan về MMT và Internet",
+    "question": "Kết nối nào dưới đây là loại có dây - Wired (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. Ethernet",
+      "B. Fiber Optic",
+      "C. Copper Cable",
+      "D. Satellite"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- Kết nối có dây (Wired Media): Cáp mạng Ethernet (Twisted Pair), cáp quang (Fiber Optic), cáp đồng (Copper Cable).\n- Vệ tinh (Satellite) là phương thức truyền thông không dây (Wireless). Đáp án đúng là **A, B, C**."
+  },
+  {
+    "id": 19,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Tổng quan về MMT và Internet",
+    "question": "Những loại nào dưới đây là topology của một mạng LAN? (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. Square",
+      "B. Bus",
+      "C. Ring",
+      "D. Star"
+    ],
+    "correctAnswers": [
+      "B",
+      "C",
+      "D"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- Các dạng tô-pô mạng LAN phổ biến: Bus (đường trục), Ring (vòng), Star (hình sao), Tree (cây), Mesh (lưới).\n- 'Square' không phải là một thuật ngữ tô-pô mạng chuẩn. Đáp án đúng là **B, C, D** (Bus, Ring, Star)."
+  },
+  {
+    "id": 20,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Tổng quan về MMT và Internet",
+    "question": "Các chức năng nào dưới đây nằm trong Hệ sinh thái Internet? (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. Phát triển tiêu chuẩn mở",
+      "B. Xây dựng hệ thống năng lực toàn cầu",
+      "C. Đặt tên và địa chỉ",
+      "D. Dịch vụ và hoạt động chia sẻ toàn cầu"
+    ],
+    "correctAnswers": [
+      "A",
+      "C",
+      "D"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tổng quan về MMT và Internet:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tổng quan về MMT và Internet.\n- Phương án chính xác: **A, C, D**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 21,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Mô hình tham chiếu OSI",
+    "question": "ISO là từ viết tắt của International Standard Organization?",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- **ISO:** Viết tắt của **International Organization for Standardization** (Tổ chức tiêu chuẩn hóa quốc tế). Tên gọi ISO bắt nguồn từ tiếng Hy Lạp 'isos' (bình đẳng). Đáp án chính xác là **B**."
+  },
+  {
+    "id": 22,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Mô hình tham chiếu OSI",
+    "question": "Trong mô hình OSI, tầng Network có thể thông tin trực tiếp với các tầng Datalink và Transport trong cùng một thiết bị",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- Trong nguyên lý xếp chồng tầng (Layered Architecture) của OSI, một tầng chỉ giao tiếp trực tiếp với tầng ngay phía dưới nó (nhận dịch vụ) và tầng ngay phía trên nó (cung cấp dịch vụ).\n- Tầng Network (Layer 3) nằm giữa tầng Data Link (Layer 2) và tầng Transport (Layer 4), nên nó giao tiếp trực tiếp với cả hai tầng này trong cùng thiết bị. Phát biểu là **Đúng** (A)."
+  },
+  {
+    "id": 23,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Mô hình tham chiếu OSI",
+    "question": "Mô hình tham chiếu OSI được định nghĩa trong ISO/IEC 7498-1?",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- Mô hình OSI được Tổ chức ISO tiêu chuẩn hóa chính thức trong văn bản **ISO/IEC 7498-1:1994** (Open Systems Interconnection - Basic Reference Model). Phát biểu là **Đúng** (A)."
+  },
+  {
+    "id": 24,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Mô hình tham chiếu OSI",
+    "question": "Trong hệ sinh thái Internet, VNNIC là NIR- National Internet Registry của Việt Nam?",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- **VNNIC** (Trung tâm Internet Việt Nam) là Cơ quan đăng ký Internet quốc gia (NIR - National Internet Registry) thuộc APNIC (RIR khu vực Châu Á - Thái Bình Dương), quản lý tài nguyên tên miền .vn và địa chỉ IP tại Việt Nam. Phát biểu là **Đúng** (A)."
+  },
+  {
+    "id": 25,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Mô hình tham chiếu OSI",
+    "question": "Mô hình OSI có mấy tầng?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. 4 tầng",
+      "B. 5 tầng",
+      "C. 6 tầng",
+      "D. 7 tầng"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- Mô hình OSI chuẩn gồm **7 tầng**: 1-Physical, 2-Data Link, 3-Network, 4-Transport, 5-Session, 6-Presentation, 7-Application.\n- Đáp án đúng là **D** (7 tầng)."
+  },
+  {
+    "id": 26,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Mô hình tham chiếu OSI",
+    "question": "Thuật ngữ ISO là từ viết tắt của",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. International Organize for Standardization",
+      "B. International Organizations for Standardization",
+      "C. International Organizations for Standard",
+      "D. International Organized for Standardization"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- **ISO:** Viết tắt của **International Organization for Standardization** (Tổ chức tiêu chuẩn hóa quốc tế). Tên gọi ISO bắt nguồn từ tiếng Hy Lạp 'isos' (bình đẳng). Đáp án chính xác là **B**."
+  },
+  {
+    "id": 27,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Mô hình tham chiếu OSI",
+    "question": "Mô hình OSI được công nhận vào năm nào?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. 1980",
+      "B. 1982",
+      "C. 1984",
+      "D. 1986"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- Mô hình tham chiếu OSI được Tổ chức ISO chính thức công bố và phê duyệt làm tiêu chuẩn quốc tế vào năm **1984** (tiêu chuẩn ISO 7498). Đáp án đúng là **C**."
+  },
+  {
+    "id": 28,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Mô hình tham chiếu OSI",
+    "question": "Tầng nào trong mô hình OSI làm việc với các tín hiệu điện",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Data Link",
+      "B. Network",
+      "C. Physical",
+      "D. Session"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- **Tầng Vật lý (Physical Layer - Layer 1):** Làm việc trực tiếp với môi trường vật lý, chịu trách nhiệm truyền tải các bit nhị phân (0 và 1) dưới dạng tín hiệu điện (volt), xung ánh sáng hoặc sóng điện từ. Đáp án đúng là **C** (Physical)."
+  },
+  {
+    "id": 29,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Mô hình tham chiếu OSI",
+    "question": "Thứ tự (từ trên xuống) của các tầng trong mô hình OSI là?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Application, Presentation, Session, Transport, Data Link, Network, Physical",
+      "B. Application, Presentation, Session, Network, Transport, Data Link, Physical",
+      "C. Application, Presentation, Session, Transport, Network, Data Link, Physical",
+      "D. Application, Presentation, Transport, Session, Data Link, Network, Physical"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- Thứ tự từ trên xuống (Layer 7 xuống Layer 1):\n  **Application -> Presentation -> Session -> Transport -> Network -> Data Link -> Physical**.\n- Mẹo nhớ tiếng Anh: 'All People Seem To Need Data Processing'. Đáp án đúng là **C**."
+  },
+  {
+    "id": 30,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Mô hình tham chiếu OSI",
+    "question": "Chức năng của thiết bị Hub thông thường nằm ở tầng nào trong mô hình OSI?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Tầng 1",
+      "B. Tầng 2",
+      "C. Tầng 3",
+      "D. Tầng 4"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- **Hub** là thiết bị khuếch đại và phân phối lại tín hiệu điện ra tất cả các cổng (Repeater đa cổng), không hiểu địa chỉ MAC hay IP. Do đó Hub hoạt động ở **Tầng 1 (Physical Layer)**. Đáp án đúng là **A**."
+  },
+  {
+    "id": 31,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Mô hình tham chiếu OSI",
+    "question": "Chức năng của thiết bị Switch thông thường nằm ở tầng nào trong mô hình OSI?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Tầng 1",
+      "B. Tầng 2",
+      "C. Tầng 3",
+      "D. Tầng 4"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- **Switch chuẩn (Layer 2 Switch)** đọc địa chỉ MAC trong tiêu đề của Ethernet Frame để tra cứu bảng MAC (CAM Table) và chuyển mạch chính xác tới cổng đích. Do đó Switch hoạt động ở **Tầng 2 (Data Link Layer)**. Đáp án đúng là **B**."
+  },
+  {
+    "id": 32,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Mô hình tham chiếu OSI",
+    "question": "Các tầng nào dưới đây nằm trong mô hình tham chiếu OSI. (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. Tầng Data Link",
+      "B. Tầng Application",
+      "C. Tầng Internet",
+      "D. Tầng Session"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "D"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Mô hình tham chiếu OSI:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Mô hình tham chiếu OSI.\n- Phương án chính xác: **A, B, D**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 33,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Mô hình tham chiếu OSI",
+    "question": "Tầng vận chuyển trong mô hình OSI thực hiện chức năng nào dưới đây. (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. Kết nối End-to-End",
+      "B. Kiểm soát lỗi",
+      "C. Đồng bộ hoá",
+      "D. Kiểm soát luồng dữ liệu"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "D"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- **Tầng Transport (Layer 4):** Đảm bảo truyền thông đầu cuối đến đầu cuối (End-to-End connection), kiểm soát luồng (Flow Control), và kiểm soát lỗi/độ tin cậy (Error Control).\n- Đồng bộ hóa (Synchronization) là nhiệm vụ của Tầng Phiên (Session Layer). Đáp án đúng là **A, B, D**."
+  },
+  {
+    "id": 34,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Mô hình tham chiếu OSI",
+    "question": "Các tầng nào dưới đây trong mô hình OSI KHÔNG thực hiện việc tạo khung? (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. Tầng Ứng dụng",
+      "B. Tầng Phiên",
+      "C. Tầng Mạng",
+      "D. Tầng Liên kết"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- **Tạo khung (Framing):** Là nhiệm vụ DUY NHẤT của Tầng Liên kết dữ liệu (Data Link Layer - Layer 2).\n- Các tầng Ứng dụng, Phiên, Mạng KHÔNG thực hiện đóng khung (Application tạo Data, Network tạo Packet). Đáp án đúng là **A, B, C**."
+  },
+  {
+    "id": 35,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Mô hình TCP/IP",
+    "question": "Trong mô hình TCP/IP, nó chia hoạt động truyền thông mạng thành 7 tầng",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Mô hình TCP/IP:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Mô hình TCP/IP.\n- Phương án chính xác: **B**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 36,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Mô hình TCP/IP",
+    "question": "Trong mô hình TCP/IP, Data là đơn vị dữ liệu giao thức tầng Ứng dụng.",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Mô hình TCP/IP:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Mô hình TCP/IP.\n- Phương án chính xác: **A**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 37,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Mô hình TCP/IP",
+    "question": "Quá trình mở gói trong mô hình TCP/IP là quá trình loại bỏ thông tin bổ sung khi nó chuyển lên lớp trên.",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- **Quá trình mở gói (Decapsulation):** Diễn ra tại bên nhận, khi dữ liệu đi từ tầng dưới lên tầng trên, mỗi tầng sẽ bóc tách và loại bỏ phần tiêu đề (Header) tương ứng của tầng đó trước khi chuyển phần dữ liệu nguyên vẹn lên tầng kế tiếp. Phát biểu là **Đúng** (A)."
+  },
+  {
+    "id": 38,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Mô hình TCP/IP",
+    "question": "Thứ tự (từ trên xuống) của các tầng trong mô hình TCP/IP là?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Application - Internet - Transport - Network Access",
+      "B. Internet - Network Access - Transport - Application",
+      "C. Transport - Internet - Network Access - Application",
+      "D. Application - Transport - Internet - Network Access"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- Mô hình TCP/IP chuẩn (4 tầng) từ trên xuống:\n  **Application -> Transport -> Internet -> Network Access**.\n- Mô hình 5 tầng: Application -> Transport -> Network -> Data Link -> Physical. Đáp án đúng là **D**."
+  },
+  {
+    "id": 39,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Mô hình TCP/IP",
+    "question": "Mô hình TCP/IP tương đương có mấy lớp?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. 4",
+      "B. 5",
+      "C. 6",
+      "D. 7"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Mô hình TCP/IP:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Mô hình TCP/IP.\n- Phương án chính xác: **B**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 40,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Mô hình TCP/IP",
+    "question": "Thứ tự (từ trên xuống) của các lớp trong mô hình TCP/IP là?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Lớp ứng dụng - Lớp vận chuyển - Lớp liên kết dữ liệu - Lớp Network - Lớp vật lý",
+      "B. Lớp ứng dụng - Lớp Network - Lớp vận chuyển - Lớp liên kết dữ liệu - Lớp vật lý",
+      "C. Lớp ứng dụng - Lớp vận chuyển - Lớp Network - Lớp liên kết dữ liệu - Lớp vật lý",
+      "D. Lớp ứng dụng - Lớp liên kết dữ liệu - Lớp Network - Lớp vận chuyển - Lớp vật lý"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Mô hình TCP/IP:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Mô hình TCP/IP.\n- Phương án chính xác: **C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 41,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Mô hình TCP/IP",
+    "question": "Thứ tự đúng của các đơn vị dữ liệu trong mô hình TCP/IP tương đương là?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Data, Frame, Segment, Packet, Bit",
+      "B. Data, Segment, Frame, Packet, Bit",
+      "C. Data, Packet, Frame, Segment, Bit",
+      "D. Data, Segment, Packet, Frame, Bit"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- Tên gọi đơn vị dữ liệu (PDU) qua các tầng từ trên xuống:\n  1. Application: **Data**\n  2. Transport: **Segment** (TCP) / Datagram (UDP)\n  3. Internet / Network: **Packet**\n  4. Data Link: **Frame**\n  5. Physical: **Bit**\n- Đáp án đúng là **D** (Data, Segment, Packet, Frame, Bit)."
+  },
+  {
+    "id": 42,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Mô hình TCP/IP",
+    "question": "Giao thức nào dưới đây nằm ở tầng Internet trong mô hình TCP/IP",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. SLAAC",
+      "B. TFTP",
+      "C. OSPF",
+      "D. UDP"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- Tầng Internet chứa các giao thức: IP (IPv4, IPv6), ICMP, ARP, OSPF, IGMP.\n- UDP nằm ở tầng Transport, TFTP nằm ở tầng Application, SLAAC là cơ chế cấu hình địa chỉ. Đáp án đúng là **C** (OSPF)."
+  },
+  {
+    "id": 43,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Mô hình TCP/IP",
+    "question": "Giao thức nào dưới đây dùng cho ứng dụng, dịch vụ Web",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. DNS",
+      "B. DHCP",
+      "C. SFTP",
+      "D. REST"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Mô hình TCP/IP:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Mô hình TCP/IP.\n- Phương án chính xác: **D**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 44,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Mô hình TCP/IP",
+    "question": "Đơn vị dữ liệu giao thức (PDU) của tầng Giao vận là",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Data",
+      "B. Bits",
+      "C. Segment",
+      "D. Packet"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- PDU tầng Giao vận (Transport) là **Segment** đối với giao thức TCP và **Datagram** đối với UDP. Đáp án đúng là **C** (Segment)."
+  },
+  {
+    "id": 45,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Mô hình TCP/IP",
+    "question": "Giao thức nào dưới đây dùng cho ứng dụng Email",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. POP3",
+      "B. Frame Relay",
+      "C. ARP",
+      "D. ATM"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Mô hình TCP/IP:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Mô hình TCP/IP.\n- Phương án chính xác: **A**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 46,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Mô hình TCP/IP",
+    "question": "Để đảm bảo dữ liệu được gửi tới đúng đích, việc xác định địa chỉ dữ liệu được thực hiện ở ba lớp nào dưới đây trong mô hình TCP/IP? (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. Lớp liên kết dữ liệu",
+      "B. Lớp Internet",
+      "C. Lớp Giao vận",
+      "D. Lớp Ứng dụng"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Mô hình TCP/IP:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Mô hình TCP/IP.\n- Phương án chính xác: **A, B, C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 47,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Mô hình TCP/IP",
+    "question": "Các tầng nào dưới đây nằm trong mô hình TCP/IP? (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. Tầng Internet",
+      "B. Tầng Network Access",
+      "C. Tầng Datalink",
+      "D. Tầng Application"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "D"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Mô hình TCP/IP:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Mô hình TCP/IP.\n- Phương án chính xác: **A, B, D**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 48,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Mô hình TCP/IP",
+    "question": "Giao thức nào dưới đây nằm ở tầng Ứng dụng trong mô hình TCP/IP? (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. RIP",
+      "B. HTTP",
+      "C. TFTP",
+      "D. NAT"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Mô hình TCP/IP:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Mô hình TCP/IP.\n- Phương án chính xác: **A, B, C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 49,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Mô hình TCP/IP",
+    "question": "Giao thức nào dưới đây KHÔNG nằm ở tầng Vận chuyển trong mô hình TCP/IP? (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. DNS",
+      "B. DHCP",
+      "C. SMTP",
+      "D. TCP"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Mô hình TCP/IP:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Mô hình TCP/IP.\n- Phương án chính xác: **A, B, C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 50,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Tầng vật lý",
+    "question": "Chuyển đổi khung thành tín hiệu (quang, điện hoặc điện từ) dựa trên môi trường truyền là một trong những chức năng của tầng Vật lý?",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng vật lý:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng vật lý.\n- Phương án chính xác: **A**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 51,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Tầng vật lý",
+    "question": "Coaxial là một loại cáp dùng trong truyền thông mạng máy tính",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng vật lý:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng vật lý.\n- Phương án chính xác: **A**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 52,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Tầng vật lý",
+    "question": "Cáp đồng trục trong tầng vật lý của mô hình truyền thông có hai loại",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng vật lý:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng vật lý.\n- Phương án chính xác: **A**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 53,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Tầng vật lý",
+    "question": "Cáp xoắn có vỏ bọc chống nhiễu là UTP?",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- **UTP:** Unshielded Twisted Pair (Cáp xoắn đôi KHÔNG có vỏ bọc chống nhiễu).\n- **STP:** Shielded Twisted Pair (Cáp xoắn đôi CÓ vỏ bọc chống nhiễu).\n- Vì vậy, nói UTP có vỏ bọc chống nhiễu là **Sai** (B)."
+  },
+  {
+    "id": 54,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Tầng vật lý",
+    "question": "https://i-speed.vn là một link truy cập công cụ đo kiểm chất lượng mạng?",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng vật lý:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng vật lý.\n- Phương án chính xác: **A**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 55,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Tầng vật lý",
+    "question": "Thông lượng (throughput) là",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Tốc độ truyền dữ liệu trên đường truyền",
+      "B. Độ đo phạm vi tần số mà đường truyền có thể đáp ứng được",
+      "C. Độ đo sự yếu đi của tín hiệu trên đường truyền",
+      "D. Độ đo sự ảnh hưởng của tiếng ồn điện từ bên ngoài đến tín hiệu đường truyền"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- **Băng thông (Bandwidth):** Tốc độ truyền dữ liệu lý thuyết tối đa của đường truyền.\n- **Thông lượng (Throughput):** Tốc độ truyền dữ liệu thực tế đo được qua một khoảng thời gian nhất định (luôn $\\le$ Bandwidth do ảnh hưởng của trễ, overhead và tắc nghẽn). Đáp án đúng là **A**."
+  },
+  {
+    "id": 56,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Tầng vật lý",
+    "question": "Phương thức giao tiếp trong đó việc truyền dữ liệu diễn ra theo cả hai hướng nhưng tại một thời điểm chỉ có một hướng được truyền dữ liệu, gọi là",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Simplex",
+      "B. Four-wire circuit",
+      "C. Half-duplex",
+      "D. Full duplex"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng vật lý:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng vật lý.\n- Phương án chính xác: **C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 57,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Tầng vật lý",
+    "question": "Tốc độ truyền dữ liệu tối đa của kết nối Gigabit Ethernet là bao nhiêu?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. 10 Mbps",
+      "B. 100 Mbps",
+      "C. 1 Gbps",
+      "D. 10 Gbps"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- Chuẩn Gigabit Ethernet (IEEE 802.3z / 802.3ab) hỗ trợ tốc độ truyền dữ liệu tối đa là **1 Gbps** (tương đương 1000 Mbps). Đáp án đúng là **C**."
+  },
+  {
+    "id": 58,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Tầng vật lý",
+    "question": "Các loại cáp nào dưới đây là cáp đồng trục dùng ở tầng vật lý trong mô hình truyền thông?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Bignet và Smallnet",
+      "B. Thicknet và Thinnet",
+      "C. Bignet và Thicknet",
+      "D. Thinnet và Smallnet"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- Hai loại cáp đồng trục truyền thống trong chuẩn mạng Ethernet là:\n  1. **Thicknet (10BASE5):** Cáp đồng trục dày, khoảng cách tối đa 500m.\n  2. **Thinnet (10BASE2):** Cáp đồng trục mỏng, khoảng cách tối đa 185m.\n- Đáp án đúng là **B** (Thicknet và Thinnet)."
+  },
+  {
+    "id": 59,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Tầng vật lý",
+    "question": "Loại cáp nào dưới đây là cáp quang dùng ở tầng vật lý trong mô hình truyền thông?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Multi-Mode",
+      "B. Private-Mode",
+      "C. Privileged-Mode",
+      "D. Public-Mode"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- Hai loại cáp quang chính:\n  1. **Single-Mode Fiber (SMF):** Cáp quang đơn mốt (lõi 9 micron, dùng tia laser, truyền xa hàng chục km).\n  2. **Multi-Mode Fiber (MMF):** Cáp quang đa mốt (lõi 50/62.5 micron, dùng đèn LED/VCSEL, truyền tầm ngắn).\n- Đáp án đúng là **A** (Multi-Mode)."
+  },
+  {
+    "id": 60,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Tầng vật lý",
+    "question": "Thuật ngữ IEEE là từ viết tắt của",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Institute for Electrical and Electronic Engineers",
+      "B. Institute for Electrical and Electronic Engineer",
+      "C. Institute for Electrical and Electronic Engineering",
+      "D. Institute for Electrical and Electronic Engineeres"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng vật lý:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng vật lý.\n- Phương án chính xác: **A**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 61,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Tầng vật lý",
+    "question": "Cáp xoắn có vỏ bọc chống nhiễu (STP) là",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Shield Twisted Pair",
+      "B. Shielded Twist Pair",
+      "C. Shield Twist Pair",
+      "D. Shielded Twisted Pair"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng vật lý:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng vật lý.\n- Phương án chính xác: **D**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 62,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Tầng vật lý",
+    "question": "Chuẩn nào dưới đây KHÔNG phải là một loại chuẩn cáp mạng?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Category 5",
+      "B. Category 6",
+      "C. Category 7",
+      "D. Category 11"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng vật lý:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng vật lý.\n- Phương án chính xác: **D**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 63,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Tầng vật lý",
+    "question": "Loại kết nối nào dưới đây là kết nối không dây tầm xa?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. ZigBee",
+      "B. Satellite",
+      "C. RFID",
+      "D. WiMax"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng vật lý:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng vật lý.\n- Phương án chính xác: **B**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 64,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Tầng vật lý",
+    "question": "Tầng Vật Lý (Physical Layer) làm nhiệm vụ nào dưới đây. (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. Truyền luồng bit qua môi trường vật lý.",
+      "B. Tiêu chuẩn hoá các chức năng tầng vật lý như cáp, volt, giao diện",
+      "C. Chỉ truyền đi các tín hiệu điện từ qua các dây cáp mạng.",
+      "D. Việc truyền dữ liệu được thực hiện bởi hệ thống có dây hoặc không dây"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "D"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng vật lý:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng vật lý.\n- Phương án chính xác: **A, B, D**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 65,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Tầng vật lý",
+    "question": "Loại kết nối nào dưới đây là kết nối không dây tầm ngắn? (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. RFID",
+      "B. Wifi",
+      "C. Bluetooth",
+      "D. ZigBee"
+    ],
+    "correctAnswers": [
+      "A",
+      "C",
+      "D"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng vật lý:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng vật lý.\n- Phương án chính xác: **A, C, D**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 66,
+    "chapter": "Chương 1: Tổng quan về Mạng máy tính và Internet",
+    "chapterId": 1,
+    "topic": "Tầng vật lý",
+    "question": "Các yếu tố nào dưới đây ảnh hưởng tới tốc độ truyền luồng bits? (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. Mã hóa",
+      "B. Suy hao",
+      "C. Băng thông",
+      "D. Khung"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng vật lý:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng vật lý.\n- Phương án chính xác: **A, B, C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 67,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "Tầng liên kết dữ liệu",
+    "question": "Một trong những chức năng của tầng liên kết dữ liệu là phát hiện lỗi.",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- Tầng Data Link sử dụng trường FCS (Frame Check Sequence) với thuật toán kiểm tra mã dư vòng CRC (Cyclic Redundancy Check) ở phần Trailer để phát hiện các bit lỗi xảy ra trên đường truyền vật lý. Phát biểu là **Đúng** (A)."
+  },
+  {
+    "id": 68,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "Tầng liên kết dữ liệu",
+    "question": "Ethernet là một loại giao thức trong tầng liên kết dữ liệu",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng liên kết dữ liệu:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng liên kết dữ liệu.\n- Phương án chính xác: **A**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 69,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "Tầng liên kết dữ liệu",
+    "question": "PDU được sử dụng ở tầng liên kết dữ liệu gọi là Bits",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng liên kết dữ liệu:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng liên kết dữ liệu.\n- Phương án chính xác: **B**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 70,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "Tầng liên kết dữ liệu",
+    "question": "Cấu trúc khung tầng liên kết dữ liệu có trường tiêu đề (header) và phần đuôi (trailer)",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng liên kết dữ liệu:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng liên kết dữ liệu.\n- Phương án chính xác: **A**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 71,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "Tầng liên kết dữ liệu",
+    "question": "Quá trình dữ liệu di chuyển từ tầng trên xuống tầng datalink phải thực hiện việc?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Phân tích dữ liệu",
+      "B. Lọc dữ liệu",
+      "C. Nén dữ liệu",
+      "D. Đóng gói dữ liệu"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng liên kết dữ liệu:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng liên kết dữ liệu.\n- Phương án chính xác: **D**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 72,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "Tầng liên kết dữ liệu",
+    "question": "Đơn vị dữ liệu tầng datalink là:",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Mbs",
+      "B. Segment",
+      "C. Frame",
+      "D. Bits"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng liên kết dữ liệu:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng liên kết dữ liệu.\n- Phương án chính xác: **C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 73,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "Tầng liên kết dữ liệu",
+    "question": "Frame là dữ liệu ở tầng:",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Physical",
+      "B. Network",
+      "C. Data Link",
+      "D. Transport"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng liên kết dữ liệu:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng liên kết dữ liệu.\n- Phương án chính xác: **C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 74,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "Tầng liên kết dữ liệu",
+    "question": "Card mạng là thiết bị nằm ở tầng nào trong mô hình OSI:",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Physical",
+      "B. Data Link",
+      "C. Network",
+      "D. Transport"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng liên kết dữ liệu:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng liên kết dữ liệu.\n- Phương án chính xác: **B**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 75,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "Tầng liên kết dữ liệu",
+    "question": "Tầng nào cung cấp dịch vụ truyền tin tin cậy qua môi trường vật lý:",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Physical",
+      "B. Data link",
+      "C. Network",
+      "D. Transport"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng liên kết dữ liệu:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng liên kết dữ liệu.\n- Phương án chính xác: **B**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 76,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "Tầng liên kết dữ liệu",
+    "question": "Dịch vụ nào sau đây mà tầng liên kết dữ liệu phải cung cấp? (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. Tạo khung",
+      "B. Xác định địa chỉ vật lý",
+      "C. Kiểm soát lỗi",
+      "D. Xác định địa chỉ logic"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng liên kết dữ liệu:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng liên kết dữ liệu.\n- Phương án chính xác: **A, B, C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 77,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "Tầng liên kết dữ liệu",
+    "question": "Các giao thức nào dưới đây nằm ở tầng liên kết dữ liệu? (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. IP",
+      "B. Ethernet",
+      "C. Token ring",
+      "D. PPP"
+    ],
+    "correctAnswers": [
+      "B",
+      "C",
+      "D"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng liên kết dữ liệu:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng liên kết dữ liệu.\n- Phương án chính xác: **B, C, D**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 78,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "Công nghệ Ethernet",
+    "question": "CSMA/CD là giao thức truy cập ngẫu nhiên",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Công nghệ Ethernet:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Công nghệ Ethernet.\n- Phương án chính xác: **A**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 79,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "Công nghệ Ethernet",
+    "question": "NIC là viết tắt của Network Interface Card",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Công nghệ Ethernet:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Công nghệ Ethernet.\n- Phương án chính xác: **A**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 80,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "Công nghệ Ethernet",
+    "question": "Mỗi NIC (Network Interface Card) có thể có nhiều địa chỉ MAC",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Công nghệ Ethernet:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Công nghệ Ethernet.\n- Phương án chính xác: **B**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 81,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "Công nghệ Ethernet",
+    "question": "LLC là một lớp con (sublayer) trong tầng liên kết dữ liệu",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Công nghệ Ethernet:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Công nghệ Ethernet.\n- Phương án chính xác: **A**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 82,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "Công nghệ Ethernet",
+    "question": "Khi địa chỉ MAC đích là Broadcast, nó được dùng để gửi tới một địa chỉ đích duy nhất trong mạng LAN",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Công nghệ Ethernet:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Công nghệ Ethernet.\n- Phương án chính xác: **B**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 83,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "Công nghệ Ethernet",
+    "question": "Câu nào đúng về địa chỉ MAC?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Địa chỉ MAC được thực hiện bằng phần mềm.",
+      "B. NIC chỉ cần địa chỉ MAC nếu được kết nối với mạng WAN.",
+      "C. Ba bytes cuối trong địa chỉ MAC được gán bởi nhà sản xuất thiết bị.",
+      "D. ISO chịu trách nhiệm về các quy định về địa chỉ MAC."
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Công nghệ Ethernet:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Công nghệ Ethernet.\n- Phương án chính xác: **C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 84,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "Công nghệ Ethernet",
+    "question": "Công nghệ Ethernet sử dụng phương pháp truy nhập đường truyền nào sau đây:",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. CSMA",
+      "B. ALOHA",
+      "C. CSMA/CD",
+      "D. TDMA"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Công nghệ Ethernet:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Công nghệ Ethernet.\n- Phương án chính xác: **C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 85,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "Công nghệ Ethernet",
+    "question": "CSMA/CD là viết tắt của:",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Collision Sense Multiple Access / Collision Detection",
+      "B. Carrier Sense Multiple Access / Carrier Detection",
+      "C. Carrier Sense Multiple Access / Collision Detection",
+      "D. Collision Sense Multiple Access / Carrier Detection"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- **CSMA/CD:** Viết tắt của **Carrier Sense Multiple Access / Collision Detection** (Đa truy nhập cảm nhận sóng mang có phát hiện xung đột), sử dụng trong mạng Ethernet chia sẻ băng thông (Half-Duplex). Đáp án đúng là **C**."
+  },
+  {
+    "id": 86,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "Công nghệ Ethernet",
+    "question": "Chuỗi số \"00-08-ac-41-5d-9f\" có thể là:",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Địa chỉ IP",
+      "B. Địa chỉ port",
+      "C. Địa chỉ MAC",
+      "D. Địa chỉ dịch vụ"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- Chuỗi ký tự gồm 6 cặp số thập lục phân (Hexa) phân cách bằng dấu gạch ngang hoặc hai chấm biểu thị **Địa chỉ MAC** (Physical Layer 2 address, 48 bit). 3 byte đầu (00-08-ac) là mã OUI của nhà sản xuất, 3 byte sau là số định danh thiết bị. Đáp án đúng là **C**."
+  },
+  {
+    "id": 87,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "Công nghệ Ethernet",
+    "question": "Chuẩn nào dưới đây đặc tả về chuẩn kiến trúc mạng cục bộ cho Ethernet, bao gồm các chuẩn tầng vật lý và tầng con MAC:",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. IEEE 802.2",
+      "B. IEEE 802.3",
+      "C. Token Bus",
+      "D. Token Ring"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Công nghệ Ethernet:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Công nghệ Ethernet.\n- Phương án chính xác: **B**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 88,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "Công nghệ Ethernet",
+    "question": "Chọn phát biểu ĐÚNG về địa chỉ MAC:",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Được gắn trên card mạng (NIC)",
+      "B. Do người quản trị mạng khai báo",
+      "C. Được gán trong quá trình thiết bị khởi động",
+      "D. Được gán trong quá trình thiết bị truyền thông tin"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Công nghệ Ethernet:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Công nghệ Ethernet.\n- Phương án chính xác: **A**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 89,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "Công nghệ Ethernet",
+    "question": "Công nghệ nào dưới đây được sử dụng phổ biến nhất trong mạng LAN hiện nay:",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Token Ring",
+      "B. FDDI",
+      "C. Ethernet",
+      "D. ADSL"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Công nghệ Ethernet:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Công nghệ Ethernet.\n- Phương án chính xác: **C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 90,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "Công nghệ Ethernet",
+    "question": "LLC là viết tắt của:",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Logical Link Control",
+      "B. Link Logical Control",
+      "C. Logical Link Computer",
+      "D. Lan Logical Control"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- Tầng Data Link được chuẩn IEEE 802 chia thành 2 tầng con:\n  1. **LLC (Logical Link Control - IEEE 802.2):** Giao tiếp với tầng Network phía trên.\n  2. **MAC (Media Access Control - IEEE 802.3):** Quản lý truy nhập môi trường vật lý.\n- Đáp án đúng là **A** (Logical Link Control)."
+  },
+  {
+    "id": 91,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "Công nghệ Ethernet",
+    "question": "Địa chỉ MAC nào có dưới đây KHÔNG trong tiêu đề của Frame? (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. MAC Sources",
+      "B. MAC Gateway",
+      "C. MAC destination",
+      "D. MAC Default"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "D"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Công nghệ Ethernet:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Công nghệ Ethernet.\n- Phương án chính xác: **A, B, D**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 92,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "Công nghệ Ethernet",
+    "question": "Các loại địa chỉ MAC bao gồm? (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. MAC unicast",
+      "B. MAC multicast",
+      "C. MAC broadcast",
+      "D. MAC anycast"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Công nghệ Ethernet:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Công nghệ Ethernet.\n- Phương án chính xác: **A, B, C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 93,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "Thiết bị chuyển mạch Ethernet",
+    "question": "Tốc độ của GigabitEthernet có thể lên đến 10000Mbps?",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Thiết bị chuyển mạch Ethernet:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Thiết bị chuyển mạch Ethernet.\n- Phương án chính xác: **B**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 94,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "Thiết bị chuyển mạch Ethernet",
+    "question": "Thiết bị chuyển mạch lớp 2 hoạt động kém hiệu quả hơn so với Hub?",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Thiết bị chuyển mạch Ethernet:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Thiết bị chuyển mạch Ethernet.\n- Phương án chính xác: **B**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 95,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "Thiết bị chuyển mạch Ethernet",
+    "question": "Mac Address Table được lưu trữ trong RAM của Switch?",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Thiết bị chuyển mạch Ethernet:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Thiết bị chuyển mạch Ethernet.\n- Phương án chính xác: **A**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 96,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "Thiết bị chuyển mạch Ethernet",
+    "question": "Một thiết bị chuyển mạch lớp 2 có thể hỗ trợ các loại cổng:",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Cổng dynamic và Well-known",
+      "B. Cổng access và Well-known",
+      "C. Cổng trunk và Well-known",
+      "D. Cổng access và trunk"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Thiết bị chuyển mạch Ethernet:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Thiết bị chuyển mạch Ethernet.\n- Phương án chính xác: **D**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 97,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "Thiết bị chuyển mạch Ethernet",
+    "question": "Thiết bị Switch thông thường nằm ở tầng nào của mô hình OSI?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Tầng 1",
+      "B. Tầng 2",
+      "C. Tầng 3",
+      "D. Tầng 4"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Thiết bị chuyển mạch Ethernet:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Thiết bị chuyển mạch Ethernet.\n- Phương án chính xác: **B**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 98,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "Thiết bị chuyển mạch Ethernet",
+    "question": "Để hạn chế sự đụng độ (hay va chạm) giữa các gói tin trong mạng người ta sử dụng thiết bị nào dưới đây?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Repeaters",
+      "B. Hubs",
+      "C. Switches",
+      "D. Card mạng (NIC)"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Thiết bị chuyển mạch Ethernet:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Thiết bị chuyển mạch Ethernet.\n- Phương án chính xác: **C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 99,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "Thiết bị chuyển mạch Ethernet",
+    "question": "Địa chỉ nào được quan tâm khi một frame đi vào cổng của Switch?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Địa chỉ IP nguồn",
+      "B. Địa chỉ MAC nguồn",
+      "C. Địa chỉ IP đích",
+      "D. Địa chỉ MAC đích"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Thiết bị chuyển mạch Ethernet:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Thiết bị chuyển mạch Ethernet.\n- Phương án chính xác: **D**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 100,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "Thiết bị chuyển mạch Ethernet",
+    "question": "Các thiết bị nào dưới đây không được sử dụng để hạn chế sự đụng độ của các gói tin trong mạng? (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. Repeaters",
+      "B. Hubs",
+      "C. Switches",
+      "D. Card mạng (NIC)"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "D"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Thiết bị chuyển mạch Ethernet:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Thiết bị chuyển mạch Ethernet.\n- Phương án chính xác: **A, B, D**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 101,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "Thiết bị chuyển mạch Ethernet",
+    "question": "Một miền quảng bá có tính chất như sau (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. Phạm vi truy cập của các gói Broadcast",
+      "B. Các thiết bị trong cùng một miền quảng bá có thể nhận gói quảng bá",
+      "C. Bộ định tuyến phân tách các miền quảng bá bằng interface",
+      "D. Bộ định tuyến không phân tách được miền quảng bá"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Thiết bị chuyển mạch Ethernet:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Thiết bị chuyển mạch Ethernet.\n- Phương án chính xác: **A, B, C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 102,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "Thiết bị chuyển mạch Ethernet",
+    "question": "Các cách xử lý frame khi đi vào giao diện trên Switch? (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. Flooding",
+      "B. Saving",
+      "C. Forwarding",
+      "D. Discarding"
+    ],
+    "correctAnswers": [
+      "A",
+      "C",
+      "D"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Thiết bị chuyển mạch Ethernet:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Thiết bị chuyển mạch Ethernet.\n- Phương án chính xác: **A, C, D**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 103,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "Thiết bị chuyển mạch Ethernet",
+    "question": "Các chức năng đặc thù của thiết bị chuyển mạch lớp 2? (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. Xoá bỏ dữ liệu lỗi",
+      "B. Học địa chỉ",
+      "C. Quyết định chuyển tiếp/lọc khung",
+      "D. Tránh Loop"
+    ],
+    "correctAnswers": [
+      "B",
+      "C",
+      "D"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Thiết bị chuyển mạch Ethernet:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Thiết bị chuyển mạch Ethernet.\n- Phương án chính xác: **B, C, D**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 104,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "Thiết bị chuyển mạch Ethernet",
+    "question": "Các loại cổng Ethernet nào dưới đây dùng để truyền dữ liệu trong mạng LAN? (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. FastEthernet",
+      "B. GigabitEthernet",
+      "C. Ten Gigabit Ethernet",
+      "D. Console Ethernet"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Thiết bị chuyển mạch Ethernet:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Thiết bị chuyển mạch Ethernet.\n- Phương án chính xác: **A, B, C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 105,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "VLAN và Trunking",
+    "question": "VLAN là một mạng LAN ảo",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về VLAN và Trunking:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của VLAN và Trunking.\n- Phương án chính xác: **A**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 106,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "VLAN và Trunking",
+    "question": "Dữ liệu ở VLAN gốc không được trao đổi qua kết nối Trunking",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về VLAN và Trunking:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của VLAN và Trunking.\n- Phương án chính xác: **B**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 107,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "VLAN và Trunking",
+    "question": "IEEE 802.1Q có tên gọi khác là dot1Q",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- Chuẩn công nghiệp quốc tế cho việc gắn thẻ nhận diện VLAN trên đường truyền Trunking là **IEEE 802.1Q**, thường được gọi vắn tắt là chuẩn **dot1Q**. Phát biểu là **Đúng** (A)."
+  },
+  {
+    "id": 108,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "VLAN và Trunking",
+    "question": "Thiết bị Hub có bao nhiêu collision domain?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. 1",
+      "B. 2",
+      "C. 3",
+      "D. 4"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- **Hub** chỉ là bộ lặp tín hiệu (Repeater), tất cả các cổng của Hub cùng chia sẻ chung một môi trường truyền, do đó toàn bộ Hub chỉ có **duy nhất 1 collision domain**. Đáp án đúng là **A** (1)."
+  },
+  {
+    "id": 109,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "VLAN và Trunking",
+    "question": "Thiết bị Switch có bao nhiêu collision domain?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. 3 collisions / 1 port",
+      "B. 2 collisions / 1port",
+      "C. 1 collision / 1port",
+      "D. 4 collisions / 1 port"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- **Switch vi phân đoạn mạng:** Mỗi cổng (port) của Switch là một miền va chạm riêng biệt (**1 collision domain / 1 port**).\n- Nhờ vậy, các thiết bị cắm vào switch có thể truyền song công toàn phần (Full-Duplex) mà hoàn toàn không xảy ra đụng độ gói tin. Đáp án đúng là **C**."
+  },
+  {
+    "id": 110,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "VLAN và Trunking",
+    "question": "Thiết bị Switch (cấu hình mặc định) có bao nhiêu Broadcast domain?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. 1",
+      "B. 2",
+      "C. 3",
+      "D. 4"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- Khi ở cấu hình mặc định (chưa chia VLAN), toàn bộ switch nằm trong một mạng con duy nhất, do đó Switch chỉ có **1 Broadcast Domain** duy nhất. Muốn chia nhỏ miền quảng bá trên switch, người ta phải cấu hình VLAN. Đáp án đúng là **A** (1)."
+  },
+  {
+    "id": 111,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "VLAN và Trunking",
+    "question": "Thiết bị Hub có bao nhiêu Broadcast domain?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. 1",
+      "B. 2",
+      "C. 3",
+      "D. 4"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về VLAN và Trunking:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của VLAN và Trunking.\n- Phương án chính xác: **A**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 112,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "VLAN và Trunking",
+    "question": "Virtual LAN (VLAN) là một nhóm các thiết bị kết nối trong cùng miền nào dưới đây?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Miền tự trị",
+      "B. Miền quảng bá",
+      "C. Miền vật lý",
+      "D. Miền va chạm"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về VLAN và Trunking:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của VLAN và Trunking.\n- Phương án chính xác: **B**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 113,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "VLAN và Trunking",
+    "question": "Một mạng chứa nhiều VLAN trải rộng trên nhiều thiết bị chuyển mạch (trong các VLAN có VLAN 20). Điều gì xảy ra khi một thiết bị trong VLAN 20 gửi khung Ethernet quảng bá?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Các thiết bị trong các VLAN đều nhìn thấy frame.",
+      "B. Các thiết bị trong VLAN 20 và VLAN quản lý sẽ nhìn thấy frame.",
+      "C. Chỉ các thiết bị trong VLAN 20 mới nhìn thấy frame.",
+      "D. Chỉ những thiết bị được kết nối với bộ chuyển mạch cục bộ mới nhìn thấy frame."
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về VLAN và Trunking:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của VLAN và Trunking.\n- Phương án chính xác: **C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 114,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "VLAN và Trunking",
+    "question": "Trong Switch Cisco, VLAN mặc định là:",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. VLAN 1",
+      "B. VLAN 2",
+      "C. VLAN 3",
+      "D. VLAN 4"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- Trên Switch Cisco xuất xưởng, tất cả các cổng mặc định đều được gán vào **VLAN 1** (Default VLAN / Management VLAN), không thể xóa hay đổi tên VLAN 1 này. Đáp án đúng là **A** (VLAN 1)."
+  },
+  {
+    "id": 115,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "VLAN và Trunking",
+    "question": "Lợi ích của việc sử dụng VLAN là gì? (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. Tăng cường bảo mật",
+      "B. Giảm chi phí, tăng hiệu suất",
+      "C. Dễ quản lý",
+      "D. Giảm độ trễ xử lý frame và bits"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về VLAN và Trunking:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của VLAN và Trunking.\n- Phương án chính xác: **A, B, C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 116,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "VLAN và Trunking",
+    "question": "Các dãy giá trị nào dưới đây thoả mãn là VLAN-ID? (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. 1-1001",
+      "B. 1002-1005",
+      "C. 1006-4094",
+      "D. 4095-5095"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về VLAN và Trunking:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của VLAN và Trunking.\n- Phương án chính xác: **A, B, C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 117,
+    "chapter": "Chương 2: Chuyển mạch Ethernet",
+    "chapterId": 2,
+    "topic": "VLAN và Trunking",
+    "question": "Phát biểu nào sau đây là SAI: khi Switch nhận được một frame gửi tới nó, Switch sẽ xử lý như thế nào nếu địa chỉ MAC đích trong frame không có trong bảng địa chỉ MAC của nó? (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. Switch sẽ chuyển frame đến địa chỉ default gateway",
+      "B. Switch sẽ chuyển frame đến cổng gần nhất",
+      "C. Switch sẽ hủy bỏ frame này",
+      "D. Switch sẽ chuyển tiếp frame đến các cổng của Switch trừ cổng nhận frame vào"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về VLAN và Trunking:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của VLAN và Trunking.\n- Phương án chính xác: **A, B, C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 118,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Tầng mạng",
+    "question": "Lớp mạng cho phép kết nối các thiết bị với nhau",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng mạng:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng mạng.\n- Phương án chính xác: **A**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 119,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Tầng mạng",
+    "question": "Định tuyến là một trong bốn hoạt động cơ bản của tầng mạng:",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng mạng:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng mạng.\n- Phương án chính xác: **A**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 120,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Tầng mạng",
+    "question": "IPv6 là một giao thức nằm ở tầng Internet",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng mạng:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng mạng.\n- Phương án chính xác: **A**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 121,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Tầng mạng",
+    "question": "Đặc điểm của lớp mạng là chuyển dữ liệu thành dạng tín hiệu để truyền qua mạng",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng mạng:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng mạng.\n- Phương án chính xác: **B**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 122,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Tầng mạng",
+    "question": "Chuyển tiếp không phải là một trong những hoạt động cơ bản của lớp mạng",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng mạng:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng mạng.\n- Phương án chính xác: **B**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 123,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Tầng mạng",
+    "question": "IPX không phải là một giao thức kết nối mạng",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng mạng:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng mạng.\n- Phương án chính xác: **B**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 124,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Tầng mạng",
+    "question": "Giao thức định tuyến được dùng để",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Trao đổi thông tin chuyển tiếp dữ liệu qua mạng",
+      "B. Trao đổi thông tin định tuyến giữa các thiết bị định tuyến trên mạng",
+      "C. Kết nối liên mạng",
+      "D. Phân giải địa chỉ"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng mạng:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng mạng.\n- Phương án chính xác: **B**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 125,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Tầng mạng",
+    "question": "Đơn vị dữ liệu thông tin ở tầng Mạng trong mô hình OSI được gọi là gì?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Bit",
+      "B. Frame",
+      "C. Packet",
+      "D. Frame"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng mạng:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng mạng.\n- Phương án chính xác: **C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 126,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Tầng mạng",
+    "question": "Trong những công việc sau, công việc nào không phải là chức năng của tầng Mạng",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Đánh địa chỉ logic cho máy tính",
+      "B. Đặt tên gọi nhớ cho máy tính",
+      "C. Tìm đường đi cho các gói tin",
+      "D. Giải quyết tắc nghẽn"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng mạng:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng mạng.\n- Phương án chính xác: **B**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 127,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Tầng mạng",
+    "question": "Giao thức ICMP nằm ở tầng nào:",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Tầng Network",
+      "B. Tầng Data Link",
+      "C. Tầng Vật lý",
+      "D. Tầng Ứng dụng"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng mạng:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng mạng.\n- Phương án chính xác: **A**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 128,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Tầng mạng",
+    "question": "Những giao thức nào dưới đây là giao thức định tuyến (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. BGP",
+      "B. OSPF",
+      "C. IGRP",
+      "D. IGMP"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng mạng:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng mạng.\n- Phương án chính xác: **A, B, C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 129,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Tầng mạng",
+    "question": "Những giao thức nào dưới đây là giao thức kết nối mạng (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. IPX",
+      "B. IPv6",
+      "C. Apple Talk",
+      "D. IS-IS"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng mạng:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng mạng.\n- Phương án chính xác: **A, B, C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 130,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Tầng mạng",
+    "question": "Giao thức nào dưới đây không phải là giao thức định tuyến (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. IPv6",
+      "B. BGP",
+      "C. IPv4",
+      "D. SNMP"
+    ],
+    "correctAnswers": [
+      "A",
+      "C",
+      "D"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng mạng:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng mạng.\n- Phương án chính xác: **A, C, D**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 131,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Tầng mạng",
+    "question": "Đặc điểm của tầng Mạng là: (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. Cho phép kết nối các thiết bị với nhau",
+      "B. Các gói được gửi từ nguồn tới đích bằng cách sử dụng địa chỉ",
+      "C. Nằm giữa tầng Giao vận và tầng Liên kết dữ liệu",
+      "D. Truyền tải các bit trên đường truyền vật lý"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng mạng:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng mạng.\n- Phương án chính xác: **A, B, C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 132,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức Internet",
+    "question": "Địa chỉ IPv6 có độ dài 128 bits",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- Địa chỉ **IPv4 có độ dài 32 bit** (biểu diễn dạng thập phân chấm).\n- Địa chỉ **IPv6 có độ dài 128 bit** (biểu diễn dạng 8 nhóm số thập lục phân - Hexadecimal).\n- Phát biểu địa chỉ IPv6 có độ dài 128 bit là **Đúng** (A)."
+  },
+  {
+    "id": 133,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức Internet",
+    "question": "Địa chỉ IPv4 có độ dài là 64 bits",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức Internet:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức Internet.\n- Phương án chính xác: **B**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 134,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức Internet",
+    "question": "192.168.0.0/24 là một địa chỉ public (địa chỉ công cộng)",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- Theo khuyến nghị RFC 1918, các dải địa chỉ Private IP gồm:\n  + Lớp A: `10.0.0.0 - 10.255.255.255` (/8)\n  + Lớp B: `172.16.0.0 - 172.31.255.255` (/12)\n  + Lớp C: `192.168.0.0 - 192.168.255.255` (/16)\n- Do đó 192.168.0.0/24 là địa chỉ **Private (nội bộ)**, không phải Public. Phát biểu là **Sai** (B)."
+  },
+  {
+    "id": 135,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức Internet",
+    "question": "Địa chỉ mạng và địa chỉ quảng bá (ở lớp mạng) không được gán cho các thiết bị",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức Internet:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức Internet.\n- Phương án chính xác: **A**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 136,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức Internet",
+    "question": "Địa chỉ IP không thay đổi từ nguồn tới đích:",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức Internet:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức Internet.\n- Phương án chính xác: **A**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 137,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức Internet",
+    "question": "IETF là một trong số nhiều tổ chức chịu trách nhiệm về việc xác định các tiêu chuẩn liên quan tới bộ giao thức TCP/IP",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức Internet:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức Internet.\n- Phương án chính xác: **A**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 138,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức Internet",
+    "question": "Địa chỉ IPv6 nguồn phải là địa chỉ multicast",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức Internet:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức Internet.\n- Phương án chính xác: **B**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 139,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức Internet",
+    "question": "Địa chỉ IPv6 gồm bao nhiêu bit:",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. 124",
+      "B. 126",
+      "C. 128",
+      "D. 130"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức Internet:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức Internet.\n- Phương án chính xác: **C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 140,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức Internet",
+    "question": "Địa chỉ IP nào dưới đây được biểu diễn ở dạng (dotted-decimal) số thập phân – chấm:",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. 102.61.91.0",
+      "B. 17.183.19.0/24",
+      "C. 72.256.1.100",
+      "D. 34.78.51.208."
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức Internet:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức Internet.\n- Phương án chính xác: **A**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 141,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức Internet",
+    "question": "Địa chỉ IP của PC nào dưới đây KHÔNG được biểu diễn ở dạng CIDR:",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. 202.57.134.19",
+      "B. 107.23.109.76/24",
+      "C. 72.26.19.0/24",
+      "D. 34.203.251.255/24"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức Internet:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức Internet.\n- Phương án chính xác: **A**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 142,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức Internet",
+    "question": "Thông tin nào sau đây là địa chỉ IP hợp lệ:",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. 191.255.33.7",
+      "B. 208.151.256.10",
+      "C. 127.191.257.30",
+      "D. 208.191.256.30"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức Internet:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức Internet.\n- Phương án chính xác: **A**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 143,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức Internet",
+    "question": "Giả sử máy A có địa chỉ 172.29.14.11/24 và máy B có địa chỉ 172.29.14.100/24. Tại máy A, để kiểm tra xem có thể gửi dữ liệu đến máy B được hay không, ta dùng lệnh nào:",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Ping 172.29.14.11",
+      "B. Ping 172.29.14.100",
+      "C. Ipconfig 172.29.14.100",
+      "D. Ipconfig 172.29.14.11"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức Internet:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức Internet.\n- Phương án chính xác: **B**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 144,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức Internet",
+    "question": "Sử dụng các quy tắc rút gọn để biểu diễn địa chỉ IPv6 sau: \"0800:0000:0000:0000:0123:0000:0000:CDEF\"",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. 08::123::CDEF",
+      "B. 800::123:0:0:CDEF",
+      "C. 8::123:0000:0000:CDEF",
+      "D. 800::123:0000:0000:CDEF"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết rút gọn IPv6:**\n1. Quy tắc 1: Bỏ các số 0 đứng đầu mỗi nhóm: `0800` -> `800`, `0123` -> `123`.\n2. Quy tắc 2: Thay thế chuỗi các nhóm toàn số 0 liên tiếp dài nhất bằng dấu hai chấm kép `::` (chỉ áp dụng duy nhất một lần trong toàn bộ địa chỉ).\n- Chuỗi 3 nhóm 0 liên tiếp đầu tiên trở thành `::`, các nhóm 0 phía sau giữ lại một số 0: `800::123:0:0:CDEF`.\n- Đáp án đúng là **B**."
+  },
+  {
+    "id": 145,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức Internet",
+    "question": "Địa chỉ logic (hay địa chỉ IP) sẽ được đóng gói ở tầng nào của mô hình OSI?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Tầng vật lý",
+      "B. Tầng liên kết dữ liệu",
+      "C. Tầng mạng",
+      "D. Tầng giao vận"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức Internet:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức Internet.\n- Phương án chính xác: **C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 146,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức Internet",
+    "question": "Loại địa chỉ nào được sử dụng để gán cho thiết bị máy chủ để truyền dữ liệu ở Tầng Mạng?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Địa chỉ liên kết dữ liệu",
+      "B. Địa chỉ logic (địa chỉ IP)",
+      "C. Địa chỉ lớp 2",
+      "D. Địa chỉ vật lý"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức Internet:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức Internet.\n- Phương án chính xác: **B**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 147,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức Internet",
+    "question": "Phần nào là thành phần cố định trong địa chỉ IPv4?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Phần mạng con",
+      "B. Phần mạng",
+      "C. Phần logic",
+      "D. Phần host"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức Internet:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức Internet.\n- Phương án chính xác: **B**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 148,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức Internet",
+    "question": "Phát biểu nào dưới đây là đúng:",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Địa chỉ IPv6 được biểu thị bằng số thập lục phân.",
+      "B. Địa chỉ IPv4 được biểu thị bằng số thập lục phân.",
+      "C. Địa chỉ IPv6 có độ dài 32 bit.",
+      "D. Địa chỉ IPv4 có độ dài 128 bit."
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức Internet:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức Internet.\n- Phương án chính xác: **A**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 149,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức Internet",
+    "question": "Các đặc điểm cơ bản của giao thức Internet là (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. Không kết nối",
+      "B. Không tin cậy",
+      "C. Không phụ thuộc vào môi trường",
+      "D. Tin cậy"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức Internet:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức Internet.\n- Phương án chính xác: **A, B, C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 150,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức Internet",
+    "question": "Những địa chỉ IP nào sau đây là địa chỉ public (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. 112.64.12.29",
+      "B. 192.168.23.252",
+      "C. 198.234.12.95",
+      "D. 212.193.48.254"
+    ],
+    "correctAnswers": [
+      "A",
+      "C",
+      "D"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức Internet:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức Internet.\n- Phương án chính xác: **A, C, D**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 151,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức Internet",
+    "question": "Ưu điểm của địa chỉ IPv6 so với IPv4 (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. Tăng không gian địa chỉ",
+      "B. Bảo mật tốt hơn",
+      "C. Hỗ trợ di động tốt hơn",
+      "D. Không hỗ trợ QoS"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức Internet:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức Internet.\n- Phương án chính xác: **A, B, C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 152,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức Internet",
+    "question": "Địa chỉ IP nào sau đây KHÔNG là địa chỉ dạng Private? (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. 172.30.150.17/16",
+      "B. 172.40.150.17/16",
+      "C. 172.50.150.17/16",
+      "D. 172.60.150.17/16"
+    ],
+    "correctAnswers": [
+      "B",
+      "C",
+      "D"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức Internet:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức Internet.\n- Phương án chính xác: **B, C, D**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 153,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức Internet",
+    "question": "Địa chỉ nào sau đây KHÔNG phải là địa chỉ mạng của host 12.16.25.14/30 (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. 12.16.25.4/30",
+      "B. 12.16.25.6/30",
+      "C. 12.16.25.8/30",
+      "D. 12.16.25.12/30"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức Internet:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức Internet.\n- Phương án chính xác: **A, B, C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 154,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức Internet",
+    "question": "Địa chỉ nào sau đây KHÔNG phải là địa chỉ quảng bá của mạng 19.18.25.128/27 (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. 19.18.25.255/27",
+      "B. 19.18.25.128/27",
+      "C. 19.18.25.100/27",
+      "D. 19.18.25.159/27"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức Internet:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức Internet.\n- Phương án chính xác: **A, B, C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 155,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức Internet",
+    "question": "Các loại địa chỉ IPv6 là (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. Unicast",
+      "B. Multicast",
+      "C. Anycast",
+      "D. Broadcast"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức Internet:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức Internet.\n- Phương án chính xác: **A, B, C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 156,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức Internet",
+    "question": "Để các gói được gửi đến một đích ở xa, ba thông tin nào phải được cấu hình trên máy chủ? (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. Hostname",
+      "B. Địa chỉ IP",
+      "C. Subnetmask",
+      "D. Default Gateway"
+    ],
+    "correctAnswers": [
+      "B",
+      "C",
+      "D"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức Internet:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức Internet.\n- Phương án chính xác: **B, C, D**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 157,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức định tuyến",
+    "question": "OSPF là một giao thức định tuyến?",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- **OSPF (Open Shortest Path First):** Là giao thức định tuyến động nội miền (IGP) thuộc họ Trạng thái liên kết (Link-State), sử dụng thuật toán Dijkstra SPF để tìm đường đi ngắn nhất. Phát biểu là **Đúng** (A)."
+  },
+  {
+    "id": 158,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức định tuyến",
+    "question": "Hệ thống tự trị (AS) được điều hành bởi nhiều tổ chức?",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức định tuyến:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức định tuyến.\n- Phương án chính xác: **B**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 159,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức định tuyến",
+    "question": "Có 3 loại ASN?",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức định tuyến:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức định tuyến.\n- Phương án chính xác: **B**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 160,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức định tuyến",
+    "question": "Nếu dữ liệu liên tục thay đổi hướng khi tới đích, chứng tỏ quá trình định tuyến là động?",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức định tuyến:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức định tuyến.\n- Phương án chính xác: **A**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 161,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức định tuyến",
+    "question": "IGRP là giao thức định tuyến sử dụng thuật toán tính đường đi tốt nhất tới đích.",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức định tuyến:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức định tuyến.\n- Phương án chính xác: **B**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 162,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức định tuyến",
+    "question": "Giao thức định tuyến động tự động chia sẻ thông tin định tuyến giữa các bộ định tuyến (Routers).",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức định tuyến:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức định tuyến.\n- Phương án chính xác: **A**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 163,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức định tuyến",
+    "question": "Số hiệu mạng (ASN) được cấp và quản lý bởi IANA",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức định tuyến:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức định tuyến.\n- Phương án chính xác: **A**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 164,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức định tuyến",
+    "question": "Khi sử dụng định tuyến tĩnh, người quản trị phải cấu hình thủ công trên bộ định tuyến",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức định tuyến:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức định tuyến.\n- Phương án chính xác: **A**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 165,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức định tuyến",
+    "question": "Giao thức định tuyến động là một tập hợp các tiến trình, thuật toán, bản tin được sử dụng để trao đổi thông tin định tuyến và lựa chọn đường đi tốt nhất cập nhật vào bảng định tuyến.",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức định tuyến:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức định tuyến.\n- Phương án chính xác: **A**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 166,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức định tuyến",
+    "question": "Một máy tính trong một mạng đang liên lạc với một nhóm máy tính cụ thể. Đây là loại giao tiếp gì?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Broadcast",
+      "B. Multicast",
+      "C. Unicast",
+      "D. Anycast"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức định tuyến:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức định tuyến.\n- Phương án chính xác: **B**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 167,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức định tuyến",
+    "question": "Khả năng định tuyến được thực hiện bởi thiết bị:",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Switch",
+      "B. Hub",
+      "C. Bridge",
+      "D. Router"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức định tuyến:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức định tuyến.\n- Phương án chính xác: **D**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 168,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức định tuyến",
+    "question": "Chức năng của default gateway trong bảng định tuyến của Router là:",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Chỉ định đến địa chỉ tiếp theo (next hop) của gói dữ liệu nếu router không biết đường gửi đến đích",
+      "B. Dùng để ấn định subnet mặc định cho mạng LAN",
+      "C. Dùng xác định địa chỉ nguồn cho các gói dữ liệu gửi ra ngoài",
+      "D. Là địa chỉ NAT của firewall khi kết nối các máy tính vào Internet"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức định tuyến:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức định tuyến.\n- Phương án chính xác: **A**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 169,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức định tuyến",
+    "question": "Định tuyến tĩnh là loại định tuyến:",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Dùng cho mạng đơn giản, nhỏ",
+      "B. Chỉ kích hoạt giao thức định tuyến trên Router",
+      "C. Chỉ rõ đường đi trên mạng cho gói tin",
+      "D. Dùng cho mạng lớn, phức tạp"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức định tuyến:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức định tuyến.\n- Phương án chính xác: **C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 170,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức định tuyến",
+    "question": "Trong quá trình chuyển tiếp lưu lượng, Router sẽ làm gì ngay sau khi khớp địa chỉ IP đích với mạng trên mục nhập bảng định tuyến được kết nối trực tiếp?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Loại bỏ lưu lượng truy cập sau khi tham khảo Router table",
+      "B. Tra cứu địa chỉ hop tiếp theo của gói tin",
+      "C. Chuyển packet sang interface được kết nối trực tiếp",
+      "D. Phân tích địa chỉ IP đích"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức định tuyến:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức định tuyến.\n- Phương án chính xác: **C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 171,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức định tuyến",
+    "question": "Địa chỉ IPv6 nào dưới đây thuộc nhóm IPv6 unicast là:",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Multicast",
+      "B. Loopback",
+      "C. Anycast",
+      "D. Broadcast"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức định tuyến:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức định tuyến.\n- Phương án chính xác: **B**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 172,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức định tuyến",
+    "question": "Thiết bị IPv6 gửi gói dữ liệu có địa chỉ đích là FF02::1. Mục tiêu của gói này là gì?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Tất cả các máy chủ IPv6 DHCP",
+      "B. Tất cả các nút kích hoạt IPv6 trên liên kết cục bộ",
+      "C. Tất cả các Router được cấu hình IPv6 trên liên kết cục bộ",
+      "D. Tất cả các Router được cấu hình IPv6 trên mạng"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- Trong IPv6, dải `FF00::/8` là địa chỉ Multicast.\n- Địa chỉ **FF02::1** là địa chỉ All-Nodes Multicast (đại diện cho **Tất cả các nút/thiết bị hỗ trợ IPv6 trên liên kết cục bộ link-local**), tương đương với địa chỉ Broadcast của IPv4. Đáp án đúng là **B**."
+  },
+  {
+    "id": 173,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức định tuyến",
+    "question": "Chức năng của Router là gì?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Nó kết nối nhiều mạng IP.",
+      "B. Nó kiểm soát luồng dữ liệu thông qua việc sử dụng địa chỉ Lớp 2.",
+      "C. Nó làm tăng kích thước của broadcast.",
+      "D. Nó quản lý cơ sở dữ liệu Vlan."
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức định tuyến:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức định tuyến.\n- Phương án chính xác: **A**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 174,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức định tuyến",
+    "question": "Loại địa chỉ IPv6 nào được yêu cầu bắt buộc trên các giao diện hỗ trợ IPv6?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. loopback",
+      "B. unique local",
+      "C. link-local",
+      "D. static"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức định tuyến:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức định tuyến.\n- Phương án chính xác: **C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 175,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức định tuyến",
+    "question": "Loại định tuyến nào cho phép Router chuyển tiếp gói tin ngay cả khi nó không có thông tin về mạng đích?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. dynamic route",
+      "B. default route",
+      "C. destination route",
+      "D. generic route"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức định tuyến:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức định tuyến.\n- Phương án chính xác: **B**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 176,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức định tuyến",
+    "question": "Giao thức định tuyến động thực hiện nhiệm vụ gì:",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Trao đổi thông tin định tuyến định kỳ",
+      "B. Tự động trao đổi thông tin định tuyến",
+      "C. Trao đổi thông tin định tuyến khi có yêu cầu",
+      "D. Trao đổi thông tin định tuyến theo kế hoạch của quản trị hệ thống"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức định tuyến:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức định tuyến.\n- Phương án chính xác: **B**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 177,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức định tuyến",
+    "question": "Mục đích của giao thức định tuyến là: (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. Trao đổi thông tin giữa các thiết bị định tuyến",
+      "B. Tăng tính hiệu quả giao tiếp giữa các máy tính",
+      "C. Tìm đường đi tối ưu",
+      "D. Tìm kiếm địa chỉ MAC"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức định tuyến:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức định tuyến.\n- Phương án chính xác: **A, B, C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 178,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức định tuyến",
+    "question": "Dải địa chỉ liên kết cục bộ nào KHÔNG thể được gán cho interface hỗ trợ IPv6? (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. FEC0::/10",
+      "B. FE80::/8",
+      "C. FE80::/10",
+      "D. FEC0::/8"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "D"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức định tuyến:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức định tuyến.\n- Phương án chính xác: **A, B, D**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 179,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức định tuyến",
+    "question": "Địa chỉ nào không phải là địa mạng cho địa chỉ 2001:DB8:BC15:A:12AB:: 1/64: (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. 2001:DB8:BC15::0/64",
+      "B. 2001:DB8:BC15:A::0/64",
+      "C. 2001:DB8:BC15:A:1::1/64",
+      "D. 2001:DB8:BC15:A:12::0/64"
+    ],
+    "correctAnswers": [
+      "A",
+      "C",
+      "D"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức định tuyến:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức định tuyến.\n- Phương án chính xác: **A, C, D**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 180,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức định tuyến",
+    "question": "Các thuật toán tính toán đường đi tốt nhất tới đích là: (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. Thuật toán khoảng cách - véc tơ",
+      "B. Thuật toán trạng thái đường",
+      "C. Thuật toán đường đi tốt nhất",
+      "D. Thuật toán khoảng cách - trạng thái"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức định tuyến:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức định tuyến.\n- Phương án chính xác: **A, B, C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 181,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức định tuyến",
+    "question": "Mục đích của giao thức định tuyến động là: (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. Khám phá các mạng ở xa",
+      "B. Duy trì thông tin định tuyến",
+      "C. Tìm đường đi tối ưu",
+      "D. Kiểm soát luồng"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức định tuyến:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức định tuyến.\n- Phương án chính xác: **A, B, C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 182,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức định tuyến",
+    "question": "Các giao thức định tuyến là: (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. IGP",
+      "B. EGP",
+      "C. BGP",
+      "D. ARP"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức định tuyến:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức định tuyến.\n- Phương án chính xác: **A, B, C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 183,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức định tuyến",
+    "question": "Các loại giao thức định tuyến là (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. Định tuyến tĩnh",
+      "B. Định tuyến động",
+      "C. Định tuyến mặc định",
+      "D. Định tuyến vòng"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức định tuyến:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức định tuyến.\n- Phương án chính xác: **A, B, C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 184,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức định tuyến",
+    "question": "Các giao thức nào dưới đây dùng thuật toán khoảng cách - véc tơ (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. RIPv1",
+      "B. RIPv2",
+      "C. IGRP",
+      "D. IS-IS"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức định tuyến:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức định tuyến.\n- Phương án chính xác: **A, B, C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 185,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Giao thức định tuyến",
+    "question": "Các chức năng trong giao thức định tuyến động (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. Tự động chia sẻ thông tin định tuyến giữa các Routers",
+      "B. Tự động cập nhật bảng định tuyến khi kết nối thay đổi",
+      "C. Tìm đường đi tốt nhất tới đích",
+      "D. Tự động phát hiện tuyến mới và tối ưu"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức định tuyến:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức định tuyến.\n- Phương án chính xác: **A, B, C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 186,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Thiết bị định tuyến",
+    "question": "Chuyển tiếp là một nhiệm vụ của Router:",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Thiết bị định tuyến:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Thiết bị định tuyến.\n- Phương án chính xác: **A**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 187,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Thiết bị định tuyến",
+    "question": "Router có chức năng định tuyến:",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Thiết bị định tuyến:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Thiết bị định tuyến.\n- Phương án chính xác: **A**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 188,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Thiết bị định tuyến",
+    "question": "Câu lệnh để hiển thị bảng định tuyến trên Router Cisco 2811 là \"show ip cef\"",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Thiết bị định tuyến:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Thiết bị định tuyến.\n- Phương án chính xác: **A**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 189,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Thiết bị định tuyến",
+    "question": "Thiết bị nào thực hiện chức năng xác định đường đi cho gói tin qua mạng?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Router",
+      "B. Tường lửa",
+      "C. Web Server",
+      "D. Modem DSL"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Thiết bị định tuyến:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Thiết bị định tuyến.\n- Phương án chính xác: **A**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 190,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Thiết bị định tuyến",
+    "question": "Nếu Default Gateway được cấu hình không chính xác trên các máy tính thì hiện tượng gì sẽ xảy ra ?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Máy không thể giao tiếp trên mạng cục bộ.",
+      "B. Máy có thể giao tiếp với các máy khác trên mạng cục bộ nhưng không thể giao tiếp với các máy trên mạng từ xa.",
+      "C. Máy có thể giao tiếp với các máy khác trên mạng từ xa, nhưng không thể giao tiếp với các máy trên mạng cục bộ.",
+      "D. Không có ảnh hưởng gì"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Thiết bị định tuyến:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Thiết bị định tuyến.\n- Phương án chính xác: **B**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 191,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Thiết bị định tuyến",
+    "question": "Quản trị mạng cấu hình router bằng lệnh “ip route 0.0.0.0 0.0.0.0 209.165.200.226\", mục đích của lệnh này là gì?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Để chuyển tiếp các gói đến thiết bị có địa chỉ IP 209.165.200.226",
+      "B. Để thêm tuyến động cho mạng đích 0.0.0.0 vào bảng định tuyến",
+      "C. Để chuyển tiếp các gói dành cho mạng 0.0.0.0 tới thiết bị có địa chỉ IP 209.165.200.226",
+      "D. Để cung cấp một tuyến chuyển tiếp các gói, khi không có tuyến đường nào phù hợp với nó trong bảng định tuyến"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- Lệnh `ip route 0.0.0.0 0.0.0.0 209.165.200.226` cấu hình một **Default Route (Tuyến đường mặc định)**.\n- Tuyến đường này hướng dẫn Router chuyển tiếp tất cả các gói tin đến địa chỉ Next-hop 209.165.200.226 khi trong bảng định tuyến không tìm thấy tuyến đường cụ thể nào khớp với IP đích. Đáp án đúng là **D**."
+  },
+  {
+    "id": 192,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Thiết bị định tuyến",
+    "question": "Đâu là những trường thông tin được ghi trong bảng định tuyến (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. Destination",
+      "B. Next-Hop",
+      "C. Outgoing Interface",
+      "D. Next-Interface"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Thiết bị định tuyến:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Thiết bị định tuyến.\n- Phương án chính xác: **A, B, C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 193,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Thiết bị định tuyến",
+    "question": "Những câu lệnh nào dùng để thoát trong Router: (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. logout",
+      "B. end",
+      "C. exit",
+      "D. off"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Thiết bị định tuyến:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Thiết bị định tuyến.\n- Phương án chính xác: **A, B, C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 194,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Thiết bị định tuyến",
+    "question": "Những lệnh sau, lệnh nào được sử dụng trên thiết bị Router (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. show ip",
+      "B. show ip cef",
+      "C. switchport mode access",
+      "D. show ipv4"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "D"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Thiết bị định tuyến:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Thiết bị định tuyến.\n- Phương án chính xác: **A, B, D**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 195,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Thiết bị định tuyến",
+    "question": "Đâu là các tham số được sử dụng để hiển thị trong bảng định tuyến (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. S",
+      "B. C",
+      "C. *",
+      "D. W"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Thiết bị định tuyến:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Thiết bị định tuyến.\n- Phương án chính xác: **A, B, C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 196,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Chia mạng con IPv4 - Dạng 1",
+    "question": "Cho địa chỉ IPv4 ở dạng CIDR: 134.15.17.80/22. Xác định những vấn đề sau:\n• Số lượng địa chỉ dùng gán cho các hosts\n• Mặt nạ mạng con ở dạng thập phân chấm\n• Địa chỉ mạng ở dạng CIDR\n• Địa chỉ host đầu tiên ở dạng CIDR\n• Địa chỉ host cuối cùng ở dạng CIDR\n• Địa chỉ quảng bá ở dạng CIDR",
+    "level": "Vận dụng cao",
+    "score": 4,
+    "type": "fill",
+    "options": [],
+    "correctAnswers": [
+      "1022",
+      "255.255.252.0",
+      "134.15.16.0/22",
+      "134.15.16 .1/22",
+      "134.15.19.254/22",
+      "134.15.19.255/22"
+    ],
+    "explanation": "**Lý thuyết & Phương pháp tính toán:**\n- Để chia mạng con IPv4, ta xác định số bit mượn $s$ từ phần Host để tạo $2^s$ mạng con mới.\n- Số lượng host khả dụng trên mỗi subnet: $2^{32 - \\text{prefix}} - 2$ (loại trừ địa chỉ mạng và địa chỉ quảng bá).\n- Bước nhảy (Block Size) trong octet thay đổi = $256 - \\text{Subnet Mask Octet}$.\n- Dải IP Host: Bắt đầu từ $\\text{Network ID} + 1$ đến $\\text{Broadcast ID} - 1$.\n- Đáp án chính xác theo các bước: **1022; 255.255.252.0; 134.15.16.0/22; 134.15.16 .1/22; 134.15.19.254/22; 134.15.19.255/22**."
+  },
+  {
+    "id": 197,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Chia mạng con IPv4 - Dạng 1",
+    "question": "Cho địa chỉ IPv4 ở dạng CIDR: 172.134.25.76/23. Xác định những vấn đề sau:\n• Số lượng địa chỉ dùng gán cho các hosts\n• Mặt nạ mạng con ở dạng thập phân chấm\n• Địa chỉ mạng ở dạng CIDR\n• Địa chỉ host đầu tiên ở dạng CIDR\n• Địa chỉ host cuối cùng ở dạng CIDR\n• Địa chỉ quảng bá ở dạng CIDR",
+    "level": "Vận dụng cao",
+    "score": 4,
+    "type": "fill",
+    "options": [],
+    "correctAnswers": [
+      "510",
+      "255.255.254.0",
+      "172.134.24.0/23",
+      "172.134.2 4.1/23",
+      "172.134.25.254/23",
+      "172.134.25.255/23"
+    ],
+    "explanation": "**Lý thuyết & Phương pháp tính toán:**\n- Để chia mạng con IPv4, ta xác định số bit mượn $s$ từ phần Host để tạo $2^s$ mạng con mới.\n- Số lượng host khả dụng trên mỗi subnet: $2^{32 - \\text{prefix}} - 2$ (loại trừ địa chỉ mạng và địa chỉ quảng bá).\n- Bước nhảy (Block Size) trong octet thay đổi = $256 - \\text{Subnet Mask Octet}$.\n- Dải IP Host: Bắt đầu từ $\\text{Network ID} + 1$ đến $\\text{Broadcast ID} - 1$.\n- Đáp án chính xác theo các bước: **510; 255.255.254.0; 172.134.24.0/23; 172.134.2 4.1/23; 172.134.25.254/23; 172.134.25.255/23**."
+  },
+  {
+    "id": 198,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Chia mạng con IPv4 Dạng 1",
+    "question": "Cho địa chỉ IPv4 ở dạng CIDR: 173.14.225.209/24. Xác định những vấn đề sau:\n• Số lượng địa chỉ dùng gán cho các hosts\n• Mặt nạ mạng con ở dạng thập phân chấm\n• Địa chỉ mạng ở dạng CIDR\n• Địa chỉ host đầu tiên ở dạng CIDR\n• Địa chỉ host cuối cùng ở dạng CIDR\n• Địa chỉ quảng bá ở dạng CIDR",
+    "level": "Vận dụng cao",
+    "score": 4,
+    "type": "fill",
+    "options": [],
+    "correctAnswers": [
+      "254",
+      "255.255.255.0",
+      "173.14.225.0/24",
+      "173.14.22 5.1/24",
+      "173.14.225.254/24",
+      "173.14.225.255/24"
+    ],
+    "explanation": "**Lý thuyết & Phương pháp tính toán:**\n- Để chia mạng con IPv4, ta xác định số bit mượn $s$ từ phần Host để tạo $2^s$ mạng con mới.\n- Số lượng host khả dụng trên mỗi subnet: $2^{32 - \\text{prefix}} - 2$ (loại trừ địa chỉ mạng và địa chỉ quảng bá).\n- Bước nhảy (Block Size) trong octet thay đổi = $256 - \\text{Subnet Mask Octet}$.\n- Dải IP Host: Bắt đầu từ $\\text{Network ID} + 1$ đến $\\text{Broadcast ID} - 1$.\n- Đáp án chính xác theo các bước: **254; 255.255.255.0; 173.14.225.0/24; 173.14.22 5.1/24; 173.14.225.254/24; 173.14.225.255/24**."
+  },
+  {
+    "id": 199,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Chia mạng con IPv4 Dạng 1",
+    "question": "Cho địa chỉ IPv4 ở dạng CIDR: 145.35.167.98/25. Xác định những vấn đề sau:\n• Số lượng địa chỉ dùng gán cho các hosts\n• Mặt nạ mạng con ở dạng thập phân chấm\n• Địa chỉ mạng ở dạng CIDR\n• Địa chỉ host đầu tiên ở dạng CIDR\n• Địa chỉ host cuối cùng ở dạng CIDR\n• Địa chỉ quảng bá ở dạng CIDR",
+    "level": "Vận dụng cao",
+    "score": 4,
+    "type": "fill",
+    "options": [],
+    "correctAnswers": [
+      "126",
+      "255.255.255.128",
+      "145.35.167.0/25",
+      "145.35. 167.1/25",
+      "145.35.167.126/25",
+      "145.35.167.127/25"
+    ],
+    "explanation": "**Lý thuyết & Phương pháp tính toán:**\n- Để chia mạng con IPv4, ta xác định số bit mượn $s$ từ phần Host để tạo $2^s$ mạng con mới.\n- Số lượng host khả dụng trên mỗi subnet: $2^{32 - \\text{prefix}} - 2$ (loại trừ địa chỉ mạng và địa chỉ quảng bá).\n- Bước nhảy (Block Size) trong octet thay đổi = $256 - \\text{Subnet Mask Octet}$.\n- Dải IP Host: Bắt đầu từ $\\text{Network ID} + 1$ đến $\\text{Broadcast ID} - 1$.\n- Đáp án chính xác theo các bước: **126; 255.255.255.128; 145.35.167.0/25; 145.35. 167.1/25; 145.35.167.126/25; 145.35.167.127/25**."
+  },
+  {
+    "id": 200,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Chia mạng con IPv4 - Dạng 1",
+    "question": "Cho địa chỉ IPv4 ở dạng CIDR: 129.166.25.193/26. Xác định những vấn đề sau:\n• Số lượng địa chỉ dùng gán cho các hosts\n• Mặt nạ mạng con ở dạng thập phân chấm\n• Địa chỉ mạng ở dạng CIDR\n• Địa chỉ host đầu tiên ở dạng CIDR\n• Địa chỉ host cuối cùng ở dạng CIDR\n• Địa chỉ quảng bá ở dạng CIDR",
+    "level": "Vận dụng cao",
+    "score": 4,
+    "type": "fill",
+    "options": [],
+    "correctAnswers": [
+      "62",
+      "255.255.255.192",
+      "129.166.25.192/26",
+      "129.1 66.25.193/26",
+      "129.166.25.254/26",
+      "129.166.25.25 5/26"
+    ],
+    "explanation": "**Lý thuyết & Phương pháp tính toán:**\n- Để chia mạng con IPv4, ta xác định số bit mượn $s$ từ phần Host để tạo $2^s$ mạng con mới.\n- Số lượng host khả dụng trên mỗi subnet: $2^{32 - \\text{prefix}} - 2$ (loại trừ địa chỉ mạng và địa chỉ quảng bá).\n- Bước nhảy (Block Size) trong octet thay đổi = $256 - \\text{Subnet Mask Octet}$.\n- Dải IP Host: Bắt đầu từ $\\text{Network ID} + 1$ đến $\\text{Broadcast ID} - 1$.\n- Đáp án chính xác theo các bước: **62; 255.255.255.192; 129.166.25.192/26; 129.1 66.25.193/26; 129.166.25.254/26; 129.166.25.25 5/26**."
+  },
+  {
+    "id": 201,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Chia mạng con IPv4 - Dạng 2a",
+    "question": "Cho địa chỉ IPv4 (164.17.148.100/22) và chia mạng có chứa địa chỉ này thành bốn mạng con. Xác định những vấn đề sau:\n• Tính địa chỉ mạng của địa chỉ IP hiện tại\n• Xác định mặt nạ mạng con mới để có được số lượng mạng con cần thiết\n• Liệt kê bốn ID mạng của các mạng con ở dạng CIDR",
+    "level": "Vận dụng cao",
+    "score": 4,
+    "type": "fill",
+    "options": [],
+    "correctAnswers": [
+      "164.17.148.0/22",
+      "255.255.255.0",
+      "164.17.148.0/ 24",
+      "164.17.149.0/24",
+      "164.17.150.0/24",
+      "164.17.15 1.0/24"
+    ],
+    "explanation": "**Lý thuyết & Phương pháp tính toán:**\n- Để chia mạng con IPv4, ta xác định số bit mượn $s$ từ phần Host để tạo $2^s$ mạng con mới.\n- Số lượng host khả dụng trên mỗi subnet: $2^{32 - \\text{prefix}} - 2$ (loại trừ địa chỉ mạng và địa chỉ quảng bá).\n- Bước nhảy (Block Size) trong octet thay đổi = $256 - \\text{Subnet Mask Octet}$.\n- Dải IP Host: Bắt đầu từ $\\text{Network ID} + 1$ đến $\\text{Broadcast ID} - 1$.\n- Đáp án chính xác theo các bước: **164.17.148.0/22; 255.255.255.0; 164.17.148.0/ 24; 164.17.149.0/24; 164.17.150.0/24; 164.17.15 1.0/24**."
+  },
+  {
+    "id": 202,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Chia mạng con IPv4 - Dạng 2a",
+    "question": "Cho địa chỉ IPv4 (136.137.153.40/25) và chia mạng có chứa địa chỉ này thành 4 mạng con. Xác định những vấn đề sau:\n• Tính địa chỉ mạng của địa chỉ IP hiện tại\n• Xác định mặt nạ mạng con mới để có được số lượng mạng con cần thiết\n• Liệt kê bốn ID mạng (đầu tiên) của các mạng con ở dạng CIDR",
+    "level": "Vận dụng cao",
+    "score": 4,
+    "type": "fill",
+    "options": [],
+    "correctAnswers": [
+      "136.137.153.0/25",
+      "255.255.255.224",
+      "136.137.1 53.0/27",
+      "136.137.153.32/27",
+      "136.137.153.64/27",
+      "136.137.153.96/27"
+    ],
+    "explanation": "**Lý thuyết & Phương pháp tính toán:**\n- Để chia mạng con IPv4, ta xác định số bit mượn $s$ từ phần Host để tạo $2^s$ mạng con mới.\n- Số lượng host khả dụng trên mỗi subnet: $2^{32 - \\text{prefix}} - 2$ (loại trừ địa chỉ mạng và địa chỉ quảng bá).\n- Bước nhảy (Block Size) trong octet thay đổi = $256 - \\text{Subnet Mask Octet}$.\n- Dải IP Host: Bắt đầu từ $\\text{Network ID} + 1$ đến $\\text{Broadcast ID} - 1$.\n- Đáp án chính xác theo các bước: **136.137.153.0/25; 255.255.255.224; 136.137.1 53.0/27; 136.137.153.32/27; 136.137.153.64/27; 136.137.153.96/27**."
+  },
+  {
+    "id": 203,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Chia mạng con IPv4 - Dạng 2a",
+    "question": "Cho địa chỉ IPv4 (198.122.10.210/26) và chia mạng có chứa địa chỉ này thành bốn mạng con. Xác định những vấn đề sau:\n• Tính địa chỉ mạng của địa chỉ IP hiện tại\n• Xác định mặt nạ mạng con mới để có được số lượng mạng con cần thiết\n• Liệt kê bốn ID mạng của các mạng con ở dạng CIDR",
+    "level": "Vận dụng cao",
+    "score": 4,
+    "type": "fill",
+    "options": [],
+    "correctAnswers": [
+      "198.122.10.192/26",
+      "255.255.255.240",
+      "198.122. 10.192/28",
+      "198.122.10.208/28",
+      "198.122.10.224/2 8",
+      "198.122.10.240/28"
+    ],
+    "explanation": "**Lý thuyết & Phương pháp tính toán:**\n- Để chia mạng con IPv4, ta xác định số bit mượn $s$ từ phần Host để tạo $2^s$ mạng con mới.\n- Số lượng host khả dụng trên mỗi subnet: $2^{32 - \\text{prefix}} - 2$ (loại trừ địa chỉ mạng và địa chỉ quảng bá).\n- Bước nhảy (Block Size) trong octet thay đổi = $256 - \\text{Subnet Mask Octet}$.\n- Dải IP Host: Bắt đầu từ $\\text{Network ID} + 1$ đến $\\text{Broadcast ID} - 1$.\n- Đáp án chính xác theo các bước: **198.122.10.192/26; 255.255.255.240; 198.122. 10.192/28; 198.122.10.208/28; 198.122.10.224/2 8; 198.122.10.240/28**."
+  },
+  {
+    "id": 204,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Chia mạng con IPv4 - Dạng 2b",
+    "question": "Cho địa chỉ IPv4 (134.101.40.10/24) và chia mạng (có chứa IP vừa đề cập) đó thành một số mạng con. Mỗi mạng con có 19 PC (một IP cho mỗi PC). Xác định những vấn đề sau:\n• Tính địa chỉ mạng của địa chỉ IP hiện tại\n• Tìm số bit \"mượn\" để tạo các mạng con mới\n• Xác định mặt nạ mạng con mới\n• Liệt kê ba ID mạng (cuối cùng) của các mạng con ở dạng CIDR",
+    "level": "Vận dụng cao",
+    "score": 4,
+    "type": "fill",
+    "options": [],
+    "correctAnswers": [
+      "134.101.40.0/24",
+      "3",
+      "255.255.255.224",
+      "134.101.4 0.160/27",
+      "134.101.40.192/27",
+      "134.101.40.224/27"
+    ],
+    "explanation": "**Lý thuyết & Phương pháp tính toán:**\n- Để chia mạng con IPv4, ta xác định số bit mượn $s$ từ phần Host để tạo $2^s$ mạng con mới.\n- Số lượng host khả dụng trên mỗi subnet: $2^{32 - \\text{prefix}} - 2$ (loại trừ địa chỉ mạng và địa chỉ quảng bá).\n- Bước nhảy (Block Size) trong octet thay đổi = $256 - \\text{Subnet Mask Octet}$.\n- Dải IP Host: Bắt đầu từ $\\text{Network ID} + 1$ đến $\\text{Broadcast ID} - 1$.\n- Đáp án chính xác theo các bước: **134.101.40.0/24; 3; 255.255.255.224; 134.101.4 0.160/27; 134.101.40.192/27; 134.101.40.224/27**."
+  },
+  {
+    "id": 205,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Chia mạng con IPv4 - Dạng 2b",
+    "question": "Cho địa chỉ IPv4 (18.22.146.87/25) và chia mạng (có chứa IP vừa đề cập) đó thành một số mạng con. Mỗi mạng con có 12 PC (một IP cho mỗi PC). Xác định những vấn đề sau:\n• Tính địa chỉ mạng của địa chỉ IP hiện tại\n• Tìm số bit \"mượn\" để tạo các mạng con mới\n• Xác định mặt nạ mạng con mới\n• Liệt kê ba ID mạng (cuối cùng) của các mạng con ở dạng CIDR",
+    "level": "Vận dụng cao",
+    "score": 4,
+    "type": "fill",
+    "options": [],
+    "correctAnswers": [
+      "18.22.146.0/25",
+      "3",
+      "255.255.255.240",
+      "18.22.146. 80/28",
+      "18.22.146.96/28",
+      "18.22.146.112/28"
+    ],
+    "explanation": "**Lý thuyết & Phương pháp tính toán:**\n- Để chia mạng con IPv4, ta xác định số bit mượn $s$ từ phần Host để tạo $2^s$ mạng con mới.\n- Số lượng host khả dụng trên mỗi subnet: $2^{32 - \\text{prefix}} - 2$ (loại trừ địa chỉ mạng và địa chỉ quảng bá).\n- Bước nhảy (Block Size) trong octet thay đổi = $256 - \\text{Subnet Mask Octet}$.\n- Dải IP Host: Bắt đầu từ $\\text{Network ID} + 1$ đến $\\text{Broadcast ID} - 1$.\n- Đáp án chính xác theo các bước: **18.22.146.0/25; 3; 255.255.255.240; 18.22.146. 80/28; 18.22.146.96/28; 18.22.146.112/28**."
+  },
+  {
+    "id": 206,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Chia mạng con IPv4 - Dạng 2b",
+    "question": "Cho địa chỉ IPv4 (213.46.187.9/26) và chia mạng (có chứa IP vừa đề cập) đó thành một số mạng con. Mỗi mạng con có 11 PC (một IP cho mỗi PC). Xác định những vấn đề sau:\n• Tính địa chỉ mạng của địa chỉ IP hiện tại\n• Tìm số bit \"mượn\" để tạo các mạng con mới\n• Xác định mặt nạ mạng con mới\n• Liệt kê ba ID mạng (cuối cùng) của các mạng con ở dạng CIDR",
+    "level": "Vận dụng cao",
+    "score": 4,
+    "type": "fill",
+    "options": [],
+    "correctAnswers": [
+      "213.46.187.0/26",
+      "2",
+      "255.255.255.240",
+      "213.46.18 7.16/28",
+      "213.46.187.32/28",
+      "213.46.187.48/28"
+    ],
+    "explanation": "**Lý thuyết & Phương pháp tính toán:**\n- Để chia mạng con IPv4, ta xác định số bit mượn $s$ từ phần Host để tạo $2^s$ mạng con mới.\n- Số lượng host khả dụng trên mỗi subnet: $2^{32 - \\text{prefix}} - 2$ (loại trừ địa chỉ mạng và địa chỉ quảng bá).\n- Bước nhảy (Block Size) trong octet thay đổi = $256 - \\text{Subnet Mask Octet}$.\n- Dải IP Host: Bắt đầu từ $\\text{Network ID} + 1$ đến $\\text{Broadcast ID} - 1$.\n- Đáp án chính xác theo các bước: **213.46.187.0/26; 2; 255.255.255.240; 213.46.18 7.16/28; 213.46.187.32/28; 213.46.187.48/28**."
+  },
+  {
+    "id": 207,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Chia mạng con IPv4 Dạng 3",
+    "question": "Cho địa chỉ mạng của địa chỉ IP (13.88.19.92/21). Chia mạng đó thành 6 mạng con (cho 6 đơn vị trong công ty). Mỗi người có một PC với một địa chỉ IP\n• Phòng Kỹ thuật - bảo trì: 90 người\n• Phòng SX - CN - R&D: 180 người\n• Phòng Hành chính: 70 người\n• Phòng Cung ứng – xuất nhập khẩu: 111 người\n• Phòng Quản lý chất lượng: 130 người\n• Phòng Kế hoạch - kinh doanh: 146 người",
+    "level": "Vận dụng cao",
+    "score": 4,
+    "type": "fill",
+    "options": [],
+    "correctAnswers": [
+      "13.88.19.128/25",
+      "13.88.16.0/24",
+      "13.88.20.0/25",
+      "13.88.19.0/25",
+      "13.88.18.0/24",
+      "13.88.17.0/24"
+    ],
+    "explanation": "**Lý thuyết & Phương pháp tính toán:**\n- Để chia mạng con IPv4, ta xác định số bit mượn $s$ từ phần Host để tạo $2^s$ mạng con mới.\n- Số lượng host khả dụng trên mỗi subnet: $2^{32 - \\text{prefix}} - 2$ (loại trừ địa chỉ mạng và địa chỉ quảng bá).\n- Bước nhảy (Block Size) trong octet thay đổi = $256 - \\text{Subnet Mask Octet}$.\n- Dải IP Host: Bắt đầu từ $\\text{Network ID} + 1$ đến $\\text{Broadcast ID} - 1$.\n- Đáp án chính xác theo các bước: **13.88.19.128/25; 13.88.16.0/24; 13.88.20.0/25; 13.88.19.0/25; 13.88.18.0/24; 13.88.17.0/24**."
+  },
+  {
+    "id": 208,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Chia mạng con IPv4 Dạng 3",
+    "question": "Cho địa chỉ mạng của địa chỉ IP (169.35.194.47/22). Chia mạng đó thành 6 mạng con (cho 6 đơn vị trong công ty). Mỗi người có một PC với một địa chỉ IP\n• Ban giám đốc: 2 người\n• Ban quản lý dự án: 20 người\n• Phòng phần mềm: 100 người\n• Phòng marketing: 50 người\n• Phòng kỹ thuật – Công nghệ: 75 người\n• Phòng NC và PT: 8 người",
+    "level": "Vận dụng cao",
+    "score": 4,
+    "type": "fill",
+    "options": [],
+    "correctAnswers": [
+      "169.35.193.112/30",
+      "169.35.193.64/27",
+      "169.35.1 92.0/25",
+      "169.35.193.0/26",
+      "169.35.192.128/25",
+      "16 9.35.193.96/28"
+    ],
+    "explanation": "**Lý thuyết & Phương pháp tính toán:**\n- Để chia mạng con IPv4, ta xác định số bit mượn $s$ từ phần Host để tạo $2^s$ mạng con mới.\n- Số lượng host khả dụng trên mỗi subnet: $2^{32 - \\text{prefix}} - 2$ (loại trừ địa chỉ mạng và địa chỉ quảng bá).\n- Bước nhảy (Block Size) trong octet thay đổi = $256 - \\text{Subnet Mask Octet}$.\n- Dải IP Host: Bắt đầu từ $\\text{Network ID} + 1$ đến $\\text{Broadcast ID} - 1$.\n- Đáp án chính xác theo các bước: **169.35.193.112/30; 169.35.193.64/27; 169.35.1 92.0/25; 169.35.193.0/26; 169.35.192.128/25; 16 9.35.193.96/28**."
+  },
+  {
+    "id": 209,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Chia mạng con IPv4 Dạng 3",
+    "question": "Cho địa chỉ mạng của địa chỉ IP (122.109.146.24/23). Chia mạng đó thành 6 mạng con (cho 6 đơn vị trong công ty). Mỗi người có một PC với một địa chỉ IP\n• Phòng kiểm toán: 15 người\n• Phòng nhân sự: 20 người\n• Phòng chăm sóc khách hàng: 40 người\n• Nhà máy: 100 người\n• Phòng NC và PT: 31 người\n• Phòng kỹ thuật: 80 người",
+    "level": "Vận dụng cao",
+    "score": 4,
+    "type": "fill",
+    "options": [],
+    "correctAnswers": [
+      "122.109.147.160/27",
+      "122.109.147.128/27",
+      "122.109.147.0/26",
+      "122.109.146.0/25",
+      "122.109.147.64/26",
+      "122.109.146.128/25"
+    ],
+    "explanation": "**Lý thuyết & Phương pháp tính toán:**\n- Để chia mạng con IPv4, ta xác định số bit mượn $s$ từ phần Host để tạo $2^s$ mạng con mới.\n- Số lượng host khả dụng trên mỗi subnet: $2^{32 - \\text{prefix}} - 2$ (loại trừ địa chỉ mạng và địa chỉ quảng bá).\n- Bước nhảy (Block Size) trong octet thay đổi = $256 - \\text{Subnet Mask Octet}$.\n- Dải IP Host: Bắt đầu từ $\\text{Network ID} + 1$ đến $\\text{Broadcast ID} - 1$.\n- Đáp án chính xác theo các bước: **122.109.147.160/27; 122.109.147.128/27; 122.109.147.0/26; 122.109.146.0/25; 122.109.147.64/26; 122.109.146.128/25**."
+  },
+  {
+    "id": 210,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Chia mạng con IPv4 Dạng 3",
+    "question": "Cho địa chỉ mạng của địa chỉ IP (145.205.167.98/24). Chia mạng đó thành 6 mạng con (cho 6 đơn vị trong công ty). Mỗi người có một PC với một địa chỉ IP\n• Phòng kinh doanh: 14 người\n• Xưởng sản xuất: 18 người\n• Phòng Marketing: 30 người\n• Phòng Quan hệ quốc tế: 20 người\n• Phòng thu mua: 15 người\n• Phòng NC và PTSP: 10 người",
+    "level": "Vận dụng cao",
+    "score": 4,
+    "type": "fill",
+    "options": [],
+    "correctAnswers": [
+      "145.205.166.128/28",
+      "145.205.166.64/27",
+      "145.205.166.0/27",
+      "145.205.166.32/27",
+      "145.205.1 66.96/27",
+      "145.205.166.144.28"
+    ],
+    "explanation": "**Lý thuyết & Phương pháp tính toán:**\n- Để chia mạng con IPv4, ta xác định số bit mượn $s$ từ phần Host để tạo $2^s$ mạng con mới.\n- Số lượng host khả dụng trên mỗi subnet: $2^{32 - \\text{prefix}} - 2$ (loại trừ địa chỉ mạng và địa chỉ quảng bá).\n- Bước nhảy (Block Size) trong octet thay đổi = $256 - \\text{Subnet Mask Octet}$.\n- Dải IP Host: Bắt đầu từ $\\text{Network ID} + 1$ đến $\\text{Broadcast ID} - 1$.\n- Đáp án chính xác theo các bước: **145.205.166.128/28; 145.205.166.64/27; 145.205.166.0/27; 145.205.166.32/27; 145.205.1 66.96/27; 145.205.166.144.28**."
+  },
+  {
+    "id": 211,
+    "chapter": "Chương 3: Định tuyến",
+    "chapterId": 3,
+    "topic": "Chia mạng con IPv4 Dạng 3",
+    "question": "Cho địa chỉ mạng của địa chỉ IP (236.155.44.33/25). Chia mạng đó thành 6 mạng con (cho 6 đơn vị trong công ty). Mỗi người có một PC với một địa chỉ IP.\n• Ban thể thao và du lịch: 13 người\n• Ban giáo dục đào tạo: 14 người\n• Ban kinh tế và ngân sách: 10 người\n• Ban văn hoá - xã hội: 16 người\n• Ban pháp chế: 8 người\n• Ban thanh tra: 18 người",
+    "level": "Vận dụng cao",
+    "score": 4,
+    "type": "fill",
+    "options": [],
+    "correctAnswers": [
+      "236.155.44.80/28",
+      "236.155.44.64/28",
+      "236.155.4 4.96/28",
+      "236.155.44.32/27",
+      "236.155.44.112/28",
+      "2 36.155.44.0/27"
+    ],
+    "explanation": "**Lý thuyết & Phương pháp tính toán:**\n- Để chia mạng con IPv4, ta xác định số bit mượn $s$ từ phần Host để tạo $2^s$ mạng con mới.\n- Số lượng host khả dụng trên mỗi subnet: $2^{32 - \\text{prefix}} - 2$ (loại trừ địa chỉ mạng và địa chỉ quảng bá).\n- Bước nhảy (Block Size) trong octet thay đổi = $256 - \\text{Subnet Mask Octet}$.\n- Dải IP Host: Bắt đầu từ $\\text{Network ID} + 1$ đến $\\text{Broadcast ID} - 1$.\n- Đáp án chính xác theo các bước: **236.155.44.80/28; 236.155.44.64/28; 236.155.4 4.96/28; 236.155.44.32/27; 236.155.44.112/28; 2 36.155.44.0/27**."
+  },
+  {
+    "id": 212,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Tầng giao vận",
+    "question": "UDP và TCP là các giao thức nằm ở tầng giao vận?",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- Tầng giao vận (Transport Layer) có hai giao thức cốt lõi là TCP (hướng kết nối, tin cậy) và UDP (không kết nối, tốc độ nhanh). Phát biểu là **Đúng** (A)."
+  },
+  {
+    "id": 213,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Tầng giao vận",
+    "question": "Các ứng dụng trao đổi dữ liệu giữa hai máy đều liên quan tới số hiệu cổng tầng giao vận",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng giao vận:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng giao vận.\n- Phương án chính xác: **A**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 214,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Tầng giao vận",
+    "question": "Tầng giao vận đảm bảo dữ liệu có thể được tập hợp lại một cách chính xác ở bên nhận bằng các quá trình phân mảnh (hoặc phân đoạn) và tập hợp lại?",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng giao vận:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng giao vận.\n- Phương án chính xác: **A**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 215,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Tầng giao vận",
+    "question": "Địa chỉ Default Gateway là một thành phần của Socket?",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng giao vận:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng giao vận.\n- Phương án chính xác: **B**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 216,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Tầng giao vận",
+    "question": "Phát biểu nào sau đây (tầng giao vận) là sai:",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Port dùng để kết nối Client/Server",
+      "B. Port xác định ứng dụng truyền/nhận dữ liệu",
+      "C. Port có giá trị từ 1 đến 1023",
+      "D. Port được dùng cho TCP và UDP"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng giao vận:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng giao vận.\n- Phương án chính xác: **C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 217,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Tầng giao vận",
+    "question": "Port mặc định của HTTP server là:",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. TCP/80",
+      "B. TCP/23",
+      "C. UDP/25",
+      "D. UDP/110"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- Cổng dịch vụ Well-known port tiêu chuẩn:\n  + HTTP: **TCP/80**\n  + HTTPS: TCP/443\n  + Telnet: TCP/23\n  + SMTP: TCP/25\n  + POP3: TCP/110\n- Đáp án chính xác là **A** (TCP/80)."
+  },
+  {
+    "id": 218,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Tầng giao vận",
+    "question": "Phát biểu nào dưới đây là đúng với số hiệu cổng (port number):",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Địa chỉ của một ứng dụng trên internet",
+      "B. Địa chỉ của một máy tính trên internet",
+      "C. Địa chỉ của một ứng dụng trên một máy tính",
+      "D. Liên kết với giao thức tầng Giao vận để xác định một ứng dụng"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng giao vận:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng giao vận.\n- Phương án chính xác: **D**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 219,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Tầng giao vận",
+    "question": "Để phát hiện lỗi trong khi truyền segment ở tầng giao vận, người ta sử dụng kỹ thuật:",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Số thứ tự",
+      "B. Số thứ tự ghi nhận",
+      "C. Bộ định thời",
+      "D. Checksum"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng giao vận:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng giao vận.\n- Phương án chính xác: **D**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 220,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Tầng giao vận",
+    "question": "Giao thức tầng giao vận nào sau đây được sử dụng trong mạng?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. TCP và FTP",
+      "B. UDP và HTTP",
+      "C. TCP và UDP",
+      "D. HTTP và FTP"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng giao vận:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng giao vận.\n- Phương án chính xác: **C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 221,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Tầng giao vận",
+    "question": "Các giao thức tầng giao vận xử lý vấn đề nào sau đây?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Giao tiếp giữa ứng dụng với ứng dụng",
+      "B. Giao tiếp giữa tiến trình với tiến trình",
+      "C. Giao tiếp giữa node với node",
+      "D. Giao tiếp giữa con người với con người"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng giao vận:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng giao vận.\n- Phương án chính xác: **B**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 222,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Tầng giao vận",
+    "question": "Điểm truy cập dịch vụ ở tầng giao vận có tên là?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Port",
+      "B. Pipe",
+      "C. Node",
+      "D. Protocol"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng giao vận:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng giao vận.\n- Phương án chính xác: **A**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 223,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Tầng giao vận",
+    "question": "Chức năng của tầng giao vận:",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Đảm bảo các yêu cầu truyền dữ liệu qua các phương tiện vật lý",
+      "B. Mã hóa dữ liệu để bảo mật thông tin trên đường truyền",
+      "C. Thực hiện việc tạo luồng dữ liệu kết nối giữa các đầu cuối",
+      "D. Nén dữ liệu để việc truyền qua mạng nhanh hơn"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng giao vận:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng giao vận.\n- Phương án chính xác: **C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 224,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Tầng giao vận",
+    "question": "Ưu điểm của dịch vụ không kết nối (Connectionless service) khi so sánh với dịch vụ hướng kết nối (Connection-oriented service) ở tầng giao vận là",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Giải quyết tắc nghẽn tốt hơn",
+      "B. Chất lượng dịch vụ có thể được đảm bảo",
+      "C. Không mất thời gian thiết lập và quản lý kết nối",
+      "D. Độ tin cậy cao"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng giao vận:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng giao vận.\n- Phương án chính xác: **C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 225,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Tầng giao vận",
+    "question": "Nhiệm vụ nào dưới đây là của các tầng giao vận?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Cung cấp quyền truy cập mạng",
+      "B. Phân tách các luồng dữ liệu",
+      "C. Xác định đường đi tốt nhất để chuyển tiếp gói",
+      "D. Dịch địa chỉ IP riêng sang địa chỉ IP công cộng"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng giao vận:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng giao vận.\n- Phương án chính xác: **B**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 226,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Tầng giao vận",
+    "question": "Thông tin nào dưới đây KHÔNG có trong tiêu đề của hai giao thức cơ bản ở tầng giao vận?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Sequence number",
+      "B. Checksum",
+      "C. Source port",
+      "D. Destination port"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng giao vận:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng giao vận.\n- Phương án chính xác: **A**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 227,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Tầng giao vận",
+    "question": "Dải số hiệu cổng thông dụng được sử dụng trong tầng giao vận (TCP và UDP) là:",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. 0-255",
+      "B. 0-1023",
+      "C. 256-1023",
+      "D. 1024-49151"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng giao vận:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng giao vận.\n- Phương án chính xác: **B**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 228,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Tầng giao vận",
+    "question": "Ở tầng giao vận, socket là:",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Sự kết hợp giữa địa chỉ IP, số hiệu cổng và giao thức tầng ứng dụng",
+      "B. Sự kết hợp giữa địa chỉ IP, số hiệu mạng và giao thức tầng giao vận",
+      "C. Sự kết hợp giữa địa chỉ IP, số hiệu cổng và giao thức tầng giao vận",
+      "D. Sự kết hợp giữa địa chỉ IP, số hiệu cổng thông dụng và giao thức tầng ứng dụng"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng giao vận:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng giao vận.\n- Phương án chính xác: **C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 229,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Tầng giao vận",
+    "question": "Loại số hiệu cổng nào được IANA chỉ định cho các dịch vụ và ứng dụng thường được sử dụng?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Private port",
+      "B. Registered port",
+      "C. Well-known port",
+      "D. Dynamic port"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng giao vận:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng giao vận.\n- Phương án chính xác: **C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 230,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Tầng giao vận",
+    "question": "Tầng giao vận sử dụng cổng 53 để mô tả giao thức nào?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. SNMP",
+      "B. SMTP",
+      "C. DHCP",
+      "D. DNS"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng giao vận:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng giao vận.\n- Phương án chính xác: **D**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 231,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Tầng giao vận",
+    "question": "Nhiệm vụ chính trong tầng giao vận (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. Theo dõi giao tiếp",
+      "B. Phân mảnh (hoặc phân đoạn) dữ liệu",
+      "C. Xác định các ứng dụng",
+      "D. Kiểm soát luồng dữ liệu"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng giao vận:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng giao vận.\n- Phương án chính xác: **A, B, C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 232,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Tầng giao vận",
+    "question": "Các phát biểu nào sau đây liên quan tới số cổng (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. Mỗi số hiệu cổng được hiển thị bằng một số nguyên không dấu",
+      "B. Mỗi số hiệu cổng có độ dài 16-bit do ICANN cấp",
+      "C. Mỗi số hiệu cổng có độ dài 16-bit do IANA cấp",
+      "D. Số hiệu cổng được dùng để xác định một ứng dụng"
+    ],
+    "correctAnswers": [
+      "A",
+      "C",
+      "D"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng giao vận:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng giao vận.\n- Phương án chính xác: **A, C, D**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 233,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Tầng giao vận",
+    "question": "Dữ liệu được đóng gói trong tầng Giao vận KHÔNG được gọi là (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. Segment hoặc Datagrama",
+      "B. Segmen hoặc Datagram",
+      "C. Segment hoặc Datagram",
+      "D. Segmen hoặc Datagrama"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "D"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Tầng giao vận:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Tầng giao vận.\n- Phương án chính xác: **A, B, D**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 234,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Giao thức UDP",
+    "question": "UDP quản lý và theo dõi thứ tự Datagram",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức UDP:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức UDP.\n- Phương án chính xác: **B**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 235,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Giao thức UDP",
+    "question": "UDP phải sắp xếp lại Datagram theo thứ tự truyền",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức UDP:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức UDP.\n- Phương án chính xác: **B**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 236,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Giao thức UDP",
+    "question": "Một trong các nhiệm vụ của UDP thiết lập phiên trước khi truyền dữ liệu giữa 2 thiết bị đầu cuối",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức UDP:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức UDP.\n- Phương án chính xác: **B**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 237,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Giao thức UDP",
+    "question": "UDP không có cơ chế phát hiện lỗi",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức UDP:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức UDP.\n- Phương án chính xác: **B**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 238,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Giao thức UDP",
+    "question": "UDP là giao thức truyền tin tin cậy",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức UDP:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức UDP.\n- Phương án chính xác: **B**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 239,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Giao thức UDP",
+    "question": "Ứng dụng nào sau đây phù hợp nhất với UDP:",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Video Conference",
+      "B. Truyền tải file qua mạng",
+      "C. Thanh toán qua mạng",
+      "D. Truyền tải email qua mạng"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức UDP:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức UDP.\n- Phương án chính xác: **A**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 240,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Giao thức UDP",
+    "question": "Giao thức UDP được gọi là không kết nối vì lý do nào sau đây",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Các gói UDP được xử lý độc lập bởi lớp vận chuyển",
+      "B. Nó gửi dữ liệu dưới dạng luồng các gói liên quan",
+      "C. Nó được nhận theo thứ tự như thứ tự đã gửi",
+      "D. Nó gửi dữ liệu rất nhanh"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức UDP:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức UDP.\n- Phương án chính xác: **A**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 241,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Giao thức UDP",
+    "question": "Số hiệu cổng được sử dụng bởi Giao thức Network Time Protocol (NTP) với UDP là?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. 161",
+      "B. 123",
+      "C. 162",
+      "D. 124"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- Giao thức đồng bộ thời gian mạng **NTP (Network Time Protocol)** hoạt động trên tầng giao vận sử dụng cổng **UDP/123**.\n- (Cổng UDP 161/162 dành cho SNMP, UDP 53 dành cho DNS). Đáp án đúng là **B** (123)."
+  },
+  {
+    "id": 242,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Giao thức UDP",
+    "question": "Cổng kết nối ở tầng Transport (giao thức UDP) của giao thức SNMP là",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. UDP/16",
+      "B. UDP/25",
+      "C. UDP/161",
+      "D. UDP/23"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- Giao thức quản lý mạng **SNMP (Simple Network Management Protocol)** sử dụng cổng **UDP/161** cho các truy vấn của Manager đến Agent, và cổng **UDP/162** để nhận các bẫy cảnh báo (SNMP Traps). Đáp án đúng là **C** (UDP/161)."
+  },
+  {
+    "id": 243,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Giao thức UDP",
+    "question": "Đặc điểm của giao thức UDP là gì?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Truyền các gói dữ liệu theo đúng thứ tự",
+      "B. Truyền lại các gói dữ liệu mất trên đường truyền",
+      "C. Không truyền lại các gói dữ liệu bị lỗi",
+      "D. Không có câu nào đúng"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức UDP:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức UDP.\n- Phương án chính xác: **C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 244,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Giao thức UDP",
+    "question": "Loại ứng dụng nào phù hợp nhất để sử dụng UDP?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Các ứng dụng nhạy cảm với độ trễ",
+      "B. Các ứng dụng cần phân phối đáng tin cậy",
+      "C. Các ứng dụng yêu cầu truyền lại các gói bị mất",
+      "D. Các ứng dụng nhạy cảm với việc mất gói"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức UDP:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức UDP.\n- Phương án chính xác: **A**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 245,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Giao thức UDP",
+    "question": "Hoạt động nào được máy khách thực hiện khi thiết lập liên lạc với máy chủ thông qua việc sử dụng UDP ở tầng giao vận?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Máy khách đặt kích thước cửa sổ cho phiên.",
+      "B. Máy khách gửi SYN đến máy chủ để bắt đầu bắt tay 3 bước.",
+      "C. Máy khách chọn ngẫu nhiên một số hiệu cổng",
+      "D. Máy khách gửi một gói tin đồng bộ hóa để yêu cầu kết nối."
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức UDP:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức UDP.\n- Phương án chính xác: **C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 246,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Giao thức UDP",
+    "question": "Tại sao UDP lại phù hợp làm giao thức tầng giao vận cho các ứng dụng như video, voice?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. UDP đáp ứng nhanh và ít tiêu tốn tài nguyên.",
+      "B. UDP cung cấp khả năng kiểm soát luồng bằng cách sử dụng cửa sổ trượt windows.",
+      "C. UDP cung cấp xác nhận dữ liệu đã nhận.",
+      "D. UDP cung cấp một phiên đáng tin cậy."
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- Các ứng dụng truyền thông thời gian thực (Real-time voice, video streaming) yêu cầu độ trễ cực thấp và có thể chấp nhận mất một tỷ lệ rất nhỏ các gói tin.\n- **UDP** không tốn thời gian bắt tay thiết lập phiên, không truyền lại gói tin bị mất, kích thước tiêu đề nhỏ (8 byte so với 20 byte của TCP), do đó đáp ứng nhanh và tiêu tốn rất ít tài nguyên mạng. Đáp án đúng là **A**."
+  },
+  {
+    "id": 247,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Giao thức UDP",
+    "question": "Đặc điểm của UDP là gì?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Nó thiết lập phiên kết nối qua quá trình bắt tay ba bước",
+      "B. Nó đóng phiên đã thiết lập qua quá trình bắt tay bốn bước",
+      "C. Nó cung cấp khả năng phân phối các datagram một cách không tin cậy",
+      "D. Nó cung cấp khả năng phân phối các segment một cách không tin cậy"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức UDP:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức UDP.\n- Phương án chính xác: **D**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 248,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Giao thức UDP",
+    "question": "Các ứng dụng sử dụng giao thức UDP là (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. Ứng dụng video và đa phương tiện trực tiếp",
+      "B. Ứng dụng yêu cầu và trả lời đơn giản",
+      "C. Các ứng dụng tự xử lý độ tin cậy",
+      "D. Ứng dụng gửi thư điện tử"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức UDP:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức UDP.\n- Phương án chính xác: **A, B, C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 249,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Giao thức UDP",
+    "question": "Các giao thức nào chỉ sử dụng UDP (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. DHCP",
+      "B. TFTP",
+      "C. NTP",
+      "D. DNS"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức UDP:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức UDP.\n- Phương án chính xác: **A, B, C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 250,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Giao thức UDP",
+    "question": "Phát biểu nào dưới đây là đúng khi nói về giao thức UDP (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. Không có giai đoạn thiết lập kết nối",
+      "B. Không duy trì trạng thái kết nối",
+      "C. Không kiểm soát tốc độ gửi",
+      "D. Chỉ kiểm soát tốc độ nhận"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức UDP:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức UDP.\n- Phương án chính xác: **A, B, C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 251,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Giao thức UDP",
+    "question": "Các thành phần nằm trong UDP Header là (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. Source Port",
+      "B. Checksum",
+      "C. Length",
+      "D. SYN Bit"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức UDP:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức UDP.\n- Phương án chính xác: **A, B, C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 252,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Giao thức UDP",
+    "question": "Chức năng của giao thức UDP là (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. Dữ liệu được xây dựng lại theo thứ tự nhận được.",
+      "B. Bất kỳ datagram nào bị mất sẽ không được gửi lại.",
+      "C. Không thiết lập phiên",
+      "D. Kiểm soát luồng"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức UDP:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức UDP.\n- Phương án chính xác: **A, B, C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 253,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Giao thức TCP",
+    "question": "Giao thức TCP sử dụng cửa sổ trượt để kiểm soát luồng",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- **Cơ chế Cửa sổ trượt (Sliding Window):** Được TCP sử dụng để thực hiện việc **Điều khiển luồng (Flow Control)** và kiểm soát tắc nghẽn, cho phép bên gửi truyền nhiều segment dữ liệu liên tiếp trước khi phải dừng lại chờ gói tin xác nhận (ACK) từ bên nhận."
+  },
+  {
+    "id": 254,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Giao thức TCP",
+    "question": "Trong giao thức TCP, các gói tin được gọi là segment",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức TCP:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức TCP.\n- Phương án chính xác: **A**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 255,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Giao thức TCP",
+    "question": "TCP là một giao thức không tin cậy?",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức TCP:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức TCP.\n- Phương án chính xác: **B**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 256,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Giao thức TCP",
+    "question": "TCP không có chức năng sắp xếp lại các segment",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức TCP:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức TCP.\n- Phương án chính xác: **B**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 257,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Giao thức TCP",
+    "question": "TCP sử dụng cơ chế cửa sổ trượt để điều khiển tốc độ truyền dữ liệu",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Đúng",
+      "B. Sai"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- **Cơ chế Cửa sổ trượt (Sliding Window):** Được TCP sử dụng để thực hiện việc **Điều khiển luồng (Flow Control)** và kiểm soát tắc nghẽn, cho phép bên gửi truyền nhiều segment dữ liệu liên tiếp trước khi phải dừng lại chờ gói tin xác nhận (ACK) từ bên nhận."
+  },
+  {
+    "id": 258,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Giao thức TCP",
+    "question": "Trong TCP, việc gửi và nhận dữ liệu được thực hiện dưới dạng",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Dòng bytes",
+      "B. Chuỗi các ký tự",
+      "C. Các đường dữ liệu",
+      "D. Các gói tin"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức TCP:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức TCP.\n- Phương án chính xác: **A**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 259,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Giao thức TCP",
+    "question": "Một máy khách đã thực hiện yêu cầu HTTP tới trình duyệt web. Số hiệu địa chỉ cổng thông dụng nào được liên kết với địa chỉ đích?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. TCP/404",
+      "B. TCP/110",
+      "C. TCP/443",
+      "D. TCP/80"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức TCP:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức TCP.\n- Phương án chính xác: **D**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 260,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Giao thức TCP",
+    "question": "Ứng dụng nào sau đây không phù hợp với giao thức TCP?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Trình duyệt Web",
+      "B. Hệ thống hội thảo video trực tuyến",
+      "C. Hệ thống thanh toán qua mạng",
+      "D. Email"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức TCP:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức TCP.\n- Phương án chính xác: **B**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 261,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Giao thức TCP",
+    "question": "Acknowledgment number trong tiêu đề TCP là một số",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Độc lập",
+      "B. Ngẫu nhiên",
+      "C. Liên quan tới số SeqN của bên gửi",
+      "D. Không liên quan tới số SeqN của bên gửi"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- Trường **Acknowledgment Number (Số xác nhận)** trong tiêu đề TCP cho biết số thứ tự của byte dữ liệu tiếp theo mà bên nhận mong đợi được nhận từ bên gửi ($AckN = SeqN + 1$ đối với gói bắt tay hoặc số byte đã nhận). Do đó nó có mối quan hệ trực tiếp với số SeqN của bên gửi. Đáp án đúng là **C**."
+  },
+  {
+    "id": 262,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Giao thức TCP",
+    "question": "Byte dữ liệu được truyền trong mỗi kết nối được đánh số bởi TCP. Những con số này có dạng?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Số cố định",
+      "B. Số 0",
+      "C. Số 1",
+      "D. Chuỗi số 0 và số 1"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức TCP:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức TCP.\n- Phương án chính xác: **D**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 263,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Giao thức TCP",
+    "question": "Cổng kết nối của giao thức SMTP là",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. TCP/24",
+      "B. TCP/26",
+      "C. TCP/25",
+      "D. TCP/27"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức TCP:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức TCP.\n- Phương án chính xác: **C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 264,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Giao thức TCP",
+    "question": "Quá trình bộ nhận kiểm soát lượng dữ liệu được gửi bởi người gửi được gọi là?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Điều khiển luồng",
+      "B. Điều khiển lỗi",
+      "C. Kiểm soát tắc nghẽn",
+      "D. Phát hiện lỗi"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức TCP:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức TCP.\n- Phương án chính xác: **A**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 265,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Giao thức TCP",
+    "question": "Thông số nào được nút nguồn lựa chọn ngẫu nhiên trước khi gửi dữ liệu",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Địa chỉ IP đích.",
+      "B. Địa chỉ MAC nguồn.",
+      "C. Địa chỉ cổng mặc định.",
+      "D. Cổng nguồn."
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức TCP:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức TCP.\n- Phương án chính xác: **D**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 266,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Giao thức TCP",
+    "question": "Trường thông tin Sequence Number trong tiêu đề của giao thức TCP dùng để làm gì?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Lưu số thứ tự của gói tin",
+      "B. Lưu mã xử lý lỗi của gói tin",
+      "C. Lưu thông tin điều khiển lưu lượng",
+      "D. Lưu thông tin điều khiển xung đột"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức TCP:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức TCP.\n- Phương án chính xác: **A**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 267,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Giao thức TCP",
+    "question": "Trường nào trong tiêu đề TCP được sử dụng để bắt đầu quá trình bắt tay ba bước?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. FIN",
+      "B. PSH",
+      "C. RST",
+      "D. SYN"
+    ],
+    "correctAnswers": [
+      "D"
+    ],
+    "explanation": "**Lý thuyết cốt lõi:**\n- Quá trình bắt tay 3 bước của TCP (Three-way Handshake):\n  1. Client gửi cờ **SYN** để yêu cầu đồng bộ hóa số thứ tự (Sequence Number).\n  2. Server phản hồi cờ **SYN-ACK** để đồng ý kết nối.\n  3. Client gửi lại cờ **ACK** để hoàn tất thiết lập kết nối.\n- Cờ dùng để bắt đầu là **SYN**. Đáp án đúng là **D**."
+  },
+  {
+    "id": 268,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Giao thức TCP",
+    "question": "Các chức năng trong giao thức TCP là (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. Thiết lập phiên",
+      "B. Đảm bảo tin cậy",
+      "C. Điều khiển luồng",
+      "D. Giữ và chuyển tiếp"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức TCP:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức TCP.\n- Phương án chính xác: **A, B, C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 269,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Giao thức TCP",
+    "question": "Các dịch vụ sử dụng giao thức TCP là (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. FTP",
+      "B. HTTP",
+      "C. SMTP",
+      "D. Streaming"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức TCP:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức TCP.\n- Phương án chính xác: **A, B, C**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 270,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Giao thức TCP",
+    "question": "Ba trường nào sau đây có trong tiêu đề TCP? (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. ISN",
+      "B. SYN",
+      "C. FIN",
+      "D. URG"
+    ],
+    "correctAnswers": [
+      "B",
+      "C",
+      "D"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức TCP:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức TCP.\n- Phương án chính xác: **B, C, D**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 271,
+    "chapter": "Chương 4: Tầng giao vận",
+    "chapterId": 4,
+    "topic": "Giao thức TCP",
+    "question": "Các ý nào dưới đây nằm trong quá trình kết thúc phiên kết nối (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. Khi Client không còn dữ liệu để gửi, nó sẽ gửi một segment có gán cờ FIN",
+      "B. Server gửi lại ACK để xác nhận đã nhận được FIN để chấm dứt phiên kết nối",
+      "C. Server gửi ISN để đóng phiên kết nối này",
+      "D. Client gửi lại ACK để xác nhận đã nhận được FIN từ Server"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "D"
+    ],
+    "explanation": "**Lý thuyết chuyên sâu về Giao thức TCP:**\n- Bản chất câu hỏi: Đánh giá hiểu biết về nguyên lý hoạt động của Giao thức TCP.\n- Phương án chính xác: **A, B, D**.\n- Kiến thức cần nhớ: Cần nắm vững chức năng tầng, cấu trúc giao thức chuẩn và các tham số kỹ thuật liên quan để phân tích chính xác các kịch bản tương tự trong đề thi."
+  },
+  {
+    "id": 272,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: Network Fundamentals",
+    "question": "Trong mô hình mạng phân cấp 3 lớp của Cisco, lớp nào có nhiệm vụ chính là thực hiện chuyển mạch gói tin với tốc độ tối đa (High-speed packet switching) làm xương sống và hạn chế áp dụng các chính sách làm chậm lưu lượng?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Core Layer",
+      "B. Distribution Layer",
+      "C. Access Layer",
+      "D. Data Link Layer"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- **Core Layer (Lớp lõi):** Được thiết kế để chuyển tiếp lưu lượng ở mức tốc độ cao nhất có thể mà không bị can thiệp bởi các bộ lọc gói phức tạp như ACL, packet inspection hay QoS làm nghẽn cổ chai.\n- **Distribution Layer:** Nơi xử lý routing, bảo mật ACL, chính sách QoS và phân tách VLAN.\n- **Access Layer:** Cung cấp kết nối trực tiếp cho người dùng và thiết bị đầu cuối."
+  },
+  {
+    "id": 273,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: Network Fundamentals",
+    "question": "Loại cáp quang nào sau đây sử dụng nguồn phát laser, có đường kính lõi rất nhỏ (khoảng 9 micron) cho phép truyền tín hiệu khoảng cách xa hàng chục km với độ suy hao cực thấp?",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Multimode Fiber (MMF)",
+      "B. Single-Mode Fiber (SMF)",
+      "C. Shielded Twisted Pair (STP)",
+      "D. Coaxial Thinnet"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- **Single-Mode Fiber (SMF):** Lõi quang học rất hẹp (khoảng 9 µm) chỉ cho phép một tia laser duy nhất truyền thẳng dọc theo trục cáp, loại bỏ hiện tượng tán sắc quang học (modal dispersion), phù hợp cho kết nối đường dài (Campus backbone, WAN).\n- **Multimode Fiber (MMF):** Lõi lớn hơn (50 hoặc 62.5 µm), dùng đèn LED hoặc VCSEL, thích hợp khoảng cách ngắn trong data center."
+  },
+  {
+    "id": 274,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: Network Fundamentals",
+    "question": "Trong kiến trúc tô-pô Spine-Leaf được sử dụng phổ biến trong các Trung tâm Dữ liệu (Data Center) hiện đại, phát biểu nào sau đây là ĐÚNG?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Các switch Spine kết nối trực tiếp với nhau để chia sẻ dữ liệu",
+      "B. Mọi switch Leaf đều được kết nối trực tiếp đến tất cả các switch Spine",
+      "C. Các switch Leaf kết nối chéo với nhau thành vòng tròn STP",
+      "D. Thiết bị máy chủ (Servers) được cắm trực tiếp vào switch Spine"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- Kiến trúc **Spine-Leaf (Clos network)** tối ưu hóa cho lưu lượng Đông - Tây (East-West traffic giữa server với server).\n- **Quy tắc vàng:** Mọi switch Leaf đều kết nối tới TẤT CẢ các switch Spine; các switch Spine không bao giờ kết nối trực tiếp với nhau, và các switch Leaf cũng không nối trực tiếp với nhau. Máy chủ chỉ kết nối vào Leaf switch."
+  },
+  {
+    "id": 275,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: Network Fundamentals",
+    "question": "Dải địa chỉ IPv6 nào sau đây được phân loại là địa chỉ Link-Local (liên kết cục bộ), tự động được gán trên các giao diện hỗ trợ IPv6 để truyền thông trong cùng một phân đoạn mạng?",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. 2000::/3",
+      "B. FE80::/10",
+      "C. FC00::/7",
+      "D. FF00::/8"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- **FE80::/10:** Link-Local Address (chỉ có giá trị trên cùng 1 liên kết vật lý, bắt đầu từ `fe80` đến `febf`).\n- **2000::/3:** Global Unicast Address (địa chỉ định tuyến toàn cầu công cộng).\n- **FC00::/7:** Unique Local Address (tương đương Private IPv4).\n- **FF00::/8:** Multicast Address."
+  },
+  {
+    "id": 276,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: Network Fundamentals",
+    "question": "Phương pháp sinh địa chỉ IPv6 Interface ID tự động theo chuẩn EUI-64 thực hiện chèn chuỗi 16-bit nào vào giữa địa chỉ MAC 48-bit và đảo bit nào?",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "single",
+    "options": [
+      "A. Chèn FFFE vào giữa và đảo bit thứ 7 (Universal/Local bit)",
+      "B. Chèn FFFF vào giữa và đảo bit thứ 8",
+      "C. Chèn EEEF vào giữa và đảo bit đầu tiên",
+      "D. Chèn FFFE vào giữa và giữ nguyên các bit"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- Quy trình tạo EUI-64 từ MAC 48-bit:\n  1. Tách MAC thành 2 nửa 24-bit (3 byte đầu và 3 byte sau).\n  2. Chèn chuỗi `FF:FE` (16-bit) vào chính giữa để tạo thành 64 bit.\n  3. Đảo giá trị bit thứ 7 (Universal/Local bit tính từ trái qua phải) của byte đầu tiên (từ 0 thành 1)."
+  },
+  {
+    "id": 277,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: Network Fundamentals",
+    "question": "Chuẩn cấp nguồn qua mạng Ethernet PoE IEEE 802.3at (PoE+) cung cấp công suất tối đa tại cổng cấp (PSE) là bao nhiêu Watt?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. 15.4 W",
+      "B. 30 W",
+      "C. 60 W",
+      "D. 90 W"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- **IEEE 802.3af (PoE):** Tối đa 15.4 W (thiết bị nhận được khoảng 12.95 W).\n- **IEEE 802.3at (PoE+):** Tối đa 30 W (thiết bị nhận được khoảng 25.5 W).\n- **IEEE 802.3bt (PoE++ / UPOE):** Tối đa 60 W (Type 3) và 90 W (Type 4)."
+  },
+  {
+    "id": 278,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: Network Fundamentals",
+    "question": "Sự khác biệt cốt lõi giữa Máy ảo (Virtual Machine - VM) và Container là gì?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. VM chia sẻ chung nhân hệ điều hành (Kernel), trong khi Container ảo hóa phần cứng",
+      "B. VM yêu cầu hệ điều hành khách (Guest OS) riêng biệt trên Hypervisor, trong khi Container chia sẻ chung nhân hệ điều hành của máy chủ",
+      "C. Container chạy chậm hơn VM vì kích thước file ảnh lớn hơn",
+      "D. VM không cần phần mềm giám sát máy ảo Hypervisor"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- **Virtual Machine:** Mỗi máy ảo chạy một hệ điều hành khách (Guest OS) hoàn chỉnh độc lập trên lớp phần mềm giám sát ảo hóa (Hypervisor), tiêu tốn nhiều tài nguyên RAM/CPU.\n- **Container (Docker, Podman):** Chia sẻ chung nhân (Host OS Kernel), chỉ đóng gói mã nguồn và các thư viện cần thiết, giúp khởi động tính bằng mili-giây và cực kỳ nhẹ."
+  },
+  {
+    "id": 279,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: Network Fundamentals",
+    "question": "Kích thước tiêu đề (Header size) mặc định nhỏ nhất của gói tin TCP và gói tin UDP lần lượt là bao nhiêu byte?",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. TCP là 20 bytes, UDP là 8 bytes",
+      "B. TCP là 8 bytes, UDP là 20 bytes",
+      "C. TCP là 32 bytes, UDP là 16 bytes",
+      "D. Cả TCP và UDP đều là 20 bytes"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- **TCP Header:** Có kích thước tối thiểu là **20 bytes** (chứa Source/Dest Port, Sequence number, Ack number, Data offset, Flags SYN/ACK/FIN/RST, Window size, Checksum, Urgent pointer).\n- **UDP Header:** Rất đơn giản, kích thước cố định chỉ **8 bytes** (chứa Source Port, Destination Port, Length, Checksum)."
+  },
+  {
+    "id": 280,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: Network Access",
+    "question": "Trường nhận diện thẻ VLAN (VLAN Tag) theo chuẩn IEEE 802.1Q được chèn vào vị trí nào trong Ethernet Frame và có độ dài bao nhiêu byte?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Chèn sau Destination MAC và Source MAC, có độ dài 4 bytes",
+      "B. Chèn vào cuối Frame sau trường FCS, độ dài 8 bytes",
+      "C. Chèn vào đầu Frame trước Preamble, độ dài 2 bytes",
+      "D. Chèn vào trong Payload của gói tin IP, độ dài 6 bytes"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- Thẻ **802.1Q Tag** có kích thước **4 bytes (32 bits)**, được chèn vào giữa trường Source MAC và EtherType.\n- Cấu trúc 4 bytes gồm: TPID (16 bits, giá trị `0x8100`), PCP (3 bits ưu tiên CoS), DEI (1 bit) và **VLAN ID (12 bits)** cho phép biểu diễn tối đa $2^{12} = 4096$ VLAN."
+  },
+  {
+    "id": 281,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: Network Access",
+    "question": "Khi hai switch kết nối với nhau qua đường Trunking 802.1Q nhưng bị cấu hình sai lệch Native VLAN (Native VLAN Mismatch, ví dụ bên Switch 1 là VLAN 1, bên Switch 2 là VLAN 99), hậu quả nào sau đây sẽ xảy ra?",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "single",
+    "options": [
+      "A. Toàn bộ các cổng của cả hai switch đều bị shutdown chuyển sang err-disabled",
+      "B. Đường trunk vẫn hoạt động nhưng xuất hiện cảnh báo CDP, và dữ liệu có thể bị rò rỉ chéo giữa hai VLAN này",
+      "C. Switch 1 tự động định tuyến toàn bộ lưu lượng qua Internet",
+      "D. Giao thức STP tự động chuyển đổi đường cáp thành Access port"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- Khung dữ liệu thuộc Native VLAN khi gửi qua đường trunk sẽ **không gắn thẻ (untagged)**.\n- Khi Switch 2 nhận được frame untagged từ Native VLAN 1 của Switch 1, nó sẽ hiểu nhầm frame này thuộc về Native VLAN của chính nó (VLAN 99), gây rò rỉ lưu lượng giữa 2 VLAN và tạo lỗ hổng bảo mật (VLAN hopping). Giao thức CDP sẽ liên tục cảnh báo lỗi `%CDP-4-NATIVE_VLAN_MISMATCH`."
+  },
+  {
+    "id": 282,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: Network Access",
+    "question": "Khi sử dụng giao thức độc quyền Cisco DTP (Dynamic Trunking Protocol), cổng switch ở chế độ 'Dynamic Desirable' kết nối với cổng ở chế độ 'Dynamic Auto' sẽ hình thành chế độ kết nối nào?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Access Port",
+      "B. Trunk Port",
+      "C. Bị ngắt kết nối do xung đột",
+      "D. Routed Port"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- **Dynamic Desirable:** Chủ động gửi yêu cầu đàm phán chuyển thành Trunk.\n- **Dynamic Auto:** Sẵn sàng chuyển thành Trunk nếu đầu bên kia yêu cầu.\n- Sự kết hợp giữa `Dynamic Desirable + Dynamic Auto` sẽ tạo thành **Trunk Port**.\n- Chỉ khi cả hai đầu cùng là `Dynamic Auto + Dynamic Auto` thì cổng mới giữ nguyên chế độ **Access Port**."
+  },
+  {
+    "id": 283,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: Network Access",
+    "question": "Giao thức chuẩn mở quốc tế IEEE 802.3ad được sử dụng để gom nhiều đường truyền vật lý thành một kênh kết nối logic (EtherChannel / Link Aggregation) là gì?",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. PAgP (Port Aggregation Protocol)",
+      "B. LACP (Link Aggregation Control Protocol)",
+      "C. DTP",
+      "D. VTP"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- **LACP (IEEE 802.3ad / 802.1AX):** Là chuẩn mở quốc tế (chế độ `active` và `passive`).\n- **PAgP:** Là giao thức độc quyền của Cisco (chế độ `desirable` và `auto`)."
+  },
+  {
+    "id": 284,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: Network Access",
+    "question": "Trong giao thức Spanning Tree Protocol (STP IEEE 802.1D), Switch nào sẽ được bầu chọn làm Root Bridge trong toàn mạng?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Switch có giá trị Bridge ID (BID) nhỏ nhất (Lowest Bridge ID)",
+      "B. Switch có giá trị Bridge ID (BID) lớn nhất",
+      "C. Switch có địa chỉ IP cao nhất",
+      "D. Switch có nhiều cổng kết nối nhất"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- **Bridge ID (BID)** = `Bridge Priority (2 bytes)` + `MAC Address (6 bytes)`.\n- Switch nào có **Bridge ID nhỏ nhất (Lowest BID)** sẽ chiến thắng và trở thành **Root Bridge**.\n- Mặc định Priority là 32768. Nếu priority bằng nhau, switch có địa chỉ MAC nhỏ nhất sẽ được chọn."
+  },
+  {
+    "id": 285,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: Network Access",
+    "question": "Tính năng PortFast trên switch Cisco mang lại lợi ích gì cho các cổng kết nối đến thiết bị người dùng cuối (PC, máy in)?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Tăng gấp đôi băng thông truyền dẫn của cổng",
+      "B. Cho phép cổng chuyển ngay lập tức từ trạng thái Blocking sang Forwarding, bỏ qua các bước Listening và Learning",
+      "C. Tự động mã hóa lưu lượng người dùng",
+      "D. Chuyển cổng từ Layer 2 sang Layer 3"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- Mặc định STP mất 30-50 giây (15s Listening + 15s Learning) trước khi cổng chuyển sang Forwarding.\n- Cấu hình **PortFast** trên các cổng Edge (nối máy tính) giúp cổng chuyển ngay sang **Forwarding**, tránh làm chậm quá trình nhận IP từ DHCP của máy tính. Đi kèm với PortFast thường là **BPDU Guard** để chống cắm nhầm switch lạ."
+  },
+  {
+    "id": 286,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: Network Access",
+    "question": "Trong kiến trúc mạng không dây doanh nghiệp của Cisco sử dụng bộ điều khiển tập trung WLC (Wireless LAN Controller), giao thức nào được sử dụng để đóng gói và vận chuyển lưu lượng điều khiển và dữ liệu giữa Lightweight AP (LAP) và WLC?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. CAPWAP (Control and Provisioning of Wireless Access Points)",
+      "B. RIPng",
+      "C. OSPFv3",
+      "D. IPsec ESP"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- **CAPWAP (RFC 5415):** Là đường hầm mã hóa kết nối giữa Lightweight Access Point (LAP) và WLC.\n- CAPWAP Control dùng cổng **UDP 5246** (được mã hóa DTLS).\n- CAPWAP Data dùng cổng **UDP 5247** để chuyển tiếp gói tin dữ liệu của người dùng."
+  },
+  {
+    "id": 287,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: IP Connectivity",
+    "question": "Trong bảng định tuyến của Router Cisco, giá trị Administrative Distance (AD) mặc định của một tuyến đường tĩnh (Static Route) chỉ định qua địa chỉ Next-Hop IP là bao nhiêu?",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. 0",
+      "B. 1",
+      "C. 90",
+      "D. 110"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- Bảng giá trị AD chuẩn của Cisco:\n  + **Directly Connected:** AD = 0\n  + **Static Route:** AD = 1\n  + **External BGP:** AD = 20\n  + **Internal EIGRP:** AD = 90\n  + **OSPF:** AD = 110\n  + **IS-IS:** AD = 115\n  + **RIP:** AD = 120"
+  },
+  {
+    "id": 288,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: IP Connectivity",
+    "question": "Khi router nhận được một gói tin IP và tra cứu bảng định tuyến, nếu có nhiều tuyến đường khác nhau cùng thỏa mãn địa chỉ IP đích, router sẽ áp dụng nguyên tắc nào ĐẦU TIÊN để quyết định chọn tuyến đường chuyển tiếp?",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "single",
+    "options": [
+      "A. Chọn tuyến đường có giá trị Administrative Distance nhỏ nhất",
+      "B. Chọn tuyến đường có Metric/Cost nhỏ nhất",
+      "C. Longest Prefix Match (Khớp mặt nạ mạng con dài nhất / cụ thể nhất)",
+      "D. Chọn tuyến đường được tạo ra gần đây nhất"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- **Quy tắc vàng của Router:** **Longest Prefix Match** luôn là tiêu chí ưu tiên SỐ 1.\n- Ví dụ: Gói tin đến `10.1.1.5` khớp với cả tuyến `10.1.0.0/16` (RIP, AD 120) và `10.1.1.0/24` (OSPF, AD 110) và `10.1.1.4/30` (Static, AD 1). Router sẽ chọn `/30` vì tiền tố dài nhất (30 bit mạng), bất kể AD hay Metric của các giao thức khác."
+  },
+  {
+    "id": 289,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: IP Connectivity",
+    "question": "Thuật ngữ 'Floating Static Route' trong định tuyến Cisco dùng để chỉ loại tuyến đường nào?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Tuyến đường tĩnh không bao giờ bị xóa khỏi bảng định tuyến",
+      "B. Tuyến đường tĩnh được cấu hình với giá trị Administrative Distance (AD) cao hơn tuyến đường chính, dùng làm dự phòng khi đường chính đứt",
+      "C. Tuyến đường tĩnh được gán tự động bởi máy chủ DHCP",
+      "D. Tuyến đường tĩnh sử dụng giao thức OSPF để tìm đường"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- **Floating Static Route:** Là tuyến tĩnh dự phòng (Backup). Người quản trị cố tình cấu hình AD cao hơn giao thức định tuyến động chính (ví dụ OSPF có AD=110 thì cấu hình static route với AD=120: `ip route 0.0.0.0 0.0.0.0 192.168.1.2 120`).\n- Tuyến này sẽ 'nổi' lên thay thế chỉ khi tuyến chính bị mất kết nối."
+  },
+  {
+    "id": 290,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: IP Connectivity",
+    "question": "Các thông số nào sau đây BẮT BUỘC phải hoàn toàn trùng khớp giữa hai router chạy OSPFv2 trên cùng một phân đoạn mạng để chúng có thể thiết lập thành công quan hệ láng giềng (Neighbor Adjacency)? (Chọn 3)",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "multiple",
+    "options": [
+      "A. Area ID",
+      "B. Hello and Dead interval timers",
+      "C. Subnet Mask",
+      "D. Router ID"
+    ],
+    "correctAnswers": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- Để 2 Router OSPF trở thành láng giềng, các yếu tố sau bắt buộc phải khớp:\n  1. **Area ID** (phải cùng thuộc một Area).\n  2. **Hello / Dead Timers** (mặc định 10s/40s trên broadcast).\n  3. **Subnet Mask** trên cổng kết nối trực tiếp.\n  4. **Authentication** (mật khẩu xác thực nếu có).\n  5. **MTU** (kích thước frame tối đa).\n- **Router ID (RID)** BẮT BUỘC PHẢI KHÁC NHAU (nếu trùng RID sẽ không bao giờ kết nối được)."
+  },
+  {
+    "id": 291,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: IP Connectivity",
+    "question": "Thứ tự ưu tiên để một Router chạy OSPF tự động lựa chọn Router ID (RID) khi khởi động là gì?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Lệnh `router-id` cấu hình thủ công -> Địa chỉ IP cao nhất trên cổng Loopback đang active -> Địa chỉ IP cao nhất trên cổng vật lý đang active",
+      "B. Địa chỉ IP cao nhất trên cổng vật lý -> Cổng Loopback -> Cấu hình thủ công",
+      "C. Địa chỉ MAC nhỏ nhất của thiết bị",
+      "D. Ngẫu nhiên do router tự sinh ra"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- Thứ tự ưu tiên xác định OSPF Router ID:\n  1. Lệnh cấu hình tường minh: `router-id x.x.x.x` (ưu tiên cao nhất).\n  2. Địa chỉ IP lớn nhất trong số các cổng **Loopback** đang ở trạng thái Up.\n  3. Địa chỉ IP lớn nhất trong số các cổng **Vật lý (Physical)** đang ở trạng thái Up/Up."
+  },
+  {
+    "id": 292,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: IP Connectivity",
+    "question": "Trong mạng OSPF dạng Broadcast Multiaccess (như Ethernet), router nào sẽ được bầu chọn làm Designated Router (DR)?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Router có giá trị OSPF Interface Priority cao nhất (nếu bằng nhau thì xét Router ID cao nhất)",
+      "B. Router có giá trị OSPF Interface Priority thấp nhất",
+      "C. Router khởi động muộn nhất",
+      "D. Router có nhiều RAM nhất"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- Bầu chọn **DR và BDR** trong OSPF:\n  1. Cổng có giá trị **OSPF Priority cao nhất** sẽ được chọn làm DR (mặc định priority = 1, giá trị từ 0 - 255. Nếu priority = 0 sẽ không bao giờ tham gia bầu chọn DR/BDR).\n  2. Tiêu chí hòa (Tie-breaker): Router có **Router ID (RID) cao nhất** sẽ chiến thắng."
+  },
+  {
+    "id": 293,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: IP Connectivity",
+    "question": "Lệnh `passive-interface` được cấu hình dưới tiến trình định tuyến OSPF có tác dụng gì?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Ngừng quảng bá mạng con của cổng đó cho các router khác",
+      "B. Ngăn không cho gửi và nhận gói tin OSPF Hello qua cổng đó, nhưng vẫn quảng bá mạng con của cổng vào trong miền định tuyến OSPF",
+      "C. Tắt cổng vật lý để tiết kiệm điện năng",
+      "D. Chuyển cổng sang hoạt động ở chế độ RIP"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- Lệnh **`passive-interface <interface>`** ngăn chặn gửi các gói tin OSPF Hello ra cổng nối tới mạng LAN nội bộ (nơi chỉ có PC/máy in chứ không có router khác), giúp tăng tính bảo mật và tiết kiệm băng thông, trong khi router vẫn quảng bá mạng con đó đến các router OSPF khác."
+  },
+  {
+    "id": 294,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: IP Services",
+    "question": "Thứ tự 4 bước trao đổi gói tin chuẩn trong tiến trình cấp phát địa chỉ IP động của giao thức DHCP (tiến trình DORA) là gì?",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Discover -> Offer -> Request -> Acknowledge",
+      "B. Demand -> Order -> Receive -> Accept",
+      "C. Discover -> Request -> Offer -> Acknowledge",
+      "D. Detect -> Open -> Route -> Authorize"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- **D.O.R.A:**\n  1. **DHCP Discover:** Client gửi broadcast để tìm kiếm DHCP Server.\n  2. **DHCP Offer:** Server gửi đề xuất địa chỉ IP cho client.\n  3. **DHCP Request:** Client gửi yêu cầu chấp nhận cấu hình IP từ server.\n  4. **DHCP Acknowledge (ACK):** Server xác nhận chính thức cho thuê IP."
+  },
+  {
+    "id": 295,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: IP Services",
+    "question": "Khi Client và máy chủ DHCP Server nằm ở hai mạng LAN khác nhau qua Router, lệnh nào cần được cấu hình trên cổng giao tiếp của Router để chuyển tiếp gói tin DHCP Broadcast thành Unicast đến máy chủ?",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "single",
+    "options": [
+      "A. `ip helper-address <DHCP_Server_IP>`",
+      "B. `ip dhcp relay enable`",
+      "C. `ip forward-protocol udp 80`",
+      "D. `service dhcp-forwarding`"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- Router mặc định chặn các gói tin Broadcast. Lệnh **`ip helper-address <IP_Server>`** cấu hình trên interface đóng vai trò là một **DHCP Relay Agent**, chuyển đổi gói tin DHCP Discover (Broadcast) từ client thành gói tin Unicast gửi thẳng đến địa chỉ IP của máy chủ DHCP ở mạng xa."
+  },
+  {
+    "id": 296,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: IP Services",
+    "question": "Kỹ thuật NAT Overload (còn gọi là PAT - Port Address Translation) phân biệt các luồng truyền thông của nhiều máy tính nội bộ chia sẻ chung một địa chỉ IP Public duy nhất bằng thông số nào?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Số hiệu cổng nguồn ở tầng 4 (Source TCP/UDP Port number)",
+      "B. Địa chỉ MAC nguồn của card mạng",
+      "C. Giá trị TTL trong tiêu đề IP",
+      "D. Giá trị VLAN ID"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- **PAT (NAT Overload):** Ánh xạ hàng nghìn địa chỉ Private IP ra một địa chỉ Public IP duy nhất bằng cách gán cho mỗi phiên kết nối một **Số hiệu cổng nguồn Lớp 4 (Source Port)** ngẫu nhiên duy nhất trong bảng dịch NAT (NAT Translation Table)."
+  },
+  {
+    "id": 297,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: IP Services",
+    "question": "Mức độ nghiêm trọng (Severity Level) số 0 trong hệ thống ghi log tin nhắn Syslog của Cisco đại diện cho sự kiện gì?",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Emergency (Khẩn cấp - Hệ thống hoàn toàn không thể sử dụng)",
+      "B. Debugging (Gỡ lỗi)",
+      "C. Informational (Thông tin thông thường)",
+      "D. Warning (Cảnh báo)"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- 8 mức độ Syslog (0 đến 7):\n  + **Level 0 - Emergency:** Khẩn cấp, sập hệ thống.\n  + **Level 1 - Alert:** Cần xử lý ngay.\n  + **Level 2 - Critical:** Sự cố nghiêm trọng.\n  + **Level 3 - Error:** Lỗi.\n  + **Level 4 - Warning:** Cảnh báo.\n  + **Level 5 - Notice:** Trạng thái bình thường nhưng đáng chú ý.\n  + **Level 6 - Informational:** Bản tin thông tin.\n  + **Level 7 - Debugging:** Gỡ rối (chi tiết nhất)."
+  },
+  {
+    "id": 298,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: IP Services",
+    "question": "Địa chỉ MAC ảo (Virtual MAC) mặc định của nhóm HSRP phiên bản 1 (Hot Standby Router Protocol v1) có định dạng chuẩn nào sau đây?",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "single",
+    "options": [
+      "A. 0000.0c07.acXX (trong đó XX là số hiệu nhóm HSRP ở dạng hexa)",
+      "B. 0000.5e00.01XX",
+      "C. FFFF.FFFF.FFFF",
+      "D. 0000.0c9f.fXXX"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- HSRP v1 Virtual MAC: `0000.0c07.acXX` (với XX là HSRP Group number).\n- HSRP v2 Virtual MAC: `0000.0c9f.fXXX`.\n- VRRP Virtual MAC: `0000.5e00.01XX`."
+  },
+  {
+    "id": 299,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: Security Fundamentals",
+    "question": "Sự khác biệt quan trọng nhất giữa Standard ACL (1-99) và Extended ACL (100-199) trong cấu hình thiết bị Cisco là gì?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Standard ACL chỉ lọc dựa vào IP nguồn, trong khi Extended ACL có thể lọc dựa vào cả IP nguồn, IP đích, giao thức (TCP/UDP/ICMP) và số hiệu cổng (Port)",
+      "B. Standard ACL chỉ dùng cho IPv6, Extended ACL chỉ dùng cho IPv4",
+      "C. Standard ACL không có dòng lệnh ngầm từ chối tất cả (Implicit Deny)",
+      "D. Extended ACL không hỗ trợ đặt tên (Named ACL)"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- **Standard ACL (1-99 & 1300-1999):** Chỉ kiểm tra **địa chỉ IP nguồn**. Nguyên tắc đặt: đặt càng gần đích (Destination) càng tốt.\n- **Extended ACL (100-199 & 2000-2699):** Kiểm tra **IP nguồn, IP đích, giao thức Lớp 4 (TCP, UDP, ICMP) và số hiệu cổng**. Nguyên tắc đặt: đặt càng gần nguồn (Source) càng tốt để sớm loại bỏ lưu lượng rác."
+  },
+  {
+    "id": 300,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: Security Fundamentals",
+    "question": "Dòng lệnh ẩn (mặc định) nằm ở cuối cùng của tất cả các danh sách kiểm soát truy cập (Access Control List - ACL) trong hệ điều hành Cisco IOS là gì?",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. `deny ip any any` (Từ chối tất cả lưu lượng còn lại)",
+      "B. `permit ip any any` (Cho phép tất cả)",
+      "C. `log all dropped packets`",
+      "D. `shutdown interface`"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- Ở cuối mỗi ACL luôn tồn tại một lệnh ngầm: **`deny ip any any`** (hoặc `deny any`).\n- Nếu một gói tin không khớp với bất kỳ dòng `permit` nào trong ACL, nó sẽ tự động bị rớt (drop) bởi lệnh ngầm định này. Do đó, một ACL nếu không chứa ít nhất một dòng `permit` thì sẽ chặn toàn bộ lưu lượng."
+  },
+  {
+    "id": 301,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: Security Fundamentals",
+    "question": "Khi cấu hình tính năng Port Security trên switch Cisco, chế độ vi phạm (Violation Mode) mặc định khi phát hiện địa chỉ MAC lạ xâm nhập là gì?",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Protect",
+      "B. Restrict",
+      "C. Shutdown",
+      "D. Warning"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- Ba chế độ vi phạm Port Security:\n  + **Shutdown (Mặc định):** Đưa cổng vào trạng thái `err-disabled` (tắt cổng ngay lập tức), gửi thông báo Syslog/SNMP và tăng biến đếm vi phạm.\n  + **Restrict:** Chặn frame lạ, gửi thông báo Syslog/SNMP và tăng biến đếm vi phạm (không tắt cổng).\n  + **Protect:** Chặn frame lạ trong im lặng (không ghi log, không tăng biến đếm, không tắt cổng)."
+  },
+  {
+    "id": 302,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: Security Fundamentals",
+    "question": "Tính năng DHCP Snooping phân chia các cổng trên switch thành hai loại cổng nào để ngăn chặn cuộc tấn công máy chủ DHCP giả mạo (Rogue DHCP Server)?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Trusted Ports (cổng tin cậy) và Untrusted Ports (cổng không tin cậy)",
+      "B. Access Ports và Trunk Ports",
+      "C. Secure Ports và Public Ports",
+      "D. Static Ports và Dynamic Ports"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- **DHCP Snooping:**\n  + **Trusted Ports:** Cổng nối trực tiếp đến DHCP Server hợp pháp hoặc switch uplink, cho phép gửi các gói tin DHCP Offer/Ack.\n  + **Untrusted Ports:** Cổng nối với người dùng cuối; nếu có bất kỳ gói tin DHCP Offer/Ack nào xuất phát từ cổng này, switch sẽ lập tức chặn lại và coi đó là Rogue DHCP Server giả mạo."
+  },
+  {
+    "id": 303,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: Security Fundamentals",
+    "question": "Mô hình bảo mật AAA trong quản trị thiết bị mạng doanh nghiệp viết tắt của ba thành tố nào?",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Authentication, Authorization, Accounting",
+      "B. Access, Audit, Availability",
+      "C. Administration, Authentication, Allocation",
+      "D. Application, Assurance, Automation"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- **Authentication (Xác thực):** Bạn là ai? (Username/Password, 802.1X, Token).\n- **Authorization (Cấp quyền):** Bạn được phép làm những gì? (Mức quyền privilege, các lệnh được chạy).\n- **Accounting (Ghi nhật ký):** Bạn đã làm những gì và trong bao lâu? (Ghi lại lịch sử hoạt động để kiểm toán)."
+  },
+  {
+    "id": 304,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: Automation & Programmability",
+    "question": "Trong kiến trúc mạng định nghĩa bằng phần mềm (SDN - Software Defined Networking), mặt phẳng điều khiển (Control Plane) và mặt phẳng dữ liệu (Data Plane) được bố trí như thế nào?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Control Plane được tập trung hóa trên bộ điều khiển (SDN Controller), trong khi Data Plane vẫn nằm phân tán trên các thiết bị mạng vật lý (Switches/Routers)",
+      "B. Cả Control Plane và Data Plane đều được gộp lại trên một switch duy nhất",
+      "C. Data Plane được quản lý tập trung trên Cloud, Control Plane bị loại bỏ hoàn toàn",
+      "D. Giống hệt như mô hình mạng truyền thống không có gì thay đổi"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- Trong mạng truyền thống, cả Control Plane (tính toán bảng định tuyến) và Data Plane (chuyển tiếp gói tin) đều nằm trên từng router riêng lẻ.\n- Trong mô hình **SDN**: **Control Plane được tách ra và tập trung hóa** trên SDN Controller (như Cisco DNA Center), trong khi các thiết bị switch/router chỉ giữ lại **Data Plane** để chuyển tiếp gói tin theo chỉ thị từ controller."
+  },
+  {
+    "id": 305,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: Automation & Programmability",
+    "question": "Giao diện lập trình ứng dụng giao tiếp giữa SDN Controller với các thiết bị mạng ở tầng dưới (như Switches, Routers) được gọi là gì?",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Southbound API",
+      "B. Northbound API",
+      "C. Eastbound API",
+      "D. Westbound API"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- **Southbound API:** Giao tiếp từ Controller xuống thiết bị mạng bên dưới (ví dụ: OpenFlow, NETCONF, RESTCONF, SNMP, SSH).\n- **Northbound API:** Giao tiếp từ Controller lên các ứng dụng quản lý doanh nghiệp bên trên (thường là RESTful APIs)."
+  },
+  {
+    "id": 306,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: Automation & Programmability",
+    "question": "Trong kiến trúc REST API, phương thức (HTTP Verb) nào được sử dụng để TẠO MỚI (Create) một tài nguyên trên hệ thống mạng?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. GET",
+      "B. POST",
+      "C. PUT",
+      "D. DELETE"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- Các phương thức CRUD chuẩn trong RESTful API:\n  + **GET:** Đọc / Lấy dữ liệu (Read).\n  + **POST:** Tạo mới tài nguyên (Create).\n  + **PUT / PATCH:** Cập nhật / Sửa đổi tài nguyên (Update).\n  + **DELETE:** Xóa tài nguyên (Delete)."
+  },
+  {
+    "id": 307,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: Automation & Programmability",
+    "question": "Trong định dạng dữ liệu JSON (JavaScript Object Notation), cặp ký tự nào sau đây được sử dụng để khai báo một Danh sách / Mảng (Array)?",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Dấu ngoặc nhọn `{ }`",
+      "B. Dấu ngoặc vuông `[ ]`",
+      "C. Dấu ngoặc đơn `( )`",
+      "D. Dấu ngoặc kép `\" \"`"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- Trong cú pháp JSON:\n  + **Dấu ngoặc nhọn `{ }`:** Biểu diễn một **Object** (Tập hợp các cặp Key - Value).\n  + **Dấu ngoặc vuông `[ ]`:** Biểu diễn một **Array** (Danh sách / Mảng các phần tử có thứ tự)."
+  },
+  {
+    "id": 308,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: Automation & Programmability",
+    "question": "Công cụ quản lý cấu hình tự động (Configuration Management Tool) nào sau đây hoạt động theo mô hình không cần cài đặt phần mềm đại lý (Agentless) và sử dụng ngôn ngữ YAML để viết Playbooks?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Ansible",
+      "B. Puppet",
+      "C. Chef",
+      "D. SaltStack"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- **Ansible:** Là công cụ tự động hóa **Agentless** (không cần cài agent lên switch/router mà quản trị qua SSH/NETCONF), viết kịch bản tự động hóa bằng ngôn ngữ **YAML** dạng Playbooks rất dễ đọc.\n- **Puppet và Chef:** Đều là công cụ Agent-based (yêu cầu cài đặt phần mềm agent lên máy đích)."
+  },
+  {
+    "id": 309,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: Security Fundamentals",
+    "question": "Phương thức bảo mật mạng không dây WPA2-Enterprise sử dụng giao thức chuẩn nào để chuyển tiếp yêu cầu xác thực người dùng đến máy chủ RADIUS tập trung?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. IEEE 802.1X (EAP)",
+      "B. WPA-PSK",
+      "C. WECA",
+      "D. TKIP"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- **WPA2-Personal (Pre-Shared Key - PSK):** Sử dụng chung một mật khẩu tĩnh cho tất cả các thiết bị.\n- **WPA2-Enterprise:** Sử dụng cơ chế xác thực cổng chuẩn **IEEE 802.1X** và giao thức **EAP (Extensible Authentication Protocol)** để xác thực từng người dùng riêng lẻ thông qua máy chủ chứng thực tập trung (RADIUS hoặc TACACS+ Server)."
+  },
+  {
+    "id": 310,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: Security Fundamentals",
+    "question": "Giao thức WPA3 giới thiệu cơ chế nào để thay thế cho cơ chế bắt tay 4 bước của WPA2, giúp chống lại các cuộc tấn công bẻ khóa từ điển ngoại tuyến (Offline Dictionary Attacks)?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. SAE (Simultaneous Authentication of Equals)",
+      "B. WEP 128",
+      "C. DES-CBC",
+      "D. MD5 Checksum"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- **WPA3-Personal:** Sử dụng cơ chế **SAE (Simultaneous Authentication of Equals - giao thức bắt tay Dragonfly)** thay thế cho Pre-Shared Key (PSK). Cơ chế này ngăn chặn kẻ tấn công ghi lại gói tin để bẻ khóa mật khẩu offline và cung cấp tính năng Forward Secrecy."
+  },
+  {
+    "id": 311,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: Network Fundamentals",
+    "question": "Trong cơ chế tự động gán địa chỉ không trạng thái SLAAC của IPv6, thiết bị host gửi gói tin ICMPv6 nào để yêu cầu các Router trên mạng quảng bá thông tin tiền tố (Prefix)?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Router Solicitation (RS - ICMPv6 Type 133)",
+      "B. Router Advertisement (RA - ICMPv6 Type 134)",
+      "C. Neighbor Solicitation (NS)",
+      "D. Echo Request"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- Trong cơ chế **SLAAC (Stateless Address Autoconfiguration)**:\n  1. Thiết bị gửi bản tin **Router Solicitation (RS)** đến địa chỉ Multicast của tất cả router (`FF02::2`).\n  2. Router trên mạng phản hồi bằng bản tin **Router Advertisement (RA)** đến địa chỉ Multicast `FF02::1` chứa thông tin Prefix, độ dài prefix và Default Gateway."
+  },
+  {
+    "id": 312,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: Network Fundamentals",
+    "question": "Sự khác biệt giữa Stateless DHCPv6 và Stateful DHCPv6 là gì?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Stateless DHCPv6 chỉ cung cấp thông tin phụ trợ (DNS, domain) trong khi IP được tạo bởi SLAAC; Stateful DHCPv6 trực tiếp quản lý và cấp phát toàn bộ địa chỉ IPv6",
+      "B. Stateless DHCPv6 chỉ chạy trên IPv4",
+      "C. Stateful DHCPv6 không cần máy chủ DHCP",
+      "D. Cả hai đều cấp phát địa chỉ MAC cho client"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- **Stateless DHCPv6 (Không trạng thái):** Router cấp tiền tố qua SLAAC để host tự tạo IP; máy chủ DHCPv6 chỉ cung cấp các tùy chọn bổ sung như địa chỉ DNS Server, Domain Name.\n- **Stateful DHCPv6 (Có trạng thái):** Tương tự như DHCP trên IPv4, máy chủ DHCP theo dõi trạng thái và trực tiếp cấp phát địa chỉ IP cho client từ một dải pool quy định."
+  },
+  {
+    "id": 313,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: Security Fundamentals",
+    "question": "Tính năng Dynamic ARP Inspection (DAI) trên Switch Cisco hoạt động dựa trên cơ sở dữ liệu của tính năng nào để ngăn chặn cuộc tấn công nhiễm độc bảng ARP (ARP Poisoning)?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. DHCP Snooping Binding Database",
+      "B. MAC Address Table",
+      "C. Routing Table",
+      "D. CDP Neighbor Table"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- **DAI (Dynamic ARP Inspection):** Bắt giữ và kiểm tra tất cả các gói tin ARP Reply trên các cổng không tin cậy (Untrusted Ports).\n- DAI đối chiếu thông tin IP - MAC trong gói tin ARP với **Bảng liên kết DHCP Snooping (DHCP Snooping Binding Database)**. Nếu thông tin không khớp (dấu hiệu giả mạo danh tính IP để tấn công Man-in-the-Middle), frame ARP sẽ lập tức bị hủy bỏ."
+  },
+  {
+    "id": 314,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: Network Access",
+    "question": "Cơ chế cân bằng tải (Load Balancing) trong EtherChannel phân phối các frame dữ liệu qua các liên kết thành viên dựa trên yếu tố nào?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Sử dụng thuật toán băm (Hash algorithm) dựa trên MAC nguồn/đích hoặc IP nguồn/đích hoặc cổng L4",
+      "B. Luân chuyển vòng tròn từng gói tin tuần tự (Round-robin theo từng packet)",
+      "C. Chỉ truyền trên một dây cáp, các dây còn lại ở trạng thái ngủ",
+      "D. Dựa vào tốc độ xung nhịp CPU của switch"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- EtherChannel **KHÔNG sử dụng round-robin theo từng packet** (vì sẽ làm xáo trộn thứ tự gói tin đến đích).\n- Thay vào đó, Cisco Switch sử dụng **thuật toán băm (Hash algorithm)** tính toán trên MAC nguồn/đích, IP nguồn/đích hoặc L4 Port (`port-channel load-balance`) để đảm bảo tất cả gói tin của một phiên giao tiếp (Flow) luôn đi trên cùng một đường truyền vật lý."
+  },
+  {
+    "id": 315,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: Network Access",
+    "question": "Giao thức Cisco Discovery Protocol (CDP) hoạt động ở tầng nào của mô hình OSI và sử dụng địa chỉ Multicast MAC nào để phát bản tin quảng bá?",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Tầng 2 (Data Link), sử dụng địa chỉ Multicast 01-00-0C-CC-CC-CC",
+      "B. Tầng 3 (Network), sử dụng địa chỉ 224.0.0.5",
+      "C. Tầng 4 (Transport), sử dụng cổng UDP 520",
+      "D. Tầng 7 (Application), sử dụng HTTP"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- **CDP (Cisco Discovery Protocol):** Là giao thức độc quyền của Cisco hoạt động ở **Tầng 2 (Data Link Layer)**, độc lập với giao thức tầng mạng IP. Các thiết bị Cisco gửi bản tin CDP định kỳ (mặc định 60s) đến địa chỉ Multicast MAC dành riêng: **`01-00-0C-CC-CC-CC`**."
+  },
+  {
+    "id": 316,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: Network Access",
+    "question": "Lệnh cấu hình nào trên cổng switch Cisco cho phép truyền đồng thời dữ liệu máy tính không gắn thẻ (VLAN 10) và lưu lượng thoại gắn thẻ ưu tiên CoS (VLAN 20) đến điện thoại Cisco IP Phone?",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "single",
+    "options": [
+      "A. `switchport access vlan 10` kết hợp `switchport voice vlan 20`",
+      "B. `switchport mode trunk` kết hợp `switchport trunk allowed vlan 10,20`",
+      "C. `switchport duplex auto`",
+      "D. `spanning-tree vlan 10-20 priority 4096`"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- Cổng Access đa năng của Cisco kết nối tới Cisco IP Phone (có tích hợp switch 3 cổng):\n  + Cấu hình Data VLAN cho PC cắm sau IP Phone: `switchport access vlan 10` (untagged).\n  + Cấu hình Voice VLAN cho lưu lượng thoại của điện thoại: **`switchport voice vlan 20`** (tagged với chuẩn 802.1Q và ưu tiên 802.1p CoS = 5)."
+  },
+  {
+    "id": 317,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: IP Services",
+    "question": "Trong giao thức dự phòng định tuyến cổng mặc định chuẩn mở VRRP (Virtual Router Redundancy Protocol - RFC 5798), router nào đóng vai trò chuyển tiếp gói tin chính?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Master Router (Router có Priority cao nhất)",
+      "B. Backup Router",
+      "C. Designated Router",
+      "D. Standby Router"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- Thuật ngữ trong FHRP:\n  + **HSRP (Cisco):** Gồm **Active Router** và **Standby Router**.\n  + **VRRP (Chuẩn mở):** Gồm **Master Router** (chuyển tiếp chính, có priority cao nhất, mặc định 100) và các **Backup Routers**."
+  },
+  {
+    "id": 318,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: IP Services",
+    "question": "Giao thức GLBP (Gateway Load Balancing Protocol) của Cisco vượt trội hơn HSRP và VRRP ở điểm nổi bật nào?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Cho phép chia tải chủ động (Active/Active Load Balancing) giữa nhiều router cùng lúc cho cùng một subnet mặc định",
+      "B. Không cần cấu hình địa chỉ IP ảo",
+      "C. Chạy được trên cả cáp đồng và cáp quang",
+      "D. Tự động mã hóa lưu lượng bằng IPsec"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- HSRP và VRRP ở chế độ đơn nhóm chỉ hoạt động theo cơ chế Active/Standby (lãng phí băng thông của router dự phòng).\n- **GLBP (Gateway Load Balancing Protocol):** Cho phép tất cả các router trong nhóm cùng tham gia chuyển tiếp dữ liệu đồng thời (**Active/Active Load Sharing**) bằng cách sử dụng một AVG (Active Virtual Gateway) để trả về các địa chỉ Virtual MAC khác nhau (AVFs) cho các máy trạm khi truy vấn ARP."
+  },
+  {
+    "id": 319,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: Security Fundamentals",
+    "question": "Trong kiến trúc VPN IPsec Site-to-Site, giao thức IKE Giai đoạn 1 (IKE Phase 1 / ISAKMP) có mục đích chính là gì?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Thiết lập một đường hầm quản lý an toàn và xác thực hai đầu VPN (ISAKMP SA)",
+      "B. Trực tiếp truyền dữ liệu payload của người dùng",
+      "C. Cấp phát địa chỉ IP động cho các máy tính",
+      "D. Định tuyến lại các gói tin bị mất trên Internet"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- Quy trình thiết lập IPsec VPN:\n  + **Phase 1 (IKEv1/IKEv2 SA):** Xác thực danh tính giữa 2 thiết bị ngang hàng (Peer Authentication), sử dụng thuật toán Diffie-Hellman (DH) để trao đổi khóa bí mật chung và thiết lập kênh quản lý mã hóa an toàn (ISAKMP SA).\n  + **Phase 2 (IPsec SA):** Thương lượng các thông số ESP/AH để mã hóa và truyền tải dữ liệu người dùng thực tế."
+  },
+  {
+    "id": 320,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: Security Fundamentals",
+    "question": "Điểm khác biệt cốt lõi giữa Tường lửa thế hệ mới (Next-Generation Firewall - NGFW) và Tường lửa lọc trạng thái truyền thống (Traditional Stateful Firewall) là gì?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. NGFW có khả năng nhận diện và kiểm soát ứng dụng Lớp 7 (Application Visibility & Control), tích hợp hệ thống ngăn ngừa xâm nhập (IPS) và phân tích mã độc",
+      "B. Traditional Firewall kiểm soát được các ứng dụng điện toán đám mây tốt hơn",
+      "C. NGFW chỉ lọc gói tin dựa vào địa chỉ IP và Port Lớp 4",
+      "D. NGFW không có tính năng Stateful Inspection"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- **Traditional Stateful Firewall:** Chỉ kiểm tra trạng thái kết nối ở Lớp 3 (IP) và Lớp 4 (TCP/UDP Port), dễ bị qua mặt nếu ứng dụng độc hại chạy trên các cổng thông dụng như Port 80/443.\n- **NGFW (Cisco Firepower, Palo Alto, Fortinet):** Nhìn sâu vào tầng ứng dụng (Lớp 7 - Deep Packet Inspection DPI), nhận dạng chính xác hành vi ứng dụng (như phân biệt chat Facebook với gửi file), tích hợp IPS/IDS và bảo vệ chống mã độc tiên tiến (AMP)."
+  },
+  {
+    "id": 321,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: Automation & Programmability",
+    "question": "Trong giải pháp Cisco Software-Defined Access (SD-Access), kiến trúc Fabric Overlay sử dụng giao thức nào cho Mặt phẳng Dữ liệu (Data Plane Encapsulation) và giao thức nào cho Mặt phẳng Điều khiển (Control Plane)?",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "single",
+    "options": [
+      "A. Data Plane sử dụng VXLAN, Control Plane sử dụng LISP",
+      "B. Data Plane sử dụng OSPF, Control Plane sử dụng RIP",
+      "C. Data Plane sử dụng BGP, Control Plane sử dụng STP",
+      "D. Cả hai mặt phẳng đều sử dụng VLAN truyền thống"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- Trong Cisco SD-Access Fabric:\n  + **Control Plane:** Sử dụng **LISP (Locator/ID Separation Protocol)** để theo dõi và định vị vị trí các endpoint mà không cần quảng bá flooding bảng định tuyến liên tục.\n  + **Data Plane:** Sử dụng **VXLAN (Virtual Extensible LAN)** để đóng gói toàn bộ gói tin Lớp 2 bên trong gói tin Lớp 3 UDP, hỗ trợ gắn thẻ nhóm bảo mật (Scalable Group Tag - SGT).\n  + **Policy Plane:** Quản lý bởi Cisco ISE sử dụng Cisco TrustSec."
+  },
+  {
+    "id": 322,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: Automation & Programmability",
+    "question": "Giao thức quản lý cấu hình mạng RESTCONF (RFC 8040) sử dụng giao thức truyền tải nào và định dạng dữ liệu nào?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Sử dụng HTTP/HTTPS với dữ liệu được tuần tự hóa bằng JSON hoặc XML",
+      "B. Sử dụng SSH với dữ liệu nhị phân",
+      "C. Sử dụng Telnet với dữ liệu văn bản thô",
+      "D. Sử dụng UDP cổng 161"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- **NETCONF (RFC 6241):** Sử dụng giao thức bảo mật **SSH** (cổng 830) và định dạng dữ liệu bắt buộc là **XML**.\n- **RESTCONF (RFC 8040):** Là phiên bản RESTful hóa của NETCONF, sử dụng **HTTP/HTTPS** (cổng 80/443) và hỗ trợ cả hai định dạng dữ liệu là **JSON** và **XML**, ánh xạ trực tiếp từ mô hình dữ liệu YANG."
+  },
+  {
+    "id": 323,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: IP Connectivity",
+    "question": "Loại LSA (Link-State Advertisement) nào trong OSPF được tạo ra bởi Area Border Router (ABR) để quảng bá các tuyến đường giữa các Area khác nhau vào Area cục bộ?",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "single",
+    "options": [
+      "A. Type 1 (Router LSA)",
+      "B. Type 2 (Network LSA)",
+      "C. Type 3 (Summary LSA)",
+      "D. Type 5 (AS External LSA)"
+    ],
+    "correctAnswers": [
+      "C"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- Các loại OSPF LSA quan trọng:\n  + **Type 1 (Router LSA):** Do MỌI router sinh ra trong nội bộ 1 Area để mô tả các liên kết của nó.\n  + **Type 2 (Network LSA):** Do **DR** sinh ra trên mạng multiaccess để mô tả các router gắn vào subnet.\n  + **Type 3 (Summary LSA):** Do **ABR (Area Border Router)** sinh ra để quảng bá thông tin tóm tắt giữa các Area với nhau.\n  + **Type 5 (External LSA):** Do **ASBR** sinh ra để quảng bá các tuyến đường ngoại vi du nhập từ giao thức khác vào OSPF."
+  },
+  {
+    "id": 324,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: IP Connectivity",
+    "question": "Trong giao thức định tuyến EIGRP, điều kiện khả thi (Feasibility Condition) để một tuyến đường dự phòng trở thành Feasible Successor (FS) mà không gây vòng lặp mạng là gì?",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "single",
+    "options": [
+      "A. Reported Distance (RD) của tuyến dự phòng phải nhỏ hơn Feasible Distance (FD) của tuyến chính (Successor)",
+      "B. RD phải lớn hơn FD",
+      "C. Số lượng Hop count phải nhỏ hơn 15",
+      "D. Hai tuyến đường phải có cùng băng thông"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- Thuật toán DUAL của EIGRP chống vòng lặp (Loop-free backup):\n  + **Feasibility Condition (FC):** Một router láng giềng chỉ được công nhận là **Feasible Successor (FS)** khi và chỉ khi chi phí mà láng giềng đó công bố (Reported Distance - RD hay Advertised Distance - AD) **NHỎ HƠN** chi phí tổng tốt nhất hiện tại của Successor (Feasible Distance - FD).\n  + Công thức: **$RD < FD$**."
+  },
+  {
+    "id": 325,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: IP Connectivity",
+    "question": "Giá trị Administrative Distance (AD) mặc định của một tuyến đường được học qua giao thức định tuyến ngoài eBGP (External BGP) và nội bộ iBGP (Internal BGP) lần lượt là bao nhiêu?",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. eBGP là 20, iBGP là 200",
+      "B. eBGP là 200, iBGP là 20",
+      "C. Cả hai đều là 110",
+      "D. eBGP là 90, iBGP là 170"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- Trong Cisco IOS:\n  + Tuyến đường học từ **eBGP (kết nối giữa 2 Autonomous System khác nhau)** có độ tin cậy rất cao: **AD = 20**.\n  + Tuyến đường học từ **iBGP (kết nối giữa các router trong cùng 1 AS)** có độ tin cậy thấp hơn các giao thức nội miền (IGP): **AD = 200**."
+  },
+  {
+    "id": 326,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: Security Fundamentals",
+    "question": "Lệnh cấu hình nào sau đây trên Router Cisco tạo mật khẩu đặc quyền (Privilege EXEC mode) được mã hóa bằng thuật toán băm một chiều an toàn (MD5 hoặc SHA-256) thay vì lưu dạng văn bản thuần?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. `enable secret <password>`",
+      "B. `enable password <password>`",
+      "C. `password encryption enable`",
+      "D. `service auth-secure`"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- **`enable password`:** Lưu mật khẩu ở dạng văn bản rõ ràng (Type 0). Dù có bật `service password-encryption` thì cũng chỉ mã hóa dạng Type 7 (thuật toán Vigenère đảo chiều rất dễ giải mã bằng phần mềm online).\n- **`enable secret`:** Sử dụng hàm băm một chiều mạnh (**Type 5 MD5** hoặc **Type 8/9 SHA-256/Scrypt**), không thể đảo ngược, bảo đảm an toàn cao nhất."
+  },
+  {
+    "id": 327,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: Automation & Programmability",
+    "question": "Thuật ngữ 'Infrastructure as Code' (IaC) trong tự động hóa hạ tầng mạng đề cập đến phương pháp luận nào?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Quản lý, cấu hình và cấp phát hạ tầng mạng thông qua các file định nghĩa có thể phiên bản hóa (Version-controlled code) thay vì cấu hình thủ công qua CLI từng thiết bị",
+      "B. Chuyển đổi toàn bộ phần cứng switch thành code Python",
+      "C. Xây dựng trang web bán hàng cho công ty viễn thông",
+      "D. Sử dụng bảng tính Excel để lưu trữ danh sách thiết bị"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- **Infrastructure as Code (IaC):** Là nền tảng của tự động hóa DevOps/NetDevOps. Toàn bộ cấu hình mạng, VLAN, routing, tường lửa được khai báo bằng các file mã nguồn (YAML, JSON, Terraform HCL) và lưu trên Git. Quá trình triển khai được tự động hóa qua CI/CD pipeline, đảm bảo tính nhất quán, có thể lặp lại và dễ dàng phục hồi khi có sự cố."
+  },
+  {
+    "id": 328,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: Network Access",
+    "question": "Giao thức Spanning Tree chuẩn nhanh Rapid Spanning Tree Protocol (RSTP - IEEE 802.1w) định nghĩa 3 trạng thái cổng (Port States) nào sau đây?",
+    "level": "Thông hiểu",
+    "score": 2,
+    "type": "single",
+    "options": [
+      "A. Discarding, Learning, Forwarding",
+      "B. Blocking, Listening, Forwarding",
+      "C. Disabled, Learning, Forwarding",
+      "D. Listening, Learning, Forwarding"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- So sánh trạng thái cổng giữa STP (802.1D) và RSTP (802.1w):\n  + STP cũ gồm 5 trạng thái: Disabled, Blocking, Listening, Learning, Forwarding.\n  + **RSTP mới gộp 3 trạng thái (Disabled, Blocking, Listening) thành duy nhất một trạng thái: Discarding**.\n  + Do đó RSTP chỉ có 3 trạng thái cổng: **Discarding, Learning, Forwarding**, giúp mạng hội tụ chỉ trong vòng 1-2 giây."
+  },
+  {
+    "id": 329,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: IP Services",
+    "question": "Trong cú pháp câu lệnh cấu hình DHCP Snooping trên Switch Cisco, lệnh nào bắt buộc phải được thực thi ở chế độ Global Configuration để kích hoạt toàn diện tính năng này?",
+    "level": "Vận dụng",
+    "score": 3,
+    "type": "single",
+    "options": [
+      "A. `ip dhcp snooping` và `ip dhcp snooping vlan <vlan-id>`",
+      "B. `service dhcp snooping active`",
+      "C. `ip helper-address`",
+      "D. `switchport port-security dhcp`"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- Quy trình cấu hình DHCP Snooping trên Cisco Switch:\n  1. Bật tính năng ở mức toàn cục: `Switch(config)# ip dhcp snooping`.\n  2. Bật tính năng cho từng VLAN cụ thể: `Switch(config)# ip dhcp snooping vlan <vlan-list>`.\n  3. Đặt cổng kết nối máy chủ DHCP là cổng tin cậy: `Switch(config-if)# ip dhcp snooping trust`."
+  },
+  {
+    "id": 330,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: IP Connectivity",
+    "question": "Địa chỉ mạng nào sau đây là địa chỉ tóm tắt (Route Summarization / Supernetting) tối ưu nhất cho 4 mạng con: 172.16.0.0/24, 172.16.1.0/24, 172.16.2.0/24 và 172.16.3.0/24?",
+    "level": "Vận dụng cao",
+    "score": 4,
+    "type": "single",
+    "options": [
+      "A. 172.16.0.0/22",
+      "B. 172.16.0.0/21",
+      "C. 172.16.0.0/23",
+      "D. 172.16.0.0/16"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Phương pháp tính tóm tắt mạng (Summarization):**\n- Phân tích Octet thứ 3 của 4 mạng:\n  + `0` = `0000 0000`\n  + `1` = `0000 0001`\n  + `2` = `0000 0010`\n  + `3` = `0000 0011`\n- 6 bit đầu tiên của octet thứ 3 (`0000 00..`) hoàn toàn trùng khớp nhau.\n- Tổng số bit mạng chung: 8 (octet 1) + 8 (octet 2) + 6 (octet 3) = **22 bits**.\n- Do đó địa chỉ mạng tóm tắt tối ưu nhất là **`172.16.0.0/22`**."
+  },
+  {
+    "id": 331,
+    "chapter": "Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế",
+    "chapterId": 5,
+    "topic": "CCNA: IP Services",
+    "question": "Giao thức nào sau đây được sử dụng để đồng bộ thời gian chính xác giữa các thiết bị mạng Cisco và hệ thống máy chủ, hoạt động trên cổng UDP 123 và sử dụng cấu trúc phân cấp Stratum?",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. NTP (Network Time Protocol)",
+      "B. PTP (Precision Time Protocol)",
+      "C. SNMP",
+      "D. Syslog"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "**Giải thích chuẩn CCNA 200-301:**\n- **NTP (Network Time Protocol - RFC 5905):** Hoạt động trên cổng **UDP 123**, đồng bộ đồng hồ hệ thống giữa các thiết bị mạng.\n- Sử dụng mô hình phân cấp **Stratum**:\n  + Stratum 0: Đồng hồ nguyên tử / tín hiệu GPS độ chính xác tuyệt đối.\n  + Stratum 1: Máy chủ NTP kết nối trực tiếp tới nguồn Stratum 0.\n  + Stratum 2 đến 15: Các máy chủ và router đồng bộ từ lớp trên.\n  + Stratum 16: Thiết bị chưa được đồng bộ thời gian."
+  }
+];

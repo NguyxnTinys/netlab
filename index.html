@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ Thống Trắc Nghiệm Mạng Máy Tính - Computer Networks Cyber Exam & Game</title>
+    <!-- Tailwind CSS CDN for utility classes -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body class="bg-[#070b14] text-slate-100">
+
+    <!-- Ambient Interactive Canvas -->
+    <canvas id="network-canvas"></canvas>
+
+    <div class="app-container">
+        <!-- Navigation Header -->
+        <header class="navbar px-4 py-3 sm:px-6">
+            <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-cyan-500/30 border border-cyan-300/40">
+                        <span class="text-xl">🌐</span>
+                    </div>
+                    <div>
+                        <h1 class="text-lg sm:text-xl font-extrabold tracking-tight gradient-text">
+                            NETLAB • MẠNG MÁY TÍNH
+                        </h1>
+                        <p class="text-xs text-slate-400 font-medium hidden sm:block">
+                            Hệ thống Luyện thi 331 câu hỏi & Cyber Game Vượt Chướng Ngại Vật
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Navigation Tabs -->
+                <nav class="flex items-center gap-1.5 sm:gap-2 overflow-x-auto py-1">
+                    <button class="nav-tab active" data-target="tab-quiz">
+                        <span>📝</span> Luyện Thi
+                    </button>
+                    <button class="nav-tab" data-target="tab-game">
+                        <span>🎮</span> Cyber Runner
+                    </button>
+                    <button class="nav-tab" data-target="tab-battle">
+                        <span>⚔️</span> Đấu Trường 1v1
+                    </button>
+                    <button class="nav-tab" data-target="tab-ctf">
+                        <span>🚩</span> Thử Thách CTF
+                    </button>
+                    <button class="nav-tab" data-target="tab-bank">
+                        <span>📚</span> Ngân Hàng 331 Câu
+                    </button>
+                    <button class="nav-tab" data-target="tab-flashcard">
+                        <span>⚡</span> Flashcards
+                    </button>
+                </nav>
+
+                <!-- Sound Toggle -->
+                <div class="flex items-center gap-2">
+                    <button id="sound-toggle-btn" class="btn-secondary text-xs py-1.5 px-3">
+                        🔊 <span class="hidden sm:inline">Âm thanh: Bật</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="flex-grow max-w-7xl w-full mx-auto p-4 sm:p-6">
+            
+            <!-- ========================================== -->
+            <!-- SECTION 1: QUIZ / TEST MODE               -->
+            <!-- ========================================== -->
+            <section id="section-quiz">
+                
+                <!-- 1A: Setup / Configuration View -->
+                <div id="quiz-setup-view" class="max-w-3xl mx-auto space-y-6">
+                    <div class="text-center space-y-2 mb-8">
+                        <span class="px-3 py-1 text-xs font-bold rounded-full bg-cyan-950/80 text-cyan-300 border border-cyan-800/80 tracking-wide uppercase">
+                            Chương 1 - Chương 5 (CCNA 200-301) • 331 Câu Hỏi Đầy Đủ Đáp Án & Lý Thuyết
+                        </span>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-white">
+                            Thiết Lập Bài Kiểm Tra Mạng Máy Tính & CCNA
+                        </h2>
+                        <p class="text-sm text-slate-400 max-w-lg mx-auto">
+                            Tùy chỉnh phạm vi ôn tập theo từng chương hoặc thi thử tổng hợp với thời gian thực tế.
+                        </p>
+                    </div>
+
+                    <div class="glass-card p-6 sm:p-8 space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            
+                            <!-- Chapter Selection -->
+                            <div class="space-y-2">
+                                <label class="text-xs font-semibold uppercase tracking-wider text-slate-300">
+                                    📖 Chọn Chương Kiến Thức
+                                </label>
+                                <select id="filter-chapter" class="w-full bg-slate-900/80 border border-slate-700/80 rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-cyan-400">
+                                    <option value="all">Tất cả các chương (Tổng hợp 331 câu)</option>
+                                    <option value="1">Chương 1: Tổng quan MMT & Internet (66 câu)</option>
+                                    <option value="2">Chương 2: Chuyển mạch Ethernet (51 câu)</option>
+                                    <option value="3">Chương 3: Định tuyến IP & Chia mạng con (94 câu)</option>
+                                    <option value="4">Chương 4: Tầng giao vận TCP/UDP (60 câu)</option>
+                                    <option value="5">Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế (60 câu)</option>
+                                </select>
+                            </div>
+
+                            <!-- Question Count Selection -->
+                            <div class="space-y-2">
+                                <label class="text-xs font-semibold uppercase tracking-wider text-slate-300">
+                                    🎯 Số Lượng Câu Hỏi
+                                </label>
+                                <div class="flex gap-2">
+                                    <select id="filter-count" class="flex-grow bg-slate-900/80 border border-slate-700/80 rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-cyan-400">
+                                        <option value="10">10 câu (Khởi động)</option>
+                                        <option value="20" selected>20 câu (Luyện tập tiêu chuẩn)</option>
+                                        <option value="40">40 câu (Đề thi mẫu chuẩn)</option>
+                                        <option value="all">Tất cả câu hỏi phù hợp</option>
+                                        <option value="custom">Tùy chỉnh số câu...</option>
+                                    </select>
+                                    <input type="number" id="custom-count-input" class="w-24 bg-slate-900/80 border border-slate-700/80 rounded-xl px-3 py-2 text-sm text-slate-200 hidden" min="1" max="331" placeholder="Số câu">
+                                </div>
+                            </div>
+
+                            <!-- Question Type Filter -->
+                            <div class="space-y-2">
+                                <label class="text-xs font-semibold uppercase tracking-wider text-slate-300">
+                                    🧩 Dạng Câu Hỏi
+                                </label>
+                                <select id="filter-type" class="w-full bg-slate-900/80 border border-slate-700/80 rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-cyan-400">
+                                    <option value="all">Tất cả dạng câu hỏi</option>
+                                    <option value="single">Trắc nghiệm 1 đáp án (191 câu)</option>
+                                    <option value="multiple">Chọn nhiều đáp án - Chọn 3 (64 câu)</option>
+                                    <option value="fill">Bài tập tính toán chia mạng con IPv4 (16 câu)</option>
+                                </select>
+                            </div>
+
+                            <!-- Difficulty Level Filter -->
+                            <div class="space-y-2">
+                                <label class="text-xs font-semibold uppercase tracking-wider text-slate-300">
+                                    ⚡ Mức Độ Nhận Thức
+                                </label>
+                                <select id="filter-level" class="w-full bg-slate-900/80 border border-slate-700/80 rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-cyan-400">
+                                    <option value="all">Tất cả mức độ</option>
+                                    <option value="Nhận biết">Nhận biết (1 điểm)</option>
+                                    <option value="Thông hiểu">Thông hiểu (2 điểm)</option>
+                                    <option value="Vận dụng">Vận dụng (3 điểm)</option>
+                                    <option value="Vận dụng cao">Vận dụng cao (4 điểm)</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <!-- Mode & Timing Selection -->
+                        <div class="pt-4 border-t border-slate-800/80 grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            
+                            <!-- Practice vs Exam Mode -->
+                            <div class="space-y-2">
+                                <label class="text-xs font-semibold uppercase tracking-wider text-slate-300">
+                                    🚀 Chế Độ Làm Bài
+                                </label>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <label class="flex items-center gap-2 p-3 rounded-xl border border-slate-800 bg-slate-900/50 cursor-pointer hover:border-cyan-500/40">
+                                        <input type="radio" name="quiz-mode" value="practice" checked class="text-cyan-500 focus:ring-0">
+                                        <div class="text-xs">
+                                            <div class="font-bold text-slate-200">Luyện Tập</div>
+                                            <div class="text-slate-400">Hiện đáp án & giải thích ngay</div>
+                                        </div>
+                                    </label>
+                                    <label class="flex items-center gap-2 p-3 rounded-xl border border-slate-800 bg-slate-900/50 cursor-pointer hover:border-cyan-500/40">
+                                        <input type="radio" name="quiz-mode" value="exam" class="text-cyan-500 focus:ring-0">
+                                        <div class="text-xs">
+                                            <div class="font-bold text-slate-200">Thi Thử</div>
+                                            <div class="text-slate-400">Đếm ngược giờ, nộp bài chấm điểm</div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Time Limit Selection -->
+                            <div class="space-y-2">
+                                <label class="text-xs font-semibold uppercase tracking-wider text-slate-300">
+                                    ⏱️ Thời Gian Làm Bài (Chế Độ Thi Thử)
+                                </label>
+                                <select id="filter-time" class="w-full bg-slate-900/80 border border-slate-700/80 rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-cyan-400">
+                                    <option value="0">Không giới hạn thời gian</option>
+                                    <option value="15">15 phút</option>
+                                    <option value="30" selected>30 phút</option>
+                                    <option value="45">45 phút</option>
+                                    <option value="60">60 phút</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <!-- Shuffling Options -->
+                        <div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-slate-800/80 text-sm">
+                            <label class="flex items-center gap-2 text-slate-300 cursor-pointer">
+                                <input type="checkbox" id="shuffle-questions" checked class="rounded border-slate-700 text-cyan-500 focus:ring-0">
+                                <span>Đảo ngẫu nhiên thứ tự câu hỏi</span>
+                            </label>
+                            <label class="flex items-center gap-2 text-slate-300 cursor-pointer">
+                                <input type="checkbox" id="shuffle-options" checked class="rounded border-slate-700 text-cyan-500 focus:ring-0">
+                                <span>Đảo ngẫu nhiên các phương án</span>
+                            </label>
+                            <div id="available-count-badge" class="text-xs font-semibold text-cyan-400 px-3 py-1 rounded-full bg-cyan-950/60 border border-cyan-800/40">
+                                331 câu phù hợp
+                            </div>
+                        </div>
+
+                        <!-- Action Button -->
+                        <div class="pt-4">
+                            <button id="start-quiz-btn" class="btn-primary w-full py-3.5 text-base shadow-lg shadow-cyan-500/20">
+                                🚀 Bắt Đầu Bài Kiểm Tra Ngay
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- 1B: Active Question View -->
+                <div id="quiz-active-view" class="max-w-4xl mx-auto space-y-5 hidden">
+                    
+                    <!-- Top Bar: Progress & Timer -->
+                    <div class="glass-card p-4 flex flex-wrap items-center justify-between gap-4">
+                        <div class="flex items-center gap-3">
+                            <span id="q-counter" class="text-sm font-bold text-cyan-300">Câu 1 / 20</span>
+                            <div class="w-32 sm:w-48 bg-slate-800 rounded-full h-2 overflow-hidden">
+                                <div id="quiz-progress-fill" class="h-full bg-gradient-to-r from-cyan-400 to-indigo-500 transition-all duration-300" style="width: 5%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-3">
+                            <div id="quiz-timer-container" class="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-900 border border-slate-800 font-mono text-sm font-bold text-cyan-400">
+                                <span>⏱️</span>
+                                <span id="quiz-timer-display">30:00</span>
+                            </div>
+                            <button id="flag-q-btn" class="btn-secondary text-xs py-1.5 px-3">
+                                🏳️ Gắn cờ
+                            </button>
+                            <button id="submit-quiz-btn" class="btn-primary text-xs py-1.5 px-3 bg-gradient-to-r from-emerald-600 to-cyan-600 shadow-none">
+                                📤 Nộp bài
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Question Card -->
+                    <div class="glass-card p-6 sm:p-8 space-y-6">
+                        
+                        <!-- Badges -->
+                        <div class="flex flex-wrap items-center gap-2 text-xs">
+                            <span id="q-chapter-badge" class="px-2.5 py-1 rounded-md bg-cyan-950/80 text-cyan-300 border border-cyan-800 font-bold">Chương 1</span>
+                            <span id="q-topic-badge" class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">Tổng quan MMT</span>
+                            <span id="q-level-badge" class="px-2.5 py-1 rounded-md bg-indigo-950 text-indigo-300 border border-indigo-800">Thông hiểu</span>
+                            <span id="q-type-badge" class="px-2.5 py-1 rounded-md bg-purple-950 text-purple-300 border border-purple-800">Chọn 1</span>
+                            <span id="q-score-badge" class="px-2.5 py-1 rounded-md bg-emerald-950 text-emerald-300 border border-emerald-800 font-bold">2 điểm</span>
+                        </div>
+
+                        <!-- Question Prompt -->
+                        <div id="question-text" class="text-lg sm:text-xl font-medium text-slate-100 leading-relaxed">
+                            Nội dung câu hỏi sẽ hiển thị ở đây...
+                        </div>
+
+                        <!-- Options Container (Single / Multiple Choice) -->
+                        <div id="options-container" class="space-y-3">
+                            <!-- Dynamic Options Rendered Here -->
+                        </div>
+
+                        <!-- Fill-in Container (Subnetting calculation) -->
+                        <div id="fill-container" class="hidden space-y-4">
+                            <!-- Dynamic Inputs Rendered Here -->
+                        </div>
+
+                        <!-- Explanation Box (Appears in Practice mode or after answer) -->
+                        <div id="explanation-box" class="hidden p-4 rounded-xl border border-cyan-500/30 bg-cyan-950/20 text-sm">
+                            <div id="explanation-text" class="space-y-1"></div>
+                        </div>
+
+                        <!-- Bottom Controls -->
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-800/80">
+                            <button id="prev-q-btn" class="btn-secondary">
+                                ← Câu trước
+                            </button>
+                            <button id="next-q-btn" class="btn-primary">
+                                Câu tiếp →
+                            </button>
+                        </div>
+
+                    </div>
+
+                    <!-- Question Palette (Bottom Grid) -->
+                    <div id="palette-drawer" class="glass-card p-4 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400">
+                                🗺️ Bảng Điều Hướng Câu Hỏi (Question Map)
+                            </h3>
+                            <div class="flex items-center gap-3 text-xs text-slate-400">
+                                <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded bg-cyan-500/30 border border-cyan-500"></span> Đã làm</span>
+                                <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded bg-slate-800 border border-slate-700"></span> Chưa làm</span>
+                                <span class="flex items-center gap-1">🚩 Gắn cờ</span>
+                                <button id="toggle-palette-btn" class="ml-2 text-slate-400 hover:text-white px-2 py-0.5 rounded bg-slate-800 border border-slate-700 text-xs">Thu gọn / Mở</button>
+                            </div>
+                        </div>
+                        <div id="palette-grid" class="palette-grid">
+                            <!-- Dynamic Palette buttons -->
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- 1C: Results Dashboard View -->
+                <div id="quiz-result-view" class="max-w-4xl mx-auto space-y-6 hidden">
+                    
+                    <!-- Score Hero Card -->
+                    <div class="glass-card p-6 sm:p-8 text-center space-y-4 relative overflow-hidden">
+                        <div class="absolute -top-24 -left-24 w-48 h-48 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none"></div>
+                        <div class="absolute -bottom-24 -right-24 w-48 h-48 bg-purple-500/20 rounded-full blur-3xl pointer-events-none"></div>
+                        
+                        <span class="px-3 py-1 text-xs font-bold rounded-full bg-emerald-950/80 text-emerald-300 border border-emerald-800 tracking-wide uppercase">
+                            Hoàn Thành Bài Kiểm Tra
+                        </span>
+
+                        <div class="text-5xl sm:text-6xl font-black gradient-text my-2" id="res-score-percent">
+                            85%
+                        </div>
+                        <p id="res-score-fraction" class="text-base text-slate-300 font-semibold">
+                            17 / 20 câu đúng (34/40 điểm)
+                        </p>
+
+                        <!-- Stat Grid -->
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl mx-auto pt-4 border-t border-slate-800/80">
+                            <div class="bg-slate-900/60 p-3 rounded-xl border border-slate-800">
+                                <div class="text-xs text-slate-400">Thời gian</div>
+                                <div id="res-total-time" class="text-lg font-bold text-cyan-400">12m 45s</div>
+                            </div>
+                            <div class="bg-slate-900/60 p-3 rounded-xl border border-slate-800">
+                                <div class="text-xs text-slate-400">Câu đúng</div>
+                                <div id="res-correct-count" class="text-lg font-bold text-emerald-400">17</div>
+                            </div>
+                            <div class="bg-slate-900/60 p-3 rounded-xl border border-slate-800">
+                                <div class="text-xs text-slate-400">Câu sai</div>
+                                <div id="res-wrong-count" class="text-lg font-bold text-rose-400">3</div>
+                            </div>
+                            <div class="bg-slate-900/60 p-3 rounded-xl border border-slate-800">
+                                <div class="text-xs text-slate-400">Bỏ trống</div>
+                                <div id="res-unanswered-count" class="text-lg font-bold text-slate-400">0</div>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="flex flex-wrap items-center justify-center gap-3 pt-4">
+                            <button id="retry-quiz-btn" class="btn-secondary">
+                                🔄 Làm lại bài này
+                            </button>
+                            <button id="retry-wrong-btn" class="btn-primary bg-gradient-to-r from-rose-600 to-indigo-600 shadow-rose-500/20">
+                                🎯 Luyện lại các câu làm sai
+                            </button>
+                            <button id="new-quiz-btn" class="btn-secondary">
+                                ➕ Thiết lập bài thi mới
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Breakdown by Chapter -->
+                    <div class="glass-card p-6 space-y-4">
+                        <h3 class="text-sm font-bold uppercase tracking-wider text-slate-300">
+                            📊 Phân Tích Hiệu Suất Theo Chương
+                        </h3>
+                        <div id="chapter-breakdown-container" class="space-y-3">
+                            <!-- Dynamic Chapter Stats -->
+                        </div>
+                    </div>
+
+                    <!-- Review Questions Section -->
+                    <div class="glass-card p-6 space-y-4">
+                        <div class="flex flex-wrap items-center justify-between gap-3">
+                            <h3 class="text-sm font-bold uppercase tracking-wider text-slate-300">
+                                📝 Chi Tiết Từng Câu Hỏi & Lời Giải
+                            </h3>
+                            <select id="review-filter" class="bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-slate-300">
+                                <option value="all">Xem tất cả các câu</option>
+                                <option value="wrong">Chỉ câu làm sai</option>
+                                <option value="unanswered">Câu chưa làm</option>
+                                <option value="flagged">Câu đã gắn cờ</option>
+                            </select>
+                        </div>
+
+                        <div id="review-questions-list" class="space-y-4">
+                            <!-- Dynamic Review Cards -->
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- ========================================== -->
+            <!-- SECTION 2: CYBER RUNNER GAME               -->
+            <!-- ========================================== -->
+            <section id="section-game" class="hidden w-full space-y-3">
+                
+                <!-- Game Top Status Bar & Controls -->
+                <div class="flex flex-wrap items-center justify-between gap-3 bg-slate-900/70 p-3 sm:p-4 rounded-2xl border border-slate-800 backdrop-blur-md">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/20 border border-cyan-500/40 flex items-center justify-center text-xl shadow-lg shadow-cyan-500/20">
+                            🚀
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h2 class="text-lg sm:text-xl font-black gradient-text tracking-wide">
+                                    CYBER PACKET RUNNER
+                                </h2>
+                                <span id="game-level-badge" class="px-2.5 py-0.5 rounded-full text-xs font-bold border border-sky-500/40 bg-sky-950/60 text-sky-300">
+                                    🥈 Cấp 2: Kỹ Sư Cáp Quang
+                                </span>
+                            </div>
+                            <p class="text-xs text-slate-400 hidden sm:block">
+                                Nhảy Vượt Tường Lửa & Chướng Ngại Vật • Xác Thực Gateway • Giao Thức Hồi Sinh Khi Mất Mạng!
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-2 sm:gap-3 text-xs font-mono">
+                        <div class="bg-slate-900/90 px-3 py-1.5 rounded-xl border border-slate-800 flex items-center gap-1.5 shadow-sm">
+                            <span class="text-slate-400">ĐIỂM:</span>
+                            <span id="game-score-val" class="font-bold text-cyan-400 text-sm">0</span>
+                        </div>
+                        <div class="bg-slate-900/90 px-3 py-1.5 rounded-xl border border-slate-800 flex items-center gap-1.5 shadow-sm">
+                            <span class="text-slate-400">CÁP:</span>
+                            <span id="game-dist-val" class="font-bold text-purple-400 text-sm">0m</span>
+                        </div>
+                        <div class="bg-slate-900/90 px-3 py-1.5 rounded-xl border border-slate-800 text-sm" id="game-lives-container">
+                            ❤️ ❤️ ❤️
+                        </div>
+                        <div id="game-shield-badge" class="hidden bg-blue-950/80 px-2.5 py-1.5 rounded-xl border border-blue-500/60 text-blue-300 font-bold">
+                            🛡️ Khiên x1
+                        </div>
+
+                        <!-- Action controls -->
+                        <div class="flex items-center gap-1.5 ml-auto sm:ml-2">
+                            <button id="game-change-level-btn" class="btn-secondary text-xs py-1.5 px-3 flex items-center gap-1" title="Đổi cấp độ">
+                                <span>⚙️</span> <span class="hidden md:inline">Cấp độ</span>
+                            </button>
+                            <button id="game-pause-btn" class="btn-secondary text-xs py-1.5 px-3 flex items-center gap-1" title="Tạm dừng game">
+                                <span id="game-pause-icon">⏸️</span> <span id="game-pause-text" class="hidden md:inline">Tạm dừng</span>
+                            </button>
+                            <button id="game-fullscreen-btn" class="btn-primary text-xs py-1.5 px-3.5 flex items-center gap-1.5 shadow-md shadow-cyan-500/20" title="Chế độ toàn màn hình">
+                                <span id="game-fs-icon">⛶</span> <span id="game-fs-text">Toàn màn hình</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Game Container with Canvas & Overlays -->
+                <div id="game-container" class="relative w-full rounded-2xl overflow-hidden border border-cyan-500/30 shadow-2xl shadow-cyan-950/40 bg-slate-950 transition-all">
+                    
+                    <canvas id="game-canvas" class="w-full block"></canvas>
+
+                    <!-- Fullscreen Floating Controls (Visible only in Fullscreen) -->
+                    <div id="game-fs-hud" class="hidden absolute top-3 left-4 right-4 z-20 flex items-center justify-between pointer-events-none">
+                        <div class="flex items-center gap-2 pointer-events-auto bg-slate-950/80 backdrop-blur-md px-3 py-1.5 rounded-xl border border-slate-800 text-xs font-mono">
+                            <span id="fs-level-badge" class="font-bold text-sky-400">🥈 Kỹ Sư Cáp Quang</span>
+                            <span class="text-slate-600">|</span>
+                            <span class="text-slate-400">ĐIỂM: <strong id="fs-score-val" class="text-cyan-400">0</strong></span>
+                            <span class="text-slate-600">|</span>
+                            <span id="fs-lives-container">❤️ ❤️ ❤️</span>
+                        </div>
+                        <div class="flex items-center gap-2 pointer-events-auto">
+                            <button id="fs-exit-btn" class="bg-slate-900/90 hover:bg-slate-800 text-slate-200 hover:text-white px-3 py-1.5 rounded-xl border border-slate-700 text-xs font-semibold flex items-center gap-1 backdrop-blur-md">
+                                🗗 <span>Thu nhỏ (ESC)</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Start & Level Select Overlay -->
+                    <div id="game-start-overlay" class="absolute inset-0 bg-slate-950/90 backdrop-blur-md flex flex-col items-center justify-center p-4 sm:p-6 text-center z-20 overflow-y-auto">
+                        <div class="max-w-4xl w-full my-auto space-y-5">
+                            <div class="space-y-1">
+                                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-400/30 text-cyan-300 text-xs font-semibold uppercase tracking-wider mb-1">
+                                    🚀 THỬ THÁCH ĐƯỜNG TRUYỀN DỮ LIỆU
+                                </div>
+                                <h3 class="text-2xl sm:text-3xl font-black text-white">
+                                    CHỌN CẤP ĐỘ ĐƯỜNG TRUYỀN
+                                </h3>
+                                <p class="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto">
+                                    Chọn mức độ phù hợp với bạn. Tốc độ, tần suất chướng ngại và độ khó câu hỏi Router Gateway sẽ thay đổi theo từng cấp!
+                                </p>
+                            </div>
+
+                            <!-- 4 Clear Level Selection Cards -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-left">
+                                <!-- Level 1: Copper Novice -->
+                                <div class="level-card cursor-pointer p-4 rounded-2xl border transition-all relative flex flex-col justify-between" data-level="level1">
+                                    <div class="flex items-start justify-between">
+                                        <span class="text-3xl">🥉</span>
+                                        <span class="text-[10px] uppercase font-mono px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 font-bold">x1.0 ĐIỂM</span>
+                                    </div>
+                                    <div class="mt-2 space-y-1">
+                                        <div class="text-xs text-emerald-400 font-mono font-semibold">CẤP ĐỘ 1 • 10BASE-T</div>
+                                        <div class="text-base font-bold text-white">Tân Binh Cáp Đồng</div>
+                                        <div class="text-[11px] text-slate-300 leading-snug">Tốc độ êm dịu, chướng ngại thưa. Phù hợp làm quen phản xạ.</div>
+                                    </div>
+                                    <div class="mt-3 pt-2.5 border-t border-slate-800/80 text-[11px] space-y-1 text-slate-400 font-mono">
+                                        <div class="flex justify-between"><span>Tốc độ:</span> <span class="text-emerald-400 font-bold">Êm dịu (5.0)</span></div>
+                                        <div class="flex justify-between"><span>Thời gian trạm:</span> <span class="text-emerald-400 font-bold">⏱️ 25 giây</span></div>
+                                        <div class="flex justify-between"><span>Mạng khởi đầu:</span> <span class="text-emerald-400 font-bold">4 Tim ❤️❤️❤️❤️</span></div>
+                                        <div class="flex justify-between"><span>Bộ câu hỏi:</span> <span class="text-slate-200">Nhận biết</span></div>
+                                    </div>
+                                    <div class="level-indicator mt-3 text-center py-1.5 rounded-xl text-xs font-bold border transition-all">
+                                        Chọn Cấp 1
+                                    </div>
+                                </div>
+
+                                <!-- Level 2: Fiber Engineer -->
+                                <div class="level-card active cursor-pointer p-4 rounded-2xl border transition-all relative flex flex-col justify-between" data-level="level2">
+                                    <div class="flex items-start justify-between">
+                                        <span class="text-3xl">🥈</span>
+                                        <span class="text-[10px] uppercase font-mono px-2 py-0.5 rounded-full bg-sky-500/20 text-sky-400 border border-sky-500/40 font-bold">x1.5 ĐIỂM</span>
+                                    </div>
+                                    <div class="mt-2 space-y-1">
+                                        <div class="text-xs text-sky-400 font-mono font-semibold">CẤP ĐỘ 2 • GIGABIT</div>
+                                        <div class="text-base font-bold text-white">Kỹ Sư Cáp Quang</div>
+                                        <div class="text-[11px] text-slate-300 leading-snug">Tốc độ tiêu chuẩn, chướng ngại vật xuất hiện đều đặn.</div>
+                                    </div>
+                                    <div class="mt-3 pt-2.5 border-t border-slate-800/80 text-[11px] space-y-1 text-slate-400 font-mono">
+                                        <div class="flex justify-between"><span>Tốc độ:</span> <span class="text-sky-400 font-bold">Chuẩn (6.8)</span></div>
+                                        <div class="flex justify-between"><span>Thời gian trạm:</span> <span class="text-sky-400 font-bold">⏱️ 18 giây</span></div>
+                                        <div class="flex justify-between"><span>Mạng khởi đầu:</span> <span class="text-sky-400 font-bold">3 Tim ❤️❤️❤️</span></div>
+                                        <div class="flex justify-between"><span>Bộ câu hỏi:</span> <span class="text-slate-200">Thông hiểu</span></div>
+                                    </div>
+                                    <div class="level-indicator mt-3 text-center py-1.5 rounded-xl text-xs font-bold border transition-all">
+                                        Đang Chọn
+                                    </div>
+                                </div>
+
+                                <!-- Level 3: Routing Specialist -->
+                                <div class="level-card cursor-pointer p-4 rounded-2xl border transition-all relative flex flex-col justify-between" data-level="level3">
+                                    <div class="flex items-start justify-between">
+                                        <span class="text-3xl">🥇</span>
+                                        <span class="text-[10px] uppercase font-mono px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/40 font-bold">x2.0 ĐIỂM</span>
+                                    </div>
+                                    <div class="mt-2 space-y-1">
+                                        <div class="text-xs text-amber-400 font-mono font-semibold">CẤP ĐỘ 3 • 10G BACKBONE</div>
+                                        <div class="text-base font-bold text-white">Chuyên Gia Định Tuyến</div>
+                                        <div class="text-[11px] text-slate-300 leading-snug">Tốc độ cao, rào chắn dày đặc, câu hỏi tính toán Subnet & OSPF.</div>
+                                    </div>
+                                    <div class="mt-3 pt-2.5 border-t border-slate-800/80 text-[11px] space-y-1 text-slate-400 font-mono">
+                                        <div class="flex justify-between"><span>Tốc độ:</span> <span class="text-amber-400 font-bold">Nhanh (8.5)</span></div>
+                                        <div class="flex justify-between"><span>Thời gian trạm:</span> <span class="text-amber-400 font-bold">⏱️ 12 giây</span></div>
+                                        <div class="flex justify-between"><span>Mạng khởi đầu:</span> <span class="text-amber-400 font-bold">3 Tim ❤️❤️❤️</span></div>
+                                        <div class="flex justify-between"><span>Bộ câu hỏi:</span> <span class="text-slate-200">Vận dụng</span></div>
+                                    </div>
+                                    <div class="level-indicator mt-3 text-center py-1.5 rounded-xl text-xs font-bold border transition-all">
+                                        Chọn Cấp 3
+                                    </div>
+                                </div>
+
+                                <!-- Level 4: Cyber God -->
+                                <div class="level-card cursor-pointer p-4 rounded-2xl border transition-all relative flex flex-col justify-between" data-level="level4">
+                                    <div class="flex items-start justify-between">
+                                        <span class="text-3xl">⚡</span>
+                                        <span class="text-[10px] uppercase font-mono px-2 py-0.5 rounded-full bg-rose-500/20 text-rose-400 border border-rose-500/40 font-bold">x3.0 ĐIỂM</span>
+                                    </div>
+                                    <div class="mt-2 space-y-1">
+                                        <div class="text-xs text-rose-400 font-mono font-semibold">CẤP ĐỘ 4 • QUANTUM</div>
+                                        <div class="text-base font-bold text-white">Siêu Thần Mạng (Hardcore)</div>
+                                        <div class="text-[11px] text-slate-300 leading-snug">Tốc độ bàn thờ, chướng ngại gắt gao, câu hỏi CCNA đỉnh cao.</div>
+                                    </div>
+                                    <div class="mt-3 pt-2.5 border-t border-slate-800/80 text-[11px] space-y-1 text-slate-400 font-mono">
+                                        <div class="flex justify-between"><span>Tốc độ:</span> <span class="text-rose-400 font-bold">Siêu Tốc (10.5)</span></div>
+                                        <div class="flex justify-between"><span>Thời gian trạm:</span> <span class="text-rose-400 font-bold">⏱️ 8 giây (Cực gắt)</span></div>
+                                        <div class="flex justify-between"><span>Mạng khởi đầu:</span> <span class="text-rose-400 font-bold">2 Tim ❤️❤️ (0 Khiên)</span></div>
+                                        <div class="flex justify-between"><span>Bộ câu hỏi:</span> <span class="text-slate-200">Vận dụng cao + CCNA</span></div>
+                                    </div>
+                                    <div class="level-indicator mt-3 text-center py-1.5 rounded-xl text-xs font-bold border transition-all">
+                                        Chọn Cấp 4
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-wrap items-center justify-center gap-4 text-xs text-slate-400 bg-slate-900/80 px-4 py-2.5 rounded-xl border border-slate-800 max-w-2xl mx-auto">
+                                <span>⌨️ <strong>SPACE / MŨI TÊN LÊN</strong>: Nhảy (Hỗ trợ Nhảy Đúp 2 lần)</span>
+                                <span>📱 <strong>CHẠM MÀN HÌNH</strong> để nhảy</span>
+                                <span>⛶ <strong>F11 / NÚT TOÀN MÀN HÌNH</strong> để mở rộng</span>
+                            </div>
+
+                            <button id="game-start-btn" class="btn-primary px-10 py-3.5 text-base sm:text-lg font-bold shadow-xl shadow-cyan-500/30">
+                                ▶ KHỞI CHẠY GÓI TIN (SPACE)
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Pause Modal Overlay -->
+                    <div id="game-pause-modal" class="absolute inset-0 bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-4 z-30 hidden overflow-y-auto">
+                        <div class="glass-card max-w-md w-full my-auto max-h-[94%] overflow-y-auto p-5 text-center space-y-3 border-slate-800">
+                            <div class="text-4xl">⏸️</div>
+                            <h3 class="text-2xl font-black text-cyan-400">ĐÃ TẠM DỪNG</h3>
+                            <p class="text-xs text-slate-400">Trò chơi đang dừng. Bạn có thể tiếp tục hoặc đổi cấp độ.</p>
+
+                            <div class="grid grid-cols-2 gap-3 py-2">
+                                <div class="bg-slate-900 p-3 rounded-xl border border-slate-800">
+                                    <div class="text-xs text-slate-400">Điểm hiện tại</div>
+                                    <div id="pause-score-val" class="text-xl font-black text-cyan-400">0</div>
+                                </div>
+                                <div class="bg-slate-900 p-3 rounded-xl border border-slate-800">
+                                    <div class="text-xs text-slate-400">Cáp đã đi</div>
+                                    <div id="pause-dist-val" class="text-xl font-black text-purple-400">0m</div>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-col gap-2 pt-2">
+                                <button id="pause-resume-btn" class="btn-primary w-full py-3 text-sm font-bold">
+                                    ▶ Tiếp Tục Chạy
+                                </button>
+                                <button id="pause-change-level-btn" class="btn-secondary w-full py-2.5 text-xs font-semibold">
+                                    ⚙️ Chọn Cấp Độ Khác
+                                </button>
+                                <button id="pause-restart-btn" class="bg-slate-800 hover:bg-slate-700 text-slate-300 py-2.5 rounded-xl text-xs font-semibold">
+                                    🔄 Bắt Đầu Lại Lượt Này
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gateway Checkpoint Modal -->
+                    <div id="game-gateway-modal" class="absolute inset-0 bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-3 sm:p-5 z-30 hidden overflow-y-auto">
+                        <div class="glass-card max-w-xl w-full my-auto max-h-[96%] overflow-y-auto p-4 sm:p-6 border-cyan-500/50 shadow-2xl space-y-3.5">
+                            <div class="flex items-center justify-between border-b border-slate-800 pb-2.5">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-lg">🛡️</span>
+                                    <span class="text-xs font-bold uppercase tracking-wider text-cyan-400">CỔNG BẢO MẬT ROUTER GATEWAY</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span id="gateway-timer-badge" class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-cyan-950/80 border border-cyan-500/50 text-cyan-300 flex items-center gap-1 shadow-sm">
+                                        ⏱️ <span id="gateway-timer-text">18s</span>
+                                    </span>
+                                    <span id="gateway-q-topic" class="text-xs text-slate-400 font-medium">Chủ đề</span>
+                                </div>
+                            </div>
+                            <div class="w-full bg-slate-800 rounded-full h-2 overflow-hidden">
+                                <div id="gateway-timer-bar" class="bg-gradient-to-r from-cyan-400 to-indigo-500 h-full rounded-full transition-all duration-100 ease-linear" style="width: 100%;"></div>
+                            </div>
+                            <!-- Multiple answers guidance hint for Gateway -->
+                            <div id="gateway-multi-hint" class="hidden text-xs p-2.5 rounded-xl bg-cyan-950/80 border border-cyan-500/40 text-cyan-200 flex items-center justify-between">
+                                <span id="gateway-multi-text">🧩 <strong>Câu hỏi chọn nhiều đáp án:</strong> Hãy chọn đủ đáp án đúng</span>
+                                <span id="gateway-selected-count" class="font-mono font-bold text-amber-400">Đã chọn: 0/0</span>
+                            </div>
+                            <div id="gateway-q-text" class="text-sm sm:text-base font-semibold text-slate-100">
+                                Câu hỏi kiểm tra bảo mật gói tin...
+                            </div>
+                            <div id="gateway-options" class="space-y-2">
+                                <!-- Options buttons -->
+                            </div>
+                            <div id="gateway-feedback" class="p-3 rounded-xl bg-slate-900/80 border border-slate-800 text-center hidden">
+                                <!-- Feedback text -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Revival Protocol Modal (When 0 HP) -->
+                    <div id="game-revival-modal" class="absolute inset-0 bg-rose-950/90 backdrop-blur-lg flex items-center justify-center p-3 sm:p-5 z-40 hidden overflow-y-auto">
+                        <div class="glass-card max-w-xl w-full my-auto max-h-[96%] overflow-y-auto p-4 sm:p-6 border-rose-500 shadow-2xl shadow-rose-950/80 space-y-3.5">
+                            <div class="flex items-center justify-between border-b border-rose-900/80 pb-2.5">
+                                <div class="flex items-center gap-2 sm:gap-3">
+                                    <span class="text-2xl animate-pulse">⚡</span>
+                                    <div>
+                                        <h3 class="text-sm sm:text-base font-black text-rose-400 tracking-wider">
+                                            GIAO THỨC HỒI SINH • REVIVAL PROTOCOL
+                                        </h3>
+                                        <p class="text-xs text-slate-300">Trả lời ĐÚNG câu hỏi dưới đây để cứu mạng, hồi sinh 2 Tim!</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span id="revival-timer-badge" class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-rose-950/80 border border-rose-500/50 text-rose-300 flex items-center gap-1 shadow-sm">
+                                        ⏱️ <span id="revival-timer-text">18s</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="w-full bg-slate-800 rounded-full h-2 overflow-hidden">
+                                <div id="revival-timer-bar" class="bg-gradient-to-r from-rose-500 to-amber-500 h-full rounded-full transition-all duration-100 ease-linear" style="width: 100%;"></div>
+                            </div>
+                            <!-- Multiple answers guidance hint for Revival -->
+                            <div id="revival-multi-hint" class="hidden text-xs p-2.5 rounded-xl bg-rose-950/80 border border-rose-500/40 text-rose-200 flex items-center justify-between">
+                                <span id="revival-multi-text">⚡ <strong>Câu hỏi chọn nhiều đáp án:</strong> Hãy chọn đủ đáp án đúng</span>
+                                <span id="revival-selected-count" class="font-mono font-bold text-amber-400">Đã chọn: 0/0</span>
+                            </div>
+                            <div id="revival-q-text" class="text-sm sm:text-base font-bold text-slate-100 leading-snug">
+                                Câu hỏi thử thách hồi sinh...
+                            </div>
+                            <div id="revival-options" class="space-y-2">
+                                <!-- Revival options -->
+                            </div>
+                            <div id="revival-status" class="p-3 rounded-xl bg-slate-900 border border-slate-800 text-center">
+                                <!-- Status text -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Game Over Modal -->
+                    <div id="game-over-modal" class="absolute inset-0 bg-slate-950/95 backdrop-blur-lg flex items-center justify-center p-3 sm:p-4 z-30 hidden overflow-y-auto">
+                        <div class="glass-card max-w-md w-full my-auto max-h-[94%] overflow-y-auto p-5 text-center space-y-3 border-slate-800">
+                            <div class="text-4xl">💥</div>
+                            <h3 class="text-2xl font-black text-rose-500">MẤT KẾT NỐI MẠNG!</h3>
+                            <p class="text-xs text-slate-400">Gói tin đã dừng lại trên đường truyền cáp quang.</p>
+
+                            <div class="grid grid-cols-2 gap-3 py-2">
+                                <div class="bg-slate-900 p-3 rounded-xl border border-slate-800">
+                                    <div class="text-xs text-slate-400">Điểm số</div>
+                                    <div id="go-final-score" class="text-xl font-black text-cyan-400">0</div>
+                                </div>
+                                <div class="bg-slate-900 p-3 rounded-xl border border-slate-800">
+                                    <div class="text-xs text-slate-400">Quãng đường</div>
+                                    <div id="go-final-dist" class="text-xl font-black text-purple-400">0m</div>
+                                </div>
+                            </div>
+
+                            <div class="bg-slate-900/60 p-3 rounded-xl border border-slate-800 text-left text-xs space-y-1">
+                                <div class="flex justify-between">
+                                    <span class="text-slate-400">Cấp độ đường truyền:</span>
+                                    <span id="go-level-badge" class="font-bold text-sky-400">🥈 Kỹ Sư Cáp Quang</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-slate-400">Hệ số nhân điểm:</span>
+                                    <span id="go-score-multiplier" class="font-bold text-amber-400">x1.5</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-slate-400">Câu hỏi đã vượt qua:</span>
+                                    <span id="go-questions-count" class="font-bold text-emerald-400">0/0</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-slate-400">Danh hiệu đạt được:</span>
+                                    <span id="go-rank-badge" class="font-bold text-amber-400">Tập sự Mạng</span>
+                                </div>
+                            </div>
+
+                            <div class="pt-2 flex gap-2">
+                                <button id="go-change-level-btn" class="btn-secondary flex-1 py-3 text-xs sm:text-sm font-semibold">
+                                    ⚙️ Chọn Cấp Độ
+                                </button>
+                                <button id="go-restart-btn" class="btn-primary flex-1 py-3 text-xs sm:text-sm font-bold">
+                                    🔄 Chơi Lại
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Controls Guide Footer -->
+                <div class="glass-card p-4 flex flex-wrap items-center justify-between text-xs text-slate-400 gap-2">
+                    <div class="flex items-center gap-2">
+                        <span class="font-bold text-cyan-400">Mẹo Chơi:</span>
+                        <span>Nhảy đúp (Double Jump) trên không trung để vượt các Tường Lửa cao!</span>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <span>💎 Nhặt Bit/Byte: +Điểm</span>
+                        <span>🛡️ Nhặt Khiên: Đỡ 1 đòn va chạm</span>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- ========================================== -->
+            <!-- SECTION: CYBER DUEL 1v1 BATTLE ARENA       -->
+            <!-- ========================================== -->
+            <section id="section-battle" class="hidden max-w-5xl mx-auto space-y-6">
+                
+                <!-- Setup View -->
+                <div id="battle-setup-view" class="max-w-2xl mx-auto text-center space-y-6">
+                    <div class="space-y-2">
+                        <span class="px-3 py-1 text-xs font-bold rounded-full bg-rose-950/80 text-rose-300 border border-rose-800/80 tracking-wide uppercase">
+                            Chế Độ Đối Kháng Trực Tiếp • Cyber Duel 1v1
+                        </span>
+                        <h2 class="text-3xl font-extrabold gradient-text">
+                            ĐẤU TRƯỜNG ĐỐI KHÁNG MẠNG
+                        </h2>
+                        <p class="text-sm text-slate-400">
+                            Thi đấu tốc độ và độ chính xác! Trả lời đúng để bắn tia năng lượng rút cạn băng thông của đối thủ!
+                        </p>
+                    </div>
+
+                    <div class="glass-card p-6 sm:p-8 space-y-6 text-left">
+                        <div class="space-y-3">
+                            <label class="text-xs font-bold uppercase tracking-wider text-slate-300">
+                                ⚔️ Chọn Chế Độ Thi Đấu
+                            </label>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                <label class="flex items-center gap-3 p-4 rounded-xl border border-cyan-500/40 bg-slate-900/60 cursor-pointer hover:border-cyan-400">
+                                    <input type="radio" name="battle-mode-radio" value="pve" checked class="text-cyan-500">
+                                    <div>
+                                        <div class="font-bold text-slate-100 text-sm">🤖 Người vs Cyber AI</div>
+                                        <div class="text-xs text-slate-400">Đấu trí với AI Sentinel theo 3 cấp độ khó</div>
+                                    </div>
+                                </label>
+                                <label class="flex items-center gap-3 p-4 rounded-xl border border-rose-500/40 bg-slate-900/60 cursor-pointer hover:border-rose-400">
+                                    <input type="radio" name="battle-mode-radio" value="pvp" class="text-rose-500">
+                                    <div>
+                                        <div class="font-bold text-slate-100 text-sm">👥 2 Người Cùng Máy (PVP)</div>
+                                        <div class="text-xs text-slate-400">Đấu phím trực tiếp: P1 [1,2,3,4] vs P2 [7,8,9,0]</div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- AI Difficulty (shown when PvE) -->
+                        <div id="battle-ai-level-container" class="space-y-2">
+                            <label class="text-xs font-bold uppercase tracking-wider text-slate-300">
+                                🧠 Cấp Độ Trí Tuệ Nhân Tạo (AI Difficulty)
+                            </label>
+                            <select id="battle-ai-level" class="w-full bg-slate-900 border border-slate-700/80 rounded-xl px-4 py-2.5 text-sm text-slate-200">
+                                <option value="novice">Tân Binh Mạng (Phản ứng 6s, độ chuẩn 55%)</option>
+                                <option value="engineer" selected>Kỹ Sư Cisco (Phản ứng 4s, độ chuẩn 82%)</option>
+                                <option value="master">Siêu AI DeepMind Overlord (Phản ứng 2.5s, độ chuẩn 96%)</option>
+                            </select>
+                        </div>
+
+                        <button id="start-battle-btn" class="btn-primary w-full py-3.5 text-base bg-gradient-to-r from-cyan-600 via-indigo-600 to-rose-600 shadow-lg shadow-indigo-500/30">
+                            ⚡ BẮT ĐẦU TRẬN ĐẤU (FIGHT!)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Arena View (Split Screen) -->
+                <div id="battle-arena-view" class="space-y-4 hidden">
+                    
+                    <!-- Shared Central Question Header -->
+                    <div class="glass-card p-5 text-center space-y-2 border-indigo-500/40 shadow-xl relative overflow-hidden">
+                        <div class="text-xs font-bold uppercase tracking-wider text-indigo-400" id="battle-q-topic">
+                            Chương Kiến Thức • Chủ Đề
+                        </div>
+                        <div id="battle-q-text" class="text-base sm:text-lg font-bold text-slate-100 leading-snug max-w-3xl mx-auto">
+                            Nội dung câu hỏi đối kháng...
+                        </div>
+                    </div>
+
+                    <!-- Split Battle Arena Grid -->
+                    <div id="battle-arena-inner" class="relative grid grid-cols-1 md:grid-cols-2 gap-4">
+                        
+                        <!-- Player 1 Card (Left - Cyan) -->
+                        <div id="p1-card" class="battle-card p1-card-theme space-y-4">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-2xl">👤</span>
+                                    <div>
+                                        <div class="font-extrabold text-cyan-300 text-sm">NGƯỜI CHƠI 1 (P1)</div>
+                                        <div class="text-[10px] text-slate-400">Phím tắt: [1] [2] [3] [4] hoặc A,B,C,D</div>
+                                    </div>
+                                </div>
+                                <div id="p1-streak-badge" class="hidden text-xs px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 font-bold border border-amber-500/40 animate-pulse">
+                                    🔥 x3 OVERCLOCK
+                                </div>
+                            </div>
+
+                            <!-- HP Bar P1 -->
+                            <div class="space-y-1">
+                                <div class="flex justify-between text-xs font-mono font-bold">
+                                    <span class="text-slate-400">BĂNG THÔNG MẠNG (HP)</span>
+                                    <span id="p1-hp-text" class="text-cyan-400">100 / 100 HP</span>
+                                </div>
+                                <div class="w-full bg-slate-900 rounded-full h-3.5 p-0.5 border border-slate-700/60 overflow-hidden">
+                                    <div id="p1-hp-fill" class="h-full bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full transition-all duration-300" style="width: 100%;"></div>
+                                </div>
+                            </div>
+
+                            <!-- Options Container P1 -->
+                            <div id="p1-options-container" class="space-y-2">
+                                <!-- Dynamic Options P1 -->
+                            </div>
+
+                            <!-- Lockout Overlay P1 -->
+                            <div id="p1-lockout-overlay" class="absolute inset-0 bg-slate-950/85 backdrop-blur-sm rounded-xl flex flex-col items-center justify-center p-4 text-center hidden z-20">
+                                <div class="text-3xl animate-bounce">🔒</div>
+                                <div class="font-black text-rose-400 text-sm mt-1">SYN FLOOD LOCKOUT!</div>
+                                <div class="text-xs text-slate-300">Trả lời sai! Cổng kết nối bị khóa trong 2 giây...</div>
+                            </div>
+                        </div>
+
+                        <!-- Player 2 / AI Card (Right - Rose) -->
+                        <div id="p2-card" class="battle-card p2-card-theme space-y-4">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <span id="p2-avatar" class="text-2xl">🤖</span>
+                                    <div>
+                                        <div id="p2-display-name" class="font-extrabold text-rose-300 text-sm">AI SENTINEL</div>
+                                        <div class="text-[10px] text-slate-400">Phím tắt (PVP): [7] [8] [9] [0]</div>
+                                    </div>
+                                </div>
+                                <div id="p2-streak-badge" class="hidden text-xs px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 font-bold border border-amber-500/40 animate-pulse">
+                                    🔥 x3 OVERCLOCK
+                                </div>
+                            </div>
+
+                            <!-- HP Bar P2 -->
+                            <div class="space-y-1">
+                                <div class="flex justify-between text-xs font-mono font-bold">
+                                    <span class="text-slate-400">BĂNG THÔNG MẠNG (HP)</span>
+                                    <span id="p2-hp-text" class="text-rose-400">100 / 100 HP</span>
+                                </div>
+                                <div class="w-full bg-slate-900 rounded-full h-3.5 p-0.5 border border-slate-700/60 overflow-hidden">
+                                    <div id="p2-hp-fill" class="h-full bg-gradient-to-r from-rose-500 to-orange-500 rounded-full transition-all duration-300" style="width: 100%;"></div>
+                                </div>
+                            </div>
+
+                            <!-- Options Container P2 -->
+                            <div id="p2-options-container" class="space-y-2">
+                                <!-- Dynamic Options P2 -->
+                            </div>
+
+                            <!-- Lockout Overlay P2 -->
+                            <div id="p2-lockout-overlay" class="absolute inset-0 bg-slate-950/85 backdrop-blur-sm rounded-xl flex flex-col items-center justify-center p-4 text-center hidden z-20">
+                                <div class="text-3xl animate-bounce">🔒</div>
+                                <div class="font-black text-rose-400 text-sm mt-1">SYN FLOOD LOCKOUT!</div>
+                                <div class="text-xs text-slate-300">Trả lời sai! Cổng kết nối bị khóa trong 2 giây...</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Battle Result Modal -->
+                <div id="battle-result-view" class="max-w-md mx-auto glass-card p-6 sm:p-8 text-center space-y-5 hidden border-indigo-500/40">
+                    <div id="battle-res-title" class="text-3xl font-black text-white">🏆 VICTORY!</div>
+                    <p id="battle-res-subtitle" class="text-xs text-slate-300">Thông số tổng kết trận đấu</p>
+                    
+                    <div class="grid grid-cols-2 gap-3 py-2">
+                        <div id="battle-res-stats-p1" class="bg-slate-900/80 p-3 rounded-xl border border-cyan-800/40 text-left space-y-1"></div>
+                        <div id="battle-res-stats-p2" class="bg-slate-900/80 p-3 rounded-xl border border-rose-800/40 text-left space-y-1"></div>
+                    </div>
+
+                    <div class="flex gap-3 pt-2">
+                        <button id="battle-rematch-btn" class="btn-primary flex-1 py-2.5">
+                            🔄 Tái Đấu Ngay
+                        </button>
+                        <button id="battle-exit-btn" class="btn-secondary flex-1 py-2.5">
+                            ⚙️ Đổi Chế Độ
+                        </button>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- ========================================== -->
+            <!-- SECTION: NETWORK CTF CHALLENGES            -->
+            <!-- ========================================== -->
+            <section id="section-ctf" class="hidden max-w-6xl mx-auto space-y-5">
+                
+                <!-- CTF Header -->
+                <div class="flex flex-wrap items-center justify-between gap-4">
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-2xl">🚩</span>
+                            <h2 class="text-xl sm:text-2xl font-black gradient-text">
+                                NETWORK CTF • THỬ THÁCH HACKING & BẢO MẬT MẠNG
+                            </h2>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-0.5">
+                            Capture The Packet / Flag: 8 kịch bản điều tra gói tin Wireshark, bẻ khóa mạng con, bypass ACL và API Token!
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="px-3.5 py-1.5 rounded-xl bg-purple-950/70 border border-purple-700 text-xs font-mono font-bold text-purple-300">
+                            ĐIỂM: <span id="ctf-total-points" class="text-cyan-300 font-extrabold">0 PTS</span>
+                        </div>
+                        <div id="ctf-solved-count" class="px-3 py-1.5 rounded-xl bg-emerald-950/70 border border-emerald-700 text-xs font-bold text-emerald-300">
+                            0 / 8 Cờ Đã Giải
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main CTF 2-Column Layout -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+                    
+                    <!-- Left Column: Challenge Navigator -->
+                    <div class="lg:col-span-4 space-y-2">
+                        <div class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">
+                            📜 DANH SÁCH 8 PHÒNG LAB THỰC CHIẾN
+                        </div>
+                        <div id="ctf-challenge-nav" class="space-y-2 max-h-[580px] overflow-y-auto pr-1">
+                            <!-- Dynamic CTF Nav buttons -->
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Active Challenge Arena & Terminal -->
+                    <div class="lg:col-span-8 space-y-4">
+                        
+                        <!-- Challenge Card -->
+                        <div class="glass-card p-6 space-y-4 border-cyan-500/30">
+                            <div class="flex flex-wrap justify-between items-center gap-2 border-b border-slate-800 pb-3">
+                                <div>
+                                    <span id="ctf-card-category" class="text-xs px-2.5 py-1 rounded-md bg-cyan-950 text-cyan-300 border border-cyan-800 font-bold">Phân Tích Giao Thức</span>
+                                    <span id="ctf-card-difficulty" class="ml-2 text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-300">Dễ</span>
+                                </div>
+                                <span id="ctf-card-points" class="text-xs font-mono font-bold text-emerald-400 bg-emerald-950/60 px-2.5 py-1 rounded-md border border-emerald-800">+100 Điểm</span>
+                            </div>
+
+                            <h3 id="ctf-card-title" class="text-lg font-extrabold text-slate-100">
+                                Tiêu đề thử thách...
+                            </h3>
+
+                            <p id="ctf-card-desc" class="text-sm text-slate-300 leading-relaxed">
+                                Mô tả kịch bản...
+                            </p>
+
+                            <!-- Raw Code / Packet Dump Box -->
+                            <div class="space-y-1">
+                                <div class="text-xs font-mono text-slate-400">📄 Dữ liệu trích xuất (Packet Log / Config):</div>
+                                <div id="ctf-card-code" class="cyber-code-block"></div>
+                            </div>
+
+                            <!-- Hint Box Accordion -->
+                            <div class="space-y-2">
+                                <button id="ctf-hint-toggle-btn" class="text-xs text-amber-400 hover:text-amber-300 flex items-center gap-1 font-semibold">
+                                    💡 <span>Xem gợi ý giải mã cờ (Hint)</span>
+                                </button>
+                                <div id="ctf-hint-box" class="p-3 rounded-xl bg-amber-950/20 border border-amber-500/40 text-xs text-amber-200 hidden leading-relaxed">
+                                    <span id="ctf-hint-text">Nội dung gợi ý...</span>
+                                </div>
+                            </div>
+
+                            <!-- Flag Submission Input Group -->
+                            <div class="pt-2 border-t border-slate-800/80 space-y-3">
+                                <div class="flex flex-col sm:flex-row gap-2">
+                                    <input type="text" id="ctf-flag-input" placeholder="Nhập cờ định dạng FLAG{...}" class="flex-grow bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-cyan-300 font-mono focus:outline-none focus:border-cyan-400">
+                                    <button id="ctf-submit-btn" class="btn-primary sm:w-48 whitespace-nowrap">
+                                        🚩 Nộp Cờ (Submit)
+                                    </button>
+                                </div>
+                                <div id="ctf-status-box" class="hidden"></div>
+                            </div>
+                        </div>
+
+                        <!-- Simulated Cyber Terminal -->
+                        <div class="cyber-terminal">
+                            <div class="flex items-center justify-between px-3 py-1.5 bg-slate-900 border-b border-purple-900/40 text-xs text-slate-400">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
+                                    <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                                    <span class="font-mono text-slate-300 font-bold ml-1">NETLAB CLI TERMINAL v2.4</span>
+                                </div>
+                                <span class="text-[11px] text-slate-500">Gõ 'help' để xem danh sách lệnh</span>
+                            </div>
+                            <div id="ctf-terminal-output" class="cyber-terminal-output font-mono">
+                                <div class="text-purple-400 font-bold">[!] NETLAB Virtual Terminal ready. All traffic monitored.</div>
+                                <div class="text-slate-400">Gõ "list", "cat", "hint" hoặc "flag FLAG{...}" để tương tác trực tiếp với console.</div>
+                            </div>
+                            <div class="flex items-center px-3 py-2 bg-slate-950 border-t border-slate-900">
+                                <span class="text-cyan-400 font-mono text-xs mr-2">guest@netlab:~$</span>
+                                <input type="text" id="ctf-terminal-input" placeholder="Nhập lệnh hoặc cờ..." class="w-full bg-transparent border-0 text-slate-200 font-mono text-xs focus:outline-none">
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- ========================================== -->
+            <!-- SECTION 3: QUESTION BANK EXPLORER          -->
+            <!-- ========================================== -->
+            <section id="section-bank" class="hidden max-w-5xl mx-auto space-y-5">
+                
+                <div class="flex flex-wrap items-center justify-between gap-4">
+                    <div>
+                        <h2 class="text-xl sm:text-2xl font-black gradient-text">
+                            NGÂN HÀNG 331 CÂU HỎI MẠNG MÁY TÍNH & CCNA 200-301
+                        </h2>
+                        <p class="text-xs text-slate-400">
+                            Tra cứu toàn bộ câu hỏi, phương án, đáp án chính xác và lời giải chi tiết.
+                        </p>
+                    </div>
+                    <div id="bank-count-badge" class="px-3 py-1 text-xs font-bold rounded-full bg-cyan-950 text-cyan-300 border border-cyan-800">
+                        331 / 331 câu
+                    </div>
+                </div>
+
+                <!-- Filters & Search Toolbar -->
+                <div class="glass-card p-4 grid grid-cols-1 sm:grid-cols-4 gap-3 text-sm">
+                    <input type="text" id="bank-search" placeholder="🔍 Tìm kiếm từ khóa câu hỏi, giao thức, thiết bị, CCNA..." class="sm:col-span-2 bg-slate-900 border border-slate-700/80 rounded-xl px-4 py-2 text-slate-200 focus:outline-none focus:border-cyan-400">
+                    
+                    <select id="bank-chapter-filter" class="bg-slate-900 border border-slate-700/80 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-cyan-400">
+                        <option value="all">Tất cả các chương</option>
+                        <option value="1">Chương 1: Tổng quan MMT (66 câu)</option>
+                        <option value="2">Chương 2: Chuyển mạch Ethernet (51 câu)</option>
+                        <option value="3">Chương 3: Định tuyến IP & Subnet (94 câu)</option>
+                        <option value="4">Chương 4: Tầng giao vận TCP/UDP (60 câu)</option>
+                        <option value="5">Chương 5: CCNA 200-301 Quốc Tế (60 câu)</option>
+                    </select>
+
+                    <div class="flex items-center justify-between sm:justify-end gap-3">
+                        <select id="bank-level-filter" class="bg-slate-900 border border-slate-700/80 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-cyan-400">
+                            <option value="all">Mức độ</option>
+                            <option value="Nhận biết">Nhận biết</option>
+                            <option value="Thông hiểu">Thông hiểu</option>
+                            <option value="Vận dụng">Vận dụng</option>
+                            <option value="Vận dụng cao">Vận dụng cao</option>
+                        </select>
+                        <label class="flex items-center gap-1.5 text-xs text-slate-300 whitespace-nowrap cursor-pointer">
+                            <input type="checkbox" id="bank-show-answers" checked class="rounded border-slate-700 text-cyan-500 focus:ring-0">
+                            <span>Hiện đáp án</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Questions List -->
+                <div id="bank-list" class="space-y-3">
+                    <!-- Dynamic Questions Rendered Here -->
+                </div>
+
+            </section>
+
+            <!-- ========================================== -->
+            <!-- SECTION 4: 3D FLASHCARDS                   -->
+            <!-- ========================================== -->
+            <section id="section-flashcard" class="hidden max-w-3xl mx-auto space-y-6">
+                
+                <div class="text-center space-y-2">
+                    <h2 class="text-2xl sm:text-3xl font-black gradient-text">
+                        FLASHCARDS ÔN NHANH KIẾN THỨC MẠNG & CCNA
+                    </h2>
+                    <p class="text-xs sm:text-sm text-slate-400">
+                        Bấm vào thẻ hoặc nút lật thẻ để kiểm tra trí nhớ và xem ngay đáp án chính xác!
+                    </p>
+                </div>
+
+                <!-- Flashcard Chapter Filter & Counter -->
+                <div class="flex items-center justify-between">
+                    <select id="fc-chapter-select" class="bg-slate-900 border border-slate-800 rounded-xl px-3 py-1.5 text-xs text-slate-200">
+                        <option value="all">Tất cả các chương (331 thẻ)</option>
+                        <option value="1">Chương 1: Tổng quan MMT</option>
+                        <option value="2">Chương 2: Chuyển mạch Ethernet</option>
+                        <option value="3">Chương 3: Định tuyến & Chia mạng con</option>
+                        <option value="4">Chương 4: Tầng giao vận TCP/UDP</option>
+                        <option value="5">Chương 5: Luyện thi CCNA 200-301</option>
+                    </select>
+                    <div id="fc-counter" class="text-xs font-mono font-bold text-cyan-400 bg-slate-900 px-3 py-1 rounded-full border border-slate-800">
+                        1 / 331
+                    </div>
+                </div>
+
+                <!-- 3D Card -->
+                <div class="flashcard-wrapper">
+                    <div id="fc-card" class="flashcard">
+                        
+                        <!-- Front Face -->
+                        <div class="flashcard-face flashcard-front">
+                            <div class="flex justify-between items-center text-xs">
+                                <span id="fc-chapter" class="px-2.5 py-1 rounded-md bg-cyan-950 text-cyan-300 font-bold border border-cyan-800">Chương 1</span>
+                                <span id="fc-topic" class="text-slate-400 font-medium">Chủ đề</span>
+                            </div>
+                            <div id="fc-question" class="text-lg sm:text-xl font-semibold text-slate-100 my-auto text-center leading-relaxed">
+                                Nội dung câu hỏi...
+                            </div>
+                            <div class="text-center text-xs text-cyan-400 font-medium">
+                                🔄 Nhấp vào thẻ để lật xem đáp án
+                            </div>
+                        </div>
+
+                        <!-- Back Face -->
+                        <div class="flashcard-face flashcard-back">
+                            <div class="flex justify-between items-center text-xs">
+                                <span class="px-2.5 py-1 rounded-md bg-purple-950 text-purple-300 font-bold border border-purple-800">ĐÁP ÁN & GIẢI THÍCH</span>
+                                <span class="text-slate-400">Ghi nhớ</span>
+                            </div>
+                            <div id="fc-answer" class="my-auto">
+                                <!-- Dynamic Answer Content -->
+                            </div>
+                            <div class="text-center text-xs text-purple-400 font-medium">
+                                🔄 Nhấp lại để quay về câu hỏi
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Navigation Controls -->
+                <div class="flex items-center justify-center gap-4">
+                    <button id="fc-prev-btn" class="btn-secondary px-5 py-2.5">
+                        ← Thẻ trước
+                    </button>
+                    <button id="fc-flip-btn" class="btn-primary px-6 py-2.5 bg-gradient-to-r from-purple-600 to-indigo-600">
+                        🔄 Lật thẻ
+                    </button>
+                    <button id="fc-next-btn" class="btn-secondary px-5 py-2.5">
+                        Thẻ tiếp →
+                    </button>
+                </div>
+
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="mt-auto py-4 border-t border-slate-800/80 text-center text-xs text-slate-500">
+            Hệ thống Bài thi, Cyber Runner, Đấu Trường 1v1 & Thử Thách CTF Mạng Máy Tính • CCNA 200-301 (331 Câu Hỏi)
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/sound.js"></script>
+    <script src="js/network_bg.js"></script>
+    <script src="js/quiz_data.js"></script>
+    <script src="js/quiz.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/battle.js"></script>
+    <script src="js/ctf.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
