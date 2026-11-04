@@ -223,7 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         ${q.options.map(opt => {
                             const isCorrect = (q.correctAnswers || []).some(a => opt.startsWith(a));
                             const highlight = (showAnswers && isCorrect) ? 'text-emerald-400 font-bold bg-emerald-950/30 border border-emerald-500/40' : 'bg-slate-900/40 border border-slate-800';
-                            return `<div class="p-2 rounded-lg ${highlight}">${opt}</div>`;
+                            return `<div class="p-2 rounded-lg ${highlight}">${window.escapeHTML(opt)}</div>`;
                         }).join('')}
                     </div>`;
                 }
@@ -233,8 +233,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="flex items-center gap-2">
                             <span class="px-2 py-0.5 rounded text-xs font-mono font-bold bg-cyan-950/80 text-cyan-300 border border-cyan-800/60">#${q.id}</span>
                             <span class="px-2 py-0.5 rounded text-xs bg-slate-800 text-slate-300">Chương ${q.chapterId}</span>
-                            <span class="text-xs font-semibold text-indigo-300">${q.topic || ''}</span>
-                            <span class="px-2 py-0.5 rounded text-xs bg-slate-800 text-slate-400">${q.level || 'Thông hiểu'}</span>
+                            <span class="text-xs font-semibold text-indigo-300">${window.escapeHTML(q.topic || '')}</span>
+                            <span class="px-2 py-0.5 rounded text-xs bg-slate-800 text-slate-400">${window.escapeHTML(q.level || 'Thông hiểu')}</span>
                         </div>
                         <div class="flex items-center gap-2">
                             <span class="px-2 py-0.5 rounded text-xs bg-slate-800 text-slate-400">${q.score || 1} điểm</span>
@@ -248,12 +248,12 @@ document.addEventListener('DOMContentLoaded', () => {
                             ` : ''}
                         </div>
                     </div>
-                    <div class="font-medium text-slate-100 my-2">${q.question.replace(/\n/g, '<br>')}</div>
+                    <div class="font-medium text-slate-100 my-2">${window.formatQuestionText(q.question)}</div>
                     ${optionsHtml}
                     ${showAnswers ? `
                         <div class="mt-3 pt-2 border-t border-slate-800 text-xs flex flex-wrap justify-between items-center gap-2">
-                            <div><strong class="text-emerald-400">Đáp án đúng:</strong> <span class="font-bold text-cyan-300">${correctStr}</span></div>
-                            <div class="text-slate-400">💡 <em>${q.explanation || ''}</em></div>
+                            <div><strong class="text-emerald-400">Đáp án đúng:</strong> <span class="font-bold text-cyan-300">${window.escapeHTML(correctStr)}</span></div>
+                            <div class="text-slate-400">💡 <em>${window.escapeHTML(q.explanation || '')}</em></div>
                         </div>
                     ` : ''}
                 `;
@@ -353,15 +353,15 @@ document.addEventListener('DOMContentLoaded', () => {
             if (fcCounter) fcCounter.textContent = `${flashcardIdx + 1} / ${flashcardList.length}`;
             if (fcChapter) fcChapter.textContent = `Chương ${q.chapterId}`;
             if (fcTopic) fcTopic.textContent = q.topic || '';
-            if (fcQ) fcQ.innerHTML = q.question.replace(/\n/g, '<br>');
+            if (fcQ) fcQ.innerHTML = window.formatQuestionText(q.question);
 
             const correctStr = q.type === 'fill' ? (q.correctAnswers || []).join('; ') : (q.correctAnswers || []).join(', ');
             if (fcA) {
                 fcA.innerHTML = `
                     <div class="text-xs text-cyan-400 font-bold mb-1">ĐÁP ÁN CHÍNH XÁC:</div>
-                    <div class="text-lg font-bold text-emerald-400 mb-3">${correctStr}</div>
+                    <div class="text-lg font-bold text-emerald-400 mb-3">${window.escapeHTML(correctStr)}</div>
                     <div class="text-sm text-slate-300 bg-slate-900/60 p-3 rounded-lg border border-slate-800">
-                        💡 <strong>Giải thích / Ghi nhớ:</strong><br>${q.explanation || 'Không có ghi chú.'}
+                        💡 <strong>Giải thích / Ghi nhớ:</strong><br>${window.escapeHTML(q.explanation || 'Không có ghi chú.')}
                     </div>
                 `;
             }

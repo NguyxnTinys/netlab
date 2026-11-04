@@ -368,7 +368,7 @@ class QuizEngine {
         }
 
         // Question text
-        this.elements.qText.innerHTML = q.question.replace(/\n/g, '<br>');
+        this.elements.qText.innerHTML = window.formatQuestionText ? window.formatQuestionText(q.question) : q.question.replace(/\n/g, '<br>');
 
         // Render input containers
         this.elements.explanationBox.classList.add('hidden');
@@ -447,9 +447,10 @@ class QuizEngine {
                 }
             }
 
+            const safeOptText = window.escapeHTML ? window.escapeHTML(optStr.substring(3).trim()) : optStr.substring(3).trim();
             btn.innerHTML = `
                 <div class="option-badge">${letter}</div>
-                <div class="option-text">${optStr.substring(3).trim()}</div>
+                <div class="option-text">${safeOptText}</div>
                 ${isSelected ? '<span class="text-cyan-400 font-bold ml-auto text-sm">✓</span>' : ''}
             `;
 
@@ -592,11 +593,13 @@ class QuizEngine {
             ? '<span class="text-emerald-400 font-bold text-base">🎉 Chính xác! Bạn đã chọn đủ và đúng tất cả đáp án.</span>' 
             : '<span class="text-rose-400 font-bold text-base">❌ Chưa chính xác! Phải chọn đủ và đúng tất cả đáp án mới được tính điểm.</span>';
         const correctStr = q.type === 'fill' ? q.correctAnswers.join('; ') : q.correctAnswers.join(', ');
+        const safeCorrectStr = window.escapeHTML ? window.escapeHTML(correctStr) : correctStr;
+        const safeExplanation = window.escapeHTML ? window.escapeHTML(q.explanation || '') : (q.explanation || '');
 
         this.elements.explanationText.innerHTML = `
             ${header}
-            <div class="mt-2 text-slate-200"><strong>Đáp án đúng:</strong> <span class="text-cyan-300 font-bold">${correctStr}</span></div>
-            <div class="mt-1 text-slate-300">💡 <strong>Giải thích / Gợi ý:</strong> ${q.explanation}</div>
+            <div class="mt-2 text-slate-200"><strong>Đáp án đúng:</strong> <span class="text-cyan-300 font-bold">${safeCorrectStr}</span></div>
+            <div class="mt-1 text-slate-300">💡 <strong>Giải thích / Gợi ý:</strong> ${safeExplanation}</div>
         `;
     }
 
@@ -839,23 +842,29 @@ class QuizEngine {
             const card = document.createElement('div');
             card.className = `review-card ${isCorrect ? 'border-emerald-500/40 bg-emerald-950/10' : 'border-rose-500/40 bg-rose-950/10'}`;
 
-            const userAnsStr = answered ? (q.type === 'fill' ? this.userAnswers[q.id].join('; ') : this.userAnswers[q.id].join(', ')) : '<span class="text-slate-500 italic">Chưa trả lời</span>';
+            const userAnsStr = answered ? (q.type === 'fill' ? this.userAnswers[q.id].join('; ') : this.userAnswers[q.id].join(', ')) : 'Chưa trả lời';
             const correctAnsStr = q.type === 'fill' ? q.correctAnswers.join('; ') : q.correctAnswers.join(', ');
+
+            const safeUserAns = answered ? (window.escapeHTML ? window.escapeHTML(userAnsStr) : userAnsStr) : '<span class="text-slate-500 italic">Chưa trả lời</span>';
+            const safeCorrectAns = window.escapeHTML ? window.escapeHTML(correctAnsStr) : correctAnsStr;
+            const safeExplanation = window.escapeHTML ? window.escapeHTML(q.explanation || '') : (q.explanation || '');
+            const safeTopic = window.escapeHTML ? window.escapeHTML(q.topic || '') : (q.topic || '');
+            const safeQText = window.formatQuestionText ? window.formatQuestionText(q.question) : q.question.replace(/\n/g, '<br>');
 
             card.innerHTML = `
                 <div class="flex justify-between items-start mb-2">
                     <span class="font-bold ${isCorrect ? 'text-emerald-400' : 'text-rose-400'}">
                         Câu ${idx + 1}: ${isCorrect ? '✅ Đúng' : '❌ Sai'} (${q.score} điểm)
                     </span>
-                    <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-300">${q.topic}</span>
+                    <span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-300">${safeTopic}</span>
                 </div>
-                <div class="text-slate-100 font-medium mb-3">${q.question.replace(/\n/g, '<br>')}</div>
+                <div class="text-slate-100 font-medium mb-3">${safeQText}</div>
                 <div class="text-sm space-y-1 mb-3">
-                    <div class="text-slate-300">Lựa chọn của bạn: <strong>${userAnsStr}</strong></div>
-                    <div class="text-cyan-300 font-semibold">Đáp án chính xác: <strong>${correctAnsStr}</strong></div>
+                    <div class="text-slate-300">Lựa chọn của bạn: <strong>${safeUserAns}</strong></div>
+                    <div class="text-cyan-300 font-semibold">Đáp án chính xác: <strong>${safeCorrectAns}</strong></div>
                 </div>
                 <div class="text-xs text-slate-400 bg-slate-900/60 p-2.5 rounded-lg border border-slate-700/50">
-                    💡 <strong>Giải thích:</strong> ${q.explanation}
+                    💡 <strong>Giải thích:</strong> ${safeExplanation}
                 </div>
             `;
             this.elements.reviewList.appendChild(card);

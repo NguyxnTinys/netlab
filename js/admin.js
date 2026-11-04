@@ -222,8 +222,8 @@ class AdminDashboard {
                         <div class="flex items-center gap-2">
                             <span class="px-2 py-0.5 rounded text-xs font-mono font-bold bg-cyan-950 text-cyan-300 border border-cyan-800">#${q.id}</span>
                             <span class="px-2 py-0.5 rounded text-xs bg-slate-800 text-slate-300 font-medium">Chương ${q.chapterId}</span>
-                            <span class="text-xs text-indigo-300 font-semibold">${q.topic || ''}</span>
-                            <span class="px-2 py-0.5 rounded text-[11px] bg-slate-800/80 text-slate-400">${q.level || 'Thông hiểu'}</span>
+                            <span class="text-xs text-indigo-300 font-semibold">${window.escapeHTML(q.topic || '')}</span>
+                            <span class="px-2 py-0.5 rounded text-[11px] bg-slate-800/80 text-slate-400">${window.escapeHTML(q.level || 'Thông hiểu')}</span>
                         </div>
                         <div class="flex items-center gap-1.5 ml-auto">
                             <button class="edit-q-btn px-2.5 py-1 rounded-lg text-xs bg-slate-800 hover:bg-slate-700 text-cyan-300 border border-slate-700" data-id="${q.id}">
@@ -236,19 +236,19 @@ class AdminDashboard {
                     </div>
 
                     <div class="text-sm font-semibold text-slate-100">
-                        ${q.question}
+                        ${window.formatQuestionText(q.question)}
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-xs text-slate-300 pt-1">
                         ${(q.options || []).map(opt => {
                             const isCorrect = (q.correctAnswers || []).some(a => opt.startsWith(a));
-                            return `<div class="p-1.5 rounded ${isCorrect ? 'bg-emerald-950/50 text-emerald-300 font-semibold border border-emerald-800/50' : 'bg-slate-900/50 text-slate-400'}">${opt}</div>`;
+                            return `<div class="p-1.5 rounded ${isCorrect ? 'bg-emerald-950/50 text-emerald-300 font-semibold border border-emerald-800/50' : 'bg-slate-900/50 text-slate-400'}">${window.escapeHTML(opt)}</div>`;
                         }).join('')}
                     </div>
 
                     <div class="text-xs pt-1 border-t border-slate-800/60 flex items-center justify-between text-slate-400">
-                        <span>Đúng: <strong class="text-emerald-400 font-bold">${correctStr}</strong></span>
-                        <span class="truncate max-w-md italic text-slate-500">${q.explanation || ''}</span>
+                        <span>Đúng: <strong class="text-emerald-400 font-bold">${window.escapeHTML(correctStr)}</strong></span>
+                        <span class="truncate max-w-md italic text-slate-500">${window.escapeHTML(q.explanation || '')}</span>
                     </div>
                 </div>
             `;
@@ -407,10 +407,10 @@ class AdminDashboard {
                 <div class="glass-card p-5 rounded-2xl border-slate-800 space-y-3">
                     <div class="flex items-start justify-between">
                         <div class="flex items-center gap-3">
-                            <div class="text-3xl">${s.icon}</div>
+                            <div class="text-3xl">${window.escapeHTML(s.icon)}</div>
                             <div>
-                                <h4 class="font-bold text-white text-base">${s.name}</h4>
-                                <span class="text-xs font-mono text-cyan-400">${s.code} • ${count} câu hỏi</span>
+                                <h4 class="font-bold text-white text-base">${window.escapeHTML(s.name)}</h4>
+                                <span class="text-xs font-mono text-cyan-400">${window.escapeHTML(s.code)} • ${count} câu hỏi</span>
                             </div>
                         </div>
                         ${!isProtected ? `
@@ -420,12 +420,12 @@ class AdminDashboard {
                         ` : '<span class="text-xs text-slate-500 font-mono">Môn mặc định</span>'}
                     </div>
 
-                    <p class="text-xs text-slate-300 leading-relaxed">${s.description || ''}</p>
+                    <p class="text-xs text-slate-300 leading-relaxed">${window.escapeHTML(s.description || '')}</p>
 
                     <div class="pt-2 border-t border-slate-800 flex flex-wrap gap-1.5">
                         ${(s.chapters || []).map(c => `
                             <span class="px-2 py-0.5 text-[11px] rounded bg-slate-900 border border-slate-800 text-slate-400">
-                                Ch.${c.id}: ${(c.name.split(':')[1] || c.name).trim()}
+                                Ch.${c.id}: ${window.escapeHTML((c.name.split(':')[1] || c.name).trim())}
                             </span>
                         `).join('')}
                     </div>
@@ -555,3 +555,4 @@ class AdminDashboard {
 }
 
 window.adminDashboard = new AdminDashboard();
+
