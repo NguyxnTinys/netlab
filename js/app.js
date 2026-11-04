@@ -4,6 +4,10 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Shared state variables
+    let flashcardIdx = 0;
+    let flashcardList = [];
+
     // 1. Initialize Interactive Network Background
     if (document.getElementById('network-canvas')) {
         new NetworkBackground('network-canvas');
@@ -311,9 +315,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 6. Flashcard System (Dynamic Subject & Chapter Support)
-    let flashcardIdx = 0;
-    let flashcardList = [];
-
     function initFlashcards(questions, currentSubject) {
         const fcCard = document.getElementById('fc-card');
         const fcQ = document.getElementById('fc-question');

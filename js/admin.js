@@ -70,6 +70,104 @@ class AdminDashboard {
         const userSearch = document.getElementById('admin-user-search');
         if (userSearch) userSearch.addEventListener('input', () => this.renderUsers());
 
+        // Remote Request Code Parsing
+        const parseReqBtn = document.getElementById('admin-parse-req-btn');
+        const reqInput = document.getElementById('admin-req-input');
+        if (parseReqBtn && reqInput) {
+            parseReqBtn.addEventListener('click', () => {
+                const val = reqInput.value.trim();
+                if (!val.startsWith('NETLAB-REQ-')) {
+                    alert('Vui lòng dán đúng mã yêu cầu có tiền tố NETLAB-REQ-...');
+                    return;
+                }
+                try {
+                    const rawB64 = val.replace('NETLAB-REQ-', '');
+                    const json = JSON.parse(decodeURIComponent(atob(rawB64)));
+                    this.currentParsedStudent = json;
+
+                    const parsedBox = document.getElementById('admin-req-parsed-box');
+                    const nameEl = document.getElementById('admin-parsed-name');
+                    const userEl = document.getElementById('admin-parsed-user');
+
+                    if (nameEl) nameEl.textContent = json.n || json.u;
+                    if (userEl) userEl.textContent = '@' + json.u;
+                    if (parsedBox) parsedBox.classList.remove('hidden');
+
+                    // If user is not yet in local users list, auto register them
+                    if (window.authManager && !window.authManager.users.some(u => u.username.toLowerCase() === json.u.toLowerCase())) {
+                        window.authManager.users.push({
+                            username: json.u.toLowerCase(),
+                            name: json.n || json.u,
+                            role: 'student',
+                            avatar: '🎓',
+                            email: json.e || `${json.u}@netlab.local`,
+                            joinedAt: new Date().toISOString().split('T')[0],
+                            isApproved: false,
+                            allowedSections: [],
+                            allowedSubjects: []
+                        });
+                        window.authManager.saveUsers();
+                        this.renderUsers();
+                    }
+                    if (window.soundManager) window.soundManager.playCorrect();
+                } catch (e) {
+                    alert('Mã yêu cầu không hợp lệ hoặc bị lỗi định dạng!');
+                }
+            });
+        }
+
+        // Generate Activation Key
+        const createActBtn = document.getElementById('admin-create-act-key-btn');
+        if (createActBtn) {
+            createActBtn.addEventListener('click', () => {
+                if (!this.currentParsedStudent) {
+                    alert('Vui lòng nạp mã yêu cầu học viên trước!');
+                    return;
+                }
+                const checkedSecs = Array.from(document.querySelectorAll('.admin-gen-sec:checked')).map(cb => cb.value);
+                if (checkedSecs.length === 0) {
+                    alert('Vui lòng tích chọn ít nhất 1 Lab để mở khóa!');
+                    return;
+                }
+
+                const payload = {
+                    u: this.currentParsedStudent.u,
+                    secs: checkedSecs,
+                    subs: ['mmt', 'anm', 'toan', 'hdo'],
+                    iss: Date.now()
+                };
+
+                const actCode = 'NETLAB-ACT-' + btoa(encodeURIComponent(JSON.stringify(payload)));
+                const outInput = document.getElementById('admin-act-code-output');
+                const resBox = document.getElementById('admin-act-result-box');
+
+                if (outInput) outInput.value = actCode;
+                if (resBox) resBox.classList.remove('hidden');
+
+                // Update local user permissions in authManager
+                if (window.authManager) {
+                    window.authManager.updateUserPermissions(this.currentParsedStudent.u, checkedSecs, ['mmt', 'anm', 'toan', 'hdo'], true);
+                    this.renderUsers();
+                }
+
+                if (window.soundManager) window.soundManager.playCorrect();
+            });
+        }
+
+        // Copy Activation Code
+        const copyActBtn = document.getElementById('admin-copy-act-btn');
+        if (copyActBtn) {
+            copyActBtn.addEventListener('click', () => {
+                const outInput = document.getElementById('admin-act-code-output');
+                if (outInput && outInput.value) {
+                    navigator.clipboard.writeText(outInput.value);
+                    copyActBtn.textContent = '✓ Đã Chép';
+                    setTimeout(() => { copyActBtn.textContent = '📋 Sao Chép'; }, 2000);
+                    if (window.soundManager) window.soundManager.playCorrect();
+                }
+            });
+        }
+
         // Add Question button
         const addQBtn = document.getElementById('admin-add-q-btn');
         if (addQBtn) {

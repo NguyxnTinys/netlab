@@ -453,6 +453,69 @@ class AuthManager {
         }
     }
 
+    generateUserRequestCode(user) {
+        if (!user) return '';
+        try {
+            const data = {
+                u: user.username,
+                n: user.name,
+                e: user.email || '',
+                t: Date.now()
+            };
+            return 'NETLAB-REQ-' + btoa(encodeURIComponent(JSON.stringify(data)));
+        } catch (e) {
+            return 'NETLAB-REQ-' + btoa(user.username);
+        }
+    }
+
+    activateUserWithKey(keyStr) {
+        if (!keyStr || !this.currentUser) {
+            return { success: false, message: 'Vui lòng nhập mã mở khóa hợp lệ!' };
+        }
+        const cleanKey = keyStr.trim();
+        if (!cleanKey.startsWith('NETLAB-ACT-')) {
+            return { success: false, message: 'Mã không đúng định dạng NETLAB-ACT-...!' };
+        }
+
+        try {
+            const rawB64 = cleanKey.replace('NETLAB-ACT-', '');
+            const jsonStr = decodeURIComponent(atob(rawB64));
+            const payload = JSON.parse(jsonStr);
+
+            if (!payload || !payload.u || !payload.secs) {
+                return { success: false, message: 'Mã mở khóa không hợp lệ hoặc bị lỗi cấu trúc!' };
+            }
+
+            if (payload.u.toLowerCase() !== this.currentUser.username.toLowerCase()) {
+                return { 
+                    success: false, 
+                    message: `Mã này được cấp riêng cho học viên @${payload.u}, không khớp với tài khoản hiện tại @${this.currentUser.username}!` 
+                };
+            }
+
+            // Apply approved permissions
+            this.currentUser.allowedSections = payload.secs || [];
+            this.currentUser.allowedSubjects = payload.subs || ['mmt', 'anm', 'toan', 'hdo'];
+            this.currentUser.isApproved = true;
+
+            // Sync with registered users database
+            const userInDb = this.users.find(u => u.username.toLowerCase() === this.currentUser.username.toLowerCase());
+            if (userInDb) {
+                userInDb.allowedSections = this.currentUser.allowedSections;
+                userInDb.allowedSubjects = this.currentUser.allowedSubjects;
+                userInDb.isApproved = true;
+                this.saveUsers();
+            }
+
+            localStorage.setItem(this.STORAGE_KEY_CURRENT, JSON.stringify(this.currentUser));
+            this.notifyAuthChange();
+
+            return { success: true, count: payload.secs.length };
+        } catch (err) {
+            return { success: false, message: 'Mã mở khóa bị lỗi hoặc không thể giải mã!' };
+        }
+    }
+
     /**
      * Dynamic UI Filtering: Hides completely any unauthorized tabs or sections.
      * Leaves zero redundant elements on the screen.
@@ -507,6 +570,11 @@ class AuthManager {
                 pendingView.classList.remove('hidden');
                 const nameEl = document.getElementById('pending-user-name');
                 if (nameEl) nameEl.textContent = user.name || user.username;
+
+                const reqCodeEl = document.getElementById('pending-request-code');
+                if (reqCodeEl) {
+                    reqCodeEl.value = this.generateUserRequestCode(user);
+                }
             }
             return;
         }
@@ -738,6 +806,46 @@ class AuthManager {
             pendingLogoutBtn.addEventListener('click', () => {
                 this.logout();
                 if (window.soundManager) window.soundManager.playClick();
+            });
+        }
+
+        // Copy request code button
+        const copyReqBtn = document.getElementById('pending-copy-code-btn');
+        const reqCodeInput = document.getElementById('pending-request-code');
+        if (copyReqBtn && reqCodeInput) {
+            copyReqBtn.addEventListener('click', () => {
+                if (reqCodeInput.value) {
+                    navigator.clipboard.writeText(reqCodeInput.value);
+                    copyReqBtn.textContent = '✓ Đã Chép';
+                    setTimeout(() => { copyReqBtn.textContent = '📋 Sao Chép'; }, 2000);
+                    if (window.soundManager) window.soundManager.playCorrect();
+                }
+            });
+        }
+
+        // Activate with key button
+        const activateBtn = document.getElementById('pending-activate-btn');
+        const actInput = document.getElementById('pending-activation-input');
+        const actMsg = document.getElementById('pending-activation-msg');
+        if (activateBtn && actInput) {
+            activateBtn.addEventListener('click', () => {
+                const key = actInput.value.trim();
+                const res = this.activateUserWithKey(key);
+                if (res.success) {
+                    if (actMsg) {
+                        actMsg.textContent = `🎉 Kích hoạt thành công ${res.count} Lab! Đang mở khóa giao diện...`;
+                        actMsg.className = 'text-[11px] font-bold text-center p-2 rounded-lg bg-emerald-950/80 text-emerald-300 border border-emerald-800';
+                        actMsg.classList.remove('hidden');
+                    }
+                    if (window.soundManager) window.soundManager.playCorrect();
+                } else {
+                    if (actMsg) {
+                        actMsg.textContent = '❌ ' + (res.message || 'Mã kích hoạt không hợp lệ!');
+                        actMsg.className = 'text-[11px] font-bold text-center p-2 rounded-lg bg-rose-950/80 text-rose-300 border border-rose-800';
+                        actMsg.classList.remove('hidden');
+                    }
+                    if (window.soundManager) window.soundManager.playWrong();
+                }
             });
         }
 

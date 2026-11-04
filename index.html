@@ -116,13 +116,33 @@
                         </p>
                     </div>
 
-                    <div class="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 text-xs text-slate-400 space-y-2 text-left max-w-md mx-auto">
+                    <div class="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 text-xs text-slate-400 space-y-3 text-left max-w-md mx-auto">
                         <div class="font-bold text-slate-200 flex items-center gap-1.5">
-                            <span>🛡️</span> <span>Chính sách kiểm soát bảo mật NetLab:</span>
+                            <span>🛡️</span> <span>Cách thức nhận quyền truy cập:</span>
                         </div>
-                        <p class="leading-relaxed">Mọi tài khoản mới được bảo vệ theo nguyên tắc đặc quyền tối thiểu. Tất cả các nội dung thừa đều được ẩn hoàn toàn để đảm bảo tập trung học tập.</p>
-                        <div class="pt-2 border-t border-slate-800 flex items-center gap-2 text-amber-300 font-mono text-[11px]">
-                            <span>👉</span> <span>Liên hệ Quản trị viên <strong class="text-amber-200 font-bold">nvt5405@</strong> để được cấp quyền mở khóa các Lab bạn cần.</span>
+                        <p class="leading-relaxed">Hệ thống bảo vệ quyền riêng tư. Bạn hãy sao chép <strong>Mã Yêu Cầu</strong> bên dưới và gửi cho Quản trị viên (qua Zalo/Messenger) để nhận mã mở khóa.</p>
+                        
+                        <!-- Request Code Box -->
+                        <div class="space-y-1.5 pt-1">
+                            <label class="text-[11px] text-slate-400 font-semibold">Mã yêu cầu cấp quyền của bạn:</label>
+                            <div class="flex gap-2">
+                                <input type="text" id="pending-request-code" class="cyber-input text-xs font-mono py-1.5 px-2.5 bg-slate-950 text-cyan-300" readonly>
+                                <button type="button" id="pending-copy-code-btn" class="px-3 py-1.5 text-xs font-bold rounded-xl bg-cyan-950 hover:bg-cyan-900 text-cyan-300 border border-cyan-800 whitespace-nowrap">
+                                    📋 Sao Chép
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Activation Box -->
+                        <div class="space-y-1.5 pt-2 border-t border-slate-800">
+                            <label class="text-[11px] text-amber-300 font-semibold">Đã có mã mở khóa từ Admin? Nhập vào đây:</label>
+                            <div class="flex gap-2">
+                                <input type="text" id="pending-activation-input" class="cyber-input text-xs font-mono py-1.5 px-2.5 bg-slate-950 text-emerald-300 placeholder-slate-600" placeholder="Dán mã NETLAB-ACT-... vào đây">
+                                <button type="button" id="pending-activate-btn" class="px-3 py-1.5 text-xs font-bold rounded-xl btn-primary bg-gradient-to-r from-emerald-600 to-cyan-600 text-white whitespace-nowrap shadow-md">
+                                    ⚡ Mở Khóa
+                                </button>
+                            </div>
+                            <div id="pending-activation-msg" class="hidden text-[11px] font-medium text-center p-1.5 rounded-lg"></div>
                         </div>
                     </div>
 
@@ -1288,7 +1308,7 @@
                 <form id="login-form" class="space-y-3">
                     <div class="space-y-1">
                         <label class="text-xs font-semibold text-slate-300">Tên đăng nhập / Email</label>
-                        <input type="text" id="login-username" class="cyber-input" placeholder="Tên đăng nhập (ví dụ: nvt5405@)" autocomplete="username" required>
+                        <input type="text" id="login-username" class="cyber-input" placeholder="Tên đăng nhập" autocomplete="username" required>
                     </div>
                     <div class="space-y-1">
                         <label class="text-xs font-semibold text-slate-300">Mật khẩu</label>
@@ -1303,7 +1323,7 @@
                 <form id="register-form" class="space-y-3 hidden">
                     <div class="p-2.5 rounded-lg bg-slate-900/80 border border-slate-800 text-[11px] text-slate-300 space-y-1">
                         <div class="font-bold text-amber-300">🔒 Chính sách phân quyền tài khoản mới:</div>
-                        <p class="text-slate-400 leading-relaxed">Tài khoản tạo mới mặc định sẽ ở trạng thái <strong>không quyền</strong> cho tới khi Quản trị viên (<strong class="text-amber-200">nvt5405@</strong>) xét duyệt và chỉ định mở khóa các Lab / Môn học phù hợp.</p>
+                        <p class="text-slate-400 leading-relaxed">Tài khoản tạo mới mặc định sẽ ở trạng thái <strong>không quyền</strong> cho tới khi Quản trị viên xét duyệt và chỉ định mở khóa các Lab / Môn học phù hợp.</p>
                     </div>
                     <div class="space-y-1">
                         <label class="text-xs font-semibold text-slate-300">Họ và tên</label>
@@ -1575,6 +1595,64 @@
                             <span id="admin-users-stat-badge" class="px-3 py-1 rounded-xl text-xs font-mono font-bold bg-cyan-950 text-cyan-300 border border-cyan-800">
                                 0 Học viên
                             </span>
+                        </div>
+                    </div>
+
+                    <!-- Remote Token Granting Tool -->
+                    <div class="glass-card p-4 rounded-2xl border-cyan-500/40 space-y-3 bg-cyan-950/20">
+                        <div class="flex items-center justify-between">
+                            <h4 class="text-xs font-bold text-cyan-300 flex items-center gap-1.5">
+                                <span>🎫</span> <span>CẤP QUYỀN HỌC VIÊN Ở XA QUA MÃ YÊU CẦU</span>
+                            </h4>
+                            <span class="text-[11px] text-slate-400">Không cần chung mạng / máy chủ</span>
+                        </div>
+                        <p class="text-[11px] text-slate-400">
+                            Khi học viên gửi cho bạn mã <code class="text-cyan-300">NETLAB-REQ-...</code>, bạn hãy dán vào đây để nạp và tạo mã mở khóa cho bạn đó:
+                        </p>
+                        <div class="flex gap-2">
+                            <input type="text" id="admin-req-input" class="cyber-input text-xs font-mono py-2 px-3 bg-slate-950 text-cyan-300 placeholder-slate-600" placeholder="Dán mã NETLAB-REQ-... của học viên vào đây">
+                            <button type="button" id="admin-parse-req-btn" class="px-4 py-2 text-xs font-bold rounded-xl btn-primary bg-gradient-to-r from-cyan-600 to-indigo-600 whitespace-nowrap shadow-md">
+                                🔍 Nạp Học Viên
+                            </button>
+                        </div>
+                        <div id="admin-req-parsed-box" class="hidden p-3.5 rounded-xl bg-slate-900 border border-cyan-500/30 space-y-3">
+                            <div class="flex items-center justify-between text-xs border-b border-slate-800 pb-2">
+                                <div>Học viên: <strong id="admin-parsed-name" class="text-white"></strong> (<span id="admin-parsed-user" class="text-cyan-400 font-mono"></span>)</div>
+                                <span class="text-[11px] text-emerald-400 font-bold">✓ Mã hợp lệ</span>
+                            </div>
+                            <div class="text-xs text-slate-300 font-semibold">Tích chọn các Lab mở khóa cho học viên này:</div>
+                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
+                                <label class="flex items-center gap-1.5 p-1.5 rounded bg-slate-950 border border-slate-800 cursor-pointer">
+                                    <input type="checkbox" class="admin-gen-sec" value="tab-quiz" checked> <span>📝 Luyện Thi</span>
+                                </label>
+                                <label class="flex items-center gap-1.5 p-1.5 rounded bg-slate-950 border border-slate-800 cursor-pointer">
+                                    <input type="checkbox" class="admin-gen-sec" value="tab-game" checked> <span>🎮 Cyber Runner</span>
+                                </label>
+                                <label class="flex items-center gap-1.5 p-1.5 rounded bg-slate-950 border border-slate-800 cursor-pointer">
+                                    <input type="checkbox" class="admin-gen-sec" value="tab-battle" checked> <span>⚔️ Đấu Trường 1v1</span>
+                                </label>
+                                <label class="flex items-center gap-1.5 p-1.5 rounded bg-slate-950 border border-slate-800 cursor-pointer">
+                                    <input type="checkbox" class="admin-gen-sec" value="tab-ctf" checked> <span>🚩 Thử Thách CTF</span>
+                                </label>
+                                <label class="flex items-center gap-1.5 p-1.5 rounded bg-slate-950 border border-slate-800 cursor-pointer">
+                                    <input type="checkbox" class="admin-gen-sec" value="tab-bank" checked> <span>📚 Ngân Hàng Câu</span>
+                                </label>
+                                <label class="flex items-center gap-1.5 p-1.5 rounded bg-slate-950 border border-slate-800 cursor-pointer">
+                                    <input type="checkbox" class="admin-gen-sec" value="tab-flashcard" checked> <span>⚡ Flashcards</span>
+                                </label>
+                            </div>
+                            <button type="button" id="admin-create-act-key-btn" class="w-full py-2 text-xs font-bold rounded-xl bg-gradient-to-r from-emerald-600 to-cyan-600 text-white shadow-md">
+                                🔑 Tạo Mã Kích Hoạt (Gửi Cho Học Viên)
+                            </button>
+                            <div id="admin-act-result-box" class="hidden space-y-1.5 pt-2 border-t border-slate-800">
+                                <label class="text-[11px] text-emerald-400 font-bold">Mã mở khóa đã tạo (Gửi mã này cho học viên):</label>
+                                <div class="flex gap-2">
+                                    <input type="text" id="admin-act-code-output" class="cyber-input text-xs font-mono py-1.5 px-2.5 bg-slate-950 text-emerald-300" readonly>
+                                    <button type="button" id="admin-copy-act-btn" class="px-3 py-1.5 text-xs font-bold rounded-xl bg-emerald-950 hover:bg-emerald-900 text-emerald-300 border border-emerald-800 whitespace-nowrap">
+                                        📋 Sao Chép
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
