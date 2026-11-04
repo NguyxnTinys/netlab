@@ -21,17 +21,30 @@
         <header class="navbar px-4 py-3 sm:px-6">
             <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-cyan-500/30 border border-cyan-300/40">
-                        <span class="text-xl">🌐</span>
+                    <div id="header-subject-icon-box" class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-cyan-500/30 border border-cyan-300/40 text-xl">
+                        <span id="header-subject-icon">🌐</span>
                     </div>
                     <div>
-                        <h1 class="text-lg sm:text-xl font-extrabold tracking-tight gradient-text">
-                            NETLAB • MẠNG MÁY TÍNH
-                        </h1>
-                        <p class="text-xs text-slate-400 font-medium hidden sm:block">
-                            Hệ thống Luyện thi 331 câu hỏi & Cyber Game Vượt Chướng Ngại Vật
+                        <div class="flex items-center gap-2">
+                            <h1 id="header-subject-title" class="text-base sm:text-lg font-black tracking-tight gradient-text">
+                                NETLAB • MẠNG MÁY TÍNH
+                            </h1>
+                            <span id="header-subject-code" class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-cyan-950/80 text-cyan-300 border border-cyan-800">
+                                NET101
+                            </span>
+                        </div>
+                        <p id="header-subject-subtitle" class="text-[11px] text-slate-400 font-medium hidden sm:block">
+                            Hệ thống Luyện thi & Cyber Game Vượt Chướng Ngại Vật
                         </p>
                     </div>
+                </div>
+
+                <!-- Subject Selector Dropdown -->
+                <div class="flex items-center gap-2">
+                    <span class="text-xs text-slate-400 font-semibold hidden lg:inline">Môn học:</span>
+                    <select id="global-subject-selector" class="subject-pill-select" title="Chuyển đổi môn học">
+                        <!-- Populated dynamically by subjectsManager -->
+                    </select>
                 </div>
 
                 <!-- Navigation Tabs -->
@@ -49,17 +62,33 @@
                         <span>🚩</span> Thử Thách CTF
                     </button>
                     <button class="nav-tab" data-target="tab-bank">
-                        <span>📚</span> Ngân Hàng 331 Câu
+                        <span>📚</span> <span id="nav-bank-label">Ngân Hàng Câu</span>
                     </button>
                     <button class="nav-tab" data-target="tab-flashcard">
                         <span>⚡</span> Flashcards
                     </button>
                 </nav>
 
-                <!-- Sound Toggle -->
+                <!-- User Auth & System Controls -->
                 <div class="flex items-center gap-2">
-                    <button id="sound-toggle-btn" class="btn-secondary text-xs py-1.5 px-3">
-                        🔊 <span class="hidden sm:inline">Âm thanh: Bật</span>
+                    <!-- User Role Badge -->
+                    <span id="user-role-badge" class="px-2.5 py-1 rounded-xl text-xs font-mono border border-slate-800 bg-slate-900/60 text-slate-400 flex items-center gap-1.5">
+                        <span class="w-2 h-2 rounded-full bg-slate-500"></span> Khách vãng lai
+                    </span>
+
+                    <!-- Admin Panel Action Button (Visible only to Admin) -->
+                    <button id="admin-panel-btn" class="hidden px-3 py-1.5 rounded-xl text-xs font-bold border border-amber-500/50 bg-amber-950/70 text-amber-300 hover:bg-amber-900/80 flex items-center gap-1 shadow-sm shadow-amber-500/20" title="Mở Trung Tâm Quản Trị Dữ Liệu">
+                        <span>👑</span> <span class="hidden sm:inline">Quản Trị</span>
+                    </button>
+
+                    <!-- Auth Action Button (Login / Profile) -->
+                    <button id="auth-action-btn" class="btn-primary text-xs py-1.5 px-3.5 flex items-center gap-1 bg-gradient-to-r from-cyan-600 to-indigo-600 shadow-sm">
+                        <span>🔑</span> <span class="font-semibold">Đăng nhập</span>
+                    </button>
+
+                    <!-- Sound Toggle -->
+                    <button id="sound-toggle-btn" class="btn-secondary text-xs py-1.5 px-2.5" title="Bật/Tắt âm thanh">
+                        🔊
                     </button>
                 </div>
             </div>
@@ -76,13 +105,13 @@
                 <!-- 1A: Setup / Configuration View -->
                 <div id="quiz-setup-view" class="max-w-3xl mx-auto space-y-6">
                     <div class="text-center space-y-2 mb-8">
-                        <span class="px-3 py-1 text-xs font-bold rounded-full bg-cyan-950/80 text-cyan-300 border border-cyan-800/80 tracking-wide uppercase">
+                        <span id="setup-subject-badge" class="px-3 py-1 text-xs font-bold rounded-full bg-cyan-950/80 text-cyan-300 border border-cyan-800/80 tracking-wide uppercase">
                             Chương 1 - Chương 5 (CCNA 200-301) • 331 Câu Hỏi Đầy Đủ Đáp Án & Lý Thuyết
                         </span>
-                        <h2 class="text-2xl sm:text-3xl font-extrabold text-white">
+                        <h2 id="setup-subject-title" class="text-2xl sm:text-3xl font-extrabold text-white">
                             Thiết Lập Bài Kiểm Tra Mạng Máy Tính & CCNA
                         </h2>
-                        <p class="text-sm text-slate-400 max-w-lg mx-auto">
+                        <p id="setup-subject-desc" class="text-sm text-slate-400 max-w-lg mx-auto">
                             Tùy chỉnh phạm vi ôn tập theo từng chương hoặc thi thử tổng hợp với thời gian thực tế.
                         </p>
                     </div>
@@ -96,29 +125,27 @@
                                     📖 Chọn Chương Kiến Thức
                                 </label>
                                 <select id="filter-chapter" class="w-full bg-slate-900/80 border border-slate-700/80 rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-cyan-400">
-                                    <option value="all">Tất cả các chương (Tổng hợp 331 câu)</option>
-                                    <option value="1">Chương 1: Tổng quan MMT & Internet (66 câu)</option>
-                                    <option value="2">Chương 2: Chuyển mạch Ethernet (51 câu)</option>
-                                    <option value="3">Chương 3: Định tuyến IP & Chia mạng con (94 câu)</option>
-                                    <option value="4">Chương 4: Tầng giao vận TCP/UDP (60 câu)</option>
-                                    <option value="5">Chương 5: Bộ Đề Luyện Thi CCNA 200-301 Quốc Tế (60 câu)</option>
+                                    <option value="all">Tất cả các chương</option>
                                 </select>
                             </div>
 
                             <!-- Question Count Selection -->
                             <div class="space-y-2">
-                                <label class="text-xs font-semibold uppercase tracking-wider text-slate-300">
-                                    🎯 Số Lượng Câu Hỏi
-                                </label>
+                                <div class="flex items-center justify-between">
+                                    <label class="text-xs font-semibold uppercase tracking-wider text-slate-300">
+                                        🎯 Số Lượng Câu Hỏi
+                                    </label>
+                                    <span id="guest-count-hint" class="text-[11px] text-amber-400 font-mono hidden">Khách: tối đa 10 câu</span>
+                                </div>
                                 <div class="flex gap-2">
                                     <select id="filter-count" class="flex-grow bg-slate-900/80 border border-slate-700/80 rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-cyan-400">
-                                        <option value="10">10 câu (Khởi động)</option>
+                                        <option value="10">10 câu (Khởi động - Miễn phí cho Khách)</option>
                                         <option value="20" selected>20 câu (Luyện tập tiêu chuẩn)</option>
                                         <option value="40">40 câu (Đề thi mẫu chuẩn)</option>
                                         <option value="all">Tất cả câu hỏi phù hợp</option>
                                         <option value="custom">Tùy chỉnh số câu...</option>
                                     </select>
-                                    <input type="number" id="custom-count-input" class="w-24 bg-slate-900/80 border border-slate-700/80 rounded-xl px-3 py-2 text-sm text-slate-200 hidden" min="1" max="331" placeholder="Số câu">
+                                    <input type="number" id="custom-count-input" class="w-24 bg-slate-900/80 border border-slate-700/80 rounded-xl px-3 py-2 text-sm text-slate-200 hidden" min="1" max="999" placeholder="Số câu">
                                 </div>
                             </div>
 
@@ -1191,9 +1218,480 @@
 
         </main>
 
+        <!-- ======================================================== -->
+        <!-- GLOBAL MODALS: AUTH, PROFILE, PERMISSIONS & ADMIN PANEL  -->
+        <!-- ======================================================== -->
+
+        <!-- 1. AUTH MODAL (Login / Register) -->
+        <div id="auth-modal" class="fixed inset-0 bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-4 z-50 hidden overflow-y-auto">
+            <div class="glass-card max-w-md w-full my-auto max-h-[94%] overflow-y-auto p-6 space-y-4 border-cyan-500/40 shadow-2xl relative">
+                <button class="close-auth-modal absolute top-4 right-4 text-slate-400 hover:text-white text-lg">✕</button>
+
+                <div class="text-center space-y-1">
+                    <div class="text-3xl">🌐</div>
+                    <h3 class="text-xl font-black gradient-text">NETLAB XÁC THỰC</h3>
+                    <p class="text-xs text-slate-400">Đăng nhập để lưu tiến độ, làm bài không giới hạn & mở khóa Cyber Runner</p>
+                </div>
+
+                <!-- Tabs -->
+                <div class="flex border-b border-slate-800">
+                    <button id="auth-tab-login" class="flex-1 py-2 text-center text-xs font-bold border-b-2 border-cyan-400 text-cyan-400">
+                        Đăng Nhập
+                    </button>
+                    <button id="auth-tab-register" class="flex-1 py-2 text-center text-xs font-semibold text-slate-400 hover:text-slate-200 border-b-2 border-transparent">
+                        Tạo Tài Khoản
+                    </button>
+                </div>
+
+                <!-- Error Message -->
+                <div id="auth-error-msg" class="hidden p-2.5 rounded-xl bg-rose-950/80 border border-rose-800 text-rose-300 text-xs text-center font-medium"></div>
+
+                <!-- Login Form -->
+                <form id="login-form" class="space-y-3">
+                    <div class="space-y-1">
+                        <label class="text-xs font-semibold text-slate-300">Tên đăng nhập / Email</label>
+                        <input type="text" id="login-username" class="cyber-input" placeholder="admin hoặc student" required>
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-xs font-semibold text-slate-300">Mật khẩu</label>
+                        <input type="password" id="login-password" class="cyber-input" placeholder="••••••" required>
+                    </div>
+                    <button type="submit" class="btn-primary w-full py-2.5 text-sm font-bold shadow-lg shadow-cyan-500/20">
+                        ▶ Đăng Nhập
+                    </button>
+                </form>
+
+                <!-- Register Form -->
+                <form id="register-form" class="space-y-3 hidden">
+                    <div class="space-y-1">
+                        <label class="text-xs font-semibold text-slate-300">Họ và tên</label>
+                        <input type="text" id="reg-name" class="cyber-input" placeholder="Nguyễn Văn A" required>
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-xs font-semibold text-slate-300">Tên đăng nhập</label>
+                        <input type="text" id="reg-username" class="cyber-input" placeholder="nguyenvana" required>
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-xs font-semibold text-slate-300">Mật khẩu</label>
+                        <input type="password" id="reg-password" class="cyber-input" placeholder="Tối thiểu 3 ký tự" required>
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-xs font-semibold text-slate-300">Email (Tùy chọn)</label>
+                        <input type="email" id="reg-email" class="cyber-input" placeholder="student@netlab.vn">
+                    </div>
+                    <button type="submit" class="btn-primary w-full py-2.5 text-sm font-bold bg-gradient-to-r from-emerald-600 to-cyan-600 shadow-lg shadow-emerald-500/20">
+                        ✓ Đăng Ký Học Viên
+                    </button>
+                </form>
+
+                <!-- Demo Login Shortcut Box -->
+                <div class="pt-3 border-t border-slate-800 text-center space-y-2">
+                    <div class="text-[11px] text-slate-400 font-mono">Tài khoản demo sẵn có (1-Click):</div>
+                    <div class="flex gap-2">
+                        <button type="button" id="demo-student-login-btn" class="flex-1 py-1.5 px-2 rounded-xl text-xs bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700 font-medium">
+                            🎓 Học viên (student)
+                        </button>
+                        <button type="button" id="demo-admin-login-btn" class="flex-1 py-1.5 px-2 rounded-xl text-xs bg-amber-950/60 hover:bg-amber-900/80 text-amber-300 border border-amber-800/60 font-bold">
+                            👑 Admin (admin)
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. USER PROFILE & HISTORY MODAL -->
+        <div id="profile-modal" class="fixed inset-0 bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-4 z-50 hidden overflow-y-auto">
+            <div class="glass-card max-w-lg w-full my-auto max-h-[94%] overflow-y-auto p-6 space-y-5 border-slate-700 shadow-2xl relative">
+                <button class="close-profile-modal absolute top-4 right-4 text-slate-400 hover:text-white text-lg">✕</button>
+
+                <!-- User Hero -->
+                <div class="flex items-center gap-4 border-b border-slate-800 pb-4">
+                    <div id="profile-avatar" class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-cyan-500/30 to-purple-600/30 border border-cyan-400/40 flex items-center justify-center text-3xl shadow-lg shadow-cyan-500/20">
+                        🎓
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <h3 id="profile-name" class="text-lg font-bold text-white">Nguyễn Văn A</h3>
+                            <span id="profile-username" class="text-xs text-slate-400 font-mono">@student</span>
+                        </div>
+                        <div id="profile-role" class="text-xs font-semibold text-emerald-400 mt-0.5">🎓 Học Viên Chính Thức</div>
+                        <div id="profile-email" class="text-[11px] text-slate-400 font-mono mt-0.5">student@netlab.vn</div>
+                        <div id="profile-joined" class="text-[11px] text-slate-500 font-mono mt-0.5">Tham gia: 2026-03-15</div>
+                    </div>
+                </div>
+
+                <!-- Recent Exam History -->
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-300">
+                            📊 Lịch Sử Làm Bài Thi Gần Nhất
+                        </h4>
+                        <span class="text-[11px] text-slate-500 font-mono">Tối đa 10 lượt</span>
+                    </div>
+
+                    <div id="profile-history-list" class="space-y-2 max-h-60 overflow-y-auto pr-1">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="pt-3 border-t border-slate-800 flex justify-between items-center">
+                    <button class="close-profile-modal btn-secondary text-xs py-2 px-4">
+                        Đóng
+                    </button>
+                    <button id="profile-logout-btn" class="px-4 py-2 rounded-xl text-xs font-bold bg-rose-950 hover:bg-rose-900 text-rose-300 border border-rose-800">
+                        🚪 Đăng Xuất
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. PERMISSION GATE MODAL (Khách vãng lai bị giới hạn) -->
+        <div id="permission-modal" class="fixed inset-0 bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-4 z-50 hidden overflow-y-auto">
+            <div class="glass-card max-w-md w-full my-auto max-h-[94%] overflow-y-auto p-6 text-center space-y-4 border-amber-500/50 shadow-2xl relative">
+                <button class="close-permission-modal absolute top-4 right-4 text-slate-400 hover:text-white text-lg">✕</button>
+
+                <div class="w-16 h-16 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-3xl mx-auto shadow-lg shadow-amber-500/20">
+                    🛡️
+                </div>
+
+                <div class="space-y-1">
+                    <h3 id="perm-modal-title" class="text-xl font-black text-amber-400">
+                        YÊU CẦU ĐĂNG NHẬP
+                    </h3>
+                    <p id="perm-modal-msg" class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                        Bạn đang ở chế độ <strong>Khách vãng lai</strong>. Hãy đăng nhập miễn phí để mở khóa bài thi không giới hạn, lưu điểm và tham gia toàn bộ chế độ!
+                    </p>
+                </div>
+
+                <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-800 text-left text-xs space-y-1.5 text-slate-300">
+                    <div class="flex items-center gap-2 text-emerald-400">✓ Mở khóa toàn bộ ngân hàng câu hỏi đa môn</div>
+                    <div class="flex items-center gap-2 text-emerald-400">✓ Tự do chọn 40 câu & đề thi thực tế</div>
+                    <div class="flex items-center gap-2 text-emerald-400">✓ Chơi trọn vẹn 4 cấp độ Cyber Runner</div>
+                    <div class="flex items-center gap-2 text-emerald-400">✓ Lưu lịch sử điểm số và phân tích điểm yếu</div>
+                </div>
+
+                <div class="flex flex-col gap-2 pt-2">
+                    <button id="perm-login-cta-btn" class="btn-primary w-full py-3 text-sm font-bold shadow-lg shadow-cyan-500/20">
+                        🔑 Đăng Nhập / Tạo Tài Khoản Ngay
+                    </button>
+                    <button class="close-permission-modal btn-secondary w-full py-2 text-xs">
+                        Để sau, tiếp tục xem thử
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. ADMIN DATA MANAGEMENT DASHBOARD MODAL -->
+        <div id="admin-modal" class="fixed inset-0 bg-slate-950/90 backdrop-blur-lg flex items-center justify-center p-3 sm:p-5 z-50 hidden overflow-y-auto">
+            <div class="glass-card max-w-5xl w-full my-auto max-h-[92vh] overflow-hidden flex flex-col border-amber-500/40 shadow-2xl relative">
+                
+                <!-- Admin Header -->
+                <div class="p-4 sm:p-5 border-b border-slate-800 flex flex-wrap items-center justify-between gap-3 bg-slate-900/50">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-xl shadow-lg shadow-amber-500/20">
+                            👑
+                        </div>
+                        <div>
+                            <h3 class="text-base sm:text-lg font-black text-amber-400">
+                                TRUNG TÂM QUẢN TRỊ DỮ LIỆU NETLAB
+                            </h3>
+                            <p class="text-xs text-slate-400">
+                                Quản lý Ngân hàng Câu hỏi • Thêm Môn học Mới • Thống kê & Sao lưu
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-2">
+                        <button class="close-admin-modal btn-secondary text-xs py-1.5 px-3">
+                            ✕ Đóng
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Admin Navigation Tabs -->
+                <div class="px-5 pt-3 pb-2 border-b border-slate-800 flex flex-wrap items-center gap-2 bg-slate-950/60">
+                    <button class="admin-tab-btn py-2 px-4 rounded-xl text-xs font-bold bg-cyan-500/20 text-cyan-300 border border-cyan-500/50" data-tab="questions">
+                        📝 Quản Lý Câu Hỏi
+                    </button>
+                    <button class="admin-tab-btn py-2 px-4 rounded-xl text-xs font-semibold text-slate-400 hover:text-slate-200 bg-slate-900 border border-slate-800" data-tab="subjects">
+                        📚 Quản Lý Môn Học
+                    </button>
+                    <button class="admin-tab-btn py-2 px-4 rounded-xl text-xs font-semibold text-slate-400 hover:text-slate-200 bg-slate-900 border border-slate-800" data-tab="backup">
+                        💾 Thống Kê & Sao Lưu
+                    </button>
+                </div>
+
+                <!-- Admin Tab 1: Questions Management -->
+                <div id="admin-tab-content-questions" class="flex-1 overflow-y-auto p-4 sm:p-5 space-y-4 admin-scroll">
+                    <!-- Top Actions Bar -->
+                    <div class="flex flex-wrap items-center justify-between gap-3 bg-slate-900/60 p-3 rounded-2xl border border-slate-800">
+                        <div class="flex flex-wrap items-center gap-2">
+                            <label class="text-xs text-slate-400 font-semibold">Chọn Môn:</label>
+                            <select id="admin-subject-select" class="subject-pill-select text-xs">
+                                <!-- Populated dynamically -->
+                            </select>
+                            <select id="admin-chapter-filter" class="bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-slate-200">
+                                <option value="all">Tất cả các chương</option>
+                            </select>
+                            <select id="admin-level-filter" class="bg-slate-900 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-slate-200">
+                                <option value="all">Mọi mức độ</option>
+                                <option value="Nhận biết">Nhận biết</option>
+                                <option value="Thông hiểu">Thông hiểu</option>
+                                <option value="Vận dụng">Vận dụng</option>
+                                <option value="Vận dụng cao">Vận dụng cao</option>
+                            </select>
+                        </div>
+
+                        <div class="flex items-center gap-2">
+                            <button id="admin-add-q-btn" class="btn-primary text-xs py-2 px-4 font-bold flex items-center gap-1 shadow-md shadow-cyan-500/20">
+                                ➕ Thêm Câu Hỏi Mới
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Search & Count Bar -->
+                    <div class="flex items-center justify-between gap-3">
+                        <input type="text" id="admin-q-search" class="cyber-input py-2 text-xs flex-1" placeholder="🔍 Tìm kiếm nội dung câu hỏi, chủ đề, đáp án...">
+                        <span id="admin-q-count" class="text-xs font-mono font-bold text-cyan-400 whitespace-nowrap bg-slate-900 px-3 py-2 rounded-xl border border-slate-800">0 câu</span>
+                    </div>
+
+                    <!-- Scrollable Questions List -->
+                    <div id="admin-questions-list" class="space-y-3">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+
+                <!-- Admin Tab 2: Subjects Management -->
+                <div id="admin-tab-content-subjects" class="flex-1 overflow-y-auto p-4 sm:p-5 space-y-4 admin-scroll hidden">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h4 class="text-sm font-bold text-white">DANH SÁCH MÔN HỌC</h4>
+                            <p class="text-xs text-slate-400">Các môn học đang có trong hệ thống</p>
+                        </div>
+                        <button id="admin-add-sub-btn" class="btn-primary text-xs py-2 px-4 font-bold flex items-center gap-1">
+                            ➕ Thêm Môn Học Mới
+                        </button>
+                    </div>
+
+                    <div id="admin-subjects-list" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+
+                <!-- Admin Tab 3: Backup & Restore -->
+                <div id="admin-tab-content-backup" class="flex-1 overflow-y-auto p-4 sm:p-5 space-y-6 admin-scroll hidden">
+                    <!-- Stats overview -->
+                    <div id="admin-backup-stats"></div>
+
+                    <!-- Backup Action Cards -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Export Card -->
+                        <div class="glass-card p-5 rounded-2xl border-slate-800 space-y-3">
+                            <div class="text-2xl">📤</div>
+                            <h4 class="font-bold text-white text-base">Xuất Dữ Liệu (Backup JSON)</h4>
+                            <p class="text-xs text-slate-400 leading-relaxed">
+                                Tải toàn bộ ngân hàng câu hỏi, môn học và cấu hình về máy dưới dạng tệp tin JSON an toàn.
+                            </p>
+                            <button id="admin-export-json-btn" class="btn-primary w-full py-2.5 text-xs font-bold">
+                                ⬇️ Tải Tệp Sao Lưu (.JSON)
+                            </button>
+                        </div>
+
+                        <!-- Import Card -->
+                        <div class="glass-card p-5 rounded-2xl border-slate-800 space-y-3">
+                            <div class="text-2xl">📥</div>
+                            <h4 class="font-bold text-white text-base">Nhập Dữ Liệu (Restore JSON)</h4>
+                            <p class="text-xs text-slate-400 leading-relaxed">
+                                Khôi phục hoặc nạp ngân hàng câu hỏi mới từ tệp JSON đã xuất trước đó.
+                            </p>
+                            <label class="btn-secondary w-full py-2.5 text-xs font-bold text-center block cursor-pointer border-slate-700 hover:border-cyan-400">
+                                📁 Chọn Tệp JSON Để Nạp
+                                <input type="file" id="admin-import-file-input" accept=".json" class="hidden">
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Reset Defaults Section -->
+                    <div class="p-4 rounded-2xl bg-rose-950/30 border border-rose-900/60 flex items-center justify-between gap-3">
+                        <div>
+                            <h5 class="text-xs font-bold text-rose-300">Khôi Phục Cài Đặt Gốc (Factory Reset)</h5>
+                            <p class="text-[11px] text-slate-400">Xóa dữ liệu tùy chỉnh và đặt lại 331 câu hỏi MMT cùng các môn chuẩn.</p>
+                        </div>
+                        <button id="admin-reset-default-btn" class="px-4 py-2 rounded-xl text-xs font-bold bg-rose-900/60 hover:bg-rose-800 text-rose-200 border border-rose-700 whitespace-nowrap">
+                            ⚠️ Khôi Phục Gốc
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 5. ADMIN QUESTION ADD / EDIT FORM MODAL -->
+        <div id="admin-q-form-modal" class="fixed inset-0 bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-3 sm:p-5 z-50 hidden overflow-y-auto">
+            <div class="glass-card max-w-2xl w-full my-auto max-h-[92vh] overflow-y-auto p-5 sm:p-6 space-y-4 border-cyan-500/50 shadow-2xl relative admin-scroll">
+                <button class="close-q-form-modal absolute top-4 right-4 text-slate-400 hover:text-white text-lg">✕</button>
+
+                <h3 id="admin-q-form-title" class="text-base sm:text-lg font-black text-cyan-400">
+                    THÊM CÂU HỎI MỚI
+                </h3>
+
+                <form id="admin-question-form" class="space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <div class="space-y-1">
+                            <label class="text-xs font-semibold text-slate-300">Chương kiến thức</label>
+                            <select id="qform-chapter" class="cyber-input text-xs" required></select>
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-xs font-semibold text-slate-300">Chủ đề (Topic)</label>
+                            <input type="text" id="qform-topic" class="cyber-input text-xs" placeholder="Ví dụ: Mô hình OSI" required>
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-xs font-semibold text-slate-300">Mức độ</label>
+                            <select id="qform-level" class="cyber-input text-xs">
+                                <option value="Nhận biết">Nhận biết</option>
+                                <option value="Thông hiểu">Thông hiểu</option>
+                                <option value="Vận dụng">Vận dụng</option>
+                                <option value="Vận dụng cao">Vận dụng cao</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="space-y-1">
+                            <label class="text-xs font-semibold text-slate-300">Dạng câu hỏi</label>
+                            <select id="qform-type" class="cyber-input text-xs">
+                                <option value="single">Chọn 1 đáp án đúng</option>
+                                <option value="multiple">Chọn nhiều đáp án đúng</option>
+                            </select>
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-xs font-semibold text-slate-300">Điểm số</label>
+                            <input type="number" id="qform-score" class="cyber-input text-xs" min="1" max="10" value="1" required>
+                        </div>
+                    </div>
+
+                    <div class="space-y-1">
+                        <label class="text-xs font-semibold text-slate-300">Nội dung câu hỏi</label>
+                        <textarea id="qform-text" rows="3" class="cyber-input text-xs" placeholder="Nhập câu hỏi tại đây..." required></textarea>
+                    </div>
+
+                    <!-- 4 Options -->
+                    <div class="space-y-2">
+                        <label class="text-xs font-semibold text-slate-300">Các lựa chọn đáp án & Tích chọn đáp án ĐÚNG</label>
+                        
+                        <div class="flex items-center gap-2">
+                            <span class="w-6 text-center font-bold text-xs text-slate-400">A</span>
+                            <input type="text" id="qform-opt-a" class="cyber-input text-xs flex-1" placeholder="Nội dung đáp án A" required>
+                            <label class="flex items-center gap-1 cursor-pointer text-xs text-emerald-400 font-semibold px-2 py-1.5 rounded-lg bg-emerald-950/40 border border-emerald-800/40">
+                                <input type="checkbox" id="qform-ans-a" class="rounded text-emerald-500"> Đúng
+                            </label>
+                        </div>
+
+                        <div class="flex items-center gap-2">
+                            <span class="w-6 text-center font-bold text-xs text-slate-400">B</span>
+                            <input type="text" id="qform-opt-b" class="cyber-input text-xs flex-1" placeholder="Nội dung đáp án B" required>
+                            <label class="flex items-center gap-1 cursor-pointer text-xs text-emerald-400 font-semibold px-2 py-1.5 rounded-lg bg-emerald-950/40 border border-emerald-800/40">
+                                <input type="checkbox" id="qform-ans-b" class="rounded text-emerald-500"> Đúng
+                            </label>
+                        </div>
+
+                        <div class="flex items-center gap-2">
+                            <span class="w-6 text-center font-bold text-xs text-slate-400">C</span>
+                            <input type="text" id="qform-opt-c" class="cyber-input text-xs flex-1" placeholder="Nội dung đáp án C (để trống nếu câu hỏi chỉ có 2 lựa chọn)">
+                            <label class="flex items-center gap-1 cursor-pointer text-xs text-emerald-400 font-semibold px-2 py-1.5 rounded-lg bg-emerald-950/40 border border-emerald-800/40">
+                                <input type="checkbox" id="qform-ans-c" class="rounded text-emerald-500"> Đúng
+                            </label>
+                        </div>
+
+                        <div class="flex items-center gap-2">
+                            <span class="w-6 text-center font-bold text-xs text-slate-400">D</span>
+                            <input type="text" id="qform-opt-d" class="cyber-input text-xs flex-1" placeholder="Nội dung đáp án D (tùy chọn)">
+                            <label class="flex items-center gap-1 cursor-pointer text-xs text-emerald-400 font-semibold px-2 py-1.5 rounded-lg bg-emerald-950/40 border border-emerald-800/40">
+                                <input type="checkbox" id="qform-ans-d" class="rounded text-emerald-500"> Đúng
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="space-y-1">
+                        <label class="text-xs font-semibold text-slate-300">Giải thích lý thuyết chi tiết</label>
+                        <textarea id="qform-explanation" rows="2" class="cyber-input text-xs" placeholder="Ghi chú kiến thức hoặc giải thích vì sao đáp án này đúng..."></textarea>
+                    </div>
+
+                    <div class="flex items-center justify-end gap-2 pt-2 border-t border-slate-800">
+                        <button type="button" class="close-q-form-modal btn-secondary text-xs py-2 px-4">
+                            Hủy bỏ
+                        </button>
+                        <button type="submit" class="btn-primary text-xs py-2 px-6 font-bold">
+                            💾 Lưu Câu Hỏi
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- 6. ADMIN SUBJECT ADD FORM MODAL -->
+        <div id="admin-sub-form-modal" class="fixed inset-0 bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-3 sm:p-5 z-50 hidden overflow-y-auto">
+            <div class="glass-card max-w-lg w-full my-auto max-h-[92vh] overflow-y-auto p-5 sm:p-6 space-y-4 border-amber-500/50 shadow-2xl relative admin-scroll">
+                <button class="close-sub-form-modal absolute top-4 right-4 text-slate-400 hover:text-white text-lg">✕</button>
+
+                <h3 class="text-base sm:text-lg font-black text-amber-400">
+                    THÊM MÔN HỌC MỚI
+                </h3>
+
+                <form id="admin-subject-form" class="space-y-3">
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="space-y-1">
+                            <label class="text-xs font-semibold text-slate-300">Mã môn (Slug)</label>
+                            <input type="text" id="subform-id" class="cyber-input text-xs" placeholder="vd: ctdl, csdl" required>
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-xs font-semibold text-slate-300">Mã hiệu học phần</label>
+                            <input type="text" id="subform-code" class="cyber-input text-xs" placeholder="vd: IT201" required>
+                        </div>
+                    </div>
+
+                    <div class="space-y-1">
+                        <label class="text-xs font-semibold text-slate-300">Tên môn học đầy đủ</label>
+                        <input type="text" id="subform-name" class="cyber-input text-xs" placeholder="vd: Cấu Trúc Dữ Liệu & Giải Thuật" required>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="space-y-1">
+                            <label class="text-xs font-semibold text-slate-300">Biểu tượng (Emoji)</label>
+                            <input type="text" id="subform-icon" class="cyber-input text-xs" placeholder="🌲, 🗄️, 🤖" value="📚">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-xs font-semibold text-slate-300">Màu chủ đạo (Hex)</label>
+                            <input type="color" id="subform-color" class="w-full h-10 bg-slate-900 border border-slate-700 rounded-xl p-1 cursor-pointer" value="#06b6d4">
+                        </div>
+                    </div>
+
+                    <div class="space-y-1">
+                        <label class="text-xs font-semibold text-slate-300">Mô tả tóm tắt môn học</label>
+                        <textarea id="subform-desc" rows="2" class="cyber-input text-xs" placeholder="Mô tả nội dung trọng tâm môn học..."></textarea>
+                    </div>
+
+                    <div class="space-y-1">
+                        <label class="text-xs font-semibold text-slate-300">Danh sách các chương (Mỗi dòng một chương)</label>
+                        <textarea id="subform-chapters" rows="4" class="cyber-input text-xs font-mono" placeholder="Tổng quan & Khái niệm cơ bản&#10;Cấu trúc mảng & Danh sách liên kết&#10;Ngăn xếp & Hàng đợi&#10;Cây nhị phân & Đồ thị&#10;Thuật toán tìm kiếm & Sắp xếp"></textarea>
+                    </div>
+
+                    <div class="flex items-center justify-end gap-2 pt-2 border-t border-slate-800">
+                        <button type="button" class="close-sub-form-modal btn-secondary text-xs py-2 px-4">
+                            Hủy bỏ
+                        </button>
+                        <button type="submit" class="btn-primary text-xs py-2 px-6 font-bold bg-gradient-to-r from-amber-600 to-orange-600">
+                            ✓ Thêm Môn Học
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
         <!-- Footer -->
         <footer class="mt-auto py-4 border-t border-slate-800/80 text-center text-xs text-slate-500">
-            Hệ thống Bài thi, Cyber Runner, Đấu Trường 1v1 & Thử Thách CTF Mạng Máy Tính • CCNA 200-301 (331 Câu Hỏi)
+            Hệ thống Bài thi, Cyber Runner, Đấu Trường 1v1 & Thử Thách CTF Đa Môn Học • CCNA 200-301
         </footer>
     </div>
 
@@ -1201,6 +1699,9 @@
     <script src="js/sound.js"></script>
     <script src="js/network_bg.js"></script>
     <script src="js/quiz_data.js"></script>
+    <script src="js/subjects_data.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/admin.js"></script>
     <script src="js/quiz.js"></script>
     <script src="js/game.js"></script>
     <script src="js/battle.js"></script>

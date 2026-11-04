@@ -836,4 +836,78 @@ body.game-view-active main {
     color: #94a3b8;
 }
 
+/* ==========================================================================
+   Multi-Subject & Role-Based Access Control (RBAC) Styles
+   ========================================================================== */
+
+/* Subject Selector Dropdown */
+.subject-pill-select {
+    background: rgba(15, 23, 42, 0.85);
+    border: 1.5px solid rgba(56, 189, 248, 0.35);
+    border-radius: 0.75rem;
+    padding: 0.4rem 0.85rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #e0f2fe;
+    cursor: pointer;
+    backdrop-filter: blur(12px);
+    transition: all 0.2s ease;
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.15);
+}
+
+.subject-pill-select:hover {
+    border-color: #38bdf8;
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+}
+
+/* Admin Gold Glow Badge */
+.admin-badge-glow {
+    border-color: #f59e0b !important;
+    background: rgba(120, 53, 15, 0.35) !important;
+    color: #fef3c7 !important;
+    box-shadow: 0 0 16px rgba(245, 158, 11, 0.45);
+}
+
+/* Cyber Form Inputs */
+.cyber-input {
+    width: 100%;
+    background: rgba(15, 23, 42, 0.9);
+    border: 1.5px solid rgba(255, 255, 255, 0.12);
+    border-radius: 0.75rem;
+    padding: 0.65rem 0.95rem;
+    font-size: 0.85rem;
+    color: #f8fafc;
+    transition: all 0.2s ease;
+}
+
+.cyber-input:focus {
+    outline: none;
+    border-color: #06b6d4;
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.3);
+    background: rgba(15, 23, 42, 0.98);
+}
+
+/* Admin Dashboard Modal custom scroll & height */
+.admin-modal-card {
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+/* Custom Scrollbar for Admin Panels */
+.admin-scroll::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+.admin-scroll::-webkit-scrollbar-track {
+    background: rgba(15, 23, 42, 0.6);
+}
+.admin-scroll::-webkit-scrollbar-thumb {
+    background: rgba(56, 189, 248, 0.3);
+    border-radius: 3px;
+}
+.admin-scroll::-webkit-scrollbar-thumb:hover {
+    background: rgba(56, 189, 248, 0.6);
+}
+
+
 

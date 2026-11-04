@@ -178,9 +178,38 @@ class QuizEngine {
         });
     }
 
-    setQuestions(data) {
+    setQuestions(data, subject) {
         this.questions = data;
+        const sub = subject || (window.subjectsManager ? window.subjectsManager.getActiveSubject() : null);
+        if (sub) {
+            this.updateSubjectUI(sub);
+        }
         this.updateAvailableCount();
+    }
+
+    updateSubjectUI(sub) {
+        const badgeEl = document.getElementById('setup-subject-badge');
+        const titleEl = document.getElementById('setup-subject-title');
+        const descEl = document.getElementById('setup-subject-desc');
+
+        if (badgeEl) badgeEl.textContent = `${sub.name} • ${sub.code} (${this.questions.length} Câu Hỏi)`;
+        if (titleEl) titleEl.textContent = `Thiết Lập Bài Kiểm Tra ${sub.name}`;
+        if (descEl) descEl.textContent = sub.description || 'Tùy chỉnh phạm vi ôn tập theo từng chương hoặc thi thử tổng hợp.';
+
+        // Populate Chapter dropdown
+        if (this.elements.chapterSelect && sub.chapters) {
+            let html = `<option value="all">Tất cả các chương (${this.questions.length} câu)</option>`;
+            sub.chapters.forEach(ch => {
+                const count = this.questions.filter(q => q.chapterId === ch.id).length;
+                html += `<option value="${ch.id}">Chương ${ch.id}: ${ch.name.split(':')[1] || ch.name} (${count} câu)</option>`;
+            });
+            this.elements.chapterSelect.innerHTML = html;
+        }
+
+        // Update custom count max
+        if (this.elements.customCountInput) {
+            this.elements.customCountInput.max = this.questions.length;
+        }
     }
 
     updateAvailableCount() {
@@ -218,6 +247,17 @@ class QuizEngine {
             if (!isNaN(customVal) && customVal > 0) count = Math.min(customVal, filtered.length);
         } else if (countVal !== 'all') {
             count = Math.min(parseInt(countVal), filtered.length);
+        }
+
+        // Check RBAC permission for Question Count
+        if (window.authManager && !window.authManager.isLoggedIn()) {
+            if (count > 10) {
+                window.authManager.showPermissionGate(
+                    'Giới Hạn Lượt Thi Khách Vãng Lai',
+                    'Khách vãng lai được làm tối đa 10 câu/lượt thi. Vui lòng đăng nhập hoặc tạo tài khoản miễn phí để làm bài 20, 40 câu hoặc toàn bộ đề thi và lưu lịch sử thi!'
+                );
+                return;
+            }
         }
 
         // Determine mode
@@ -684,23 +724,28 @@ class QuizEngine {
         let correctCount = 0;
         let totalScore = 0;
         let maxScore = 0;
-        const chapterStats = {
-            1: { total: 0, correct: 0, title: 'Chương 1: Tổng quan MMT' },
-            2: { total: 0, correct: 0, title: 'Chương 2: Chuyển mạch Ethernet' },
-            3: { total: 0, correct: 0, title: 'Chương 3: Định tuyến IP' },
-            4: { total: 0, correct: 0, title: 'Chương 4: Tầng giao vận' },
-            5: { total: 0, correct: 0, title: 'Chương 5: Luyện thi CCNA 200-301' }
-        };
+        
+        // Dynamic chapter stats based on active subject
+        const chapterStats = {};
+        const activeSub = window.subjectsManager ? window.subjectsManager.getActiveSubject() : null;
+        if (activeSub && activeSub.chapters) {
+            activeSub.chapters.forEach(c => {
+                chapterStats[c.id] = { total: 0, correct: 0, title: c.name };
+            });
+        }
 
         this.currentQuestions.forEach(q => {
             maxScore += q.score;
-            if (chapterStats[q.chapterId]) chapterStats[q.chapterId].total++;
+            if (!chapterStats[q.chapterId]) {
+                chapterStats[q.chapterId] = { total: 0, correct: 0, title: q.chapter || `Chương ${q.chapterId}` };
+            }
+            chapterStats[q.chapterId].total++;
 
             const isCorrect = this.checkQuestionAnswer(q);
             if (isCorrect) {
                 correctCount++;
                 totalScore += q.score;
-                if (chapterStats[q.chapterId]) chapterStats[q.chapterId].correct++;
+                chapterStats[q.chapterId].correct++;
             }
         });
 
@@ -722,11 +767,26 @@ class QuizEngine {
         const durationSeconds = Math.round((this.endTime - this.startTime) / 1000);
         const mins = Math.floor(durationSeconds / 60);
         const secs = durationSeconds % 60;
-        this.elements.totalTimeText.textContent = `${mins}m ${secs}s`;
+        const timeSpentStr = `${mins}m ${secs}s`;
+        this.elements.totalTimeText.textContent = timeSpentStr;
 
         this.elements.correctCountText.textContent = correctCount;
         this.elements.wrongCountText.textContent = Math.max(0, wrongCount);
         this.elements.unansweredCountText.textContent = unansCount;
+
+        // Save exam history for logged in user
+        if (window.authManager) {
+            window.authManager.saveExamResult({
+                subjectId: activeSub ? activeSub.id : 'mmt',
+                subjectName: activeSub ? activeSub.name : 'Mạng Máy Tính',
+                score: totalScore,
+                totalScore: maxScore,
+                percent: percent,
+                correctCount: correctCount,
+                totalCount: total,
+                timeSpent: timeSpentStr
+            });
+        }
 
         // Render chapter breakdown
         this.renderChapterBreakdown(chapterStats);
@@ -743,9 +803,9 @@ class QuizEngine {
         if (!this.elements.chapterBreakdownContainer) return;
         this.elements.chapterBreakdownContainer.innerHTML = '';
 
-        for (let chId = 1; chId <= 5; chId++) {
+        Object.keys(stats).forEach(chId => {
             const s = stats[chId];
-            if (s.total === 0) continue;
+            if (!s || s.total === 0) return;
             const pct = Math.round((s.correct / s.total) * 100);
             const row = document.createElement('div');
             row.className = 'chapter-stat-bar';
@@ -759,7 +819,7 @@ class QuizEngine {
                 </div>
             `;
             this.elements.chapterBreakdownContainer.appendChild(row);
-        }
+        });
     }
 
     renderReviewList() {

@@ -333,6 +333,13 @@ class CyberRunnerGame {
             this.ui.levelCards.forEach(card => {
                 card.addEventListener('click', () => {
                     const levelKey = card.dataset.level;
+                    if (['level3', 'level4'].includes(levelKey) && window.authManager && !window.authManager.isLoggedIn()) {
+                        window.authManager.showPermissionGate(
+                            'Mở Khóa Cấp Độ Nâng Cao',
+                            'Khách vãng lai được chơi thử Cấp 1 (Tân Binh Cáp Đồng) và Cấp 2 (Kỹ Sư Cáp Quang). Vui lòng đăng nhập hoặc tạo tài khoản miễn phí để mở khóa Cấp 3 (Chuyên Gia 10G) và Cấp 4 (Siêu Thần Mạng Cyber God)!'
+                        );
+                        return;
+                    }
                     if (levelKey && this.levels[levelKey]) {
                         window.soundManager.playClick();
                         this.selectLevel(levelKey);
