@@ -1,0 +1,7 @@
+.DS_Store
+*.pyc
+__pycache__/
+docs/
+*.command
+build_enhanced_dataset.py
+extract_quiz.py
