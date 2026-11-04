@@ -36,6 +36,7 @@ class AdminDashboard {
         this.tabContents = {
             questions: document.getElementById('admin-tab-content-questions'),
             subjects: document.getElementById('admin-tab-content-subjects'),
+            users: document.getElementById('admin-tab-content-users'),
             backup: document.getElementById('admin-tab-content-backup')
         };
 
@@ -64,6 +65,10 @@ class AdminDashboard {
         if (this.searchQ) this.searchQ.addEventListener('input', () => this.renderQuestions());
         if (this.filterChapter) this.filterChapter.addEventListener('change', () => this.renderQuestions());
         if (this.filterLevel) this.filterLevel.addEventListener('change', () => this.renderQuestions());
+
+        // Search users
+        const userSearch = document.getElementById('admin-user-search');
+        if (userSearch) userSearch.addEventListener('input', () => this.renderUsers());
 
         // Add Question button
         const addQBtn = document.getElementById('admin-add-q-btn');
@@ -148,6 +153,7 @@ class AdminDashboard {
 
         if (tab === 'questions') this.renderQuestions();
         if (tab === 'subjects') this.renderSubjects();
+        if (tab === 'users') this.renderUsers();
         if (tab === 'backup') this.renderBackupStats();
     }
 
@@ -551,6 +557,221 @@ class AdminDashboard {
             }
         };
         reader.readAsText(file);
+    }
+
+    renderUsers() {
+        const container = document.getElementById('admin-users-list');
+        const badge = document.getElementById('admin-users-stat-badge');
+        if (!container) return;
+
+        if (!window.authManager) return;
+        const allUsers = window.authManager.getAllUsers();
+        const students = allUsers.filter(u => u.username.toLowerCase() !== 'nvt5405@' && u.role !== 'admin');
+
+        const searchInput = document.getElementById('admin-user-search');
+        const searchVal = (searchInput ? searchInput.value : '').toLowerCase().trim();
+
+        const filtered = students.filter(u => {
+            if (!searchVal) return true;
+            return u.username.toLowerCase().includes(searchVal) || 
+                   (u.name && u.name.toLowerCase().includes(searchVal)) ||
+                   (u.email && u.email.toLowerCase().includes(searchVal));
+        });
+
+        if (badge) {
+            const approvedCount = students.filter(s => s.isApproved && (s.allowedSections || []).length > 0).length;
+            badge.textContent = `${filtered.length} Học viên (${approvedCount} đã cấp quyền)`;
+        }
+
+        if (filtered.length === 0) {
+            container.innerHTML = `
+                <div class="glass-card p-8 text-center text-slate-400 space-y-2">
+                    <div class="text-3xl">👥</div>
+                    <div class="font-bold text-slate-200">
+                        ${searchVal ? 'Không tìm thấy học viên nào phù hợp với tìm kiếm.' : 'Chưa có học viên nào đăng ký tài khoản.'}
+                    </div>
+                    <p class="text-xs text-slate-500 max-w-md mx-auto">
+                        Khi có người tạo tài khoản mới trên hệ thống, tài khoản sẽ tự động xuất hiện tại đây ở trạng thái "Chưa cấp quyền". Bạn có thể cấp quyền vào từng Lab hoặc môn học theo ý muốn.
+                    </p>
+                </div>
+            `;
+            return;
+        }
+
+        const sectionsDef = [
+            { id: 'tab-quiz', name: '📝 Luyện Thi' },
+            { id: 'tab-game', name: '🎮 Cyber Runner' },
+            { id: 'tab-battle', name: '⚔️ Đấu Trường 1v1' },
+            { id: 'tab-ctf', name: '🚩 Thử Thách CTF' },
+            { id: 'tab-bank', name: '📚 Ngân Hàng Câu' },
+            { id: 'tab-flashcard', name: '⚡ Flashcards' }
+        ];
+
+        const subjectsDef = [
+            { id: 'mmt', name: '🌐 Mạng Máy Tính & CCNA' },
+            { id: 'anm', name: '🛡️ An Ninh Mạng & ATTT' },
+            { id: 'toan', name: '📐 Toán Rời Rạc & Đồ Thị' },
+            { id: 'hdo', name: '💻 Hệ Điều Hành & Kiến Trúc' }
+        ];
+
+        container.innerHTML = filtered.map(u => {
+            const isApproved = !!u.isApproved;
+            const allowedSections = u.allowedSections || [];
+            const allowedSubjects = u.allowedSubjects || [];
+            const permCount = allowedSections.length;
+
+            return `
+                <div class="glass-card p-5 rounded-2xl border-slate-800 space-y-4 hover:border-slate-700 transition" data-user="${window.escapeHTML(u.username)}">
+                    <!-- User Header -->
+                    <div class="flex flex-wrap items-start justify-between gap-3 border-b border-slate-800/80 pb-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-cyan-500/20 to-purple-500/20 border border-cyan-500/40 flex items-center justify-center text-xl shadow-md">
+                                ${window.escapeHTML(u.avatar || '🎓')}
+                            </div>
+                            <div>
+                                <div class="flex items-center gap-2">
+                                    <h4 class="font-bold text-white text-sm">${window.escapeHTML(u.name)}</h4>
+                                    <span class="text-xs font-mono text-cyan-400">@${window.escapeHTML(u.username)}</span>
+                                </div>
+                                <div class="text-[11px] text-slate-400 font-mono mt-0.5">
+                                    ${window.escapeHTML(u.email || '')} • Ngày tạo: ${window.escapeHTML(u.joinedAt || '2026')}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Status Badge -->
+                        <div class="flex items-center gap-2">
+                            ${isApproved && permCount > 0 ? 
+                                `<span class="px-2.5 py-1 rounded-xl text-xs font-mono font-bold bg-emerald-950/80 text-emerald-300 border border-emerald-800 flex items-center gap-1.5 shadow-sm">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-400"></span> ĐÃ CẤP QUYỀN (${permCount} LAB)
+                                </span>` :
+                                `<span class="px-2.5 py-1 rounded-xl text-xs font-mono font-bold bg-rose-950/80 text-rose-300 border border-rose-800 flex items-center gap-1.5 shadow-sm">
+                                    <span class="w-2 h-2 rounded-full bg-rose-400 animate-pulse"></span> CHƯA CẤP QUYỀN (KHÓA)
+                                </span>`
+                            }
+                        </div>
+                    </div>
+
+                    <!-- Granular Permission Options -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 text-xs">
+                        <!-- Sections / Labs Perms -->
+                        <div class="bg-slate-900/60 p-3.5 rounded-xl border border-slate-800 space-y-2.5">
+                            <div class="font-bold text-slate-300 flex items-center justify-between">
+                                <span class="flex items-center gap-1.5"><span>🧪</span> <span>Phân Quyền Các Lab & Mục Học:</span></span>
+                                <span class="text-[10px] text-slate-500">(Mục không chọn sẽ bị ẩn)</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2 pt-1">
+                                ${sectionsDef.map(sec => {
+                                    const checked = allowedSections.includes(sec.id) ? 'checked' : '';
+                                    return `
+                                        <label class="flex items-center gap-2 p-1.5 rounded-lg bg-slate-950/60 hover:bg-slate-800/60 cursor-pointer border border-slate-800/80">
+                                            <input type="checkbox" class="user-perm-sec rounded text-cyan-500 focus:ring-0 bg-slate-900 border-slate-700" data-sec="${sec.id}" ${checked}>
+                                            <span class="text-slate-300 text-[11px] font-medium">${sec.name}</span>
+                                        </label>
+                                    `;
+                                }).join('')}
+                            </div>
+                        </div>
+
+                        <!-- Subjects Perms -->
+                        <div class="bg-slate-900/60 p-3.5 rounded-xl border border-slate-800 space-y-2.5">
+                            <div class="font-bold text-slate-300 flex items-center justify-between">
+                                <span class="flex items-center gap-1.5"><span>📚</span> <span>Phân Quyền Môn Học:</span></span>
+                                <span class="text-[10px] text-slate-500">(Môn không chọn sẽ bị ẩn)</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2 pt-1">
+                                ${subjectsDef.map(sub => {
+                                    const checked = allowedSubjects.includes(sub.id) ? 'checked' : '';
+                                    return `
+                                        <label class="flex items-center gap-2 p-1.5 rounded-lg bg-slate-950/60 hover:bg-slate-800/60 cursor-pointer border border-slate-800/80">
+                                            <input type="checkbox" class="user-perm-sub rounded text-indigo-500 focus:ring-0 bg-slate-900 border-slate-700" data-sub="${sub.id}" ${checked}>
+                                            <span class="text-slate-300 text-[11px] font-medium truncate" title="${sub.name}">${sub.name}</span>
+                                        </label>
+                                    `;
+                                }).join('')}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card Actions -->
+                    <div class="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-slate-800/80">
+                        <div class="flex items-center gap-2">
+                            <button type="button" class="quick-grant-all-btn px-2.5 py-1 rounded-lg text-xs font-semibold bg-emerald-950/60 hover:bg-emerald-900 text-emerald-300 border border-emerald-800">
+                                ⚡ Mở Tất Cả
+                            </button>
+                            <button type="button" class="quick-revoke-all-btn px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700">
+                                🚫 Khóa Toàn Bộ
+                            </button>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button type="button" class="delete-user-btn px-2.5 py-1 rounded-lg text-xs font-semibold bg-rose-950/60 hover:bg-rose-900 text-rose-300 border border-rose-800">
+                                🗑️ Xóa Tài Khoản
+                            </button>
+                            <button type="button" class="save-user-perm-btn px-4 py-1.5 rounded-xl text-xs font-bold btn-primary bg-gradient-to-r from-cyan-600 to-indigo-600 shadow-md">
+                                💾 Lưu Phân Quyền
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }).join('');
+
+        // Attach event listeners for each user card
+        container.querySelectorAll('[data-user]').forEach(card => {
+            const username = card.dataset.user;
+
+            // Quick grant all
+            const grantBtn = card.querySelector('.quick-grant-all-btn');
+            if (grantBtn) {
+                grantBtn.addEventListener('click', () => {
+                    card.querySelectorAll('.user-perm-sec').forEach(cb => { cb.checked = true; });
+                    card.querySelectorAll('.user-perm-sub').forEach(cb => { cb.checked = true; });
+                });
+            }
+
+            // Quick revoke all
+            const revokeBtn = card.querySelector('.quick-revoke-all-btn');
+            if (revokeBtn) {
+                revokeBtn.addEventListener('click', () => {
+                    card.querySelectorAll('.user-perm-sec').forEach(cb => { cb.checked = false; });
+                    card.querySelectorAll('.user-perm-sub').forEach(cb => { cb.checked = false; });
+                });
+            }
+
+            // Save permissions
+            const saveBtn = card.querySelector('.save-user-perm-btn');
+            if (saveBtn) {
+                saveBtn.addEventListener('click', () => {
+                    const selectedSecs = Array.from(card.querySelectorAll('.user-perm-sec:checked')).map(cb => cb.dataset.sec);
+                    const selectedSubs = Array.from(card.querySelectorAll('.user-perm-sub:checked')).map(cb => cb.dataset.sub);
+                    const isApproved = selectedSecs.length > 0;
+
+                    const res = window.authManager.updateUserPermissions(username, selectedSecs, selectedSubs, isApproved);
+                    if (res.success) {
+                        this.renderUsers();
+                        if (window.soundManager) window.soundManager.playCorrect();
+                    } else {
+                        alert(res.message || 'Lỗi khi lưu phân quyền!');
+                    }
+                });
+            }
+
+            // Delete user
+            const delBtn = card.querySelector('.delete-user-btn');
+            if (delBtn) {
+                delBtn.addEventListener('click', () => {
+                    if (confirm(`Bạn có chắc chắn muốn xóa tài khoản @${username}?`)) {
+                        const res = window.authManager.deleteUser(username);
+                        if (res.success) {
+                            this.renderUsers();
+                            if (window.soundManager) window.soundManager.playWrong();
+                        } else {
+                            alert(res.message || 'Lỗi khi xóa!');
+                        }
+                    }
+                });
+            }
+        });
     }
 }
 

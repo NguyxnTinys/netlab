@@ -1177,7 +1177,23 @@ class SubjectsManager {
     }
 
     getAllSubjects() {
-        return Object.values(this.subjects);
+        const all = Object.values(this.subjects);
+        if (this.allowedSubjectIds && Array.isArray(this.allowedSubjectIds)) {
+            return all.filter(s => this.allowedSubjectIds.includes(s.id));
+        }
+        return all;
+    }
+
+    filterAllowedSubjects(allowedIds) {
+        if (allowedIds && Array.isArray(allowedIds) && allowedIds.length > 0) {
+            this.allowedSubjectIds = allowedIds;
+            if (!this.allowedSubjectIds.includes(this.activeSubjectId)) {
+                this.activeSubjectId = this.allowedSubjectIds[0] || 'mmt';
+            }
+        } else {
+            this.allowedSubjectIds = null;
+        }
+        this.notifyChange();
     }
 
     getSubject(subId) {

@@ -1,12 +1,12 @@
 /**
  * NetLab Authentication & Secure Role-Based Access Control (RBAC) System
- * Security Hardened:
- * - Zero hardcoded demo accounts on deployment
- * - Cryptographic SHA-256 password hashing with unique 128-bit salt per user (Web Crypto API)
- * - First-time Master Admin Setup Wizard (permanently locked once master admin is created)
- * - Brute-Force Rate Limiting (cooldown lockout after 5 consecutive failed attempts)
- * - Session Anti-Tampering (HMAC session token verification prevents DevTools role manipulation)
- * - Strict XSS Sanitization (window.escapeHTML & window.formatQuestionText)
+ * Version 4.0 - Granular Lab Access Control & Zero-Redundancy Principle:
+ * - Default Master Admin: nvt5405@ / nvt5405@123 (full administrative privileges)
+ * - All other accounts deleted on init as per security policy
+ * - Newly registered accounts default to ZERO PERMISSIONS (pending admin approval)
+ * - Granular per-lab & per-subject access control:
+ *   Only permitted tabs and subjects are visible; all other tabs/content are completely hidden.
+ * - Anti-Tampering session tokens & SHA-256 salted password hashing
  */
 
 // 1. Global XSS Sanitization Utilities
@@ -40,7 +40,7 @@ function generateSecureSalt() {
 }
 
 function getAppSecretSeed() {
-    const KEY = 'netlab_secret_salt_v3';
+    const KEY = 'netlab_secret_salt_v4';
     let seed = localStorage.getItem(KEY);
     if (!seed) {
         seed = generateSecureSalt() + '_' + Date.now();
@@ -60,9 +60,9 @@ async function computeSessionToken(username, role, passwordHash) {
 // 3. Auth Manager Class
 class AuthManager {
     constructor() {
-        this.STORAGE_KEY_USERS = 'netlab_users_v3';
-        this.STORAGE_KEY_CURRENT = 'netlab_current_user_v3';
-        this.STORAGE_KEY_HISTORY = 'netlab_exam_history_v3';
+        this.STORAGE_KEY_USERS = 'netlab_users_v4';
+        this.STORAGE_KEY_CURRENT = 'netlab_current_user_v4';
+        this.STORAGE_KEY_HISTORY = 'netlab_exam_history_v4';
 
         this.currentUser = null;
         this.users = [];
@@ -78,6 +78,8 @@ class AuthManager {
     async init() {
         // Clean up any legacy plaintext storage from previous versions for security
         try {
+            localStorage.removeItem('netlab_users_v3');
+            localStorage.removeItem('netlab_current_user_v3');
             localStorage.removeItem('netlab_users_v2');
             localStorage.removeItem('netlab_current_user_v2');
             localStorage.removeItem('netlab_users');
@@ -86,7 +88,7 @@ class AuthManager {
             // Ignore storage cleanup errors
         }
 
-        // 1. Load users list from secure storage
+        // 1. Load users list or seed Master Admin: nvt5405@ / nvt5405@123
         const savedUsers = localStorage.getItem(this.STORAGE_KEY_USERS);
         if (savedUsers) {
             try {
@@ -98,6 +100,9 @@ class AuthManager {
             this.users = [];
         }
 
+        // Ensure default Master Admin nvt5405@ exists with full permissions
+        await this.ensureMasterAdmin();
+
         // 2. Validate active session with anti-tampering token verification
         const savedCurrent = localStorage.getItem(this.STORAGE_KEY_CURRENT);
         if (savedCurrent) {
@@ -105,7 +110,14 @@ class AuthManager {
                 const sessionObj = JSON.parse(savedCurrent);
                 const isValid = await this.validateSession(sessionObj);
                 if (isValid) {
-                    this.currentUser = sessionObj;
+                    // Refresh user permissions from latest users array
+                    const freshUser = this.users.find(u => u.username.toLowerCase() === sessionObj.username.toLowerCase());
+                    this.currentUser = {
+                        ...sessionObj,
+                        allowedSections: freshUser.allowedSections || [],
+                        allowedSubjects: freshUser.allowedSubjects || [],
+                        isApproved: freshUser.isApproved
+                    };
                 } else {
                     this.currentUser = null;
                     localStorage.removeItem(this.STORAGE_KEY_CURRENT);
@@ -120,15 +132,40 @@ class AuthManager {
         // 3. Bind UI elements and event listeners
         this.bindUI();
         this.updateHeaderUI();
-        this.checkAdminSetupState();
+        this.applyPermissionsToUI(this.currentUser);
+    }
+
+    async ensureMasterAdmin() {
+        let admin = this.users.find(u => u.username.toLowerCase() === 'nvt5405@');
+        if (!admin) {
+            // Reset to clean state with master admin as requested
+            const salt = generateSecureSalt();
+            const passwordHash = await hashUserPassword('nvt5405@123', salt);
+            admin = {
+                username: 'nvt5405@',
+                name: 'Quản Trị Viên (nvt5405@)',
+                role: 'admin',
+                avatar: '👑',
+                email: 'nvt5405@netlab.vn',
+                salt: salt,
+                passwordHash: passwordHash,
+                joinedAt: '2026-01-01',
+                isApproved: true,
+                allowedSections: ['tab-quiz', 'tab-game', 'tab-battle', 'tab-ctf', 'tab-bank', 'tab-flashcard'],
+                allowedSubjects: ['mmt', 'anm', 'toan', 'hdo']
+            };
+            // Keep master admin and legitimate registered students
+            this.users = [admin, ...this.users.filter(u => u.role !== 'admin')];
+            this.saveUsers();
+        }
     }
 
     saveUsers() {
         localStorage.setItem(this.STORAGE_KEY_USERS, JSON.stringify(this.users));
     }
 
-    hasAdminUser() {
-        return this.users.some(u => u.role === 'admin');
+    getAllUsers() {
+        return this.users;
     }
 
     async validateSession(sessionObj) {
@@ -136,14 +173,11 @@ class AuthManager {
             return false;
         }
 
-        // Find user in stored users database
         const user = this.users.find(u => u.username.toLowerCase() === sessionObj.username.toLowerCase());
         if (!user) return false;
 
-        // Role escalation check
         if (user.role !== sessionObj.role) return false;
 
-        // Verify cryptographic session token
         const expectedToken = await computeSessionToken(user.username, user.role, user.passwordHash);
         return expectedToken === sessionObj.token;
     }
@@ -160,7 +194,6 @@ class AuthManager {
         return this.currentUser !== null && this.currentUser.role === 'admin';
     }
 
-    // Rate Limiting Check
     isRateLimited() {
         if (Date.now() < this.lockoutUntil) {
             const secLeft = Math.ceil((this.lockoutUntil - Date.now()) / 1000);
@@ -171,9 +204,9 @@ class AuthManager {
 
     /**
      * Secure Login Method with SHA-256 + Salt & Rate Limiting Shield
+     * Supports typing nvt5405@ or nvt5405 for Master Admin
      */
     async login(usernameOrEmail, password) {
-        // Check rate limiting
         const rateCheck = this.isRateLimited();
         if (rateCheck.limited) {
             return {
@@ -182,9 +215,14 @@ class AuthManager {
             };
         }
 
-        const trimmed = (usernameOrEmail || '').trim().toLowerCase();
+        let trimmed = (usernameOrEmail || '').trim().toLowerCase();
         if (!trimmed || !password) {
             return { success: false, message: 'Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu!' };
+        }
+
+        // Support both "nvt5405" and "nvt5405@"
+        if (trimmed === 'nvt5405') {
+            trimmed = 'nvt5405@';
         }
 
         // Find candidate user
@@ -196,7 +234,7 @@ class AuthManager {
         if (!candidate) {
             this.failedAttempts++;
             if (this.failedAttempts >= 5) {
-                this.lockoutUntil = Date.now() + 30000; // 30s lockout
+                this.lockoutUntil = Date.now() + 30000;
                 return {
                     success: false,
                     message: 'Bạn đã nhập sai 5 lần! Hệ thống tạm khóa đăng nhập trong 30 giây để bảo vệ.'
@@ -210,7 +248,7 @@ class AuthManager {
         if (inputHash !== candidate.passwordHash) {
             this.failedAttempts++;
             if (this.failedAttempts >= 5) {
-                this.lockoutUntil = Date.now() + 30000; // 30s lockout
+                this.lockoutUntil = Date.now() + 30000;
                 return {
                     success: false,
                     message: 'Bạn đã nhập sai 5 lần! Hệ thống tạm khóa đăng nhập trong 30 giây để bảo vệ.'
@@ -233,109 +271,33 @@ class AuthManager {
             avatar: candidate.avatar || (candidate.role === 'admin' ? '👑' : '🎓'),
             email: candidate.email || '',
             joinedAt: candidate.joinedAt,
+            isApproved: candidate.isApproved,
+            allowedSections: candidate.allowedSections || [],
+            allowedSubjects: candidate.allowedSubjects || [],
             token: token
         };
 
         localStorage.setItem(this.STORAGE_KEY_CURRENT, JSON.stringify(this.currentUser));
         this.notifyAuthChange();
-        return { success: true, user: this.currentUser };
-    }
-
-    /**
-     * First-Time Master Admin Initialization Wizard
-     * Only callable when no admin exists in the system.
-     */
-    async setupFirstAdmin(name, username, email, password, confirmPassword) {
-        if (this.hasAdminUser()) {
-            return {
-                success: false,
-                message: 'Hệ thống đã có Quản trị viên! Tính năng khởi tạo quản trị viên đã bị khóa vĩnh viễn.'
-            };
-        }
-
-        const cleanName = (name || '').trim();
-        const cleanUser = (username || '').trim().toLowerCase();
-        const cleanEmail = (email || '').trim().toLowerCase();
-
-        if (!cleanName || cleanName.length < 2) {
-            return { success: false, message: 'Họ tên Quản trị viên tối thiểu 2 ký tự!' };
-        }
-
-        const userRegex = /^[a-zA-Z0-9_-]{3,20}$/;
-        if (!userRegex.test(cleanUser)) {
-            return { success: false, message: 'Tên đăng nhập admin chỉ gồm 3-20 ký tự (chữ cái, chữ số, gạch ngang/dưới)!' };
-        }
-
-        if (!cleanEmail || !cleanEmail.includes('@')) {
-            return { success: false, message: 'Email quản trị viên không hợp lệ!' };
-        }
-
-        if (!password || password.length < 6) {
-            return { success: false, message: 'Mật khẩu quản trị viên phải có tối thiểu 6 ký tự để đảm bảo an toàn!' };
-        }
-
-        if (password !== confirmPassword) {
-            return { success: false, message: 'Xác nhận mật khẩu không khớp!' };
-        }
-
-        // Check duplicate username
-        if (this.users.some(u => u.username.toLowerCase() === cleanUser)) {
-            return { success: false, message: 'Tên đăng nhập đã tồn tại!' };
-        }
-
-        // Generate salt and hash
-        const salt = generateSecureSalt();
-        const passwordHash = await hashUserPassword(password, salt);
-
-        const newAdmin = {
-            username: cleanUser,
-            name: cleanName,
-            role: 'admin',
-            avatar: '👑',
-            email: cleanEmail,
-            salt: salt,
-            passwordHash: passwordHash,
-            joinedAt: new Date().toISOString().split('T')[0]
-        };
-
-        this.users.push(newAdmin);
-        this.saveUsers();
-
-        // Auto login master admin
-        const token = await computeSessionToken(newAdmin.username, newAdmin.role, newAdmin.passwordHash);
-        this.currentUser = {
-            username: newAdmin.username,
-            name: newAdmin.name,
-            role: newAdmin.role,
-            avatar: newAdmin.avatar,
-            email: newAdmin.email,
-            joinedAt: newAdmin.joinedAt,
-            token: token
-        };
-
-        localStorage.setItem(this.STORAGE_KEY_CURRENT, JSON.stringify(this.currentUser));
-        this.notifyAuthChange();
-        this.checkAdminSetupState();
-
         return { success: true, user: this.currentUser };
     }
 
     /**
      * Public Registration for Students
-     * Strictly forces role: 'student'. Cannot create admin accounts.
+     * Default: isApproved = false, allowedSections = [], allowedSubjects = [] (ZERO PERMISSIONS)
      */
     async register(name, username, password, confirmPassword, email = '') {
         const cleanName = (name || '').trim();
-        const cleanUser = (username || '').trim().toLowerCase();
+        let cleanUser = (username || '').trim().toLowerCase();
         const cleanEmail = (email || '').trim().toLowerCase();
 
         if (!cleanName || cleanName.length < 2) {
             return { success: false, message: 'Họ tên tối thiểu 2 ký tự!' };
         }
 
-        const userRegex = /^[a-zA-Z0-9_-]{3,20}$/;
+        const userRegex = /^[a-zA-Z0-9_@.-]{3,30}$/;
         if (!userRegex.test(cleanUser)) {
-            return { success: false, message: 'Tên đăng nhập chỉ gồm 3-20 ký tự (chữ cái, số, _, -)!' };
+            return { success: false, message: 'Tên đăng nhập chỉ gồm 3-30 ký tự (chữ cái, số, @, _, -, .)' };
         }
 
         if (!password || password.length < 6) {
@@ -357,12 +319,15 @@ class AuthManager {
         const newStudent = {
             username: cleanUser,
             name: cleanName,
-            role: 'student', // Strictly hardcoded student role
+            role: 'student',
             avatar: '🎓',
             email: cleanEmail || `${cleanUser}@netlab.local`,
             salt: salt,
             passwordHash: passwordHash,
-            joinedAt: new Date().toISOString().split('T')[0]
+            joinedAt: new Date().toISOString().split('T')[0],
+            isApproved: false,     // Mặc định KHÔNG QUYỀN
+            allowedSections: [],   // Mặc định TRỐNG: ẩn toàn bộ lab
+            allowedSubjects: []    // Mặc định TRỐNG: chờ admin cấp quyền
         };
 
         this.users.push(newStudent);
@@ -377,6 +342,9 @@ class AuthManager {
             avatar: newStudent.avatar,
             email: newStudent.email,
             joinedAt: newStudent.joinedAt,
+            isApproved: newStudent.isApproved,
+            allowedSections: newStudent.allowedSections,
+            allowedSubjects: newStudent.allowedSubjects,
             token: token
         };
 
@@ -392,9 +360,59 @@ class AuthManager {
     }
 
     /**
+     * Admin Permission Updates for Registered Users
+     */
+    updateUserPermissions(username, allowedSections, allowedSubjects, isApproved) {
+        const u = this.users.find(user => user.username.toLowerCase() === username.toLowerCase());
+        if (!u) return { success: false, message: 'Không tìm thấy người dùng!' };
+
+        u.allowedSections = allowedSections || [];
+        u.allowedSubjects = allowedSubjects || [];
+        u.isApproved = !!isApproved;
+
+        this.saveUsers();
+
+        // If the updated user is currently logged in, sync session
+        if (this.currentUser && this.currentUser.username.toLowerCase() === username.toLowerCase()) {
+            this.currentUser.allowedSections = u.allowedSections;
+            this.currentUser.allowedSubjects = u.allowedSubjects;
+            this.currentUser.isApproved = u.isApproved;
+            localStorage.setItem(this.STORAGE_KEY_CURRENT, JSON.stringify(this.currentUser));
+            this.applyPermissionsToUI(this.currentUser);
+        }
+
+        return { success: true };
+    }
+
+    deleteUser(username) {
+        if (username.toLowerCase() === 'nvt5405@') {
+            return { success: false, message: 'Không thể xóa tài khoản Quản trị viên Master!' };
+        }
+
+        const idx = this.users.findIndex(u => u.username.toLowerCase() === username.toLowerCase());
+        if (idx === -1) return { success: false, message: 'Không tìm thấy người dùng!' };
+
+        this.users.splice(idx, 1);
+        this.saveUsers();
+
+        // If deleted user is current user, logout
+        if (this.currentUser && this.currentUser.username.toLowerCase() === username.toLowerCase()) {
+            this.logout();
+        }
+
+        return { success: true };
+    }
+
+    /**
      * RBAC Permission Enforcement
      */
     can(permission) {
+        if (this.isAdmin()) return true;
+        if (!this.isLoggedIn()) return false;
+
+        const user = this.currentUser;
+        if (!user || !user.isApproved || !user.allowedSections) return false;
+
         switch (permission) {
             case 'MANAGE_DATA':
             case 'CRUD_QUESTIONS':
@@ -402,21 +420,127 @@ class AuthManager {
             case 'EXPORT_IMPORT':
                 return this.isAdmin();
 
-            case 'TAKE_FULL_EXAM': // > 10 questions
-            case 'SAVE_HISTORY':
-            case 'PLAY_CYBER_GOD': // Levels 3 & 4 in Cyber Runner
+            case 'QUIZ':
+            case 'TAKE_FULL_EXAM':
             case 'CUSTOM_EXAM':
-            case 'RANKED_1V1':
-                return this.isLoggedIn();
+                return user.allowedSections.includes('tab-quiz');
 
-            case 'DEMO_QUIZ':
-            case 'PLAY_RUNNER_BASIC': // Levels 1 & 2
+            case 'RUNNER':
+            case 'PLAY_RUNNER_BASIC':
+            case 'PLAY_CYBER_GOD':
+                return user.allowedSections.includes('tab-game');
+
+            case 'BATTLE':
+            case 'RANKED_1V1':
+                return user.allowedSections.includes('tab-battle');
+
+            case 'CTF':
+                return user.allowedSections.includes('tab-ctf');
+
+            case 'BANK':
             case 'VIEW_BANK':
+                return user.allowedSections.includes('tab-bank');
+
+            case 'FLASHCARD':
             case 'VIEW_FLASHCARD':
-                return true; // Guest allowed
+                return user.allowedSections.includes('tab-flashcard');
+
+            case 'SAVE_HISTORY':
+                return user.isApproved;
 
             default:
                 return false;
+        }
+    }
+
+    /**
+     * Dynamic UI Filtering: Hides completely any unauthorized tabs or sections.
+     * Leaves zero redundant elements on the screen.
+     */
+    applyPermissionsToUI(user) {
+        const navTabsContainer = document.getElementById('main-nav-tabs');
+        const tabs = document.querySelectorAll('.nav-tab');
+        const sections = {
+            'tab-quiz': document.getElementById('section-quiz'),
+            'tab-game': document.getElementById('section-game'),
+            'tab-battle': document.getElementById('section-battle'),
+            'tab-ctf': document.getElementById('section-ctf'),
+            'tab-bank': document.getElementById('section-bank'),
+            'tab-flashcard': document.getElementById('section-flashcard')
+        };
+        const pendingView = document.getElementById('pending-permission-view');
+        const subSelectorContainer = document.getElementById('global-subject-container');
+
+        // Case 1: Master Admin (nvt5405@) -> Full Access
+        if (user && user.role === 'admin') {
+            if (pendingView) pendingView.classList.add('hidden');
+            if (navTabsContainer) navTabsContainer.classList.remove('hidden');
+            if (subSelectorContainer) subSelectorContainer.classList.remove('hidden');
+            tabs.forEach(t => t.classList.remove('hidden'));
+            if (window.subjectsManager) window.subjectsManager.filterAllowedSubjects(null);
+            return;
+        }
+
+        // Case 2: Guest (Not logged in)
+        if (!user) {
+            if (pendingView) pendingView.classList.add('hidden');
+            if (navTabsContainer) navTabsContainer.classList.remove('hidden');
+            if (subSelectorContainer) subSelectorContainer.classList.remove('hidden');
+            tabs.forEach(t => t.classList.remove('hidden'));
+            if (window.subjectsManager) window.subjectsManager.filterAllowedSubjects(null);
+            return;
+        }
+
+        // Case 3: Logged in Student / User
+        const allowed = user.allowedSections || [];
+        const isApproved = user.isApproved && allowed.length > 0;
+
+        if (!isApproved) {
+            // ZERO PERMISSIONS: Hide all nav tabs, subject selector, and all lab sections completely
+            if (navTabsContainer) navTabsContainer.classList.add('hidden');
+            if (subSelectorContainer) subSelectorContainer.classList.add('hidden');
+            Object.values(sections).forEach(s => {
+                if (s) s.classList.add('hidden');
+            });
+
+            if (pendingView) {
+                pendingView.classList.remove('hidden');
+                const nameEl = document.getElementById('pending-user-name');
+                if (nameEl) nameEl.textContent = user.name || user.username;
+            }
+            return;
+        }
+
+        // User has specific permissions: Show ONLY allowed tabs!
+        if (pendingView) pendingView.classList.add('hidden');
+        if (navTabsContainer) navTabsContainer.classList.remove('hidden');
+        if (subSelectorContainer) subSelectorContainer.classList.remove('hidden');
+
+        let firstActiveTab = null;
+        let currentActiveIsAllowed = false;
+
+        tabs.forEach(t => {
+            const target = t.dataset.target;
+            const canAccess = allowed.includes(target);
+            if (canAccess) {
+                t.classList.remove('hidden');
+                if (!firstActiveTab) firstActiveTab = t;
+                if (t.classList.contains('active')) currentActiveIsAllowed = true;
+            } else {
+                t.classList.add('hidden');
+                t.classList.remove('active');
+                if (sections[target]) sections[target].classList.add('hidden');
+            }
+        });
+
+        // If current tab is hidden, switch to the first allowed tab
+        if (!currentActiveIsAllowed && firstActiveTab) {
+            firstActiveTab.click();
+        }
+
+        // Filter allowed subjects
+        if (window.subjectsManager) {
+            window.subjectsManager.filterAllowedSubjects(user.allowedSubjects);
         }
     }
 
@@ -470,7 +594,7 @@ class AuthManager {
 
     notifyAuthChange() {
         this.updateHeaderUI();
-        this.checkAdminSetupState();
+        this.applyPermissionsToUI(this.currentUser);
         this.authListeners.forEach(cb => {
             try {
                 cb(this.currentUser);
@@ -478,22 +602,6 @@ class AuthManager {
                 console.error('Auth listener error:', e);
             }
         });
-    }
-
-    checkAdminSetupState() {
-        const adminSetupTab = document.getElementById('auth-tab-admin-setup');
-        const adminSetupBanner = document.getElementById('admin-setup-banner');
-
-        const hasAdmin = this.hasAdminUser();
-        if (!hasAdmin) {
-            // First time setup available
-            if (adminSetupTab) adminSetupTab.classList.remove('hidden');
-            if (adminSetupBanner) adminSetupBanner.classList.remove('hidden');
-        } else {
-            // Admin already exists: permanently lock & hide setup wizard
-            if (adminSetupTab) adminSetupTab.classList.add('hidden');
-            if (adminSetupBanner) adminSetupBanner.classList.add('hidden');
-        }
     }
 
     // UI integration bindings
@@ -512,12 +620,10 @@ class AuthManager {
         // Tabs
         this.loginTab = document.getElementById('auth-tab-login');
         this.registerTab = document.getElementById('auth-tab-register');
-        this.adminSetupTab = document.getElementById('auth-tab-admin-setup');
 
         // Forms
         this.loginForm = document.getElementById('login-form');
         this.registerForm = document.getElementById('register-form');
-        this.adminSetupForm = document.getElementById('admin-setup-form');
 
         // Messages
         this.authMsg = document.getElementById('auth-error-msg');
@@ -538,7 +644,7 @@ class AuthManager {
                 if (this.isAdmin()) {
                     this.openAdminModal();
                 } else {
-                    this.showPermissionGate('Yêu Cầu Quyền Quản Trị', 'Bạn phải đăng nhập bằng tài khoản Quản trị viên (Admin) để quản lý ngân hàng câu hỏi và môn học!');
+                    this.showPermissionGate('Yêu Cầu Quyền Quản Trị', 'Bạn phải đăng nhập bằng tài khoản Quản trị viên (nvt5405@) để truy cập chức năng này!');
                 }
             });
         }
@@ -549,9 +655,6 @@ class AuthManager {
         }
         if (this.registerTab) {
             this.registerTab.addEventListener('click', () => this.switchAuthTab('register'));
-        }
-        if (this.adminSetupTab) {
-            this.adminSetupTab.addEventListener('click', () => this.switchAuthTab('admin-setup'));
         }
 
         // Login Submit
@@ -613,41 +716,7 @@ class AuthManager {
                 } finally {
                     if (submitBtn) {
                         submitBtn.disabled = false;
-                        submitBtn.textContent = '✓ Đăng Ký Học Viên';
-                    }
-                }
-            });
-        }
-
-        // Admin Setup Submit
-        if (this.adminSetupForm) {
-            this.adminSetupForm.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const name = document.getElementById('admin-setup-name').value;
-                const u = document.getElementById('admin-setup-username').value;
-                const email = document.getElementById('admin-setup-email').value;
-                const p = document.getElementById('admin-setup-password').value;
-                const pConf = document.getElementById('admin-setup-password-confirm').value;
-
-                const submitBtn = document.getElementById('admin-setup-submit-btn');
-                if (submitBtn) {
-                    submitBtn.disabled = true;
-                    submitBtn.textContent = '⏳ Đang khởi tạo Master Admin...';
-                }
-
-                try {
-                    const res = await this.setupFirstAdmin(name, u, email, p, pConf);
-                    if (res.success) {
-                        this.closeAuthModal();
-                        if (window.soundManager) window.soundManager.playCorrect();
-                    } else {
-                        this.showAuthError(res.message);
-                        if (window.soundManager) window.soundManager.playWrong();
-                    }
-                } finally {
-                    if (submitBtn) {
-                        submitBtn.disabled = false;
-                        submitBtn.textContent = '👑 Khởi Tạo & Khóa Quyền Quản Trị';
+                        submitBtn.textContent = '✓ Đăng Ký Tài Khoản Mới';
                     }
                 }
             });
@@ -659,6 +728,15 @@ class AuthManager {
             logoutBtn.addEventListener('click', () => {
                 this.logout();
                 this.closeProfileModal();
+                if (window.soundManager) window.soundManager.playClick();
+            });
+        }
+
+        // Logout in pending permission view
+        const pendingLogoutBtn = document.getElementById('pending-logout-btn');
+        if (pendingLogoutBtn) {
+            pendingLogoutBtn.addEventListener('click', () => {
+                this.logout();
                 if (window.soundManager) window.soundManager.playClick();
             });
         }
@@ -694,11 +772,17 @@ class AuthManager {
             const isAdm = this.currentUser.role === 'admin';
             this.userBadge.innerHTML = isAdm ? 
                 `<span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span> <strong class="text-amber-400 font-bold">👑 ADMIN</strong>` :
-                `<span class="w-2 h-2 rounded-full bg-emerald-400"></span> <strong class="text-emerald-400 font-semibold">🎓 HỌC VIÊN</strong>`;
+                (this.currentUser.isApproved ? 
+                    `<span class="w-2 h-2 rounded-full bg-emerald-400"></span> <strong class="text-emerald-400 font-semibold">🎓 HỌC VIÊN</strong>` :
+                    `<span class="w-2 h-2 rounded-full bg-rose-400 animate-pulse"></span> <strong class="text-rose-400 font-semibold">🔒 CHỜ CẤP QUYỀN</strong>`
+                );
             
             this.userBadge.className = isAdm ? 
                 'px-2.5 py-1 rounded-xl text-xs font-mono border border-amber-500/50 bg-amber-950/60 text-amber-300 flex items-center gap-1.5 shadow-sm shadow-amber-500/20' :
-                'px-2.5 py-1 rounded-xl text-xs font-mono border border-emerald-500/40 bg-emerald-950/60 text-emerald-300 flex items-center gap-1.5';
+                (this.currentUser.isApproved ? 
+                    'px-2.5 py-1 rounded-xl text-xs font-mono border border-emerald-500/40 bg-emerald-950/60 text-emerald-300 flex items-center gap-1.5' :
+                    'px-2.5 py-1 rounded-xl text-xs font-mono border border-rose-500/40 bg-rose-950/60 text-rose-300 flex items-center gap-1.5'
+                );
 
             const firstName = (this.currentUser.name || '').split(' ')[0] || 'User';
             this.authBtn.innerHTML = `
@@ -732,13 +816,6 @@ class AuthManager {
     openAuthModal(tab = 'login') {
         if (!this.authModal) return;
         this.clearAuthError();
-        this.checkAdminSetupState();
-        
-        // If system has no admin and user clicked login, auto suggest admin-setup tab
-        if (!this.hasAdminUser() && tab === 'login') {
-            tab = 'admin-setup';
-        }
-        
         this.switchAuthTab(tab);
         this.authModal.classList.remove('hidden');
     }
@@ -748,23 +825,14 @@ class AuthManager {
     }
 
     switchAuthTab(tab) {
-        // If admin setup requested but admin already exists, redirect to login
-        if (tab === 'admin-setup' && this.hasAdminUser()) {
-            tab = 'login';
-        }
-
         const activeClass = 'flex-1 py-2 text-center text-xs font-bold border-b-2 border-cyan-400 text-cyan-400';
         const inactiveClass = 'flex-1 py-2 text-center text-xs font-semibold text-slate-400 hover:text-slate-200 border-b-2 border-transparent';
-        const adminActiveClass = 'flex-1 py-2 text-center text-xs font-bold border-b-2 border-amber-400 text-amber-400';
-        const adminInactiveClass = 'flex-1 py-2 text-center text-xs font-semibold text-amber-400 hover:text-amber-200 border-b-2 border-transparent';
 
         if (this.loginTab) this.loginTab.className = (tab === 'login') ? activeClass : inactiveClass;
         if (this.registerTab) this.registerTab.className = (tab === 'register') ? activeClass : inactiveClass;
-        if (this.adminSetupTab) this.adminSetupTab.className = (tab === 'admin-setup') ? adminActiveClass : adminInactiveClass;
 
         if (this.loginForm) this.loginForm.classList.toggle('hidden', tab !== 'login');
         if (this.registerForm) this.registerForm.classList.toggle('hidden', tab !== 'register');
-        if (this.adminSetupForm) this.adminSetupForm.classList.toggle('hidden', tab !== 'admin-setup');
 
         this.clearAuthError();
     }
@@ -804,15 +872,24 @@ class AuthManager {
         if (emailEl) emailEl.textContent = this.currentUser.email || 'Chưa cập nhật';
         if (joinedEl) joinedEl.textContent = `Tham gia: ${this.currentUser.joinedAt || '2026'}`;
         if (roleEl) {
-            roleEl.textContent = this.currentUser.role === 'admin' ? '👑 Quản Trị Viên Toàn Quyền' : '🎓 Học Viên Chính Thức';
-            roleEl.className = this.currentUser.role === 'admin' ? 'text-amber-400 font-bold' : 'text-emerald-400 font-bold';
+            if (this.currentUser.role === 'admin') {
+                roleEl.textContent = '👑 Quản Trị Viên Toàn Quyền';
+                roleEl.className = 'text-amber-400 font-bold';
+            } else if (this.currentUser.isApproved) {
+                const count = (this.currentUser.allowedSections || []).length;
+                roleEl.textContent = `🎓 Học Viên Được Cấp Quyền (${count} mục)`;
+                roleEl.className = 'text-emerald-400 font-bold';
+            } else {
+                roleEl.textContent = '🔒 Chưa Được Cấp Quyền (Chờ Phê Duyệt)';
+                roleEl.className = 'text-rose-400 font-bold';
+            }
         }
 
         // Render history with XSS escaping
         const history = this.getExamHistory();
         if (historyList) {
             if (history.length === 0) {
-                historyList.innerHTML = `<div class="p-4 text-center text-xs text-slate-500">Chưa có bài thi nào được ghi lại. Hãy vào mục Luyện Thi để bắt đầu!</div>`;
+                historyList.innerHTML = `<div class="p-4 text-center text-xs text-slate-500">Chưa có bài thi nào được ghi lại.</div>`;
             } else {
                 historyList.innerHTML = history.slice(0, 10).map(h => `
                     <div class="bg-slate-900/60 p-3 rounded-xl border border-slate-800 flex items-center justify-between text-xs">

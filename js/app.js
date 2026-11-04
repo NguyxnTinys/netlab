@@ -85,11 +85,17 @@ document.addEventListener('DOMContentLoaded', () => {
             if (guestHint) {
                 guestHint.classList.toggle('hidden', !!user);
             }
+            // Apply granular permissions to UI
+            window.authManager.applyPermissionsToUI(user);
+
             // Re-render bank to toggle admin edit buttons if applicable
             const activeQuestions = window.subjectsManager ? window.subjectsManager.getQuestions() : [];
             const activeSub = window.subjectsManager ? window.subjectsManager.getActiveSubject() : null;
             renderQuestionBank(activeQuestions, activeSub);
         });
+
+        // Initial permissions sync
+        window.authManager.applyPermissionsToUI(window.authManager.getCurrentUser());
     }
 
     // 3. Navigation Tabs

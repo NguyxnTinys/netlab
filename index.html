@@ -40,7 +40,7 @@
                 </div>
 
                 <!-- Subject Selector Dropdown -->
-                <div class="flex items-center gap-2">
+                <div id="global-subject-container" class="flex items-center gap-2">
                     <span class="text-xs text-slate-400 font-semibold hidden lg:inline">Môn học:</span>
                     <select id="global-subject-selector" class="subject-pill-select" title="Chuyển đổi môn học">
                         <!-- Populated dynamically by subjectsManager -->
@@ -48,7 +48,7 @@
                 </div>
 
                 <!-- Navigation Tabs -->
-                <nav class="flex items-center gap-1.5 sm:gap-2 overflow-x-auto py-1">
+                <nav id="main-nav-tabs" class="flex items-center gap-1.5 sm:gap-2 overflow-x-auto py-1">
                     <button class="nav-tab active" data-target="tab-quiz">
                         <span>📝</span> Luyện Thi
                     </button>
@@ -97,6 +97,41 @@
         <!-- Main Content Area -->
         <main class="flex-grow max-w-7xl w-full mx-auto p-4 sm:p-6">
             
+            <!-- ========================================== -->
+            <!-- PENDING / ZERO-PERMISSION NOTICE VIEW      -->
+            <!-- ========================================== -->
+            <section id="pending-permission-view" class="hidden max-w-2xl mx-auto my-12">
+                <div class="glass-card p-8 sm:p-10 text-center space-y-6 border border-amber-500/40 shadow-2xl relative overflow-hidden">
+                    <div class="absolute -top-12 -right-12 w-44 h-44 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                    <div class="w-20 h-20 mx-auto rounded-3xl bg-amber-950/70 border border-amber-500/50 flex items-center justify-center text-4xl shadow-xl shadow-amber-500/20">
+                        🔒
+                    </div>
+                    <div class="space-y-2">
+                        <span class="px-3 py-1 text-xs font-mono font-bold rounded-full bg-amber-950 text-amber-300 border border-amber-800 tracking-wide uppercase">
+                            TRẠNG THÁI: CHƯA PHÂN QUYỀN TRUY CẬP
+                        </span>
+                        <h2 class="text-2xl sm:text-3xl font-black text-white">Tài Khoản Chưa Được Cấp Quyền</h2>
+                        <p class="text-sm text-slate-300 max-w-md mx-auto leading-relaxed">
+                            Xin chào <strong id="pending-user-name" class="text-cyan-300">Học Viên</strong>! Tài khoản của bạn đã khởi tạo thành công nhưng mặc định chưa được phân quyền vào bất kỳ Lab hay mục học tập nào.
+                        </p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 text-xs text-slate-400 space-y-2 text-left max-w-md mx-auto">
+                        <div class="font-bold text-slate-200 flex items-center gap-1.5">
+                            <span>🛡️</span> <span>Chính sách kiểm soát bảo mật NetLab:</span>
+                        </div>
+                        <p class="leading-relaxed">Mọi tài khoản mới được bảo vệ theo nguyên tắc đặc quyền tối thiểu. Tất cả các nội dung thừa đều được ẩn hoàn toàn để đảm bảo tập trung học tập.</p>
+                        <div class="pt-2 border-t border-slate-800 flex items-center gap-2 text-amber-300 font-mono text-[11px]">
+                            <span>👉</span> <span>Liên hệ Quản trị viên <strong class="text-amber-200 font-bold">nvt5405@</strong> để được cấp quyền mở khóa các Lab bạn cần.</span>
+                        </div>
+                    </div>
+
+                    <button type="button" id="pending-logout-btn" class="btn-secondary py-2.5 px-6 text-xs font-bold text-rose-300 border-rose-800/60 hover:bg-rose-950/60 shadow-lg">
+                        🚪 Đăng Xuất Tài Khoản
+                    </button>
+                </div>
+            </section>
+
             <!-- ========================================== -->
             <!-- SECTION 1: QUIZ / TEST MODE               -->
             <!-- ========================================== -->
@@ -1241,19 +1276,6 @@
                     <button id="auth-tab-register" class="flex-1 py-2 text-center text-xs font-semibold text-slate-400 hover:text-slate-200 border-b-2 border-transparent">
                         Tạo Tài Khoản
                     </button>
-                    <button id="auth-tab-admin-setup" class="hidden flex-1 py-2 text-center text-xs font-semibold text-amber-400 hover:text-amber-200 border-b-2 border-transparent">
-                        👑 Khởi Tạo Admin
-                    </button>
-                </div>
-
-                <!-- Admin Setup Notice Banner (shown only when no admin exists) -->
-                <div id="admin-setup-banner" class="hidden p-3 rounded-xl bg-amber-950/70 border border-amber-500/50 text-amber-200 text-xs space-y-1">
-                    <div class="font-bold flex items-center gap-1.5 text-amber-300">
-                        <span>⚡</span> <span>Hệ thống chưa có Quản trị viên!</span>
-                    </div>
-                    <p class="text-[11px] text-amber-200/80 leading-relaxed">
-                        Bạn có thể khởi tạo tài khoản Quản trị viên (Master Admin) đầu tiên để quản lý dữ liệu. Sau khi khởi tạo, tính năng này sẽ tự động khóa vĩnh viễn.
-                    </p>
                 </div>
 
                 <!-- Error Message -->
@@ -1266,7 +1288,7 @@
                 <form id="login-form" class="space-y-3">
                     <div class="space-y-1">
                         <label class="text-xs font-semibold text-slate-300">Tên đăng nhập / Email</label>
-                        <input type="text" id="login-username" class="cyber-input" placeholder="Tên đăng nhập hoặc Email" autocomplete="username" required>
+                        <input type="text" id="login-username" class="cyber-input" placeholder="Tên đăng nhập (ví dụ: nvt5405@)" autocomplete="username" required>
                     </div>
                     <div class="space-y-1">
                         <label class="text-xs font-semibold text-slate-300">Mật khẩu</label>
@@ -1279,12 +1301,16 @@
 
                 <!-- Register Form (Student Only) -->
                 <form id="register-form" class="space-y-3 hidden">
+                    <div class="p-2.5 rounded-lg bg-slate-900/80 border border-slate-800 text-[11px] text-slate-300 space-y-1">
+                        <div class="font-bold text-amber-300">🔒 Chính sách phân quyền tài khoản mới:</div>
+                        <p class="text-slate-400 leading-relaxed">Tài khoản tạo mới mặc định sẽ ở trạng thái <strong>không quyền</strong> cho tới khi Quản trị viên (<strong class="text-amber-200">nvt5405@</strong>) xét duyệt và chỉ định mở khóa các Lab / Môn học phù hợp.</p>
+                    </div>
                     <div class="space-y-1">
                         <label class="text-xs font-semibold text-slate-300">Họ và tên</label>
                         <input type="text" id="reg-name" class="cyber-input" placeholder="Nguyễn Văn A" required>
                     </div>
                     <div class="space-y-1">
-                        <label class="text-xs font-semibold text-slate-300">Tên đăng nhập (3 - 20 ký tự)</label>
+                        <label class="text-xs font-semibold text-slate-300">Tên đăng nhập (3 - 30 ký tự)</label>
                         <input type="text" id="reg-username" class="cyber-input" placeholder="nguyenvana" autocomplete="username" required>
                     </div>
                     <div class="space-y-1">
@@ -1300,37 +1326,7 @@
                         <input type="email" id="reg-email" class="cyber-input" placeholder="student@netlab.vn" autocomplete="email">
                     </div>
                     <button type="submit" id="register-submit-btn" class="btn-primary w-full py-2.5 text-sm font-bold bg-gradient-to-r from-emerald-600 to-cyan-600 shadow-lg shadow-emerald-500/20">
-                        ✓ Đăng Ký Học Viên
-                    </button>
-                </form>
-
-                <!-- Admin Setup Form (First-time Master Admin Initialization) -->
-                <form id="admin-setup-form" class="space-y-3 hidden">
-                    <div class="p-2.5 rounded-lg bg-amber-950/40 border border-amber-800/50 text-[11px] text-amber-300">
-                        🔒 Khởi tạo Quản trị viên tối cao (Master Admin). Mật khẩu sẽ được băm mã hóa SHA-256 + Salt an toàn tuyệt đối.
-                    </div>
-                    <div class="space-y-1">
-                        <label class="text-xs font-semibold text-slate-300">Tên Quản trị viên</label>
-                        <input type="text" id="admin-setup-name" class="cyber-input" placeholder="Quản Trị Viên NetLab" required>
-                    </div>
-                    <div class="space-y-1">
-                        <label class="text-xs font-semibold text-slate-300">Tên đăng nhập Admin</label>
-                        <input type="text" id="admin-setup-username" class="cyber-input" placeholder="admin" autocomplete="username" required>
-                    </div>
-                    <div class="space-y-1">
-                        <label class="text-xs font-semibold text-slate-300">Email quản trị</label>
-                        <input type="email" id="admin-setup-email" class="cyber-input" placeholder="admin@netlab.vn" autocomplete="email" required>
-                    </div>
-                    <div class="space-y-1">
-                        <label class="text-xs font-semibold text-slate-300">Mật khẩu Admin (Tối thiểu 6 ký tự)</label>
-                        <input type="password" id="admin-setup-password" class="cyber-input" placeholder="••••••••" autocomplete="new-password" required>
-                    </div>
-                    <div class="space-y-1">
-                        <label class="text-xs font-semibold text-slate-300">Xác nhận mật khẩu Admin</label>
-                        <input type="password" id="admin-setup-password-confirm" class="cyber-input" placeholder="••••••••" autocomplete="new-password" required>
-                    </div>
-                    <button type="submit" id="admin-setup-submit-btn" class="btn-primary w-full py-2.5 text-sm font-bold bg-gradient-to-r from-amber-600 via-orange-600 to-amber-700 shadow-lg shadow-amber-500/20 text-white">
-                        👑 Khởi Tạo & Khóa Quyền Quản Trị
+                        ✓ Đăng Ký Tài Khoản Mới
                     </button>
                 </form>
             </div>
@@ -1454,6 +1450,9 @@
                     <button class="admin-tab-btn py-2 px-4 rounded-xl text-xs font-semibold text-slate-400 hover:text-slate-200 bg-slate-900 border border-slate-800" data-tab="subjects">
                         📚 Quản Lý Môn Học
                     </button>
+                    <button class="admin-tab-btn py-2 px-4 rounded-xl text-xs font-semibold text-slate-400 hover:text-slate-200 bg-slate-900 border border-slate-800" data-tab="users">
+                        👥 Phân Quyền Học Viên
+                    </button>
                     <button class="admin-tab-btn py-2 px-4 rounded-xl text-xs font-semibold text-slate-400 hover:text-slate-200 bg-slate-900 border border-slate-800" data-tab="backup">
                         💾 Thống Kê & Sao Lưu
                     </button>
@@ -1558,6 +1557,35 @@
                         <button id="admin-reset-default-btn" class="px-4 py-2 rounded-xl text-xs font-bold bg-rose-900/60 hover:bg-rose-800 text-rose-200 border border-rose-700 whitespace-nowrap">
                             ⚠️ Khôi Phục Gốc
                         </button>
+                    </div>
+                </div>
+
+                <!-- Admin Tab 4: User Management & Lab Access Control -->
+                <div id="admin-tab-content-users" class="flex-1 overflow-y-auto p-4 sm:p-5 space-y-4 admin-scroll hidden">
+                    <div class="flex flex-wrap items-center justify-between gap-3 bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
+                        <div>
+                            <h3 class="text-sm font-bold text-white flex items-center gap-2">
+                                <span>👥</span> <span>QUẢN LÝ HỌC VIÊN & PHÂN QUYỀN TRUY CẬP LAB</span>
+                            </h3>
+                            <p class="text-xs text-slate-400 mt-0.5">
+                                Mặc định học viên mới đăng ký sẽ không có quyền. Bạn chỉ định mục nào thì học viên chỉ thấy mục đó, toàn bộ mục còn lại sẽ được ẩn tuyệt đối.
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span id="admin-users-stat-badge" class="px-3 py-1 rounded-xl text-xs font-mono font-bold bg-cyan-950 text-cyan-300 border border-cyan-800">
+                                0 Học viên
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Search Bar -->
+                    <div class="relative">
+                        <input type="text" id="admin-user-search" class="w-full bg-slate-900/80 border border-slate-700/80 rounded-xl px-4 py-2.5 text-xs text-slate-200 focus:outline-none focus:border-cyan-400" placeholder="🔍 Tìm kiếm học viên theo tên đăng nhập, email hoặc họ tên...">
+                    </div>
+
+                    <!-- Users List -->
+                    <div id="admin-users-list" class="space-y-4">
+                        <!-- Populated dynamically by adminDashboard.renderUsers() -->
                     </div>
                 </div>
 
