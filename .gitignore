@@ -5,3 +5,5 @@ docs/
 *.command
 build_enhanced_dataset.py
 extract_quiz.py
+
+deploy_package.zip
