@@ -7,6 +7,9 @@
     <!-- Tailwind CSS CDN for utility classes -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/style.css">
+    <!-- KaTeX for beautiful math formulas rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -1500,6 +1503,9 @@
                         </div>
 
                         <div class="flex items-center gap-2">
+                            <button id="admin-bulk-import-btn" class="btn-primary text-xs py-2 px-3.5 font-bold flex items-center gap-1.5 bg-gradient-to-r from-emerald-600 to-teal-600 shadow-md shadow-emerald-500/20 border border-emerald-400/40">
+                                📥 Nhập Hàng Loạt (Form Chuẩn)
+                            </button>
                             <button id="admin-add-q-btn" class="btn-primary text-xs py-2 px-4 font-bold flex items-center gap-1 shadow-md shadow-cyan-500/20">
                                 ➕ Thêm Câu Hỏi Mới
                             </button>
@@ -1565,6 +1571,22 @@
                                 📁 Chọn Tệp JSON Để Nạp
                                 <input type="file" id="admin-import-file-input" accept=".json" class="hidden">
                             </label>
+                        </div>
+
+                        <!-- Bulk Text Import Card -->
+                        <div class="glass-card p-5 rounded-2xl border-slate-800 space-y-3 md:col-span-2 bg-gradient-to-r from-emerald-950/20 to-teal-950/20 border-emerald-500/30">
+                            <div class="flex flex-wrap items-center justify-between gap-3">
+                                <div class="flex items-center gap-3">
+                                    <div class="text-2xl">📝</div>
+                                    <div>
+                                        <h4 class="font-bold text-white text-base">Nhập Hàng Loạt Theo Form Đề Thi Chuẩn (Word / Text / TOÁN 9)</h4>
+                                        <p class="text-xs text-slate-400">Dán trực tiếp văn bản đề thi (Câu 1: ... A. ... B. ... Đáp án: ... Lời giải: ...) vào bất kỳ môn học nào hoặc nạp mẫu đề TOÁN 9 có lời giải.</p>
+                                    </div>
+                                </div>
+                                <button type="button" id="admin-backup-bulk-btn" class="btn-primary py-2 px-4 text-xs font-bold bg-gradient-to-r from-emerald-600 to-teal-600 whitespace-nowrap shadow-md shadow-emerald-500/20">
+                                    📥 Mở Trình Nhập Form Chuẩn
+                                </button>
+                            </div>
                         </div>
                     </div>
 
@@ -1829,6 +1851,135 @@
                         </button>
                     </div>
                 </form>
+            </div>
+        </div>
+
+        <!-- 7. ADMIN BULK QUESTION IMPORT MODAL (FORM CHUẨN) -->
+        <div id="admin-bulk-import-modal" class="fixed inset-0 bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-3 sm:p-5 z-50 hidden overflow-y-auto">
+            <div class="glass-card max-w-4xl w-full my-auto max-h-[92vh] overflow-y-auto p-5 sm:p-6 space-y-4 border-emerald-500/50 shadow-2xl relative admin-scroll">
+                <button class="close-bulk-modal absolute top-4 right-4 text-slate-400 hover:text-white text-lg font-bold">✕</button>
+
+                <!-- Header -->
+                <div class="flex items-center gap-3 border-b border-slate-800 pb-3">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-xl shadow-lg shadow-emerald-500/20">
+                        📥
+                    </div>
+                    <div>
+                        <h3 class="text-base sm:text-lg font-black text-emerald-400">
+                            NHẬP CÂU HỎI & LỜI GIẢI THEO FORM CHUẨN
+                        </h3>
+                        <p class="text-xs text-slate-400">
+                            Hỗ trợ dán văn bản trắc nghiệm tự nhiên (Word/Text) hoặc định dạng JSON. Tự động nhận diện câu hỏi, lựa chọn A/B/C/D, đáp án đúng và lời giải chi tiết.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Control Bar -->
+                <div class="bg-slate-900/70 p-3 rounded-xl border border-slate-800 flex flex-wrap items-center justify-between gap-3">
+                    <div class="flex flex-wrap items-center gap-2">
+                        <label class="text-xs text-slate-300 font-semibold">Môn học nhận câu hỏi:</label>
+                        <select id="bulk-target-subject" class="bg-slate-950 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-slate-200 font-medium">
+                            <!-- Populated dynamically -->
+                        </select>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-2">
+                        <button type="button" id="bulk-load-toan9-template-btn" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40 hover:bg-amber-500/30 transition flex items-center gap-1.5 shadow-sm">
+                            📐 Nạp Mẫu Chuẩn TOÁN 9 (Có Lời Giải)
+                        </button>
+                        <button type="button" id="bulk-load-blank-template-btn" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition">
+                            📋 Mẫu Khung Rỗng
+                        </button>
+                        <button type="button" id="bulk-clear-btn" class="px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-rose-950/40 hover:bg-rose-900/60 text-rose-300 border border-rose-800/40 transition">
+                            🧹 Xóa Trắng
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Syntax Guide Collapsible -->
+                <details class="bg-slate-900/40 rounded-xl border border-slate-800/80 text-xs text-slate-300 overflow-hidden">
+                    <summary class="px-3.5 py-2 cursor-pointer font-bold text-cyan-400 hover:text-cyan-300 select-none flex items-center justify-between">
+                        <span>📖 Hướng Dẫn Định Dạng Chuẩn (Bấm để xem cú pháp mẫu)</span>
+                        <span class="text-[10px] text-slate-500 font-mono">Hỗ trợ cả dạng Văn Bản & JSON</span>
+                    </summary>
+                    <div class="p-3.5 border-t border-slate-800/60 space-y-2 bg-slate-950/50">
+                        <p class="text-slate-400">Bạn có thể sao chép trực tiếp từ tệp Word hoặc soạn thảo theo cấu trúc bên dưới:</p>
+                        <pre class="bg-slate-900 p-3 rounded-lg border border-slate-800 text-slate-200 font-mono text-[11px] overflow-x-auto leading-relaxed">
+Câu 1: Cho biểu thức P = √(x - 3). Điều kiện xác định của P là:
+A. x ≥ 3
+B. x > 3
+C. x ≤ 3
+D. x < 3
+Đáp án: A
+Lời giải: Biểu thức dưới dấu căn bậc hai không âm nên x - 3 ≥ 0 ⇔ x ≥ 3.
+Chương: 1
+Chủ đề: Căn thức bậc hai
+Mức độ: Nhận biết
+Điểm: 1
+
+Câu 2: [Câu hỏi tiếp theo...]
+A. ...
+B. ...
+C. ...
+D. ...
+Đáp án: B
+Lời giải: [Các bước giải chi tiết...]
+Chương: 2
+Mức độ: Thông hiểu</pre>
+                        <ul class="list-disc list-inside space-y-1 text-slate-400 text-[11px]">
+                            <li><strong>Câu hỏi:</strong> Bắt đầu bằng <code class="text-cyan-300">Câu 1:</code>, <code class="text-cyan-300">Câu 1.</code>, <code class="text-cyan-300">Bài 1:</code> hoặc số thứ tự <code class="text-cyan-300">1.</code></li>
+                            <li><strong>Các lựa chọn:</strong> Bắt đầu bằng <code class="text-cyan-300">A.</code>, <code class="text-cyan-300">B.</code>, <code class="text-cyan-300">C.</code>, <code class="text-cyan-300">D.</code> (hoặc <code class="text-cyan-300">A)</code>, <code class="text-cyan-300">[A]</code>)</li>
+                            <li><strong>Đáp án:</strong> Viết <code class="text-cyan-300">Đáp án: A</code> (hoặc <code class="text-cyan-300">Đáp án: A, B</code> nếu chọn nhiều đáp án)</li>
+                            <li><strong>Lời giải chi tiết:</strong> Viết <code class="text-cyan-300">Lời giải:</code> hoặc <code class="text-cyan-300">Hướng dẫn giải:</code> (có thể xuống nhiều dòng)</li>
+                            <li><strong>Chương & Mức độ:</strong> Viết <code class="text-cyan-300">Chương: 1</code>, <code class="text-cyan-300">Mức độ: Nhận biết / Thông hiểu / Vận dụng / Vận dụng cao</code></li>
+                        </ul>
+                    </div>
+                </details>
+
+                <!-- Textarea Editor -->
+                <div class="space-y-1.5">
+                    <div class="flex items-center justify-between text-xs">
+                        <label class="font-bold text-slate-200">Khu vực soạn thảo & dán nội dung:</label>
+                        <span id="bulk-char-count" class="font-mono text-slate-500 text-[11px]">0 ký tự</span>
+                    </div>
+                    <textarea id="bulk-import-textarea" rows="11" class="cyber-input text-xs font-mono w-full leading-relaxed resize-y p-3.5 bg-slate-950/80 border-slate-700" placeholder="Dán nội dung câu hỏi và lời giải theo form chuẩn vào đây... Hoặc bấm 'Nạp Mẫu Chuẩn TOÁN 9' ở trên để nạp ngay bộ câu hỏi và bài tập có lời giải."></textarea>
+                </div>
+
+                <!-- Parse & Preview Controls -->
+                <div class="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-slate-800">
+                    <div class="flex items-center gap-2">
+                        <button type="button" id="bulk-preview-btn" class="btn-secondary text-xs py-2 px-4 font-bold flex items-center gap-1.5 text-cyan-300 border-cyan-500/40 hover:bg-cyan-950/40">
+                            👁️ Phân Tích & Xem Trước
+                        </button>
+                        <span id="bulk-parse-badge" class="px-3 py-1 rounded-lg text-xs font-mono font-bold bg-slate-900 border border-slate-800 text-slate-400">
+                            Chưa phân tích
+                        </span>
+                    </div>
+
+                    <div class="flex items-center gap-2">
+                        <button type="button" class="close-bulk-modal btn-secondary text-xs py-2 px-4">
+                            Đóng
+                        </button>
+                        <button type="button" id="bulk-confirm-import-btn" class="btn-primary text-xs py-2 px-5 font-bold bg-gradient-to-r from-emerald-600 to-teal-600 shadow-lg shadow-emerald-500/20 disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                            💾 Lưu Vào Ngân Hàng Câu Hỏi
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Preview Area -->
+                <div id="bulk-preview-section" class="space-y-3 pt-3 border-t border-slate-800/80 hidden">
+                    <div class="flex items-center justify-between">
+                        <h4 class="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center gap-2">
+                            <span>📋 Kết Quả Phân Tích Xem Trước</span>
+                            <span id="bulk-preview-count-pill" class="px-2 py-0.5 rounded text-[10px] font-mono bg-cyan-950 text-cyan-300 border border-cyan-800">0 câu hợp lệ</span>
+                        </h4>
+                        <span class="text-[11px] text-slate-500 italic">Kiểm tra kỹ trước khi bấm "Lưu Vào Ngân Hàng"</span>
+                    </div>
+
+                    <div id="bulk-preview-list" class="space-y-2.5 max-h-80 overflow-y-auto admin-scroll p-1">
+                        <!-- Rendered dynamically -->
+                    </div>
+                </div>
             </div>
         </div>
 

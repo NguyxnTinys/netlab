@@ -261,9 +261,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="font-medium text-slate-100 my-2">${window.formatQuestionText(q.question)}</div>
                     ${optionsHtml}
                     ${showAnswers ? `
-                        <div class="mt-3 pt-2 border-t border-slate-800 text-xs flex flex-wrap justify-between items-center gap-2">
-                            <div><strong class="text-emerald-400">Đáp án đúng:</strong> <span class="font-bold text-cyan-300">${window.escapeHTML(correctStr)}</span></div>
-                            <div class="text-slate-400">💡 <em>${window.escapeHTML(q.explanation || '')}</em></div>
+                        <div class="mt-3 pt-2.5 border-t border-slate-800 text-xs space-y-1.5">
+                            <div class="flex items-center justify-between">
+                                <div><strong class="text-emerald-400">Đáp án đúng:</strong> <span class="font-bold text-cyan-300">${window.escapeHTML(correctStr)}</span></div>
+                            </div>
+                            <div class="text-slate-300 p-2.5 rounded-lg bg-slate-900/70 border border-slate-800/80 leading-relaxed">
+                                💡 <strong class="text-amber-400">Lời giải chi tiết:</strong><br>${window.formatExplanation ? window.formatExplanation(q.explanation) : window.escapeHTML(q.explanation || '')}
+                            </div>
                         </div>
                     ` : ''}
                 `;
@@ -367,8 +371,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 fcA.innerHTML = `
                     <div class="text-xs text-cyan-400 font-bold mb-1">ĐÁP ÁN CHÍNH XÁC:</div>
                     <div class="text-lg font-bold text-emerald-400 mb-3">${window.escapeHTML(correctStr)}</div>
-                    <div class="text-sm text-slate-300 bg-slate-900/60 p-3 rounded-lg border border-slate-800">
-                        💡 <strong>Giải thích / Ghi nhớ:</strong><br>${window.escapeHTML(q.explanation || 'Không có ghi chú.')}
+                    <div class="text-sm text-slate-300 bg-slate-900/60 p-3 rounded-lg border border-slate-800 leading-relaxed">
+                        💡 <strong class="text-amber-400">Giải thích / Lời giải chi tiết:</strong><br>${window.formatExplanation ? window.formatExplanation(q.explanation) : window.escapeHTML(q.explanation || 'Không có ghi chú.')}
                     </div>
                 `;
             }

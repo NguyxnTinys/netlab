@@ -594,12 +594,12 @@ class QuizEngine {
             : '<span class="text-rose-400 font-bold text-base">❌ Chưa chính xác! Phải chọn đủ và đúng tất cả đáp án mới được tính điểm.</span>';
         const correctStr = q.type === 'fill' ? q.correctAnswers.join('; ') : q.correctAnswers.join(', ');
         const safeCorrectStr = window.escapeHTML ? window.escapeHTML(correctStr) : correctStr;
-        const safeExplanation = window.escapeHTML ? window.escapeHTML(q.explanation || '') : (q.explanation || '');
+        const safeExplanation = window.formatExplanation ? window.formatExplanation(q.explanation) : (window.escapeHTML ? window.escapeHTML(q.explanation || '') : (q.explanation || ''));
 
         this.elements.explanationText.innerHTML = `
             ${header}
             <div class="mt-2 text-slate-200"><strong>Đáp án đúng:</strong> <span class="text-cyan-300 font-bold">${safeCorrectStr}</span></div>
-            <div class="mt-1 text-slate-300">💡 <strong>Giải thích / Gợi ý:</strong> ${safeExplanation}</div>
+            <div class="mt-2 text-slate-300 leading-relaxed">💡 <strong class="text-amber-400">Giải thích / Lời giải chi tiết:</strong><br>${safeExplanation}</div>
         `;
     }
 
@@ -847,7 +847,7 @@ class QuizEngine {
 
             const safeUserAns = answered ? (window.escapeHTML ? window.escapeHTML(userAnsStr) : userAnsStr) : '<span class="text-slate-500 italic">Chưa trả lời</span>';
             const safeCorrectAns = window.escapeHTML ? window.escapeHTML(correctAnsStr) : correctAnsStr;
-            const safeExplanation = window.escapeHTML ? window.escapeHTML(q.explanation || '') : (q.explanation || '');
+            const safeExplanation = window.formatExplanation ? window.formatExplanation(q.explanation) : (window.escapeHTML ? window.escapeHTML(q.explanation || '') : (q.explanation || ''));
             const safeTopic = window.escapeHTML ? window.escapeHTML(q.topic || '') : (q.topic || '');
             const safeQText = window.formatQuestionText ? window.formatQuestionText(q.question) : q.question.replace(/\n/g, '<br>');
 

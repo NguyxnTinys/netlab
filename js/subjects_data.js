@@ -44,6 +44,25 @@ window.DEFAULT_SUBJECTS_METADATA = {
             { id: 5, name: 'Chương 5: Quản Lý Rủi Ro & Tiêu Chuẩn Bảo Mật (Risk & Standards)' }
         ]
     },
+    toan9: {
+        id: 'toan9',
+        name: 'Toán Học Lớp 9 (Đại Số & Hình Học)',
+        shortName: 'Toán Lớp 9',
+        code: 'MAT901',
+        icon: '📐',
+        themeColor: '#f59e0b',
+        accentGradient: 'from-amber-500 to-orange-600',
+        badgeClass: 'border-amber-500/40 bg-amber-950/60 text-amber-300',
+        description: 'Chương trình Toán 9: Căn bậc hai & ba, Hàm số bậc nhất & bậc hai, Hệ phương trình, Định lý Vi-et, Hệ thức lượng tam giác vuông và Hình học đường tròn.',
+        chapters: [
+            { id: 1, name: 'Chương 1: Căn bậc hai & Căn bậc ba' },
+            { id: 2, name: 'Chương 2: Hàm số bậc nhất y = ax + b' },
+            { id: 3, name: 'Chương 3: Hệ hai phương trình bậc nhất hai ẩn' },
+            { id: 4, name: 'Chương 4: Hàm số y = ax² & Phương trình bậc hai một ẩn' },
+            { id: 5, name: 'Chương 5: Hệ thức lượng trong tam giác vuông' },
+            { id: 6, name: 'Chương 6: Đường tròn & Góc với đường tròn' }
+        ]
+    },
     toan: {
         id: 'toan',
         name: 'Toán Rời Rạc & Lý Thuyết Đồ Thị',
@@ -1099,6 +1118,308 @@ window.DEFAULT_EXTRA_QUESTIONS = {
     ],
     "explanation": "**DMA (Direct Memory Access):** Cho phép các thiết bị I/O tốc độ cao (như ổ cứng, card mạng) truyền thẳng khối dữ liệu lớn vào/ra RAM mà CPU chỉ cần khởi tạo lệnh ban đầu và nhận ngắt khi hoàn tất, giải phóng CPU làm việc khác."
   }
+],
+    toan9: [
+  {
+    "id": 4001,
+    "chapter": "Chương 1: Căn bậc hai & Căn bậc ba",
+    "chapterId": 1,
+    "topic": "Căn thức bậc hai",
+    "question": "Điều kiện xác định của biểu thức P = √(x - 3) là:",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. x ≥ 3",
+      "B. x > 3",
+      "C. x ≤ 3",
+      "D. x < 3"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Căn thức bậc hai √(A) có nghĩa (xác định) khi và chỉ khi biểu thức dưới dấu căn không âm, tức là A ≥ 0.\nDo đó: √(x - 3) xác định ⇔ x - 3 ≥ 0 ⇔ x ≥ 3."
+  },
+  {
+    "id": 4002,
+    "chapter": "Chương 1: Căn bậc hai & Căn bậc ba",
+    "chapterId": 1,
+    "topic": "Hằng đẳng thức căn bậc hai",
+    "question": "Giá trị rút gọn của biểu thức A = √( (2 - √5)² ) bằng:",
+    "level": "Thông hiểu",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. 2 - √5",
+      "B. √5 - 2",
+      "C. 2 + √5",
+      "D. -2 - √5"
+    ],
+    "correctAnswers": [
+      "B"
+    ],
+    "explanation": "Áp dụng hằng đẳng thức √(A²) = |A|:\nTa có: A = √( (2 - √5)² ) = |2 - √5|.\nVì 2 = √4 < √5 nên 2 - √5 < 0.\nDo đó |2 - √5| = -(2 - √5) = √5 - 2."
+  },
+  {
+    "id": 4003,
+    "chapter": "Chương 1: Căn bậc hai & Căn bậc ba",
+    "chapterId": 1,
+    "topic": "Trục căn thức ở mẫu",
+    "question": "Trục căn thức ở mẫu của phân thức P = 2 / (√3 - 1) ta được kết quả là:",
+    "level": "Thông hiểu",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. √3 + 1",
+      "B. √3 - 1",
+      "C. 2(√3 + 1)",
+      "D. 2√3 - 2"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Nhân cả tử và mẫu với lượng liên hợp của mẫu là (√3 + 1):\nP = 2(√3 + 1) / [ (√3 - 1)(√3 + 1) ]\n  = 2(√3 + 1) / ( (√3)² - 1² )\n  = 2(√3 + 1) / (3 - 1) = 2(√3 + 1) / 2 = √3 + 1."
+  },
+  {
+    "id": 4004,
+    "chapter": "Chương 2: Hàm số bậc nhất y = ax + b",
+    "chapterId": 2,
+    "topic": "Hàm số bậc nhất",
+    "question": "Cho hàm số bậc nhất y = (m - 2)x + 3. Tìm tất cả các giá trị của m để hàm số đồng biến trên ℝ:",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. m > 2",
+      "B. m < 2",
+      "C. m ≥ 2",
+      "D. m ≠ 2"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Hàm số bậc nhất y = ax + b (với a ≠ 0) đồng biến trên ℝ khi hệ số a > 0 và nghịch biến khi a < 0.\nỞ hàm số đã cho: a = m - 2.\nĐể hàm số đồng biến trên ℝ thì a > 0 ⇔ m - 2 > 0 ⇔ m > 2."
+  },
+  {
+    "id": 4005,
+    "chapter": "Chương 2: Hàm số bậc nhất y = ax + b",
+    "chapterId": 2,
+    "topic": "Giao điểm hai đường thẳng",
+    "question": "Tọa độ giao điểm của hai đường thẳng (d1): y = 2x - 1 và (d2): y = -x + 5 là:",
+    "level": "Vận dụng",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. (2; 3)",
+      "B. (3; 2)",
+      "C. (1; 1)",
+      "D. (-2; -5)"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Phương trình hoành độ giao điểm của (d1) và (d2):\n2x - 1 = -x + 5\n⇔ 2x + x = 5 + 1\n⇔ 3x = 6 ⇔ x = 2.\nThay x = 2 vào (d1): y = 2(2) - 1 = 3.\nVậy tọa độ giao điểm là (2; 3)."
+  },
+  {
+    "id": 4006,
+    "chapter": "Chương 2: Hàm số bậc nhất y = ax + b",
+    "chapterId": 2,
+    "topic": "Vị trí tương đối hai đường thẳng",
+    "question": "Cho hai đường thẳng (d1): y = 2x + 1 và (d2): y = (m² + 1)x - 3. Hai đường thẳng này song song với nhau khi:",
+    "level": "Thông hiểu",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. m = 1 hoặc m = -1",
+      "B. m = 1",
+      "C. m = -1",
+      "D. m = 2"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Hai đường thẳng y = ax + b và y = a'x + b' song song với nhau khi:\na = a' và b ≠ b'.\nỞ đây ta có: b = 1 ≠ b' = -3 (thỏa mãn điều kiện khác tung độ gốc).\nĐiều kiện để hai đường thẳng song song là: a = a'\n⇔ m² + 1 = 2 ⇔ m² = 1 ⇔ m = 1 hoặc m = -1."
+  },
+  {
+    "id": 4007,
+    "chapter": "Chương 3: Hệ hai phương trình bậc nhất hai ẩn",
+    "chapterId": 3,
+    "topic": "Giải hệ phương trình bậc nhất",
+    "question": "Nghiệm (x; y) của hệ phương trình bậc nhất hai ẩn { 2x + y = 5 ; x - y = 1 } là:",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. (2; 1)",
+      "B. (1; 2)",
+      "C. (3; -1)",
+      "D. (0; 5)"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Cộng vế với vế của hai phương trình trong hệ:\n(2x + y) + (x - y) = 5 + 1\n⇔ 3x = 6 ⇔ x = 2.\nThay x = 2 vào phương trình thứ hai: 2 - y = 1 ⇔ y = 2 - 1 = 1.\nVậy hệ phương trình có nghiệm duy nhất là (x; y) = (2; 1)."
+  },
+  {
+    "id": 4008,
+    "chapter": "Chương 3: Hệ hai phương trình bậc nhất hai ẩn",
+    "chapterId": 3,
+    "topic": "Biện luận hệ phương trình",
+    "question": "Giá trị của tham số m để hệ phương trình { x + 2y = 4 ; 2x + my = 8 } có vô số nghiệm là:",
+    "level": "Vận dụng",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. m = 4",
+      "B. m = 2",
+      "C. m = -4",
+      "D. m = 8"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Để hệ phương trình a/a' = b/b' = c/c' có vô số nghiệm thì:\n1/2 = 2/m = 4/8.\nTa có 1/2 = 4/8 = 1/2.\nDo đó: 1/2 = 2/m ⇔ m = 2 × 2 = 4.\nKhi m = 4, phương trình thứ hai nhân đôi phương trình thứ nhất nên hệ có vô số nghiệm."
+  },
+  {
+    "id": 4009,
+    "chapter": "Chương 4: Hàm số y = ax² & Phương trình bậc hai một ẩn",
+    "chapterId": 4,
+    "topic": "Phương trình bậc hai một ẩn",
+    "question": "Tập nghiệm của phương trình bậc hai x² - 5x + 6 = 0 là:",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. S = {2; 3}",
+      "B. S = {-2; -3}",
+      "C. S = {1; 6}",
+      "D. S = {-1; -6}"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Tính biệt thức Delta (Δ):\nΔ = b² - 4ac = (-5)² - 4(1)(6) = 25 - 24 = 1 > 0.\nVì Δ > 0 nên phương trình có hai nghiệm phân biệt:\nx₁ = (-b + √Δ) / (2a) = (5 + 1) / 2 = 3.\nx₂ = (-b - √Δ) / (2a) = (5 - 1) / 2 = 2.\nVậy tập nghiệm của phương trình là S = {2; 3}."
+  },
+  {
+    "id": 4010,
+    "chapter": "Chương 4: Hàm số y = ax² & Phương trình bậc hai một ẩn",
+    "chapterId": 4,
+    "topic": "Định lý Vi-et",
+    "question": "Cho phương trình x² - 4x + 1 = 0 có hai nghiệm x₁ và x₂. Giá trị của biểu thức P = x₁² + x₂² bằng:",
+    "level": "Thông hiểu",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. 14",
+      "B. 16",
+      "C. 18",
+      "D. 12"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Theo định lý Vi-et, ta có:\nx₁ + x₂ = -b/a = 4\nx₁ · x₂ = c/a = 1.\nBiến đổi biểu thức P:\nP = x₁² + x₂² = (x₁ + x₂)² - 2x₁x₂.\nThay số: P = 4² - 2(1) = 16 - 2 = 14."
+  },
+  {
+    "id": 4011,
+    "chapter": "Chương 4: Hàm số y = ax² & Phương trình bậc hai một ẩn",
+    "chapterId": 4,
+    "topic": "Phương trình chứa tham số",
+    "question": "Cho phương trình x² - 2mx + m² - 4 = 0. Phương trình luôn có hai nghiệm phân biệt với mọi m vì:",
+    "level": "Vận dụng",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. Biệt thức Δ' = 4 > 0 với mọi m",
+      "B. Biệt thức Δ = -4 < 0",
+      "C. Hệ số a và c trái dấu",
+      "D. Biệt thức Δ' = m² > 0"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Tính biệt thức thu gọn Δ':\nΔ' = b'² - ac = (-m)² - 1(m² - 4)\n   = m² - m² + 4 = 4.\nVì Δ' = 4 > 0 (không phụ thuộc vào tham số m), nên phương trình luôn có hai nghiệm phân biệt với mọi giá trị của m."
+  },
+  {
+    "id": 4012,
+    "chapter": "Chương 5: Hệ thức lượng trong tam giác vuông",
+    "chapterId": 5,
+    "topic": "Hệ thức lượng tam giác vuông",
+    "question": "Cho tam giác ABC vuông tại A, đường cao AH. Biết BH = 4 cm, CH = 9 cm. Độ dài đường cao AH bằng:",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. 6 cm",
+      "B. 5 cm",
+      "C. 36 cm",
+      "D. 6.5 cm"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Áp dụng hệ thức lượng trong tam giác vuông: Bình phương đường cao ứng với cạnh huyền bằng tích hai hình chiếu của hai cạnh góc vuông trên cạnh huyền:\nAH² = BH · CH\nAH² = 4 · 9 = 36\n⇒ AH = √36 = 6 (cm)."
+  },
+  {
+    "id": 4013,
+    "chapter": "Chương 5: Hệ thức lượng trong tam giác vuông",
+    "chapterId": 5,
+    "topic": "Tỉ số lượng giác góc nhọn",
+    "question": "Cho tam giác ABC vuông tại A có cạnh AB = 6 cm và cạnh huyền BC = 10 cm. Giá trị của sin B bằng:",
+    "level": "Thông hiểu",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. 0.8",
+      "B. 0.6",
+      "C. 0.75",
+      "D. 1.33"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Áp dụng định lý Pytago trong tam giác vuông ABC:\nAC² = BC² - AB² = 10² - 6² = 100 - 36 = 64\n⇒ AC = √64 = 8 (cm).\nTỉ số lượng giác sin của góc B trong tam giác vuông là tỉ số giữa cạnh đối và cạnh huyền:\nsin B = AC / BC = 8 / 10 = 0.8."
+  },
+  {
+    "id": 4014,
+    "chapter": "Chương 6: Đường tròn & Góc với đường tròn",
+    "chapterId": 6,
+    "topic": "Đường kính và dây của đường tròn",
+    "question": "Cho đường tròn (O; 5 cm) và dây cung AB = 8 cm. Khoảng cách từ tâm O đến dây AB bằng:",
+    "level": "Thông hiểu",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. 3 cm",
+      "B. 4 cm",
+      "C. √41 cm",
+      "D. 2 cm"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Kẻ OH vuông góc với AB tại H (H là trung điểm của AB theo định lý đường kính vuông góc với dây).\nTa có: AH = AB / 2 = 8 / 2 = 4 (cm).\nXét tam giác OAH vuông tại H, với OA = R = 5 cm:\nÁp dụng định lý Pytago:\nOH² = OA² - AH² = 5² - 4² = 25 - 16 = 9\n⇒ OH = √9 = 3 (cm).\nVậy khoảng cách từ tâm O đến dây AB là 3 cm."
+  },
+  {
+    "id": 4015,
+    "chapter": "Chương 6: Đường tròn & Góc với đường tròn",
+    "chapterId": 6,
+    "topic": "Góc nội tiếp và góc ở tâm",
+    "question": "Cho tam giác ABC nội tiếp đường tròn (O). Biết góc BAC = 60°. Số đo của góc ở tâm BOC (chắn cung nhỏ BC) là:",
+    "level": "Nhận biết",
+    "score": 1,
+    "type": "single",
+    "options": [
+      "A. 120°",
+      "B. 60°",
+      "C. 30°",
+      "D. 90°"
+    ],
+    "correctAnswers": [
+      "A"
+    ],
+    "explanation": "Trong một đường tròn, góc nội tiếp có số đo bằng một nửa số đo của góc ở tâm cùng chắn một cung:\nGóc BAC là góc nội tiếp chắn cung nhỏ BC.\nGóc BOC là góc ở tâm chắn cung nhỏ BC.\nDo đó: số đo góc BOC = 2 × (số đo góc BAC) = 2 × 60° = 120°."
+  }
 ]
 };
 
@@ -1125,6 +1446,12 @@ class SubjectsManager {
         if (savedSubs) {
             try {
                 this.subjects = JSON.parse(savedSubs);
+                // Merge any newly introduced default subjects
+                Object.keys(window.DEFAULT_SUBJECTS_METADATA).forEach(k => {
+                    if (!this.subjects[k]) {
+                        this.subjects[k] = JSON.parse(JSON.stringify(window.DEFAULT_SUBJECTS_METADATA[k]));
+                    }
+                });
             } catch (e) {
                 this.subjects = JSON.parse(JSON.stringify(window.DEFAULT_SUBJECTS_METADATA));
             }
@@ -1137,6 +1464,12 @@ class SubjectsManager {
         if (savedQ) {
             try {
                 this.questionsMap = JSON.parse(savedQ);
+                // Merge any newly introduced default questions
+                Object.keys(window.DEFAULT_EXTRA_QUESTIONS).forEach(k => {
+                    if (!this.questionsMap[k] || this.questionsMap[k].length === 0) {
+                        this.questionsMap[k] = JSON.parse(JSON.stringify(window.DEFAULT_EXTRA_QUESTIONS[k] || []));
+                    }
+                });
             } catch (e) {
                 this.initDefaultQuestions();
             }
@@ -1163,6 +1496,7 @@ class SubjectsManager {
             mmt: (window.QUIZ_DATA && window.QUIZ_DATA.length > 0) ? window.QUIZ_DATA : [],
             anm: JSON.parse(JSON.stringify(window.DEFAULT_EXTRA_QUESTIONS.anm || [])),
             toan: JSON.parse(JSON.stringify(window.DEFAULT_EXTRA_QUESTIONS.toan || [])),
+            toan9: JSON.parse(JSON.stringify(window.DEFAULT_EXTRA_QUESTIONS.toan9 || [])),
             hdo: JSON.parse(JSON.stringify(window.DEFAULT_EXTRA_QUESTIONS.hdo || []))
         };
         this.saveQuestions();
@@ -1334,3 +1668,7 @@ class SubjectsManager {
 }
 
 window.subjectsManager = new SubjectsManager();
+
+window.TOAN9_SAMPLE_TEXT = "Câu 1: Điều kiện xác định của biểu thức P = √(x - 3) là:\nA. x ≥ 3\nB. x > 3\nC. x ≤ 3\nD. x < 3\nĐáp án: A\nLời giải: Căn thức bậc hai √(A) có nghĩa (xác định) khi và chỉ khi biểu thức dưới dấu căn không âm, tức là A ≥ 0.\nDo đó: √(x - 3) xác định ⇔ x - 3 ≥ 0 ⇔ x ≥ 3.\nChương: 1\nChủ đề: Căn thức bậc hai\nMức độ: Nhận biết\nĐiểm: 1\n\nCâu 2: Giá trị rút gọn của biểu thức A = √( (2 - √5)² ) bằng:\nA. 2 - √5\nB. √5 - 2\nC. 2 + √5\nD. -2 - √5\nĐáp án: B\nLời giải: Áp dụng hằng đẳng thức √(A²) = |A|:\nTa có: A = √( (2 - √5)² ) = |2 - √5|.\nVì 2 = √4 < √5 nên 2 - √5 < 0.\nDo đó |2 - √5| = -(2 - √5) = √5 - 2.\nChương: 1\nChủ đề: Hằng đẳng thức căn bậc hai\nMức độ: Thông hiểu\nĐiểm: 1\n\nCâu 3: Trục căn thức ở mẫu của phân thức P = 2 / (√3 - 1) ta được kết quả là:\nA. √3 + 1\nB. √3 - 1\nC. 2(√3 + 1)\nD. 2√3 - 2\nĐáp án: A\nLời giải: Nhân cả tử và mẫu với lượng liên hợp của mẫu là (√3 + 1):\nP = 2(√3 + 1) / [ (√3 - 1)(√3 + 1) ]\n  = 2(√3 + 1) / ( (√3)² - 1² )\n  = 2(√3 + 1) / (3 - 1) = 2(√3 + 1) / 2 = √3 + 1.\nChương: 1\nChủ đề: Trục căn thức ở mẫu\nMức độ: Thông hiểu\nĐiểm: 1\n\nCâu 4: Cho hàm số bậc nhất y = (m - 2)x + 3. Tìm tất cả các giá trị của m để hàm số đồng biến trên ℝ:\nA. m > 2\nB. m < 2\nC. m ≥ 2\nD. m ≠ 2\nĐáp án: A\nLời giải: Hàm số bậc nhất y = ax + b (với a ≠ 0) đồng biến trên ℝ khi hệ số a > 0 và nghịch biến khi a < 0.\nỞ hàm số đã cho: a = m - 2.\nĐể hàm số đồng biến trên ℝ thì a > 0 ⇔ m - 2 > 0 ⇔ m > 2.\nChương: 2\nChủ đề: Hàm số bậc nhất\nMức độ: Nhận biết\nĐiểm: 1\n\nCâu 5: Tọa độ giao điểm của hai đường thẳng (d1): y = 2x - 1 và (d2): y = -x + 5 là:\nA. (2; 3)\nB. (3; 2)\nC. (1; 1)\nD. (-2; -5)\nĐáp án: A\nLời giải: Phương trình hoành độ giao điểm của (d1) và (d2):\n2x - 1 = -x + 5\n⇔ 2x + x = 5 + 1\n⇔ 3x = 6 ⇔ x = 2.\nThay x = 2 vào (d1): y = 2(2) - 1 = 3.\nVậy tọa độ giao điểm là (2; 3).\nChương: 2\nChủ đề: Giao điểm hai đường thẳng\nMức độ: Vận dụng\nĐiểm: 1\n\nCâu 6: Cho hai đường thẳng (d1): y = 2x + 1 và (d2): y = (m² + 1)x - 3. Hai đường thẳng này song song với nhau khi:\nA. m = 1 hoặc m = -1\nB. m = 1\nC. m = -1\nD. m = 2\nĐáp án: A\nLời giải: Hai đường thẳng y = ax + b và y = a'x + b' song song với nhau khi:\na = a' và b ≠ b'.\nỞ đây ta có: b = 1 ≠ b' = -3 (thỏa mãn điều kiện khác tung độ gốc).\nĐiều kiện để hai đường thẳng song song là: a = a'\n⇔ m² + 1 = 2 ⇔ m² = 1 ⇔ m = 1 hoặc m = -1.\nChương: 2\nChủ đề: Vị trí tương đối hai đường thẳng\nMức độ: Thông hiểu\nĐiểm: 1\n\nCâu 7: Nghiệm (x; y) của hệ phương trình bậc nhất hai ẩn { 2x + y = 5 ; x - y = 1 } là:\nA. (2; 1)\nB. (1; 2)\nC. (3; -1)\nD. (0; 5)\nĐáp án: A\nLời giải: Cộng vế với vế của hai phương trình trong hệ:\n(2x + y) + (x - y) = 5 + 1\n⇔ 3x = 6 ⇔ x = 2.\nThay x = 2 vào phương trình thứ hai: 2 - y = 1 ⇔ y = 2 - 1 = 1.\nVậy hệ phương trình có nghiệm duy nhất là (x; y) = (2; 1).\nChương: 3\nChủ đề: Giải hệ phương trình bậc nhất\nMức độ: Nhận biết\nĐiểm: 1\n\nCâu 8: Giá trị của tham số m để hệ phương trình { x + 2y = 4 ; 2x + my = 8 } có vô số nghiệm là:\nA. m = 4\nB. m = 2\nC. m = -4\nD. m = 8\nĐáp án: A\nLời giải: Để hệ phương trình a/a' = b/b' = c/c' có vô số nghiệm thì:\n1/2 = 2/m = 4/8.\nTa có 1/2 = 4/8 = 1/2.\nDo đó: 1/2 = 2/m ⇔ m = 2 × 2 = 4.\nKhi m = 4, phương trình thứ hai nhân đôi phương trình thứ nhất nên hệ có vô số nghiệm.\nChương: 3\nChủ đề: Biện luận hệ phương trình\nMức độ: Vận dụng\nĐiểm: 1\n\nCâu 9: Tập nghiệm của phương trình bậc hai x² - 5x + 6 = 0 là:\nA. S = {2; 3}\nB. S = {-2; -3}\nC. S = {1; 6}\nD. S = {-1; -6}\nĐáp án: A\nLời giải: Tính biệt thức Delta (Δ):\nΔ = b² - 4ac = (-5)² - 4(1)(6) = 25 - 24 = 1 > 0.\nVì Δ > 0 nên phương trình có hai nghiệm phân biệt:\nx₁ = (-b + √Δ) / (2a) = (5 + 1) / 2 = 3.\nx₂ = (-b - √Δ) / (2a) = (5 - 1) / 2 = 2.\nVậy tập nghiệm của phương trình là S = {2; 3}.\nChương: 4\nChủ đề: Phương trình bậc hai một ẩn\nMức độ: Nhận biết\nĐiểm: 1\n\nCâu 10: Cho phương trình x² - 4x + 1 = 0 có hai nghiệm x₁ và x₂. Giá trị của biểu thức P = x₁² + x₂² bằng:\nA. 14\nB. 16\nC. 18\nD. 12\nĐáp án: A\nLời giải: Theo định lý Vi-et, ta có:\nx₁ + x₂ = -b/a = 4\nx₁ · x₂ = c/a = 1.\nBiến đổi biểu thức P:\nP = x₁² + x₂² = (x₁ + x₂)² - 2x₁x₂.\nThay số: P = 4² - 2(1) = 16 - 2 = 14.\nChương: 4\nChủ đề: Định lý Vi-et\nMức độ: Thông hiểu\nĐiểm: 1\n\nCâu 11: Cho phương trình x² - 2mx + m² - 4 = 0. Phương trình luôn có hai nghiệm phân biệt với mọi m vì:\nA. Biệt thức Δ' = 4 > 0 với mọi m\nB. Biệt thức Δ = -4 < 0\nC. Hệ số a và c trái dấu\nD. Biệt thức Δ' = m² > 0\nĐáp án: A\nLời giải: Tính biệt thức thu gọn Δ':\nΔ' = b'² - ac = (-m)² - 1(m² - 4)\n   = m² - m² + 4 = 4.\nVì Δ' = 4 > 0 (không phụ thuộc vào tham số m), nên phương trình luôn có hai nghiệm phân biệt với mọi giá trị của m.\nChương: 4\nChủ đề: Phương trình chứa tham số\nMức độ: Vận dụng\nĐiểm: 1\n\nCâu 12: Cho tam giác ABC vuông tại A, đường cao AH. Biết BH = 4 cm, CH = 9 cm. Độ dài đường cao AH bằng:\nA. 6 cm\nB. 5 cm\nC. 36 cm\nD. 6.5 cm\nĐáp án: A\nLời giải: Áp dụng hệ thức lượng trong tam giác vuông: Bình phương đường cao ứng với cạnh huyền bằng tích hai hình chiếu của hai cạnh góc vuông trên cạnh huyền:\nAH² = BH · CH\nAH² = 4 · 9 = 36\n⇒ AH = √36 = 6 (cm).\nChương: 5\nChủ đề: Hệ thức lượng tam giác vuông\nMức độ: Nhận biết\nĐiểm: 1\n\nCâu 13: Cho tam giác ABC vuông tại A có cạnh AB = 6 cm và cạnh huyền BC = 10 cm. Giá trị của sin B bằng:\nA. 0.8\nB. 0.6\nC. 0.75\nD. 1.33\nĐáp án: A\nLời giải: Áp dụng định lý Pytago trong tam giác vuông ABC:\nAC² = BC² - AB² = 10² - 6² = 100 - 36 = 64\n⇒ AC = √64 = 8 (cm).\nTỉ số lượng giác sin của góc B trong tam giác vuông là tỉ số giữa cạnh đối và cạnh huyền:\nsin B = AC / BC = 8 / 10 = 0.8.\nChương: 5\nChủ đề: Tỉ số lượng giác góc nhọn\nMức độ: Thông hiểu\nĐiểm: 1\n\nCâu 14: Cho đường tròn (O; 5 cm) và dây cung AB = 8 cm. Khoảng cách từ tâm O đến dây AB bằng:\nA. 3 cm\nB. 4 cm\nC. √41 cm\nD. 2 cm\nĐáp án: A\nLời giải: Kẻ OH vuông góc với AB tại H (H là trung điểm của AB theo định lý đường kính vuông góc với dây).\nTa có: AH = AB / 2 = 8 / 2 = 4 (cm).\nXét tam giác OAH vuông tại H, với OA = R = 5 cm:\nÁp dụng định lý Pytago:\nOH² = OA² - AH² = 5² - 4² = 25 - 16 = 9\n⇒ OH = √9 = 3 (cm).\nVậy khoảng cách từ tâm O đến dây AB là 3 cm.\nChương: 6\nChủ đề: Đường kính và dây của đường tròn\nMức độ: Thông hiểu\nĐiểm: 1\n\nCâu 15: Cho tam giác ABC nội tiếp đường tròn (O). Biết góc BAC = 60°. Số đo của góc ở tâm BOC (chắn cung nhỏ BC) là:\nA. 120°\nB. 60°\nC. 30°\nD. 90°\nĐáp án: A\nLời giải: Trong một đường tròn, góc nội tiếp có số đo bằng một nửa số đo của góc ở tâm cùng chắn một cung:\nGóc BAC là góc nội tiếp chắn cung nhỏ BC.\nGóc BOC là góc ở tâm chắn cung nhỏ BC.\nDo đó: số đo góc BOC = 2 × (số đo góc BAC) = 2 × 60° = 120°.\nChương: 6\nChủ đề: Góc nội tiếp và góc ở tâm\nMức độ: Nhận biết\nĐiểm: 1";
+
+window.BLANK_SAMPLE_TEXT = "Câu 1: [Nhập nội dung câu hỏi số 1 vào đây]\nA. [Nội dung phương án A]\nB. [Nội dung phương án B]\nC. [Nội dung phương án C]\nD. [Nội dung phương án D]\nĐáp án: A\nLời giải: [Nhập các bước giải chi tiết hoặc giải thích lý thuyết tại đây]\nChương: 1\nChủ đề: [Tên chủ đề]\nMức độ: Thông hiểu\nĐiểm: 1\n\nCâu 2: [Nhập nội dung câu hỏi số 2 vào đây]\nA. [Nội dung phương án A]\nB. [Nội dung phương án B]\nC. [Nội dung phương án C]\nD. [Nội dung phương án D]\nĐáp án: B\nLời giải: [Nhập các bước giải chi tiết hoặc giải thích lý thuyết tại đây]\nChương: 1\nChủ đề: [Tên chủ đề]\nMức độ: Vận dụng\nĐiểm: 1";

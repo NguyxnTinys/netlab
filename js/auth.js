@@ -21,7 +21,34 @@ window.escapeHTML = function (str) {
 };
 
 window.formatQuestionText = function (str) {
-    return window.escapeHTML(str).replace(/\n/g, '<br>');
+    if (!str) return '';
+    let text = window.escapeHTML(str);
+    // Markdown bold **text** and *italic*
+    text = text.replace(/\*\*(.*?)\*\*/g, '<strong class="text-cyan-300 font-bold">$1</strong>');
+    text = text.replace(/\*(.*?)\*/g, '<em class="text-slate-300">$1</em>');
+    
+    // KaTeX inline math if available: $...$ or \(...\)
+    if (window.katex) {
+        try {
+            text = text.replace(/\$([^\$\n]+)\$/g, (m, expr) => {
+                const unescaped = expr
+                    .replace(/&amp;/g, '&')
+                    .replace(/&lt;/g, '<')
+                    .replace(/&gt;/g, '>')
+                    .replace(/&quot;/g, '"')
+                    .replace(/&#39;/g, "'");
+                return window.katex.renderToString(unescaped, { throwOnError: false });
+            });
+        } catch (e) {
+            // Graceful fallback to plain text
+        }
+    }
+    return text.replace(/\n/g, '<br>');
+};
+
+window.formatExplanation = function (str) {
+    if (!str || !str.trim()) return '<span class="text-slate-500 italic">Không có giải thích chi tiết.</span>';
+    return window.formatQuestionText(str);
 };
 
 // 2. Cryptographic Helper Functions using Web Crypto API

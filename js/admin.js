@@ -31,6 +31,23 @@ class AdminDashboard {
         this.subFormModal = document.getElementById('admin-sub-form-modal');
         this.subForm = document.getElementById('admin-subject-form');
 
+        // Modal for Bulk Question Import (Form Chuẩn)
+        this.bulkModal = document.getElementById('admin-bulk-import-modal');
+        this.bulkOpenBtn = document.getElementById('admin-bulk-import-btn');
+        this.bulkTextarea = document.getElementById('bulk-import-textarea');
+        this.bulkTargetSub = document.getElementById('bulk-target-subject');
+        this.bulkPreviewBtn = document.getElementById('bulk-preview-btn');
+        this.bulkConfirmBtn = document.getElementById('bulk-confirm-import-btn');
+        this.bulkBadge = document.getElementById('bulk-parse-badge');
+        this.bulkPreviewSection = document.getElementById('bulk-preview-section');
+        this.bulkPreviewList = document.getElementById('bulk-preview-list');
+        this.bulkPreviewCountPill = document.getElementById('bulk-preview-count-pill');
+        this.bulkCharCount = document.getElementById('bulk-char-count');
+        this.bulkLoadToan9Btn = document.getElementById('bulk-load-toan9-template-btn');
+        this.bulkLoadBlankBtn = document.getElementById('bulk-load-blank-template-btn');
+        this.bulkClearBtn = document.getElementById('bulk-clear-btn');
+        this.currentParsedBulkQuestions = [];
+
         // Tab buttons
         this.tabBtns = document.querySelectorAll('.admin-tab-btn');
         this.tabContents = {
@@ -130,10 +147,11 @@ class AdminDashboard {
                     return;
                 }
 
+                const allSubIds = window.subjectsManager ? window.subjectsManager.getAllSubjects().map(s => s.id) : ['mmt', 'anm', 'toan9', 'toan', 'hdo'];
                 const payload = {
                     u: this.currentParsedStudent.u,
                     secs: checkedSecs,
-                    subs: ['mmt', 'anm', 'toan', 'hdo'],
+                    subs: allSubIds,
                     iss: Date.now()
                 };
 
@@ -146,7 +164,7 @@ class AdminDashboard {
 
                 // Update local user permissions in authManager
                 if (window.authManager) {
-                    window.authManager.updateUserPermissions(this.currentParsedStudent.u, checkedSecs, ['mmt', 'anm', 'toan', 'hdo'], true);
+                    window.authManager.updateUserPermissions(this.currentParsedStudent.u, checkedSecs, allSubIds, true);
                     this.renderUsers();
                 }
 
@@ -166,6 +184,89 @@ class AdminDashboard {
                     if (window.soundManager) window.soundManager.playCorrect();
                 }
             });
+        }
+
+        // Bulk Import button
+        if (this.bulkOpenBtn) {
+            this.bulkOpenBtn.addEventListener('click', () => this.openBulkImportModal());
+        }
+
+        // Close bulk modal
+        document.querySelectorAll('.close-bulk-modal').forEach(b => {
+            b.addEventListener('click', () => {
+                if (this.bulkModal) this.bulkModal.classList.add('hidden');
+            });
+        });
+
+        // Bulk load TOAN 9 template button
+        if (this.bulkLoadToan9Btn) {
+            this.bulkLoadToan9Btn.addEventListener('click', () => {
+                if (window.TOAN9_SAMPLE_TEXT && this.bulkTextarea) {
+                    this.bulkTextarea.value = window.TOAN9_SAMPLE_TEXT;
+                    this.updateBulkCharCount();
+                    if (this.bulkTargetSub) {
+                        this.bulkTargetSub.value = 'toan9';
+                    }
+                    this.handleBulkPreview();
+                    if (window.soundManager) window.soundManager.playCorrect();
+                }
+            });
+        }
+
+        // Bulk load Blank template button
+        if (this.bulkLoadBlankBtn) {
+            this.bulkLoadBlankBtn.addEventListener('click', () => {
+                if (window.BLANK_SAMPLE_TEXT && this.bulkTextarea) {
+                    this.bulkTextarea.value = window.BLANK_SAMPLE_TEXT;
+                    this.updateBulkCharCount();
+                    this.handleBulkPreview();
+                    if (window.soundManager) window.soundManager.playClick();
+                }
+            });
+        }
+
+        // Bulk clear button
+        if (this.bulkClearBtn) {
+            this.bulkClearBtn.addEventListener('click', () => {
+                if (this.bulkTextarea) {
+                    this.bulkTextarea.value = '';
+                    this.updateBulkCharCount();
+                }
+                this.currentParsedBulkQuestions = [];
+                if (this.bulkPreviewSection) this.bulkPreviewSection.classList.add('hidden');
+                if (this.bulkConfirmBtn) {
+                    this.bulkConfirmBtn.disabled = true;
+                    this.bulkConfirmBtn.textContent = '💾 Lưu Vào Ngân Hàng Câu Hỏi';
+                }
+                if (this.bulkBadge) {
+                    this.bulkBadge.className = 'px-3 py-1 rounded-lg text-xs font-mono font-bold bg-slate-900 border border-slate-800 text-slate-400';
+                    this.bulkBadge.textContent = 'Chưa phân tích';
+                }
+            });
+        }
+
+        // Textarea input char count
+        if (this.bulkTextarea) {
+            this.bulkTextarea.addEventListener('input', () => this.updateBulkCharCount());
+        }
+
+        // Preview button
+        if (this.bulkPreviewBtn) {
+            this.bulkPreviewBtn.addEventListener('click', () => this.handleBulkPreview());
+        }
+
+        // Target subject change in bulk modal
+        if (this.bulkTargetSub) {
+            this.bulkTargetSub.addEventListener('change', () => {
+                if (this.bulkTextarea && this.bulkTextarea.value.trim().length > 0) {
+                    this.handleBulkPreview();
+                }
+            });
+        }
+
+        // Confirm import button
+        if (this.bulkConfirmBtn) {
+            this.bulkConfirmBtn.addEventListener('click', () => this.handleBulkConfirm());
         }
 
         // Add Question button
@@ -211,6 +312,11 @@ class AdminDashboard {
         });
 
         // Backup buttons
+        const backupBulkBtn = document.getElementById('admin-backup-bulk-btn');
+        if (backupBulkBtn) {
+            backupBulkBtn.addEventListener('click', () => this.openBulkImportModal());
+        }
+
         const exportBtn = document.getElementById('admin-export-json-btn');
         if (exportBtn) {
             exportBtn.addEventListener('click', () => this.exportJSON());
@@ -377,6 +483,377 @@ class AdminDashboard {
                 }
             });
         });
+    }
+
+    openBulkImportModal() {
+        if (!this.bulkModal) return;
+
+        // Populate target subject dropdown
+        if (this.bulkTargetSub && window.subjectsManager) {
+            const subs = window.subjectsManager.getAllSubjects();
+            this.bulkTargetSub.innerHTML = subs.map(s => `
+                <option value="${s.id}" ${s.id === this.currentSubjectId ? 'selected' : ''}>
+                    ${s.icon} ${s.name} (${window.subjectsManager.getQuestions(s.id).length} câu)
+                </option>
+            `).join('');
+        }
+
+        this.updateBulkCharCount();
+        this.bulkModal.classList.remove('hidden');
+    }
+
+    updateBulkCharCount() {
+        if (!this.bulkCharCount || !this.bulkTextarea) return;
+        const val = this.bulkTextarea.value || '';
+        const len = val.length;
+        const lines = val ? val.split('\n').length : 0;
+        this.bulkCharCount.textContent = `${len.toLocaleString()} ký tự • ${lines} dòng`;
+    }
+
+    handleBulkPreview() {
+        if (!this.bulkTextarea) return;
+        const raw = this.bulkTextarea.value;
+        const targetSubId = this.bulkTargetSub ? this.bulkTargetSub.value : this.currentSubjectId;
+
+        const result = this.parseStandardQuestions(raw, targetSubId);
+        this.currentParsedBulkQuestions = result.valid;
+
+        // Update badge
+        if (this.bulkBadge) {
+            if (result.valid.length > 0) {
+                this.bulkBadge.className = 'px-3 py-1 rounded-lg text-xs font-mono font-bold bg-emerald-950 text-emerald-300 border border-emerald-800';
+                this.bulkBadge.textContent = `✓ Hợp lệ: ${result.valid.length} câu${result.errors.length > 0 ? ` (${result.errors.length} cảnh báo)` : ''}`;
+            } else {
+                this.bulkBadge.className = 'px-3 py-1 rounded-lg text-xs font-mono font-bold bg-rose-950 text-rose-300 border border-rose-800';
+                this.bulkBadge.textContent = '❌ Không nhận diện được câu hỏi';
+            }
+        }
+
+        // Update confirm button
+        if (this.bulkConfirmBtn) {
+            if (result.valid.length > 0) {
+                this.bulkConfirmBtn.disabled = false;
+                this.bulkConfirmBtn.textContent = `💾 Lưu ${result.valid.length} Câu Vào Ngân Hàng`;
+            } else {
+                this.bulkConfirmBtn.disabled = true;
+                this.bulkConfirmBtn.textContent = '💾 Lưu Vào Ngân Hàng Câu Hỏi';
+            }
+        }
+
+        // Render preview cards
+        if (this.bulkPreviewSection && this.bulkPreviewList) {
+            this.bulkPreviewSection.classList.remove('hidden');
+            if (this.bulkPreviewCountPill) {
+                this.bulkPreviewCountPill.textContent = `${result.valid.length} câu hợp lệ [${result.format}]`;
+            }
+
+            let html = '';
+            if (result.errors.length > 0) {
+                html += `
+                    <div class="p-3 rounded-xl bg-amber-950/40 border border-amber-800/60 text-amber-300 text-xs space-y-1">
+                        <div class="font-bold flex items-center gap-1.5"><span>⚠️</span> <span>Một số thông báo phân tích:</span></div>
+                        <ul class="list-disc list-inside space-y-0.5 text-[11px] text-amber-200/90 font-mono">
+                            ${result.errors.map(err => `<li>${window.escapeHTML(err)}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+            }
+
+            if (result.valid.length === 0) {
+                html += `
+                    <div class="p-6 text-center text-slate-500 glass-card text-xs">
+                        Chưa có câu hỏi hợp lệ nào được tìm thấy. Vui lòng kiểm tra lại cấu trúc "Câu 1: ... A. ... B. ... Đáp án: ... Lời giải: ...".
+                    </div>
+                `;
+            } else {
+                html += result.valid.map((q, idx) => {
+                    const correctStr = (q.correctAnswers || []).join(', ');
+                    return `
+                        <div class="glass-card p-3.5 rounded-xl border-slate-800 space-y-2 hover:border-slate-700 transition">
+                            <div class="flex flex-wrap items-center justify-between gap-2">
+                                <div class="flex items-center gap-2">
+                                    <span class="px-2 py-0.5 rounded text-xs font-mono font-bold bg-emerald-950 text-emerald-300 border border-emerald-800">Câu ${idx + 1}</span>
+                                    <span class="px-2 py-0.5 rounded text-[11px] bg-slate-800 text-slate-300">${window.escapeHTML(q.chapter || `Chương ${q.chapterId}`)}</span>
+                                    <span class="text-xs text-indigo-300 font-semibold">${window.escapeHTML(q.topic || 'Tổng hợp')}</span>
+                                    <span class="px-2 py-0.5 rounded text-[11px] bg-slate-800/80 text-slate-400">${window.escapeHTML(q.level || 'Thông hiểu')}</span>
+                                </div>
+                                <span class="px-2 py-0.5 rounded text-xs font-mono font-bold bg-cyan-950 text-cyan-300 border border-cyan-800">Đáp án: ${window.escapeHTML(correctStr)}</span>
+                            </div>
+
+                            <div class="text-xs font-semibold text-slate-100 pt-0.5">
+                                ${window.formatQuestionText(q.question)}
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-xs pt-1">
+                                ${(q.options || []).map(opt => {
+                                    const isCorrect = (q.correctAnswers || []).some(a => opt.trim().startsWith(a));
+                                    return `
+                                        <div class="p-1.5 rounded text-[11px] ${isCorrect ? 'bg-emerald-950/60 text-emerald-300 font-semibold border border-emerald-800/60' : 'bg-slate-900/60 text-slate-400 border border-slate-800/50'}">
+                                            ${window.escapeHTML(opt)}
+                                        </div>
+                                    `;
+                                }).join('')}
+                            </div>
+
+                            <div class="p-2.5 rounded-lg bg-slate-900/70 border border-slate-800 text-xs space-y-1">
+                                <div class="font-bold text-amber-400 flex items-center gap-1 text-[11px]">
+                                    <span>💡</span> <span>Lời giải chi tiết:</span>
+                                </div>
+                                <div class="text-slate-300 leading-relaxed text-[11px]">
+                                    ${window.formatExplanation ? window.formatExplanation(q.explanation) : window.escapeHTML(q.explanation)}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            this.bulkPreviewList.innerHTML = html;
+        }
+    }
+
+    handleBulkConfirm() {
+        if (!this.currentParsedBulkQuestions || this.currentParsedBulkQuestions.length === 0) {
+            alert('Chưa có câu hỏi hợp lệ nào để lưu!');
+            return;
+        }
+
+        const targetSubId = this.bulkTargetSub ? this.bulkTargetSub.value : this.currentSubjectId;
+
+        // Ensure subject exists; if not, create it
+        let sub = window.subjectsManager.getSubject(targetSubId);
+        if (!sub && targetSubId === 'toan9') {
+            if (window.DEFAULT_SUBJECTS_METADATA && window.DEFAULT_SUBJECTS_METADATA.toan9) {
+                window.subjectsManager.addSubject(JSON.parse(JSON.stringify(window.DEFAULT_SUBJECTS_METADATA.toan9)));
+                sub = window.subjectsManager.getSubject('toan9');
+            }
+        }
+
+        const count = this.currentParsedBulkQuestions.length;
+        if (!confirm(`Bạn có chắc chắn muốn nạp ${count} câu hỏi vào môn "${sub ? sub.name : targetSubId}"?`)) {
+            return;
+        }
+
+        this.currentParsedBulkQuestions.forEach(q => {
+            window.subjectsManager.addQuestion(targetSubId, q);
+        });
+
+        // Switch to this subject
+        this.currentSubjectId = targetSubId;
+        window.subjectsManager.setActiveSubject(targetSubId);
+
+        // Close bulk modal
+        if (this.bulkModal) this.bulkModal.classList.add('hidden');
+
+        // Re-render
+        this.render();
+        if (window.soundManager) window.soundManager.playCorrect();
+
+        alert(`🎉 Đã nạp thành công ${count} câu hỏi vào môn "${sub ? sub.name : targetSubId}"!`);
+    }
+
+    parseStandardQuestions(rawText, targetSubId) {
+        const text = (rawText || '').trim();
+        if (!text) {
+            return { valid: [], errors: ['Nội dung trống, vui lòng nhập văn bản câu hỏi hoặc chọn Mẫu có sẵn.'], format: 'Trống' };
+        }
+
+        const sub = window.subjectsManager.getSubject(targetSubId);
+        const subChapters = (sub && sub.chapters) ? sub.chapters : [
+            { id: 1, name: 'Chương 1: Tổng quan' }
+        ];
+
+        // 1. Check if JSON format
+        if (text.startsWith('[') || text.startsWith('{')) {
+            try {
+                const parsed = JSON.parse(text);
+                const list = Array.isArray(parsed) ? parsed : (parsed.questions || [parsed]);
+                const valid = [];
+                const errors = [];
+
+                list.forEach((item, idx) => {
+                    if (!item.question || typeof item.question !== 'string' || !item.question.trim()) {
+                        errors.push(`Mục JSON #${idx + 1}: Thiếu nội dung câu hỏi.`);
+                        return;
+                    }
+                    if (!item.options || !Array.isArray(item.options) || item.options.length < 2) {
+                        errors.push(`Mục JSON #${idx + 1}: Cần ít nhất 2 phương án lựa chọn.`);
+                        return;
+                    }
+                    if (!item.correctAnswers || !Array.isArray(item.correctAnswers) || item.correctAnswers.length === 0) {
+                        errors.push(`Mục JSON #${idx + 1}: Thiếu đáp án đúng.`);
+                        return;
+                    }
+
+                    const letters = ['A', 'B', 'C', 'D', 'E', 'F'];
+                    const normOptions = item.options.map((opt, oIdx) => {
+                        const trimmed = String(opt).trim();
+                        if (/^[A-F][\.\)]/i.test(trimmed)) {
+                            return trimmed;
+                        }
+                        return `${letters[oIdx] || 'A'}. ${trimmed}`;
+                    });
+
+                    let chId = item.chapterId ? parseInt(item.chapterId) : 1;
+                    let chObj = subChapters.find(c => c.id === chId) || subChapters[0];
+
+                    valid.push({
+                        question: item.question.trim(),
+                        options: normOptions,
+                        correctAnswers: item.correctAnswers.map(a => String(a).trim().toUpperCase()),
+                        explanation: (item.explanation || 'Không có giải thích chi tiết.').trim(),
+                        chapterId: chObj ? chObj.id : 1,
+                        chapter: chObj ? chObj.name : `Chương ${chId}`,
+                        topic: (item.topic || 'Tổng hợp').trim(),
+                        level: (item.level || 'Thông hiểu').trim(),
+                        score: item.score ? parseInt(item.score) : 1,
+                        type: (item.correctAnswers && item.correctAnswers.length > 1) ? 'multiple' : (item.type || 'single')
+                    });
+                });
+
+                return { valid, errors, format: 'JSON' };
+            } catch (err) {
+                // Not valid JSON, continue to text parsing
+            }
+        }
+
+        // 2. Parse Standard Text Format
+        const questionBlocks = [];
+        const lines = text.split('\n');
+        let currentBlock = [];
+
+        const isQuestionStart = (line) => {
+            const trimmed = line.trim();
+            return /^(?:câu|bài|question|q)\s*\d+[\.\:\-\]]/i.test(trimmed) || /^\d+[\.\:\)]\s+[^\d]/i.test(trimmed);
+        };
+
+        for (let i = 0; i < lines.length; i++) {
+            const line = lines[i];
+            if (isQuestionStart(line)) {
+                if (currentBlock.length > 0) {
+                    questionBlocks.push(currentBlock.join('\n'));
+                    currentBlock = [];
+                }
+            }
+            currentBlock.push(line);
+        }
+        if (currentBlock.length > 0) {
+            questionBlocks.push(currentBlock.join('\n'));
+        }
+
+        if (questionBlocks.length === 0 && text.length > 0) {
+            questionBlocks.push(text);
+        }
+
+        const valid = [];
+        const errors = [];
+
+        questionBlocks.forEach((blockText, bIdx) => {
+            const blockNum = bIdx + 1;
+            const bLines = blockText.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+            if (bLines.length === 0) return;
+
+            let questionStr = '';
+            const options = [];
+            let correctAnswers = [];
+            let explanation = '';
+            let chapterId = 1;
+            let topic = 'Tổng hợp';
+            let level = 'Thông hiểu';
+            let score = 1;
+
+            let currentField = 'question';
+            let explLines = [];
+
+            for (let i = 0; i < bLines.length; i++) {
+                const line = bLines[i];
+
+                const optMatch = line.match(/^([A-D])[\.\)\:\s]\s*(.*)$/i);
+                const ansMatch = line.match(/^(?:đáp\s*án|đ\/a|đa|key|answer|đáp\s*án\s*đúng)\s*[:=]\s*(.*)$/i);
+                const explMatch = line.match(/^(?:lời\s*giải|lời\s*giải\s*chi\s*tiết|giải\s*thích|hướng\s*dẫn\s*giải|hd|explanation)\s*[:=]\s*(.*)$/i);
+                const chMatch = line.match(/^(?:chương|chapter)\s*[:=]?\s*(\d+)/i);
+                const topicMatch = line.match(/^(?:chủ\s*đề|chuyên\s*đề|topic)\s*[:=]\s*(.*)$/i);
+                const lvlMatch = line.match(/^(?:mức\s*độ|level)\s*[:=]\s*(.*)$/i);
+                const scoreMatch = line.match(/^(?:điểm|score)\s*[:=]\s*(\d+)/i);
+
+                if (ansMatch) {
+                    currentField = 'ans';
+                    const rawAns = ansMatch[1].toUpperCase();
+                    const matches = rawAns.match(/[A-D]/g);
+                    if (matches) {
+                        correctAnswers = Array.from(new Set(matches));
+                    }
+                } else if (explMatch) {
+                    currentField = 'expl';
+                    if (explMatch[1].trim()) explLines.push(explMatch[1].trim());
+                } else if (chMatch) {
+                    currentField = 'meta';
+                    chapterId = parseInt(chMatch[1]);
+                } else if (topicMatch) {
+                    currentField = 'meta';
+                    topic = topicMatch[1].trim();
+                } else if (lvlMatch) {
+                    currentField = 'meta';
+                    const rawLvl = lvlMatch[1].trim();
+                    if (/nhận\s*biết/i.test(rawLvl)) level = 'Nhận biết';
+                    else if (/vận\s*dụng\s*cao/i.test(rawLvl)) level = 'Vận dụng cao';
+                    else if (/vận\s*dụng/i.test(rawLvl)) level = 'Vận dụng';
+                    else level = 'Thông hiểu';
+                } else if (scoreMatch) {
+                    currentField = 'meta';
+                    score = parseInt(scoreMatch[1]) || 1;
+                } else if (optMatch) {
+                    currentField = 'option';
+                    const letter = optMatch[1].toUpperCase();
+                    const optContent = optMatch[2].trim();
+                    options.push(`${letter}. ${optContent}`);
+                } else {
+                    if (currentField === 'question') {
+                        questionStr += (questionStr ? '\n' : '') + line;
+                    } else if (currentField === 'expl') {
+                        explLines.push(line);
+                    } else if (currentField === 'option' && options.length > 0) {
+                        options[options.length - 1] += ' ' + line;
+                    }
+                }
+            }
+
+            questionStr = questionStr.replace(/^(?:câu|bài|question|q)\s*\d+[\.\:\-\]]\s*/i, '').replace(/^\d+[\.\:\)]\s*/, '').trim();
+
+            if (explLines.length > 0) {
+                explanation = explLines.join('\n').trim();
+            }
+
+            if (!questionStr) {
+                errors.push(`Câu #${blockNum}: Không tìm thấy nội dung câu hỏi.`);
+                return;
+            }
+            if (options.length < 2) {
+                errors.push(`Câu #${blockNum} ("${questionStr.substring(0, 30)}..."): Cần ít nhất 2 phương án lựa chọn (A, B, C, D).`);
+                return;
+            }
+            if (correctAnswers.length === 0) {
+                errors.push(`Câu #${blockNum} ("${questionStr.substring(0, 30)}..."): Thiếu thông tin đáp án đúng (Ví dụ: "Đáp án: A").`);
+                return;
+            }
+
+            const chObj = subChapters.find(c => c.id === chapterId) || subChapters[0];
+
+            valid.push({
+                question: questionStr,
+                options: options,
+                correctAnswers: correctAnswers,
+                explanation: explanation || 'Lời giải chi tiết đang được cập nhật.',
+                chapterId: chObj ? chObj.id : chapterId,
+                chapter: chObj ? chObj.name : `Chương ${chapterId}`,
+                topic: topic || 'Tổng hợp',
+                level: level || 'Thông hiểu',
+                score: score || 1,
+                type: correctAnswers.length > 1 ? 'multiple' : 'single'
+            });
+        });
+
+        return { valid, errors, format: 'Văn bản (Form Chuẩn)' };
     }
 
     openQuestionForm(qId) {
@@ -705,11 +1182,11 @@ class AdminDashboard {
             { id: 'tab-flashcard', name: '⚡ Flashcards' }
         ];
 
-        const subjectsDef = [
-            { id: 'mmt', name: '🌐 Mạng Máy Tính & CCNA' },
-            { id: 'anm', name: '🛡️ An Ninh Mạng & ATTT' },
-            { id: 'toan', name: '📐 Toán Rời Rạc & Đồ Thị' },
-            { id: 'hdo', name: '💻 Hệ Điều Hành & Kiến Trúc' }
+        const subjectsDef = window.subjectsManager ? window.subjectsManager.getAllSubjects().map(s => ({
+            id: s.id,
+            name: `${s.icon || '📚'} ${s.name}`
+        })) : [
+            { id: 'mmt', name: '🌐 Mạng Máy Tính & CCNA' }
         ];
 
         container.innerHTML = filtered.map(u => {
