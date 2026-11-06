@@ -1,0 +1,643 @@
+Câu 1: Rút gọn biểu thức A = √(12) - √(27) + (1/2)√(48) ta được kết quả là:
+A. √3
+B. 3√3
+C. -√3
+D. 2√3
+Đáp án: A
+Lời giải: Ta có:
+√(12) = √(4 · 3) = 2√3
+√(27) = √(9 · 3) = 3√3
+(1/2)√(48) = (1/2) · √(16 · 3) = (1/2) · 4√3 = 2√3.
+Do đó: A = 2√3 - 3√3 + 2√3 = (2 - 3 + 2)√3 = √3.
+Chương: 1
+Chủ đề: Rút gọn biểu thức số
+Mức độ: Nhận biết
+Điểm: 1
+
+Câu 2: Rút gọn biểu thức C = 2/(√3 - 1) - 2/(√3 + 1) ta được kết quả là:
+A. 2
+B. 2√3
+C. 4
+D. -2
+Đáp án: A
+Lời giải: Quy đồng mẫu thức với mẫu chung là (√3 - 1)(√3 + 1) = 3 - 1 = 2:
+C = [2(√3 + 1) - 2(√3 - 1)] / [(√3 - 1)(√3 + 1)]
+  = (2√3 + 2 - 2√3 + 2) / 2 = 4 / 2 = 2.
+Chương: 1
+Chủ đề: Trục căn thức ở mẫu
+Mức độ: Thông hiểu
+Điểm: 1
+
+Câu 3: Rút gọn biểu thức E = √(7 + 4√3) - √(7 - 4√3) ta được kết quả là:
+A. 2√3
+B. 4
+C. 0
+D. -2√3
+Đáp án: A
+Lời giải: Ta có: 7 ± 4√3 = 4 ± 2 · 2 · √3 + 3 = (2 ± √3)².
+Do đó: E = √((2 + √3)²) - √((2 - √3)²)
+  = |2 + √3| - |2 - √3|.
+Vì 2 > √3 nên 2 - √3 > 0, do đó |2 - √3| = 2 - √3.
+E = (2 + √3) - (2 - √3) = 2√3.
+Chương: 1
+Chủ đề: Hằng đẳng thức căn thức
+Mức độ: Thông hiểu
+Điểm: 1
+
+Câu 4: Trục căn thức ở mẫu của phân thức D = (2 - √3)/(2 + √3) ta được:
+A. 7 - 4√3
+B. 7 + 4√3
+C. 1 - √3
+D. 4 - 2√3
+Đáp án: A
+Lời giải: Nhân cả tử và mẫu với lượng liên hợp của mẫu là (2 - √3):
+D = (2 - √3)² / [(2 + √3)(2 - √3)]
+  = (4 - 4√3 + 3) / (4 - 3) = 7 - 4√3.
+Chương: 1
+Chủ đề: Trục căn thức ở mẫu
+Mức độ: Thông hiểu
+Điểm: 1
+
+Câu 5: Rút gọn biểu thức A = (√x + 1)/(√x - 2) + 2√x/(√x + 2) + (2 + 5√x)/(4 - x) với x ≥ 0, x ≠ 4:
+A. 3√x / (√x + 2)
+B. 3 / (√x + 2)
+C. √x / (√x + 2)
+D. 3√x / (√x - 2)
+Đáp án: A
+Lời giải: Đổi dấu phân thức thứ ba: (2 + 5√x)/(4 - x) = -(2 + 5√x)/(x - 4) = -(2 + 5√x)/[(√x - 2)(√x + 2)].
+Quy đồng với mẫu chung (√x - 2)(√x + 2):
+Tử = (√x + 1)(√x + 2) + 2√x(√x - 2) - (2 + 5√x)
+   = (x + 3√x + 2) + (2x - 4√x) - 2 - 5√x
+   = 3x - 6√x = 3√x(√x - 2).
+Rút gọn với mẫu: A = 3√x(√x - 2) / [(√x - 2)(√x + 2)] = 3√x / (√x + 2).
+Chương: 1
+Chủ đề: Rút gọn biểu thức chứa biến
+Mức độ: Vận dụng
+Điểm: 1
+
+Câu 6: Cho biểu thức P = [1/(√x + 1) - (2√x - 2)/(x√x - √x + x - 1)] : [1/(√x - 1) - 2/(x - 1)] với x ≥ 0, x ≠ 1. Biểu thức rút gọn của P là:
+A. (√x - 1)/(√x + 1)
+B. (√x + 1)/(√x - 1)
+C. (√x - 2)/(√x + 1)
+D. 1/(√x + 1)
+Đáp án: A
+Lời giải: Phân tích mẫu: x√x - √x + x - 1 = √x(x - 1) + (x - 1) = (x - 1)(√x + 1) = (√x - 1)(√x + 1)².
+Ngoặc thứ nhất:
+1/(√x + 1) - 2(√x - 1)/[(√x - 1)(√x + 1)²] = 1/(√x + 1) - 2/(√x + 1)² = (√x + 1 - 2)/(√x + 1)² = (√x - 1)/(√x + 1)².
+Ngoặc thứ hai:
+1/(√x - 1) - 2/[(√x - 1)(√x + 1)] = (√x + 1 - 2)/[(√x - 1)(√x + 1)] = (√x - 1)/[(√x - 1)(√x + 1)] = 1/(√x + 1).
+Thực hiện phép chia: P = [(√x - 1)/(√x + 1)²] : [1/(√x + 1)] = (√x - 1)/(√x + 1).
+Chương: 1
+Chủ đề: Rút gọn biểu thức tổng hợp
+Mức độ: Vận dụng
+Điểm: 1
+
+Câu 7: Với P = (√x - 1)/(√x + 1), tính giá trị của P khi x = 4 - 2√3:
+A. 1 - (2√3)/3
+B. (√3 - 1)/2
+C. √3 - 1
+D. 2 - √3
+Đáp án: A
+Lời giải: Ta có x = 4 - 2√3 = (√3 - 1)² > 0.
+Do đó √x = √((√3 - 1)²) = |√3 - 1| = √3 - 1 (vì √3 > 1).
+Thay vào biểu thức P:
+P = [(√3 - 1) - 1] / [(√3 - 1) + 1] = (√3 - 2)/√3 = 1 - 2/√3 = 1 - (2√3)/3.
+Chương: 1
+Chủ đề: Tính giá trị biểu thức
+Mức độ: Thông hiểu
+Điểm: 1
+
+Câu 8: Cho P = (√x - 1)/(√x + 1) với x ≥ 0, x ≠ 1. Tìm tất cả các giá trị của x để P < 1/2:
+A. 0 ≤ x < 9 và x ≠ 1
+B. x < 9
+C. 1 < x < 9
+D. 0 ≤ x < 3
+Đáp án: A
+Lời giải: Xét bất phương trình P < 1/2:
+(√x - 1)/(√x + 1) - 1/2 < 0
+⇔ [2(√x - 1) - (√x + 1)] / [2(√x + 1)] < 0
+⇔ (√x - 3) / [2(√x + 1)] < 0.
+Vì x ≥ 0 nên 2(√x + 1) > 0 với mọi x. Do đó:
+√x - 3 < 0 ⇔ √x < 3 ⇔ 0 ≤ x < 9.
+Kết hợp điều kiện xác định x ≥ 0, x ≠ 1 ta được: 0 ≤ x < 9 và x ≠ 1.
+Chương: 1
+Chủ đề: Bất phương trình chứa biểu thức căn
+Mức độ: Vận dụng
+Điểm: 1
+
+Câu 9: Tìm giá trị nhỏ nhất (GTNN) của biểu thức P = (√x - 1)/(√x + 1) với x ≥ 0, x ≠ 1:
+A. -1 (đạt được tại x = 0)
+B. 0 (đạt được tại x = 1)
+C. -1/2 (đạt được tại x = 4)
+D. Không tồn tại GTNN
+Đáp án: A
+Lời giải: Biến đổi: P = (√x + 1 - 2)/(√x + 1) = 1 - 2/(√x + 1).
+Vì x ≥ 0 nên √x ≥ 0 ⇒ √x + 1 ≥ 1.
+Do đó: 2/(√x + 1) ≤ 2/1 = 2.
+Suy ra: P = 1 - 2/(√x + 1) ≥ 1 - 2 = -1.
+Dấu "=" xảy ra khi √x = 0 ⇔ x = 0 (thỏa mãn ĐKXĐ).
+Vậy GTNN của P là -1 khi x = 0.
+Chương: 1
+Chủ đề: Cực trị biểu thức
+Mức độ: Vận dụng
+Điểm: 1
+
+Câu 10: Tìm các số nguyên x để biểu thức P = (√x - 1)/(√x + 1) nhận giá trị nguyên:
+A. x = 0
+B. x ∈ {0; 1}
+C. x ∈ {0; 4}
+D. x = 4
+Đáp án: A
+Lời giải: Ta có: P = 1 - 2/(√x + 1).
+Để P nhận giá trị nguyên thì 2/(√x + 1) phải là số nguyên, tức là (√x + 1) là ước của 2.
+Vì x ≥ 0 nên √x + 1 ≥ 1, do đó các ước nguyên dương của 2 là 1 và 2:
+- TH1: √x + 1 = 1 ⇔ √x = 0 ⇔ x = 0 (nhận, thỏa mãn x nguyên và x ≠ 1).
+- TH2: √x + 1 = 2 ⇔ √x = 1 ⇔ x = 1 (loại vì không thỏa mãn ĐKXĐ x ≠ 1).
+Vậy chỉ có duy nhất x = 0.
+Chương: 1
+Chủ đề: Bài toán giá trị nguyên
+Mức độ: Vận dụng cao
+Điểm: 1
+
+Câu 11: Tập nghiệm của phương trình bậc hai 2x² + 3x - 5 = 0 là:
+A. S = {1; -5/2}
+B. S = {-1; 5/2}
+C. S = {1; 5}
+D. S = {2; -5/2}
+Đáp án: A
+Lời giải: Phương trình có các hệ số: a = 2, b = 3, c = -5.
+Nhận thấy: a + b + c = 2 + 3 + (-5) = 0.
+Theo tính chất nhẩm nghiệm phương trình bậc hai:
+x₁ = 1
+x₂ = c/a = -5/2.
+Vậy tập nghiệm của phương trình là S = {1; -5/2}.
+Chương: 4
+Chủ đề: Giải phương trình bậc hai
+Mức độ: Nhận biết
+Điểm: 1
+
+Câu 12: Số nghiệm của phương trình bậc hai x² - 4x + 5 = 0 là:
+A. 0 (Vô nghiệm)
+B. 1 (Nghiệm kép)
+C. 2 (Hai nghiệm phân biệt)
+D. Vô số nghiệm
+Đáp án: A
+Lời giải: Biến đổi: x² - 4x + 5 = (x² - 4x + 4) + 1 = (x - 2)² + 1.
+Vì (x - 2)² ≥ 0 với mọi x nên (x - 2)² + 1 ≥ 1 > 0 với mọi x.
+Hoặc tính biệt thức: Δ' = (-2)² - 1 · 5 = 4 - 5 = -1 < 0.
+Vậy phương trình đã cho vô nghiệm (0 nghiệm).
+Chương: 4
+Chủ đề: Số nghiệm phương trình bậc hai
+Mức độ: Nhận biết
+Điểm: 1
+
+Câu 13: Tập nghiệm của phương trình trùng phương x⁴ - 13x² + 36 = 0 là:
+A. S = {-3; -2; 2; 3}
+B. S = {2; 3}
+C. S = {-9; -4; 4; 9}
+D. S = {±4; ±9}
+Đáp án: A
+Lời giải: Đặt t = x² (điều kiện t ≥ 0).
+Phương trình trở thành: t² - 13t + 36 = 0.
+Δ = (-13)² - 4 · 1 · 36 = 169 - 144 = 25 > 0 ⇒ √Δ = 5.
+t₁ = (13 + 5)/2 = 9 (nhận)
+t₂ = (13 - 5)/2 = 4 (nhận).
+- Với t = 9 ⇒ x² = 9 ⇔ x = ±3.
+- Với t = 4 ⇒ x² = 4 ⇔ x = ±2.
+Vậy tập nghiệm S = {-3; -2; 2; 3}.
+Chương: 4
+Chủ đề: Phương trình trùng phương
+Mức độ: Thông hiểu
+Điểm: 1
+
+Câu 14: Nghiệm của phương trình x/(x - 2) + (x + 2)/(x - 1) = 2 là:
+A. x = 8/5
+B. x = 5/8
+C. x = 2
+D. Phương trình vô nghiệm
+Đáp án: A
+Lời giải: Điều kiện xác định: x ≠ 2 và x ≠ 1.
+Quy đồng mẫu thức hai vế:
+[x(x - 1) + (x + 2)(x - 2)] / [(x - 2)(x - 1)] = [2(x - 2)(x - 1)] / [(x - 2)(x - 1)]
+Khử mẫu ta được:
+x² - x + x² - 4 = 2(x² - 3x + 2)
+⇔ 2x² - x - 4 = 2x² - 6x + 4
+⇔ -x + 6x = 4 + 4
+⇔ 5x = 8 ⇔ x = 8/5 (thỏa mãn ĐKXĐ).
+Chương: 4
+Chủ đề: Phương trình chứa ẩn ở mẫu
+Mức độ: Thông hiểu
+Điểm: 1
+
+Câu 15: Nghiệm của phương trình vô tỷ √(2x - 3) = 5 là:
+A. x = 14
+B. x = 11
+C. x = 16
+D. x = 7
+Đáp án: A
+Lời giải: Điều kiện xác định: 2x - 3 ≥ 0 ⇔ x ≥ 3/2.
+Bình phương hai vế:
+2x - 3 = 5² = 25
+⇔ 2x = 28 ⇔ x = 14.
+Đối chiếu điều kiện x = 14 ≥ 3/2 (thỏa mãn). Vậy nghiệm là x = 14.
+Chương: 4
+Chủ đề: Phương trình vô tỷ
+Mức độ: Nhận biết
+Điểm: 1
+
+Câu 16: Tập nghiệm của phương trình √(x² - 4x + 4) = 3 là:
+A. S = {-1; 5}
+B. S = {5}
+C. S = {-5; 1}
+D. S = {1; 5}
+Đáp án: A
+Lời giải: Ta có x² - 4x + 4 = (x - 2)².
+Phương trình tương đương: √((x - 2)²) = 3 ⇔ |x - 2| = 3.
+- Trường hợp 1: x - 2 = 3 ⇔ x = 5.
+- Trường hợp 2: x - 2 = -3 ⇔ x = -1.
+Vậy phương trình có hai nghiệm: S = {-1; 5}.
+Chương: 4
+Chủ đề: Phương trình vô tỷ
+Mức độ: Thông hiểu
+Điểm: 1
+
+Câu 17: Giải phương trình √(x + 3) + √(4x + 12) - √(9x + 27) = 2:
+A. Phương trình vô nghiệm
+B. x = 1
+C. x = -3
+D. x = 2
+Đáp án: A
+Lời giải: Điều kiện: x + 3 ≥ 0 ⇔ x ≥ -3.
+Ta biến đổi:
+√(4x + 12) = √(4(x + 3)) = 2√(x + 3)
+√(9x + 27) = √(9(x + 3)) = 3√(x + 3).
+Phương trình trở thành:
+√(x + 3) + 2√(x + 3) - 3√(x + 3) = 2
+⇔ (1 + 2 - 3)√(x + 3) = 2
+⇔ 0 · √(x + 3) = 2 (vô lý).
+Vậy phương trình vô nghiệm.
+Chương: 4
+Chủ đề: Phương trình vô tỷ
+Mức độ: Thông hiểu
+Điểm: 1
+
+Câu 18: Cho phương trình x² - 2(m + 1)x + m² - 3 = 0. Tìm tất cả các giá trị của m để phương trình có hai nghiệm phân biệt:
+A. m > -2
+B. m ≥ -2
+C. m < -2
+D. m ≠ -2
+Đáp án: A
+Lời giải: Tính biệt thức thu gọn Δ':
+Δ' = [-(m + 1)]² - 1 · (m² - 3)
+   = m² + 2m + 1 - m² + 3 = 2m + 4.
+Để phương trình có hai nghiệm phân biệt thì:
+Δ' > 0 ⇔ 2m + 4 > 0 ⇔ 2m > -4 ⇔ m > -2.
+Chương: 4
+Chủ đề: Phương trình chứa tham số
+Mức độ: Thông hiểu
+Điểm: 1
+
+Câu 19: Cho phương trình x² - 2(m + 1)x + m² - 3 = 0. Tìm m để phương trình có hai nghiệm x₁, x₂ thỏa mãn x₁ + x₂ = 10:
+A. m = 4
+B. m = 5
+C. m = 3
+D. m = -4
+Đáp án: A
+Lời giải: Điều kiện để phương trình có nghiệm là Δ' = 2m + 4 ≥ 0 ⇔ m ≥ -2.
+Theo định lý Vi-et: x₁ + x₂ = -b/a = 2(m + 1).
+Theo đề bài: x₁ + x₂ = 10 ⇔ 2(m + 1) = 10 ⇔ m + 1 = 5 ⇔ m = 4.
+Kiểm tra điều kiện m = 4 ≥ -2 (thỏa mãn). Vậy m = 4.
+Chương: 4
+Chủ đề: Định lý Vi-et
+Mức độ: Thông hiểu
+Điểm: 1
+
+Câu 20: Cho phương trình x² - 2(m - 1)x + m² - 1 = 0. Tìm tất cả giá trị của m để phương trình có hai nghiệm trái dấu:
+A. -1 < m < 1
+B. m > 1
+C. m < -1
+D. m ≤ 1
+Đáp án: A
+Lời giải: Phương trình bậc hai ax² + bx + c = 0 có hai nghiệm trái dấu khi và chỉ khi:
+a · c < 0 ⇔ 1 · (m² - 1) < 0 ⇔ m² < 1 ⇔ -1 < m < 1.
+(Khi ac < 0 thì biệt thức Δ luôn dương nên phương trình luôn có 2 nghiệm phân biệt).
+Chương: 4
+Chủ đề: Định lý Vi-et
+Mức độ: Thông hiểu
+Điểm: 1
+
+Câu 21: Nghiệm (x; y) của hệ phương trình { 4x + 3y = 6 ; 2x + y = 4 } là:
+A. (3; -2)
+B. (-2; 3)
+C. (1; 2)
+D. (2; 0)
+Đáp án: A
+Lời giải: Nhân phương trình thứ hai với 2:
+{ 4x + 3y = 6
+{ 4x + 2y = 8
+Lấy phương trình trên trừ phương trình dưới:
+(4x - 4x) + (3y - 2y) = 6 - 8 ⇒ y = -2.
+Thay y = -2 vào 2x + y = 4:
+2x + (-2) = 4 ⇔ 2x = 6 ⇔ x = 3.
+Vậy hệ có nghiệm duy nhất (x; y) = (3; -2).
+Chương: 3
+Chủ đề: Giải hệ phương trình bậc nhất
+Mức độ: Nhận biết
+Điểm: 1
+
+Câu 22: Cho hệ phương trình { x - 2y = 3 ; -2x + 4y = -6 }. Khẳng định nào sau đây là đúng?
+A. Hệ phương trình có vô số nghiệm
+B. Hệ phương trình vô nghiệm
+C. Hệ có nghiệm duy nhất (3; 0)
+D. Hệ có đúng 2 nghiệm
+Đáp án: A
+Lời giải: Xét tỉ số các hệ số:
+a₁/a₂ = 1/(-2) = -1/2
+b₁/b₂ = (-2)/4 = -1/2
+c₁/c₂ = 3/(-6) = -1/2.
+Vì a₁/a₂ = b₁/b₂ = c₁/c₂ nên hai đường thẳng biểu diễn hai phương trình trùng nhau.
+Vậy hệ phương trình có vô số nghiệm.
+Chương: 3
+Chủ đề: Số nghiệm hệ phương trình
+Mức độ: Nhận biết
+Điểm: 1
+
+Câu 23: Giải hệ phương trình { 1/x + 1/y = 1/4 ; 2/x - 3/y = -1/3 }, nghiệm (x; y) là:
+A. (12; 6)
+B. (6; 12)
+C. (4; 3)
+D. (8; 4)
+Đáp án: A
+Lời giải: Điều kiện: x ≠ 0, y ≠ 0. Đặt u = 1/x, v = 1/y.
+Hệ trở thành: { u + v = 1/4 ; 2u - 3v = -1/3 }.
+Nhân PT đầu với 3: 3u + 3v = 3/4.
+Cộng với PT thứ hai: 5u = 3/4 - 1/3 = 5/12 ⇒ u = 1/12.
+Thay vào u + v = 1/4: v = 1/4 - 1/12 = 2/12 = 1/6.
+Suy ra: 1/x = 1/12 ⇒ x = 12; 1/y = 1/6 ⇒ y = 6.
+Vậy hệ có nghiệm (x; y) = (12; 6).
+Chương: 3
+Chủ đề: Hệ đặt ẩn phụ
+Mức độ: Thông hiểu
+Điểm: 1
+
+Câu 24: Giải hệ phương trình { √(x - 1) + 2y = 5 ; 2√(x - 1) - y = 0 } (với x ≥ 1):
+A. (2; 2)
+B. (1; 0)
+C. (5; 2)
+D. (3; 1)
+Đáp án: A
+Lời giải: Từ phương trình thứ hai: y = 2√(x - 1).
+Thế vào phương trình thứ nhất:
+√(x - 1) + 2 · [2√(x - 1)] = 5
+⇔ 5√(x - 1) = 5 ⇔ √(x - 1) = 1 ⇔ x - 1 = 1 ⇔ x = 2.
+Khi x = 2 ⇒ y = 2 · 1 = 2.
+Kiểm tra x = 2 ≥ 1 (thỏa mãn). Vậy nghiệm là (x; y) = (2; 2).
+Chương: 3
+Chủ đề: Hệ phương trình chứa căn thức
+Mức độ: Thông hiểu
+Điểm: 1
+
+Câu 25: Cho hệ phương trình { mx + y = 3 ; 4x + my = 6 }. Tìm điều kiện của m để hệ có nghiệm duy nhất:
+A. m ≠ 2 và m ≠ -2
+B. m = 2
+C. m = -2
+D. m ≠ 4
+Đáp án: A
+Lời giải: Định thức D của hệ phương trình:
+D = m · m - 4 · 1 = m² - 4.
+Hệ phương trình bậc nhất hai ẩn có nghiệm duy nhất khi và chỉ khi:
+D ≠ 0 ⇔ m² - 4 ≠ 0 ⇔ m² ≠ 4 ⇔ m ≠ 2 và m ≠ -2.
+Chương: 3
+Chủ đề: Hệ chứa tham số
+Mức độ: Thông hiểu
+Điểm: 1
+
+Câu 26: Tọa độ giao điểm của hai đường thẳng (d₁): 2x - 3y = 1 và (d₂): x + 2y = 4 là:
+A. (2; 1)
+B. (1; 2)
+C. (3; 0)
+D. (-1; -1)
+Đáp án: A
+Lời giải: Tọa độ giao điểm là nghiệm của hệ:
+{ 2x - 3y = 1
+{ x + 2y = 4
+Từ PT(2): x = 4 - 2y. Thế vào PT(1):
+2(4 - 2y) - 3y = 1 ⇔ 8 - 4y - 3y = 1 ⇔ -7y = -7 ⇔ y = 1.
+Suy ra: x = 4 - 2(1) = 2.
+Vậy tọa độ giao điểm là (2; 1).
+Chương: 3
+Chủ đề: Giao điểm hai đường thẳng
+Mức độ: Thông hiểu
+Điểm: 1
+
+Câu 27: Tập nghiệm của bất phương trình bậc nhất một ẩn -3x + 12 ≤ 0 là:
+A. x ≥ 4
+B. x ≤ 4
+C. x > 4
+D. x ≤ -4
+Đáp án: A
+Lời giải: Chuyển vế hạng tử tự do:
+-3x ≤ -12.
+Chia cả hai vế cho -3 (là số âm, quy tắc đổi chiều bất phương trình):
+x ≥ (-12) / (-3) ⇔ x ≥ 4.
+Vậy tập nghiệm là x ≥ 4.
+Chương: 2
+Chủ đề: Bất phương trình bậc nhất
+Mức độ: Nhận biết
+Điểm: 1
+
+Câu 28: Giải bất phương trình (x - 3)/2 ≥ (2x + 1)/3, tập nghiệm là:
+A. x ≤ -11
+B. x ≥ -11
+C. x ≤ 11
+D. x ≥ 7
+Đáp án: A
+Lời giải: Quy đồng mẫu số hai vế với mẫu số chung dương là 6:
+3(x - 3) ≥ 2(2x + 1)
+⇔ 3x - 9 ≥ 4x + 2
+⇔ 3x - 4x ≥ 2 + 9
+⇔ -x ≥ 11
+⇔ x ≤ -11 (đổi chiều khi nhân hai vế với -1).
+Vậy tập nghiệm là x ≤ -11.
+Chương: 2
+Chủ đề: Bất phương trình quy đồng
+Mức độ: Thông hiểu
+Điểm: 1
+
+Câu 29: Tập nghiệm của hệ bất phương trình { 2x - 3 > 0 ; 5x + 1 ≤ 16 } là:
+A. 3/2 < x ≤ 3
+B. x ≤ 3
+C. x > 3/2
+D. 2 ≤ x ≤ 3
+Đáp án: A
+Lời giải: Giải từng bất phương trình trong hệ:
+- BPT(1): 2x - 3 > 0 ⇔ 2x > 3 ⇔ x > 3/2.
+- BPT(2): 5x + 1 ≤ 16 ⇔ 5x ≤ 15 ⇔ x ≤ 3.
+Kết hợp nghiệm: 3/2 < x ≤ 3.
+Chương: 2
+Chủ đề: Hệ bất phương trình
+Mức độ: Thông hiểu
+Điểm: 1
+
+Câu 30: Tìm tất cả các giá trị của tham số m để bất phương trình (m - 2)x > 3 vô nghiệm:
+A. m = 2
+B. m > 2
+C. m < 2
+D. m ≠ 2
+Đáp án: A
+Lời giải: Bất phương trình có dạng a · x > b với a = m - 2, b = 3.
+Để bất phương trình ax > b vô nghiệm khi b > 0 thì hệ số a phải bằng 0:
+a = 0 ⇔ m - 2 = 0 ⇔ m = 2.
+(Khi m = 2, BPT trở thành 0x > 3, luôn sai với mọi x ∈ ℝ).
+Chương: 2
+Chủ đề: Bất phương trình chứa tham số
+Mức độ: Thông hiểu
+Điểm: 1
+
+Câu 31: Tập nghiệm của bất phương trình tích (x - 2)(x + 3) > 0 là:
+A. x > 2 hoặc x < -3
+B. -3 < x < 2
+C. x ≥ 2
+D. x < -3
+Đáp án: A
+Lời giải: Tích hai thừa số dương khi hai thừa số cùng dấu:
+- TH1 (Cùng dương): { x - 2 > 0 ; x + 3 > 0 } ⇔ { x > 2 ; x > -3 } ⇔ x > 2.
+- TH2 (Cùng âm): { x - 2 < 0 ; x + 3 < 0 } ⇔ { x < 2 ; x < -3 } ⇔ x < -3.
+Vậy nghiệm của bất phương trình là x > 2 hoặc x < -3.
+Chương: 2
+Chủ đề: Bất phương trình tích
+Mức độ: Thông hiểu
+Điểm: 1
+
+Câu 32: Tập nghiệm của bất phương trình (2x - 1)/(3 - x) ≤ 0 là:
+A. x ≤ 1/2 hoặc x > 3
+B. 1/2 ≤ x < 3
+C. x < 3
+D. x ≥ 1/2
+Đáp án: A
+Lời giải: Điều kiện mẫu: 3 - x ≠ 0 ⇔ x ≠ 3.
+Phân thức nhỏ hơn hoặc bằng 0 khi tử và mẫu trái dấu:
+- TH1: { 2x - 1 ≥ 0 ; 3 - x < 0 } ⇔ { x ≥ 1/2 ; x > 3 } ⇔ x > 3.
+- TH2: { 2x - 1 ≤ 0 ; 3 - x > 0 } ⇔ { x ≤ 1/2 ; x < 3 } ⇔ x ≤ 1/2.
+Vậy tập nghiệm là x ≤ 1/2 hoặc x > 3.
+Chương: 2
+Chủ đề: Bất phương trình thương
+Mức độ: Vận dụng
+Điểm: 1
+
+Câu 33: Giải bất phương trình chứa giá trị tuyệt đối |2x - 3| < 5:
+A. -1 < x < 4
+B. x < 4
+C. x > -1
+D. x < -1 hoặc x > 4
+Đáp án: A
+Lời giải: Áp dụng quy tắc: |A| < B (với B > 0) ⇔ -B < A < B.
+Ta có: -5 < 2x - 3 < 5
+Cộng 3 vào cả ba vế:
+-5 + 3 < 2x < 5 + 3 ⇔ -2 < 2x < 8
+Chia cho 2:
+-1 < x < 4.
+Vậy tập nghiệm là -1 < x < 4.
+Chương: 2
+Chủ đề: Bất phương trình chứa giá trị tuyệt đối
+Mức độ: Thông hiểu
+Điểm: 1
+
+Câu 34: Giải bất phương trình chứa căn thức √(x - 2) < 3:
+A. 2 ≤ x < 11
+B. x < 11
+C. x ≥ 2
+D. 2 < x < 11
+Đáp án: A
+Lời giải: Điều kiện xác định: x - 2 ≥ 0 ⇔ x ≥ 2.
+Vì hai vế đều không âm, bình phương hai vế:
+x - 2 < 3² = 9 ⇔ x < 11.
+Kết hợp với điều kiện xác định: 2 ≤ x < 11.
+Chương: 1
+Chủ đề: Bất phương trình chứa căn thức
+Mức độ: Thông hiểu
+Điểm: 1
+
+Câu 35: Tìm tham số m để bất phương trình (m + 1)x ≤ m² - 1 nghiệm đúng với mọi x ∈ ℝ:
+A. m = -1
+B. m = 1
+C. m ≠ -1
+D. Không có giá trị m nào thỏa mãn
+Đáp án: A
+Lời giải: Bất phương trình có dạng a · x ≤ b với a = m + 1 và b = m² - 1.
+Để bất phương trình ax ≤ b nghiệm đúng với mọi x ∈ ℝ thì:
+{ a = 0
+{ b ≥ 0
+⇔ { m + 1 = 0
+   { m² - 1 ≥ 0
+Từ m + 1 = 0 ⇒ m = -1.
+Thay m = -1 vào m² - 1: (-1)² - 1 = 0 ≥ 0 (thỏa mãn).
+Vậy m = -1.
+Chương: 2
+Chủ đề: Bất phương trình chứa tham số
+Mức độ: Vận dụng
+Điểm: 1
+
+Câu 36: Cho tam giác ABC vuông tại A, đường cao AH. Biết BH = 4 cm, CH = 9 cm. Độ dài đường cao AH bằng:
+A. 6 cm
+B. 5 cm
+C. 36 cm
+D. 6.5 cm
+Đáp án: A
+Lời giải: Áp dụng hệ thức lượng trong tam giác vuông: Bình phương đường cao ứng với cạnh huyền bằng tích hai hình chiếu của hai cạnh góc vuông trên cạnh huyền:
+AH² = BH · CH
+AH² = 4 · 9 = 36
+⇒ AH = √36 = 6 (cm).
+Chương: 5
+Chủ đề: Hệ thức lượng tam giác vuông
+Mức độ: Nhận biết
+Điểm: 1
+
+Câu 37: Cho tam giác ABC vuông tại A có cạnh AB = 6 cm và cạnh huyền BC = 10 cm. Giá trị của sin B bằng:
+A. 0.8
+B. 0.6
+C. 0.75
+D. 1.33
+Đáp án: A
+Lời giải: Áp dụng định lý Pytago trong tam giác vuông ABC:
+AC² = BC² - AB² = 10² - 6² = 100 - 36 = 64
+⇒ AC = √64 = 8 (cm).
+Tỉ số lượng giác sin của góc B trong tam giác vuông là tỉ số giữa cạnh đối và cạnh huyền:
+sin B = AC / BC = 8 / 10 = 0.8.
+Chương: 5
+Chủ đề: Tỉ số lượng giác góc nhọn
+Mức độ: Thông hiểu
+Điểm: 1
+
+Câu 38: Cho đường tròn (O; 5 cm) và dây cung AB = 8 cm. Khoảng cách từ tâm O đến dây AB bằng:
+A. 3 cm
+B. 4 cm
+C. √41 cm
+D. 2 cm
+Đáp án: A
+Lời giải: Kẻ OH vuông góc với AB tại H (H là trung điểm của AB theo định lý đường kính vuông góc với dây).
+Ta có: AH = AB / 2 = 8 / 2 = 4 (cm).
+Xét tam giác OAH vuông tại H, với OA = R = 5 cm:
+Áp dụng định lý Pytago:
+OH² = OA² - AH² = 5² - 4² = 25 - 16 = 9
+⇒ OH = √9 = 3 (cm).
+Vậy khoảng cách từ tâm O đến dây AB là 3 cm.
+Chương: 6
+Chủ đề: Đường kính và dây của đường tròn
+Mức độ: Thông hiểu
+Điểm: 1
+
+Câu 39: Cho tam giác ABC nội tiếp đường tròn (O). Biết góc BAC = 60°. Số đo của góc ở tâm BOC (chắn cung nhỏ BC) là:
+A. 120°
+B. 60°
+C. 30°
+D. 90°
+Đáp án: A
+Lời giải: Trong một đường tròn, góc nội tiếp có số đo bằng một nửa số đo của góc ở tâm cùng chắn một cung:
+Góc BAC là góc nội tiếp chắn cung nhỏ BC.
+Góc BOC là góc ở tâm chắn cung nhỏ BC.
+Do đó: số đo góc BOC = 2 × (số đo góc BAC) = 2 × 60° = 120°.
+Chương: 6
+Chủ đề: Góc nội tiếp và góc ở tâm
+Mức độ: Nhận biết
+Điểm: 1
