@@ -6,7 +6,7 @@
     <title>Hệ Thống Trắc Nghiệm Mạng Máy Tính - Computer Networks Cyber Exam & Game</title>
     <!-- Tailwind CSS CDN for utility classes -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="css/style.css?v=20261116_v4">
+    <link rel="stylesheet" href="css/style.css?v=20261116_v5">
     <!-- KaTeX for beautiful math formulas rendering -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
@@ -304,7 +304,7 @@
                 </div>
 
                 <!-- 1B: Active Question View -->
-                <div id="quiz-active-view" class="max-w-4xl mx-auto space-y-5 hidden">
+                <div id="quiz-active-view" class="max-w-7xl mx-auto space-y-5 hidden">
                     
                     <!-- Top Bar: Progress & Timer -->
                     <div class="glass-card p-4 flex flex-wrap items-center justify-between gap-4">
@@ -329,66 +329,88 @@
                         </div>
                     </div>
 
-                    <!-- Question Card -->
-                    <div class="glass-card p-6 sm:p-8 space-y-6">
+                    <!-- 2-Column Responsive Layout: Left = Question Card, Right = Question Navigation Map -->
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
                         
-                        <!-- Badges -->
-                        <div class="flex flex-wrap items-center gap-2 text-xs">
-                            <span id="q-chapter-badge" class="px-2.5 py-1 rounded-md bg-cyan-950/80 text-cyan-300 border border-cyan-800 font-bold">Chương 1</span>
-                            <span id="q-topic-badge" class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">Tổng quan MMT</span>
-                            <span id="q-level-badge" class="px-2.5 py-1 rounded-md bg-indigo-950 text-indigo-300 border border-indigo-800">Thông hiểu</span>
-                            <span id="q-type-badge" class="px-2.5 py-1 rounded-md bg-purple-950 text-purple-300 border border-purple-800">Chọn 1</span>
-                            <span id="q-score-badge" class="px-2.5 py-1 rounded-md bg-emerald-950 text-emerald-300 border border-emerald-800 font-bold">2 điểm</span>
-                        </div>
+                        <!-- Left Column: Main Question Card (8/12 cols on desktop) -->
+                        <div class="lg:col-span-8 space-y-5">
+                            <div class="glass-card p-6 sm:p-8 space-y-6">
+                                
+                                <!-- Badges -->
+                                <div class="flex flex-wrap items-center gap-2 text-xs">
+                                    <span id="q-chapter-badge" class="px-2.5 py-1 rounded-md bg-cyan-950/80 text-cyan-300 border border-cyan-800 font-bold">Chương 1</span>
+                                    <span id="q-topic-badge" class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">Tổng quan MMT</span>
+                                    <span id="q-level-badge" class="px-2.5 py-1 rounded-md bg-indigo-950 text-indigo-300 border border-indigo-800">Thông hiểu</span>
+                                    <span id="q-type-badge" class="px-2.5 py-1 rounded-md bg-purple-950 text-purple-300 border border-purple-800">Chọn 1</span>
+                                    <span id="q-score-badge" class="px-2.5 py-1 rounded-md bg-emerald-950 text-emerald-300 border border-emerald-800 font-bold">2 điểm</span>
+                                </div>
 
-                        <!-- Question Prompt -->
-                        <div id="question-text" class="text-lg sm:text-xl font-medium text-slate-100 leading-relaxed">
-                            Nội dung câu hỏi sẽ hiển thị ở đây...
-                        </div>
+                                <!-- Question Prompt -->
+                                <div id="question-text" class="text-lg sm:text-xl font-medium text-slate-100 leading-relaxed">
+                                    Nội dung câu hỏi sẽ hiển thị ở đây...
+                                </div>
 
-                        <!-- Options Container (Single / Multiple Choice) -->
-                        <div id="options-container" class="space-y-3">
-                            <!-- Dynamic Options Rendered Here -->
-                        </div>
+                                <!-- Options Container (Single / Multiple Choice) -->
+                                <div id="options-container" class="space-y-3">
+                                    <!-- Dynamic Options Rendered Here -->
+                                </div>
 
-                        <!-- Fill-in Container (Subnetting calculation) -->
-                        <div id="fill-container" class="hidden space-y-4">
-                            <!-- Dynamic Inputs Rendered Here -->
-                        </div>
+                                <!-- Fill-in Container (Subnetting calculation) -->
+                                <div id="fill-container" class="hidden space-y-4">
+                                    <!-- Dynamic Inputs Rendered Here -->
+                                </div>
 
-                        <!-- Explanation Box (Appears in Practice mode or after answer) -->
-                        <div id="explanation-box" class="hidden p-4 rounded-xl border border-cyan-500/30 bg-cyan-950/20 text-sm">
-                            <div id="explanation-text" class="space-y-1"></div>
-                        </div>
+                                <!-- Explanation Box (Appears in Practice mode or after answer) -->
+                                <div id="explanation-box" class="hidden p-4 rounded-xl border border-cyan-500/30 bg-cyan-950/20 text-sm">
+                                    <div id="explanation-text" class="space-y-1"></div>
+                                </div>
 
-                        <!-- Bottom Controls -->
-                        <div class="flex items-center justify-between pt-4 border-t border-slate-800/80">
-                            <button id="prev-q-btn" class="btn-secondary">
-                                ← Câu trước
-                            </button>
-                            <button id="next-q-btn" class="btn-primary">
-                                Câu tiếp →
-                            </button>
-                        </div>
+                                <!-- Bottom Controls -->
+                                <div class="flex items-center justify-between pt-4 border-t border-slate-800/80">
+                                    <button id="prev-q-btn" class="btn-secondary">
+                                        ← Câu trước
+                                    </button>
+                                    <button id="next-q-btn" class="btn-primary">
+                                        Câu tiếp →
+                                    </button>
+                                </div>
 
-                    </div>
-
-                    <!-- Question Palette (Bottom Grid) -->
-                    <div id="palette-drawer" class="glass-card p-4 space-y-3">
-                        <div class="flex items-center justify-between">
-                            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400">
-                                🗺️ Bảng Điều Hướng Câu Hỏi (Question Map)
-                            </h3>
-                            <div class="flex items-center gap-3 text-xs text-slate-400">
-                                <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded bg-cyan-500/30 border border-cyan-500"></span> Đã làm</span>
-                                <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded bg-slate-800 border border-slate-700"></span> Chưa làm</span>
-                                <span class="flex items-center gap-1">🚩 Gắn cờ</span>
-                                <button id="toggle-palette-btn" class="ml-2 text-slate-400 hover:text-white px-2 py-0.5 rounded bg-slate-800 border border-slate-700 text-xs">Thu gọn / Mở</button>
                             </div>
                         </div>
-                        <div id="palette-grid" class="palette-grid">
-                            <!-- Dynamic Palette buttons -->
+
+                        <!-- Right Column: Question Map / Palette Drawer (4/12 cols on desktop, Sticky) -->
+                        <div class="lg:col-span-4 lg:sticky lg:top-20 space-y-4">
+                            <div id="palette-drawer" class="glass-card p-4 sm:p-5 space-y-3.5 border border-cyan-500/20 shadow-xl shadow-cyan-950/20">
+                                <div class="flex items-center justify-between pb-2.5 border-b border-slate-800/80">
+                                    <h3 class="text-xs font-bold uppercase tracking-wider text-cyan-400 flex items-center gap-1.5">
+                                        <span>🗺️</span> <span>Bảng Điều Hướng Câu Hỏi</span>
+                                    </h3>
+                                    <button id="toggle-palette-btn" class="text-slate-400 hover:text-white px-2 py-0.5 rounded bg-slate-800/80 border border-slate-700 text-[11px] transition">
+                                        Thu gọn / Mở
+                                    </button>
+                                </div>
+
+                                <!-- Legend & Status -->
+                                <div class="flex flex-wrap items-center justify-between gap-2 text-[11px] text-slate-400 bg-slate-900/60 p-2.5 rounded-xl border border-slate-800/80">
+                                    <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm bg-cyan-500/30 border border-cyan-400"></span> Đã làm</span>
+                                    <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm bg-slate-800 border border-slate-700"></span> Chưa làm</span>
+                                    <span class="flex items-center gap-1">🚩 Gắn cờ</span>
+                                </div>
+
+                                <!-- Palette Buttons Grid -->
+                                <div id="palette-grid" class="palette-grid max-h-[calc(100vh-320px)] sm:max-h-96 lg:max-h-[500px] overflow-y-auto admin-scroll p-1">
+                                    <!-- Dynamic Palette buttons -->
+                                </div>
+
+                                <!-- Sidebar Action: Nộp Bài -->
+                                <div class="pt-2 border-t border-slate-800/80">
+                                    <button id="sidebar-submit-btn" class="w-full btn-primary py-2.5 text-xs font-bold bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-500 hover:to-cyan-500 flex items-center justify-center gap-1.5 shadow-md shadow-emerald-950/40">
+                                        <span>📤</span> <span>Nộp Bài Thi</span>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
+
                     </div>
 
                 </div>
@@ -1993,16 +2015,16 @@ Mức độ: Thông hiểu</pre>
     </div>
 
     <!-- Scripts with Cache-Busting Versioning -->
-    <script src="js/sound.js?v=20261116_v4"></script>
-    <script src="js/network_bg.js?v=20261116_v4"></script>
-    <script src="js/quiz_data.js?v=20261116_v4"></script>
-    <script src="js/subjects_data.js?v=20261116_v4"></script>
-    <script src="js/auth.js?v=20261116_v4"></script>
-    <script src="js/admin.js?v=20261116_v4"></script>
-    <script src="js/quiz.js?v=20261116_v4"></script>
-    <script src="js/game.js?v=20261116_v4"></script>
-    <script src="js/battle.js?v=20261116_v4"></script>
-    <script src="js/ctf.js?v=20261116_v4"></script>
-    <script src="js/app.js?v=20261116_v4"></script>
+    <script src="js/sound.js?v=20261116_v5"></script>
+    <script src="js/network_bg.js?v=20261116_v5"></script>
+    <script src="js/quiz_data.js?v=20261116_v5"></script>
+    <script src="js/subjects_data.js?v=20261116_v5"></script>
+    <script src="js/auth.js?v=20261116_v5"></script>
+    <script src="js/admin.js?v=20261116_v5"></script>
+    <script src="js/quiz.js?v=20261116_v5"></script>
+    <script src="js/game.js?v=20261116_v5"></script>
+    <script src="js/battle.js?v=20261116_v5"></script>
+    <script src="js/ctf.js?v=20261116_v5"></script>
+    <script src="js/app.js?v=20261116_v5"></script>
 </body>
 </html>

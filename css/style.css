@@ -257,46 +257,73 @@ body {
     color: #fff !important;
 }
 
-/* Palette Grid & Buttons */
+/* Palette Grid & Buttons (Right Column Layout) */
 .palette-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(2.5rem, 1fr));
-    gap: 0.5rem;
-    max-height: 280px;
+    grid-template-columns: repeat(auto-fill, minmax(2.4rem, 1fr));
+    gap: 0.45rem;
+    max-height: 420px;
     overflow-y: auto;
-    padding-right: 0.25rem;
+    padding: 0.25rem 0.35rem 0.25rem 0.15rem;
+}
+
+@media (min-width: 1024px) {
+    .palette-grid {
+        grid-template-columns: repeat(5, 1fr);
+        max-height: calc(100vh - 330px);
+    }
+}
+
+@media (min-width: 1440px) {
+    .palette-grid {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+
+#palette-drawer.collapsed #palette-grid,
+#palette-drawer.collapsed .palette-legend,
+#palette-drawer.collapsed #sidebar-submit-btn {
+    display: none !important;
 }
 
 .palette-btn {
-    height: 2.5rem;
-    border-radius: 0.5rem;
-    background: rgba(30, 41, 59, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    color: var(--text-secondary);
-    font-weight: 600;
+    height: 2.45rem;
+    border-radius: 0.55rem;
+    background: rgba(15, 23, 42, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    color: #94a3b8;
+    font-weight: 700;
     font-size: 0.85rem;
+    font-family: 'JetBrains Mono', monospace;
     cursor: pointer;
-    transition: all 0.15s ease;
+    transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
+    user-select: none;
 }
 
 .palette-btn:hover {
-    background: rgba(51, 65, 85, 0.8);
-    color: var(--text-primary);
+    background: rgba(51, 65, 85, 0.9);
+    border-color: rgba(56, 189, 248, 0.4);
+    color: #f8fafc;
+    transform: translateY(-1.5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .palette-btn.active {
-    border-color: #38bdf8;
-    color: #38bdf8;
-    box-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+    background: rgba(14, 116, 144, 0.35) !important;
+    border: 2px solid #38bdf8 !important;
+    color: #38bdf8 !important;
+    box-shadow: 0 0 14px rgba(56, 189, 248, 0.55);
     font-weight: 800;
+    transform: scale(1.05);
+    z-index: 2;
 }
 
 .palette-btn.answered {
-    background: rgba(6, 182, 212, 0.2);
+    background: rgba(6, 182, 212, 0.18);
     border-color: rgba(6, 182, 212, 0.5);
     color: #67e8f9;
 }
@@ -304,9 +331,10 @@ body {
 .palette-btn.flagged::after {
     content: '🚩';
     position: absolute;
-    top: -4px;
-    right: -4px;
+    top: -5px;
+    right: -5px;
     font-size: 0.65rem;
+    filter: drop-shadow(0 0 3px rgba(239, 68, 68, 0.8));
 }
 
 .palette-btn.correct {

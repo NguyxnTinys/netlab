@@ -120,9 +120,18 @@ class QuizEngine {
             this.confirmSubmit();
         });
 
-        if (this.elements.togglePaletteBtn) {
+        const sidebarSubmitBtn = document.getElementById('sidebar-submit-btn');
+        if (sidebarSubmitBtn) {
+            sidebarSubmitBtn.addEventListener('click', () => {
+                window.soundManager.playClick();
+                this.confirmSubmit();
+            });
+        }
+
+        if (this.elements.togglePaletteBtn && this.elements.paletteDrawer) {
             this.elements.togglePaletteBtn.addEventListener('click', () => {
-                this.elements.paletteDrawer.classList.toggle('open');
+                window.soundManager.playClick();
+                this.elements.paletteDrawer.classList.toggle('collapsed');
             });
         }
 
