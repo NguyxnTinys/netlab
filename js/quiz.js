@@ -163,26 +163,62 @@ class QuizEngine {
             });
         }
 
-        // Keyboard navigation
+        // Keyboard navigation (ArrowLeft, ArrowRight, Enter, Space, A/B/C/D, 1-6, F)
         window.addEventListener('keydown', (e) => {
-            if (this.elements.quizView.classList.contains('hidden') || this.isFinished) return;
-            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+            // Only active when quiz view is open and not finished
+            if (!this.elements.quizView || this.elements.quizView.classList.contains('hidden') || this.isFinished) return;
+            
+            // Ignore if typing inside input, textarea, select, or contenteditable
+            const tag = e.target && e.target.tagName ? e.target.tagName.toLowerCase() : '';
+            if (tag === 'input' || tag === 'textarea' || tag === 'select' || (e.target && e.target.isContentEditable)) return;
 
-            if (e.key === 'ArrowRight' || e.key === 'n') {
+            // Ignore if any modal is open
+            const hasOpenModal = document.querySelector('.modal:not(.hidden), [id$="-modal"]:not(.hidden)');
+            if (hasOpenModal) return;
+
+            // 1. Next question: ArrowRight, Enter, Space, or 'n'
+            if (e.key === 'ArrowRight' || (!e.shiftKey && (e.key === 'Enter' || e.key === ' ' || e.code === 'Space')) || e.key === 'n' || e.key === 'N') {
+                e.preventDefault();
                 if (this.currentIndex < this.currentQuestions.length - 1) {
+                    if (window.soundManager) window.soundManager.playClick();
                     this.goToQuestion(this.currentIndex + 1);
                 }
-            } else if (e.key === 'ArrowLeft' || e.key === 'p') {
+                return;
+            }
+
+            // 2. Previous question: ArrowLeft, Shift+Enter, Shift+Space, or 'p'
+            if (e.key === 'ArrowLeft' || (e.shiftKey && (e.key === 'Enter' || e.key === ' ' || e.code === 'Space')) || e.key === 'p' || e.key === 'P') {
+                e.preventDefault();
                 if (this.currentIndex > 0) {
+                    if (window.soundManager) window.soundManager.playClick();
                     this.goToQuestion(this.currentIndex - 1);
                 }
-            } else if (['1', '2', '3', '4', '5', '6'].includes(e.key)) {
+                return;
+            }
+
+            // 3. Toggle Flag: 'f' or 'F'
+            if (e.key === 'f' || e.key === 'F') {
+                e.preventDefault();
+                if (window.soundManager) window.soundManager.playClick();
+                this.toggleFlagCurrent();
+                return;
+            }
+
+            // 4. Select Option by number: 1, 2, 3, 4, 5, 6
+            if (['1', '2', '3', '4', '5', '6'].includes(e.key)) {
+                e.preventDefault();
                 const optIdx = parseInt(e.key) - 1;
                 this.selectOptionByIndex(optIdx);
-            } else if (['a', 'b', 'c', 'd', 'e', 'f', 'A', 'B', 'C', 'D', 'E', 'F'].includes(e.key)) {
+                return;
+            }
+
+            // 5. Select Option by letter: A, B, C, D, E, F
+            if (['a', 'b', 'c', 'd', 'e', 'f', 'A', 'B', 'C', 'D', 'E', 'F'].includes(e.key)) {
+                e.preventDefault();
                 const letter = e.key.toUpperCase();
                 const optIdx = ['A', 'B', 'C', 'D', 'E', 'F'].indexOf(letter);
                 if (optIdx !== -1) this.selectOptionByIndex(optIdx);
+                return;
             }
         });
     }
