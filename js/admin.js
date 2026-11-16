@@ -43,6 +43,7 @@ class AdminDashboard {
         this.bulkPreviewList = document.getElementById('bulk-preview-list');
         this.bulkPreviewCountPill = document.getElementById('bulk-preview-count-pill');
         this.bulkCharCount = document.getElementById('bulk-char-count');
+        this.bulkLoadAnmBtn = document.getElementById('bulk-load-anm-template-btn');
         this.bulkLoadToan9Btn = document.getElementById('bulk-load-toan9-template-btn');
         this.bulkLoadBlankBtn = document.getElementById('bulk-load-blank-template-btn');
         this.bulkClearBtn = document.getElementById('bulk-clear-btn');
@@ -197,6 +198,21 @@ class AdminDashboard {
                 if (this.bulkModal) this.bulkModal.classList.add('hidden');
             });
         });
+
+        // Bulk load ANM (Cybersecurity 310 Questions) template button
+        if (this.bulkLoadAnmBtn) {
+            this.bulkLoadAnmBtn.addEventListener('click', () => {
+                if (window.ANM_SAMPLE_TEXT && this.bulkTextarea) {
+                    this.bulkTextarea.value = window.ANM_SAMPLE_TEXT;
+                    this.updateBulkCharCount();
+                    if (this.bulkTargetSub) {
+                        this.bulkTargetSub.value = 'anm';
+                    }
+                    this.handleBulkPreview();
+                    if (window.soundManager) window.soundManager.playCorrect();
+                }
+            });
+        }
 
         // Bulk load TOAN 9 template button
         if (this.bulkLoadToan9Btn) {
