@@ -26,11 +26,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const subs = window.subjectsManager.getAllSubjects();
         const activeId = window.subjectsManager.getActiveSubjectId();
 
-        subSelector.innerHTML = subs.map(s => `
-            <option value="${s.id}" ${s.id === activeId ? 'selected' : ''}>
-                ${s.icon} ${s.name}
-            </option>
-        `).join('');
+        subSelector.innerHTML = subs.map(s => {
+            const count = window.subjectsManager.getQuestions(s.id).length;
+            return `
+                <option value="${s.id}" ${s.id === activeId ? 'selected' : ''}>
+                    ${s.icon} ${s.name} (${count} câu)
+                </option>
+            `;
+        }).join('');
     }
 
     function syncActiveSubject(sub, questions) {

@@ -179,7 +179,7 @@ class AuthManager {
                 joinedAt: '2026-01-01',
                 isApproved: true,
                 allowedSections: ['tab-quiz', 'tab-game', 'tab-battle', 'tab-ctf', 'tab-bank', 'tab-flashcard'],
-                allowedSubjects: ['mmt', 'anm', 'toan', 'hdo']
+                allowedSubjects: ['mmt', 'anm', 'toan9', 'toan', 'hdo']
             };
             // Keep master admin and legitimate registered students
             this.users = [admin, ...this.users.filter(u => u.role !== 'admin')];
@@ -522,7 +522,7 @@ class AuthManager {
 
             // Apply approved permissions
             this.currentUser.allowedSections = payload.secs || [];
-            this.currentUser.allowedSubjects = payload.subs || ['mmt', 'anm', 'toan', 'hdo'];
+            this.currentUser.allowedSubjects = payload.subs || ['mmt', 'anm', 'toan9', 'toan', 'hdo'];
             this.currentUser.isApproved = true;
 
             // Sync with registered users database

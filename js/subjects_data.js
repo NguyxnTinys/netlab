@@ -7720,38 +7720,51 @@ class SubjectsManager {
     }
 
     init() {
+        const DATA_VERSION = '2026.11.16.anm310_v4';
+        const savedVersion = localStorage.getItem('netlab_data_version');
+        const forceRefresh = (savedVersion !== DATA_VERSION);
+
         // 1. Load subjects metadata
         const savedSubs = localStorage.getItem(this.STORAGE_KEY_SUBJECTS);
-        if (savedSubs) {
+        if (savedSubs && !forceRefresh) {
             try {
                 this.subjects = JSON.parse(savedSubs);
+                let needsSave = false;
                 // Merge any newly introduced default subjects or refresh chapters
                 Object.keys(window.DEFAULT_SUBJECTS_METADATA).forEach(k => {
                     if (!this.subjects[k]) {
                         this.subjects[k] = JSON.parse(JSON.stringify(window.DEFAULT_SUBJECTS_METADATA[k]));
+                        needsSave = true;
                     } else if (window.DEFAULT_SUBJECTS_METADATA[k].chapters && 
                                (!this.subjects[k].chapters || this.subjects[k].chapters.length < window.DEFAULT_SUBJECTS_METADATA[k].chapters.length)) {
                         this.subjects[k].chapters = JSON.parse(JSON.stringify(window.DEFAULT_SUBJECTS_METADATA[k].chapters));
+                        needsSave = true;
                     }
                 });
+                if (needsSave) this.saveSubjects();
             } catch (e) {
                 this.subjects = JSON.parse(JSON.stringify(window.DEFAULT_SUBJECTS_METADATA));
+                this.saveSubjects();
             }
         } else {
             this.subjects = JSON.parse(JSON.stringify(window.DEFAULT_SUBJECTS_METADATA));
+            this.saveSubjects();
         }
 
         // 2. Load questions map
         const savedQ = localStorage.getItem(this.STORAGE_KEY_QUESTIONS);
-        if (savedQ) {
+        if (savedQ && !forceRefresh) {
             try {
                 this.questionsMap = JSON.parse(savedQ);
-                // Merge any newly introduced default questions
+                let needsSave = false;
+                // Merge any newly introduced default questions or update if more questions available
                 Object.keys(window.DEFAULT_EXTRA_QUESTIONS).forEach(k => {
                     if (!this.questionsMap[k] || this.questionsMap[k].length < (window.DEFAULT_EXTRA_QUESTIONS[k] || []).length) {
                         this.questionsMap[k] = JSON.parse(JSON.stringify(window.DEFAULT_EXTRA_QUESTIONS[k] || []));
+                        needsSave = true;
                     }
                 });
+                if (needsSave) this.saveQuestions();
             } catch (e) {
                 this.initDefaultQuestions();
             }
@@ -7762,15 +7775,40 @@ class SubjectsManager {
         // Ensure MMT questions are populated from window.QUIZ_DATA if empty
         if (!this.questionsMap.mmt || this.questionsMap.mmt.length === 0) {
             this.questionsMap.mmt = (window.QUIZ_DATA && window.QUIZ_DATA.length > 0) ? window.QUIZ_DATA : [];
+            this.saveQuestions();
         }
 
-        // 3. Load active subject
-        const active = localStorage.getItem(this.STORAGE_KEY_ACTIVE);
+        // 3. Load active subject: check URL query param first (?sub=anm or ?subject=anm or #anm)
+        let active = null;
+        if (typeof window !== 'undefined' && window.location) {
+            try {
+                let querySub = null;
+                if (typeof URLSearchParams !== 'undefined' && window.location.search) {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    querySub = urlParams.get('sub') || urlParams.get('subject');
+                }
+                if (!querySub && window.location.search) {
+                    const m = window.location.search.match(/[?&](?:sub|subject)=([^&#]+)/);
+                    if (m) querySub = decodeURIComponent(m[1]);
+                }
+                if (!querySub && window.location.hash) {
+                    querySub = window.location.hash.replace(/^#\/?/, '');
+                }
+                if (querySub && this.subjects[querySub]) {
+                    active = querySub;
+                }
+            } catch (e) {}
+        }
+        if (!active) {
+            active = localStorage.getItem(this.STORAGE_KEY_ACTIVE);
+        }
         if (active && this.subjects[active]) {
             this.activeSubjectId = active;
         } else {
             this.activeSubjectId = 'mmt';
         }
+
+        localStorage.setItem('netlab_data_version', DATA_VERSION);
     }
 
     initDefaultQuestions() {
