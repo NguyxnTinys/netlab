@@ -139,10 +139,10 @@ class QuizEngine {
         if (mobilePaletteToggleBtn && this.elements.paletteDrawer) {
             mobilePaletteToggleBtn.addEventListener('click', () => {
                 window.soundManager.playClick();
-                if (this.elements.paletteDrawer.classList.contains('collapsed')) {
-                    this.elements.paletteDrawer.classList.remove('collapsed');
+                this.elements.paletteDrawer.classList.toggle('collapsed');
+                if (!this.elements.paletteDrawer.classList.contains('collapsed')) {
+                    this.elements.paletteDrawer.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
-                this.elements.paletteDrawer.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         }
 
@@ -714,8 +714,10 @@ class QuizEngine {
                 this.goToQuestion(idx);
                 if (this.elements.paletteDrawer) this.elements.paletteDrawer.classList.remove('open');
                 if (window.innerWidth < 768) {
-                    const activeView = document.getElementById('quiz-active-view');
-                    if (activeView) activeView.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    const qElem = document.getElementById('question-text');
+                    if (qElem) {
+                        qElem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
                 }
             });
 

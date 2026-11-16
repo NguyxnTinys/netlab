@@ -6,7 +6,7 @@
     <title>Hệ Thống Trắc Nghiệm Mạng Máy Tính - Computer Networks Cyber Exam & Game</title>
     <!-- Tailwind CSS CDN for utility classes -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="css/style.css?v=20261117_v4">
+    <link rel="stylesheet" href="css/style.css?v=20261117_v5">
     <!-- KaTeX for beautiful math formulas rendering -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
@@ -337,11 +337,11 @@
                         </div>
                     </div>
 
-                    <!-- 2-Column Responsive Layout: Left = Question Card, Right = Question Navigation Map -->
+                    <!-- 2-Column Responsive Layout: Mobile = Palette on top (order-1), Question card below (order-2) -->
                     <div class="grid grid-cols-1 md:grid-cols-12 gap-3.5 sm:gap-4 lg:gap-5 items-start">
                         
-                        <!-- Left Column: Main Question Card (7/12 on md, 8/12 on lg desktop) -->
-                        <div class="md:col-span-7 lg:col-span-8 space-y-3.5 sm:space-y-5">
+                        <!-- Left Column: Main Question Card (Order 2 on mobile, Order 1 on md+) -->
+                        <div class="order-2 md:order-1 md:col-span-7 lg:col-span-8 space-y-3.5 sm:space-y-5">
                             <div class="glass-card p-3.5 sm:p-8 space-y-4 sm:space-y-6">
                                 
                                 <!-- Badges -->
@@ -401,8 +401,8 @@
                             </div>
                         </div>
 
-                        <!-- Right Column: Question Map / Palette Drawer (5/12 on md, 4/12 on lg desktop, Sticky) -->
-                        <div class="md:col-span-5 lg:col-span-4 md:sticky md:top-20 space-y-4">
+                        <!-- Right Column: Question Map / Palette Drawer (Order 1 on mobile, Order 2 on md+) -->
+                        <div class="order-1 md:order-2 md:col-span-5 lg:col-span-4 md:sticky md:top-20 space-y-4">
                             <div id="palette-drawer" class="glass-card p-3 sm:p-5 space-y-3 sm:space-y-3.5 border border-cyan-500/20 shadow-xl shadow-cyan-950/20">
                                 <div class="flex items-center justify-between pb-2 border-b border-slate-800/80">
                                     <h3 class="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-cyan-400 flex items-center gap-1.5 truncate">
@@ -2038,16 +2038,16 @@ Mức độ: Thông hiểu</pre>
     </div>
 
     <!-- Scripts with Cache-Busting Versioning -->
-    <script src="js/sound.js?v=20261117_v4"></script>
-    <script src="js/network_bg.js?v=20261117_v4"></script>
-    <script src="js/quiz_data.js?v=20261117_v4"></script>
-    <script src="js/subjects_data.js?v=20261117_v4"></script>
-    <script src="js/auth.js?v=20261117_v4"></script>
-    <script src="js/admin.js?v=20261117_v4"></script>
-    <script src="js/quiz.js?v=20261117_v4"></script>
-    <script src="js/game.js?v=20261117_v4"></script>
-    <script src="js/battle.js?v=20261117_v4"></script>
-    <script src="js/ctf.js?v=20261117_v4"></script>
-    <script src="js/app.js?v=20261117_v4"></script>
+    <script src="js/sound.js?v=20261117_v5"></script>
+    <script src="js/network_bg.js?v=20261117_v5"></script>
+    <script src="js/quiz_data.js?v=20261117_v5"></script>
+    <script src="js/subjects_data.js?v=20261117_v5"></script>
+    <script src="js/auth.js?v=20261117_v5"></script>
+    <script src="js/admin.js?v=20261117_v5"></script>
+    <script src="js/quiz.js?v=20261117_v5"></script>
+    <script src="js/game.js?v=20261117_v5"></script>
+    <script src="js/battle.js?v=20261117_v5"></script>
+    <script src="js/ctf.js?v=20261117_v5"></script>
+    <script src="js/app.js?v=20261117_v5"></script>
 </body>
 </html>
