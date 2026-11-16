@@ -6,7 +6,7 @@
     <title>Hệ Thống Trắc Nghiệm Mạng Máy Tính - Computer Networks Cyber Exam & Game</title>
     <!-- Tailwind CSS CDN for utility classes -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="css/style.css?v=20261117_v2">
+    <link rel="stylesheet" href="css/style.css?v=20261117_v3">
     <!-- KaTeX for beautiful math formulas rendering -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
@@ -21,84 +21,88 @@
 
     <div class="app-container">
         <!-- Navigation Header -->
-        <header class="navbar px-4 py-3 sm:px-6">
-            <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
-                <div class="flex items-center gap-3">
-                    <div id="header-subject-icon-box" class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-cyan-500/30 border border-cyan-300/40 text-xl">
-                        <span id="header-subject-icon">🌐</span>
-                    </div>
-                    <div>
-                        <div class="flex items-center gap-2">
-                            <h1 id="header-subject-title" class="text-base sm:text-lg font-black tracking-tight gradient-text">
-                                NETLAB • MẠNG MÁY TÍNH
-                            </h1>
-                            <span id="header-subject-code" class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-cyan-950/80 text-cyan-300 border border-cyan-800">
-                                NET101
-                            </span>
+        <header class="navbar px-3 py-2 sm:px-6 sm:py-3">
+            <div class="max-w-7xl mx-auto space-y-2 lg:space-y-0 lg:flex lg:items-center lg:justify-between lg:gap-3">
+                <!-- Top Row on Mobile: Brand on Left, Subject & Controls on Right -->
+                <div class="flex items-center justify-between gap-2 w-full lg:w-auto">
+                    <!-- Brand -->
+                    <div class="flex items-center gap-2 sm:gap-3 min-w-0">
+                        <div id="header-subject-icon-box" class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-gradient-to-tr from-cyan-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-cyan-500/30 border border-cyan-300/40 text-base sm:text-xl flex-shrink-0">
+                            <span id="header-subject-icon">🌐</span>
                         </div>
-                        <p id="header-subject-subtitle" class="text-[11px] text-slate-400 font-medium hidden sm:block">
-                            Hệ thống Luyện thi & Cyber Game Vượt Chướng Ngại Vật
-                        </p>
+                        <div class="min-w-0">
+                            <div class="flex items-center gap-1.5 sm:gap-2">
+                                <h1 id="header-subject-title" class="text-xs sm:text-base lg:text-lg font-black tracking-tight gradient-text truncate">
+                                    NETLAB • MẠNG MÁY TÍNH
+                                </h1>
+                                <span id="header-subject-code" class="px-1.5 py-0.5 rounded text-[9px] sm:text-[10px] font-mono font-bold bg-cyan-950/80 text-cyan-300 border border-cyan-800 flex-shrink-0">
+                                    NET101
+                                </span>
+                            </div>
+                            <p id="header-subject-subtitle" class="text-[11px] text-slate-400 font-medium hidden sm:block">
+                                Hệ thống Luyện thi & Cyber Game Vượt Chướng Ngại Vật
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Right Controls: Subject Selector + Admin + Auth + Sound -->
+                    <div class="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
+                        <!-- Subject Selector Dropdown -->
+                        <div id="global-subject-container" class="flex items-center gap-1 sm:gap-2">
+                            <span class="text-xs text-slate-400 font-semibold hidden xl:inline">Môn:</span>
+                            <select id="global-subject-selector" class="subject-pill-select text-[11px] sm:text-xs py-1 px-2 max-w-[105px] xs:max-w-[130px] sm:max-w-none truncate" title="Chuyển đổi môn học">
+                                <!-- Populated dynamically by subjectsManager -->
+                            </select>
+                        </div>
+
+                        <!-- User Role Badge (Desktop only) -->
+                        <span id="user-role-badge" class="hidden md:flex px-2.5 py-1 rounded-xl text-xs font-mono border border-slate-800 bg-slate-900/60 text-slate-400 items-center gap-1.5">
+                            <span class="w-2 h-2 rounded-full bg-slate-500"></span> Khách vãng lai
+                        </span>
+
+                        <!-- Admin Panel Action Button -->
+                        <button id="admin-panel-btn" class="hidden px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg sm:rounded-xl text-xs font-bold border border-amber-500/50 bg-amber-950/70 text-amber-300 hover:bg-amber-900/80 flex items-center gap-1 shadow-sm shadow-amber-500/20" title="Mở Trung Tâm Quản Trị Dữ Liệu">
+                            <span>👑</span> <span class="hidden sm:inline">Quản Trị</span>
+                        </button>
+
+                        <!-- Auth Action Button (Login / Profile) -->
+                        <button id="auth-action-btn" class="btn-primary text-xs py-1 px-2.5 sm:py-1.5 sm:px-3.5 flex items-center gap-1 bg-gradient-to-r from-cyan-600 to-indigo-600 shadow-sm rounded-lg sm:rounded-xl">
+                            <span>🔑</span> <span class="font-semibold hidden xs:inline sm:inline">Đăng nhập</span>
+                        </button>
+
+                        <!-- Sound Toggle -->
+                        <button id="sound-toggle-btn" class="btn-secondary text-xs py-1 px-2 sm:py-1.5 sm:px-2.5 rounded-lg sm:rounded-xl" title="Bật/Tắt âm thanh">
+                            🔊
+                        </button>
                     </div>
                 </div>
 
-                <!-- Subject Selector Dropdown -->
-                <div id="global-subject-container" class="flex items-center gap-2">
-                    <span class="text-xs text-slate-400 font-semibold hidden lg:inline">Môn học:</span>
-                    <select id="global-subject-selector" class="subject-pill-select" title="Chuyển đổi môn học">
-                        <!-- Populated dynamically by subjectsManager -->
-                    </select>
-                </div>
-
-                <!-- Navigation Tabs -->
-                <nav id="main-nav-tabs" class="flex items-center gap-1.5 sm:gap-2 overflow-x-auto py-1">
-                    <button class="nav-tab active" data-target="tab-quiz">
-                        <span>📝</span> Luyện Thi
+                <!-- Navigation Tabs (Touch-scrollable on mobile) -->
+                <nav id="main-nav-tabs" class="flex items-center gap-1 sm:gap-2 overflow-x-auto py-0.5 sm:py-1 no-scrollbar -mx-1 px-1">
+                    <button class="nav-tab active text-xs sm:text-sm py-1.5 px-2.5 sm:py-2 sm:px-4" data-target="tab-quiz">
+                        <span>📝</span> <span>Luyện Thi</span>
                     </button>
-                    <button class="nav-tab" data-target="tab-game">
-                        <span>🎮</span> Cyber Runner
+                    <button class="nav-tab text-xs sm:text-sm py-1.5 px-2.5 sm:py-2 sm:px-4" data-target="tab-game">
+                        <span>🎮</span> <span>Cyber Runner</span>
                     </button>
-                    <button class="nav-tab" data-target="tab-battle">
-                        <span>⚔️</span> Đấu Trường 1v1
+                    <button class="nav-tab text-xs sm:text-sm py-1.5 px-2.5 sm:py-2 sm:px-4" data-target="tab-battle">
+                        <span>⚔️</span> <span>Đấu Trường</span>
                     </button>
-                    <button class="nav-tab" data-target="tab-ctf">
-                        <span>🚩</span> Thử Thách CTF
+                    <button class="nav-tab text-xs sm:text-sm py-1.5 px-2.5 sm:py-2 sm:px-4" data-target="tab-ctf">
+                        <span>🚩</span> <span>Thử Thách CTF</span>
                     </button>
-                    <button class="nav-tab" data-target="tab-bank">
+                    <button class="nav-tab text-xs sm:text-sm py-1.5 px-2.5 sm:py-2 sm:px-4" data-target="tab-bank">
                         <span>📚</span> <span id="nav-bank-label">Ngân Hàng Câu</span>
                     </button>
-                    <button class="nav-tab" data-target="tab-flashcard">
-                        <span>⚡</span> Flashcards
+                    <button class="nav-tab text-xs sm:text-sm py-1.5 px-2.5 sm:py-2 sm:px-4" data-target="tab-flashcard">
+                        <span>⚡</span> <span>Flashcards</span>
                     </button>
                 </nav>
-
-                <!-- User Auth & System Controls -->
-                <div class="flex items-center gap-2">
-                    <!-- User Role Badge -->
-                    <span id="user-role-badge" class="px-2.5 py-1 rounded-xl text-xs font-mono border border-slate-800 bg-slate-900/60 text-slate-400 flex items-center gap-1.5">
-                        <span class="w-2 h-2 rounded-full bg-slate-500"></span> Khách vãng lai
-                    </span>
-
-                    <!-- Admin Panel Action Button (Visible only to Admin) -->
-                    <button id="admin-panel-btn" class="hidden px-3 py-1.5 rounded-xl text-xs font-bold border border-amber-500/50 bg-amber-950/70 text-amber-300 hover:bg-amber-900/80 flex items-center gap-1 shadow-sm shadow-amber-500/20" title="Mở Trung Tâm Quản Trị Dữ Liệu">
-                        <span>👑</span> <span class="hidden sm:inline">Quản Trị</span>
-                    </button>
-
-                    <!-- Auth Action Button (Login / Profile) -->
-                    <button id="auth-action-btn" class="btn-primary text-xs py-1.5 px-3.5 flex items-center gap-1 bg-gradient-to-r from-cyan-600 to-indigo-600 shadow-sm">
-                        <span>🔑</span> <span class="font-semibold">Đăng nhập</span>
-                    </button>
-
-                    <!-- Sound Toggle -->
-                    <button id="sound-toggle-btn" class="btn-secondary text-xs py-1.5 px-2.5" title="Bật/Tắt âm thanh">
-                        🔊
-                    </button>
-                </div>
             </div>
         </header>
 
         <!-- Main Content Area -->
-        <main class="flex-grow max-w-7xl w-full mx-auto p-4 sm:p-6">
+        <main class="flex-grow max-w-7xl w-full mx-auto px-2.5 py-3 sm:px-6 sm:py-6">
             
             <!-- ========================================== -->
             <!-- PENDING / ZERO-PERMISSION NOTICE VIEW      -->
@@ -304,70 +308,74 @@
                 </div>
 
                 <!-- 1B: Active Question View -->
-                <div id="quiz-active-view" class="max-w-7xl mx-auto space-y-5 hidden">
+                <div id="quiz-active-view" class="max-w-7xl mx-auto space-y-3.5 sm:space-y-5 hidden">
                     
                     <!-- Top Bar: Progress & Timer -->
-                    <div class="glass-card p-4 flex flex-wrap items-center justify-between gap-4">
-                        <div class="flex items-center gap-3">
-                            <span id="q-counter" class="text-sm font-bold text-cyan-300">Câu 1 / 20</span>
-                            <div class="w-32 sm:w-48 bg-slate-800 rounded-full h-2 overflow-hidden">
+                    <div class="glass-card p-2.5 sm:p-4 flex items-center justify-between gap-2 sm:gap-4">
+                        <div class="flex items-center gap-2 sm:gap-3 min-w-0">
+                            <span id="q-counter" class="text-xs sm:text-sm font-bold text-cyan-300 whitespace-nowrap">Câu 1 / 20</span>
+                            <div class="w-16 sm:w-44 bg-slate-800 rounded-full h-1.5 sm:h-2 overflow-hidden flex-shrink-0">
                                 <div id="quiz-progress-fill" class="h-full bg-gradient-to-r from-cyan-400 to-indigo-500 transition-all duration-300" style="width: 5%;"></div>
                             </div>
                         </div>
 
-                        <div class="flex items-center gap-3">
-                            <div id="quiz-timer-container" class="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-900 border border-slate-800 font-mono text-sm font-bold text-cyan-400">
+                        <div class="flex items-center gap-1.5 sm:gap-3 flex-shrink-0">
+                            <div id="quiz-timer-container" class="flex items-center gap-1 px-2 py-1 sm:px-3 sm:py-1 rounded-lg bg-slate-900 border border-slate-800 font-mono text-xs sm:text-sm font-bold text-cyan-400">
                                 <span>⏱️</span>
                                 <span id="quiz-timer-display">30:00</span>
                             </div>
-                            <button id="flag-q-btn" class="btn-secondary text-xs py-1.5 px-3">
-                                🏳️ Gắn cờ
+                            <!-- Mobile Quick Palette View Button -->
+                            <button id="mobile-palette-toggle-btn" type="button" class="md:hidden btn-secondary text-xs py-1 px-2 rounded-lg flex items-center gap-1 text-cyan-300 border-cyan-800/80 bg-cyan-950/50" title="Mở bảng điều hướng câu hỏi">
+                                <span>🗺️</span><span class="text-[11px] font-semibold">Bản đồ</span>
                             </button>
-                            <button id="submit-quiz-btn" class="btn-primary text-xs py-1.5 px-3 bg-gradient-to-r from-emerald-600 to-cyan-600 shadow-none">
-                                📤 Nộp bài
+                            <button id="flag-q-btn" class="btn-secondary text-xs py-1 px-2 sm:py-1.5 sm:px-3 rounded-lg flex items-center gap-1">
+                                <span>🏳️</span><span class="hidden sm:inline">Gắn cờ</span>
+                            </button>
+                            <button id="submit-quiz-btn" class="btn-primary text-xs py-1 px-2.5 sm:py-1.5 sm:px-3 bg-gradient-to-r from-emerald-600 to-cyan-600 shadow-none font-bold rounded-lg whitespace-nowrap">
+                                <span>📤</span><span class="hidden xs:inline sm:inline"> Nộp bài</span>
                             </button>
                         </div>
                     </div>
 
                     <!-- 2-Column Responsive Layout: Left = Question Card, Right = Question Navigation Map -->
-                    <div class="grid grid-cols-1 md:grid-cols-12 gap-4 lg:gap-5 items-start">
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-3.5 sm:gap-4 lg:gap-5 items-start">
                         
                         <!-- Left Column: Main Question Card (7/12 on md, 8/12 on lg desktop) -->
-                        <div class="md:col-span-7 lg:col-span-8 space-y-5">
-                            <div class="glass-card p-6 sm:p-8 space-y-6">
+                        <div class="md:col-span-7 lg:col-span-8 space-y-3.5 sm:space-y-5">
+                            <div class="glass-card p-3.5 sm:p-8 space-y-4 sm:space-y-6">
                                 
                                 <!-- Badges -->
-                                <div class="flex flex-wrap items-center gap-2 text-xs">
-                                    <span id="q-chapter-badge" class="px-2.5 py-1 rounded-md bg-cyan-950/80 text-cyan-300 border border-cyan-800 font-bold">Chương 1</span>
-                                    <span id="q-topic-badge" class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">Tổng quan MMT</span>
-                                    <span id="q-level-badge" class="px-2.5 py-1 rounded-md bg-indigo-950 text-indigo-300 border border-indigo-800">Thông hiểu</span>
-                                    <span id="q-type-badge" class="px-2.5 py-1 rounded-md bg-purple-950 text-purple-300 border border-purple-800">Chọn 1</span>
-                                    <span id="q-score-badge" class="px-2.5 py-1 rounded-md bg-emerald-950 text-emerald-300 border border-emerald-800 font-bold">2 điểm</span>
+                                <div class="flex flex-wrap items-center gap-1.5 sm:gap-2 text-[10px] sm:text-xs">
+                                    <span id="q-chapter-badge" class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md bg-cyan-950/80 text-cyan-300 border border-cyan-800 font-bold">Chương 1</span>
+                                    <span id="q-topic-badge" class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md bg-slate-800 text-slate-300">Tổng quan MMT</span>
+                                    <span id="q-level-badge" class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md bg-indigo-950 text-indigo-300 border border-indigo-800">Thông hiểu</span>
+                                    <span id="q-type-badge" class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md bg-purple-950 text-purple-300 border border-purple-800">Chọn 1</span>
+                                    <span id="q-score-badge" class="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md bg-emerald-950 text-emerald-300 border border-emerald-800 font-bold">2 điểm</span>
                                 </div>
 
                                 <!-- Question Prompt -->
-                                <div id="question-text" class="text-lg sm:text-xl font-medium text-slate-100 leading-relaxed">
+                                <div id="question-text" class="text-base sm:text-xl font-medium text-slate-100 leading-relaxed sm:leading-relaxed">
                                     Nội dung câu hỏi sẽ hiển thị ở đây...
                                 </div>
 
                                 <!-- Options Container (Single / Multiple Choice) -->
-                                <div id="options-container" class="space-y-3">
+                                <div id="options-container" class="space-y-2.5 sm:space-y-3">
                                     <!-- Dynamic Options Rendered Here -->
                                 </div>
 
                                 <!-- Fill-in Container (Subnetting calculation) -->
-                                <div id="fill-container" class="hidden space-y-4">
+                                <div id="fill-container" class="hidden space-y-3 sm:space-y-4">
                                     <!-- Dynamic Inputs Rendered Here -->
                                 </div>
 
                                 <!-- Explanation Box (Appears in Practice mode or after answer) -->
-                                <div id="explanation-box" class="hidden p-4 rounded-xl border border-cyan-500/30 bg-cyan-950/20 text-sm">
+                                <div id="explanation-box" class="hidden p-3 sm:p-4 rounded-xl border border-cyan-500/30 bg-cyan-950/20 text-xs sm:text-sm">
                                     <div id="explanation-text" class="space-y-1"></div>
                                 </div>
 
                                 <!-- Bottom Controls -->
-                                <div class="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-slate-800/80">
-                                    <button id="prev-q-btn" class="btn-secondary flex items-center gap-2 py-2 px-4 text-xs font-semibold">
+                                <div class="flex items-center justify-between gap-2 pt-3 sm:pt-4 border-t border-slate-800/80">
+                                    <button id="prev-q-btn" class="btn-secondary flex items-center justify-center gap-1.5 py-2 px-3 sm:px-4 text-xs font-semibold flex-1 sm:flex-initial rounded-lg">
                                         <span>← Câu trước</span>
                                         <kbd class="hidden sm:inline-block px-1.5 py-0.5 rounded text-[10px] font-mono bg-slate-800 text-slate-300 border border-slate-700">←</kbd>
                                     </button>
@@ -384,7 +392,7 @@
                                         <span class="text-slate-600">Tiến</span>
                                     </div>
 
-                                    <button id="next-q-btn" class="btn-primary flex items-center gap-2 py-2 px-5 text-xs font-bold shadow-md shadow-cyan-500/20">
+                                    <button id="next-q-btn" class="btn-primary flex items-center justify-center gap-1.5 py-2 px-3 sm:px-5 text-xs font-bold shadow-md shadow-cyan-500/20 flex-1 sm:flex-initial rounded-lg">
                                         <span>Câu tiếp →</span>
                                         <kbd class="hidden sm:inline-block px-1.5 py-0.5 rounded text-[10px] font-mono bg-cyan-950 text-cyan-300 border border-cyan-800">Space / →</kbd>
                                     </button>
@@ -395,31 +403,31 @@
 
                         <!-- Right Column: Question Map / Palette Drawer (5/12 on md, 4/12 on lg desktop, Sticky) -->
                         <div class="md:col-span-5 lg:col-span-4 md:sticky md:top-20 space-y-4">
-                            <div id="palette-drawer" class="glass-card p-4 sm:p-5 space-y-3.5 border border-cyan-500/20 shadow-xl shadow-cyan-950/20">
-                                <div class="flex items-center justify-between pb-2.5 border-b border-slate-800/80">
-                                    <h3 class="text-xs font-bold uppercase tracking-wider text-cyan-400 flex items-center gap-1.5">
-                                        <span>🗺️</span> <span>BẢNG ĐIỀU HƯỚNG CÂU HỎI (QUESTION MAP)</span>
+                            <div id="palette-drawer" class="glass-card p-3 sm:p-5 space-y-3 sm:space-y-3.5 border border-cyan-500/20 shadow-xl shadow-cyan-950/20">
+                                <div class="flex items-center justify-between pb-2 border-b border-slate-800/80">
+                                    <h3 class="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-cyan-400 flex items-center gap-1.5 truncate">
+                                        <span>🗺️</span> <span class="truncate">BẢNG ĐIỀU HƯỚNG CÂU HỎI (MAP)</span>
                                     </h3>
-                                    <button id="toggle-palette-btn" class="text-slate-400 hover:text-white px-2 py-0.5 rounded bg-slate-800/80 border border-slate-700 text-[11px] transition">
+                                    <button id="toggle-palette-btn" class="text-slate-400 hover:text-white px-2 py-0.5 rounded bg-slate-800/80 border border-slate-700 text-[11px] transition flex-shrink-0">
                                         Thu gọn / Mở
                                     </button>
                                 </div>
 
                                 <!-- Legend & Status -->
-                                <div class="flex flex-wrap items-center justify-between gap-2 text-[11px] text-slate-400 bg-slate-900/60 p-2.5 rounded-xl border border-slate-800/80">
+                                <div class="flex flex-wrap items-center justify-between gap-1.5 text-[10px] sm:text-[11px] text-slate-400 bg-slate-900/60 p-2 sm:p-2.5 rounded-xl border border-slate-800/80">
                                     <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full border border-cyan-400 bg-cyan-950/60"></span> Đã làm</span>
                                     <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full border border-slate-600 bg-slate-800"></span> Chưa làm</span>
                                     <span class="flex items-center gap-1 text-rose-400">🚩 Gắn cờ</span>
                                 </div>
 
                                 <!-- Palette Buttons Grid -->
-                                <div id="palette-grid" class="palette-grid max-h-[calc(100vh-320px)] sm:max-h-96 lg:max-h-[500px] overflow-y-auto admin-scroll p-1">
+                                <div id="palette-grid" class="palette-grid max-h-[220px] sm:max-h-96 lg:max-h-[500px] overflow-y-auto admin-scroll p-1">
                                     <!-- Dynamic Palette buttons -->
                                 </div>
 
                                 <!-- Sidebar Action: Nộp Bài -->
                                 <div class="pt-2 border-t border-slate-800/80">
-                                    <button id="sidebar-submit-btn" class="w-full btn-primary py-2.5 text-xs font-bold bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-500 hover:to-cyan-500 flex items-center justify-center gap-1.5 shadow-md shadow-emerald-950/40">
+                                    <button id="sidebar-submit-btn" class="w-full btn-primary py-2.5 text-xs font-bold bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-500 hover:to-cyan-500 flex items-center justify-center gap-1.5 shadow-md shadow-emerald-950/40 rounded-lg">
                                         <span>📤</span> <span>Nộp Bài Thi</span>
                                     </button>
                                 </div>
@@ -2030,16 +2038,16 @@ Mức độ: Thông hiểu</pre>
     </div>
 
     <!-- Scripts with Cache-Busting Versioning -->
-    <script src="js/sound.js?v=20261117_v2"></script>
-    <script src="js/network_bg.js?v=20261117_v2"></script>
-    <script src="js/quiz_data.js?v=20261117_v2"></script>
-    <script src="js/subjects_data.js?v=20261117_v2"></script>
-    <script src="js/auth.js?v=20261117_v2"></script>
-    <script src="js/admin.js?v=20261117_v2"></script>
-    <script src="js/quiz.js?v=20261117_v2"></script>
-    <script src="js/game.js?v=20261117_v2"></script>
-    <script src="js/battle.js?v=20261117_v2"></script>
-    <script src="js/ctf.js?v=20261117_v2"></script>
-    <script src="js/app.js?v=20261117_v2"></script>
+    <script src="js/sound.js?v=20261117_v3"></script>
+    <script src="js/network_bg.js?v=20261117_v3"></script>
+    <script src="js/quiz_data.js?v=20261117_v3"></script>
+    <script src="js/subjects_data.js?v=20261117_v3"></script>
+    <script src="js/auth.js?v=20261117_v3"></script>
+    <script src="js/admin.js?v=20261117_v3"></script>
+    <script src="js/quiz.js?v=20261117_v3"></script>
+    <script src="js/game.js?v=20261117_v3"></script>
+    <script src="js/battle.js?v=20261117_v3"></script>
+    <script src="js/ctf.js?v=20261117_v3"></script>
+    <script src="js/app.js?v=20261117_v3"></script>
 </body>
 </html>
