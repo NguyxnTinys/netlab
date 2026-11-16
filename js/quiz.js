@@ -337,8 +337,7 @@ class QuizEngine {
         const shuffleOpts = this.elements.shuffleOptCheckbox.checked;
         this.currentQuestions = selected.map(q => {
             if (q.type === 'fill' || !shuffleOpts) return { ...q };
-            // For multiple choice, keep letter mapping or shuffle options
-            return { ...q };
+            return this.shuffleQuestionOptions(q);
         });
 
         // Setup timer
@@ -931,7 +930,73 @@ class QuizEngine {
         });
     }
 
+    shuffleQuestionOptions(q) {
+        if (q.type === 'fill' || !Array.isArray(q.options) || q.options.length <= 1) {
+            return { ...q };
+        }
+
+        // Parse each option to extract letter and text, and mark if it is correct
+        const parsed = q.options.map(opt => {
+            const m = opt.match(/^([A-Z])\.\s*(.*)$/s);
+            const oldLetter = m ? m[1] : opt.charAt(0);
+            const text = m ? m[2].trim() : opt.substring(3).trim();
+            const isCorrect = (q.correctAnswers || []).includes(oldLetter);
+            return { oldLetter, text, isCorrect };
+        });
+
+        // Fisher-Yates shuffle
+        for (let i = parsed.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [parsed[i], parsed[j]] = [parsed[j], parsed[i]];
+        }
+
+        const LETTERS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+        const oldToNew = {};
+        const newOptions = [];
+        const newCorrectAnswers = [];
+
+        parsed.forEach((item, idx) => {
+            const newLetter = LETTERS[idx] || String.fromCharCode(65 + idx);
+            oldToNew[item.oldLetter] = newLetter;
+            newOptions.push(`${newLetter}. ${item.text}`);
+            if (item.isCorrect) {
+                newCorrectAnswers.push(newLetter);
+            }
+        });
+
+        // Update explanation if it contains references to the old correct letter
+        let newExp = q.explanation || '';
+        if (q.correctAnswers && q.correctAnswers.length === 1 && newCorrectAnswers.length === 1) {
+            const cOld = q.correctAnswers[0];
+            const cNew = newCorrectAnswers[0];
+            if (cOld !== cNew) {
+                // Update "Đáp án đúng là [?cOld" -> "Đáp án đúng là [?cNew"
+                newExp = newExp.replace(new RegExp('(Đáp án đúng là\\s*\\[?)\\s*' + cOld + '(\\s*-\\s*)', 'g'), '$1' + cNew + '$2');
+                
+                // Update option breakdown list items: "- **<oldLetter>." -> "- **<newLetter>."
+                for (const oldL of ['A', 'B', 'C', 'D']) {
+                    const mappedNew = oldToNew[oldL] || oldL;
+                    newExp = newExp.replace(new RegExp('(\\n\\s*-\\s*\\*\\*)' + oldL + '(\\.\\s*)', 'g'), '$1__TMP_L_' + mappedNew + '__$2');
+                }
+                for (const newL of ['A', 'B', 'C', 'D']) {
+                    newExp = newExp.split('__TMP_L_' + newL + '__').join(newL);
+                }
+            }
+        }
+
+        return {
+            ...q,
+            options: newOptions,
+            correctAnswers: newCorrectAnswers,
+            explanation: newExp
+        };
+    }
+
     restartCurrentQuiz() {
+        if (this.elements.shuffleOptCheckbox && this.elements.shuffleOptCheckbox.checked) {
+            this.currentQuestions = this.currentQuestions.map(q => this.shuffleQuestionOptions(q));
+        }
+
         this.userAnswers = {};
         this.flagged = new Set();
         this.currentIndex = 0;
@@ -951,10 +1016,14 @@ class QuizEngine {
     }
 
     startWrongQuestionsQuiz() {
-        const wrongQs = this.currentQuestions.filter(q => !this.checkQuestionAnswer(q));
+        let wrongQs = this.currentQuestions.filter(q => !this.checkQuestionAnswer(q));
         if (wrongQs.length === 0) {
             alert('Tuyệt vời! Bạn không có câu hỏi nào làm sai trong đề vừa rồi!');
             return;
+        }
+
+        if (this.elements.shuffleOptCheckbox && this.elements.shuffleOptCheckbox.checked) {
+            wrongQs = wrongQs.map(q => this.shuffleQuestionOptions(q));
         }
 
         this.currentQuestions = wrongQs;
