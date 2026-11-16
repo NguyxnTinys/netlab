@@ -163,12 +163,14 @@ class AuthManager {
     }
 
     async ensureMasterAdmin() {
-        let admin = this.users.find(u => u.username.toLowerCase() === 'nvt5405@');
-        if (!admin) {
-            // Reset to clean state with master admin as requested
+        let changed = false;
+
+        // 1. Master Admin: nvt5405@ / nvt5405@123
+        let nvtAdmin = this.users.find(u => u.username.toLowerCase() === 'nvt5405@');
+        if (!nvtAdmin) {
             const salt = generateSecureSalt();
             const passwordHash = await hashUserPassword('nvt5405@123', salt);
-            admin = {
+            nvtAdmin = {
                 username: 'nvt5405@',
                 name: 'Quản Trị Viên (nvt5405@)',
                 role: 'admin',
@@ -181,8 +183,57 @@ class AuthManager {
                 allowedSections: ['tab-quiz', 'tab-game', 'tab-battle', 'tab-ctf', 'tab-bank', 'tab-flashcard'],
                 allowedSubjects: ['mmt', 'anm', 'toan9', 'toan', 'hdo']
             };
-            // Keep master admin and legitimate registered students
-            this.users = [admin, ...this.users.filter(u => u.role !== 'admin')];
+            this.users.unshift(nvtAdmin);
+            changed = true;
+        } else {
+            const testHash = await hashUserPassword('nvt5405@123', nvtAdmin.salt);
+            if (testHash !== nvtAdmin.passwordHash || nvtAdmin.role !== 'admin' || !nvtAdmin.isApproved) {
+                const salt = generateSecureSalt();
+                nvtAdmin.salt = salt;
+                nvtAdmin.passwordHash = await hashUserPassword('nvt5405@123', salt);
+                nvtAdmin.role = 'admin';
+                nvtAdmin.isApproved = true;
+                nvtAdmin.allowedSections = ['tab-quiz', 'tab-game', 'tab-battle', 'tab-ctf', 'tab-bank', 'tab-flashcard'];
+                nvtAdmin.allowedSubjects = ['mmt', 'anm', 'toan9', 'toan', 'hdo'];
+                changed = true;
+            }
+        }
+
+        // 2. Admin: admin / 123
+        let adminUser = this.users.find(u => u.username.toLowerCase() === 'admin');
+        if (!adminUser) {
+            const salt = generateSecureSalt();
+            const passwordHash = await hashUserPassword('123', salt);
+            adminUser = {
+                username: 'admin',
+                name: 'Quản Trị Viên (admin)',
+                role: 'admin',
+                avatar: '👑',
+                email: 'admin@netlab.vn',
+                salt: salt,
+                passwordHash: passwordHash,
+                joinedAt: '2026-01-01',
+                isApproved: true,
+                allowedSections: ['tab-quiz', 'tab-game', 'tab-battle', 'tab-ctf', 'tab-bank', 'tab-flashcard'],
+                allowedSubjects: ['mmt', 'anm', 'toan9', 'toan', 'hdo']
+            };
+            this.users.push(adminUser);
+            changed = true;
+        } else {
+            const testHash = await hashUserPassword('123', adminUser.salt);
+            if (testHash !== adminUser.passwordHash || adminUser.role !== 'admin' || !adminUser.isApproved) {
+                const salt = generateSecureSalt();
+                adminUser.salt = salt;
+                adminUser.passwordHash = await hashUserPassword('123', salt);
+                adminUser.role = 'admin';
+                adminUser.isApproved = true;
+                adminUser.allowedSections = ['tab-quiz', 'tab-game', 'tab-battle', 'tab-ctf', 'tab-bank', 'tab-flashcard'];
+                adminUser.allowedSubjects = ['mmt', 'anm', 'toan9', 'toan', 'hdo'];
+                changed = true;
+            }
+        }
+
+        if (changed) {
             this.saveUsers();
         }
     }
@@ -412,8 +463,9 @@ class AuthManager {
     }
 
     deleteUser(username) {
-        if (username.toLowerCase() === 'nvt5405@') {
-            return { success: false, message: 'Không thể xóa tài khoản Quản trị viên Master!' };
+        const lower = (username || '').toLowerCase();
+        if (lower === 'nvt5405@' || lower === 'admin') {
+            return { success: false, message: 'Không thể xóa tài khoản Quản trị viên mặc định!' };
         }
 
         const idx = this.users.findIndex(u => u.username.toLowerCase() === username.toLowerCase());
@@ -739,7 +791,7 @@ class AuthManager {
                 if (this.isAdmin()) {
                     this.openAdminModal();
                 } else {
-                    this.showPermissionGate('Yêu Cầu Quyền Quản Trị', 'Bạn phải đăng nhập bằng tài khoản Quản trị viên (nvt5405@) để truy cập chức năng này!');
+                    this.showPermissionGate('Yêu Cầu Quyền Quản Trị', 'Bạn phải đăng nhập bằng tài khoản Quản trị viên (admin hoặc nvt5405@) để truy cập chức năng này!');
                 }
             });
         }

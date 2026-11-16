@@ -1157,7 +1157,7 @@ class AdminDashboard {
 
         if (!window.authManager) return;
         const allUsers = window.authManager.getAllUsers();
-        const students = allUsers.filter(u => u.username.toLowerCase() !== 'nvt5405@' && u.role !== 'admin');
+        const students = allUsers.filter(u => u.username.toLowerCase() !== 'nvt5405@' && u.username.toLowerCase() !== 'admin' && u.role !== 'admin');
 
         const searchInput = document.getElementById('admin-user-search');
         const searchVal = (searchInput ? searchInput.value : '').toLowerCase().trim();
