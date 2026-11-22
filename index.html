@@ -6,7 +6,7 @@
     <title>Hệ Thống Trắc Nghiệm Mạng Máy Tính - Computer Networks Cyber Exam & Game</title>
     <!-- Tailwind CSS CDN for utility classes -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="css/style.css?v=20261123_v1">
+    <link rel="stylesheet" href="css/style.css?v=20261123_v4">
     <!-- KaTeX for beautiful math formulas rendering -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
@@ -406,7 +406,7 @@
                             <div id="palette-drawer" class="glass-card p-3 sm:p-5 space-y-3 sm:space-y-3.5 border border-cyan-500/20 shadow-xl shadow-cyan-950/20">
                                 <div class="flex items-center justify-between pb-2 border-b border-slate-800/80">
                                     <h3 class="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-cyan-400 flex items-center gap-1.5 truncate">
-                                        <span>🗺️</span> <span class="truncate">BẢNG ĐIỀU HƯỚNG CÂU HỎI (MAP)</span>
+                                        <span>🗺️</span> <span class="truncate">BẢNG ĐIỀU HƯỚNG CÂU HỎI (QUESTION MAP)</span>
                                     </h3>
                                     <button id="toggle-palette-btn" class="text-slate-400 hover:text-white px-2 py-0.5 rounded bg-slate-800/80 border border-slate-700 text-[11px] transition flex-shrink-0">
                                         Thu gọn / Mở
@@ -414,10 +414,10 @@
                                 </div>
 
                                 <!-- Legend & Status -->
-                                <div class="flex flex-wrap items-center justify-between gap-1.5 text-[10px] sm:text-[11px] text-slate-400 bg-slate-900/60 p-2 sm:p-2.5 rounded-xl border border-slate-800/80">
-                                    <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full border border-cyan-400 bg-cyan-950/60"></span> Đã làm</span>
+                                <div class="palette-legend flex flex-wrap items-center justify-between gap-1.5 text-[10px] sm:text-[11px] text-slate-400 bg-slate-900/60 p-2 sm:p-2.5 rounded-xl border border-slate-800/80">
+                                    <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full border border-cyan-400 bg-cyan-500 shadow-[0_0_6px_rgba(6,182,212,0.8)]"></span> Đã làm</span>
                                     <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full border border-slate-600 bg-slate-800"></span> Chưa làm</span>
-                                    <span class="flex items-center gap-1 text-rose-400">🚩 Gắn cờ</span>
+                                    <span class="flex items-center gap-1 text-rose-400 font-semibold">🚩 Gắn cờ</span>
                                 </div>
 
                                 <!-- Palette Buttons Grid -->
@@ -1080,11 +1080,11 @@
                         <div class="flex items-center gap-2">
                             <span class="text-2xl">🚩</span>
                             <h2 class="text-xl sm:text-2xl font-black gradient-text">
-                                NETWORK CTF • THỬ THÁCH HACKING & BẢO MẬT MẠNG
+                                NETWORK CTF • HỌC VIỆN AN NINH MẠNG & PHÒNG LAB THỰC CHIẾN
                             </h2>
                         </div>
                         <p class="text-xs text-slate-400 mt-0.5">
-                            Capture The Flag: 23 kịch bản thực chiến toàn diện 7 Vùng Hạ Tầng An Ninh Mạng & Giao Thức Mạng CCNA!
+                            Lộ trình huấn luyện toàn diện từ Lý thuyết tới Thực hành trên 7 Vùng Hạ Tầng & Giao Thức Mạng CCNA.
                         </p>
                     </div>
                     <div class="flex items-center gap-3">
@@ -1097,110 +1097,231 @@
                     </div>
                 </div>
 
-                <!-- CTF Domain Filter Bar -->
-                <div class="glass-card p-3.5 border-slate-800 space-y-2">
-                    <div class="flex items-center justify-between">
-                        <span class="text-xs font-bold text-slate-300 flex items-center gap-1.5">
-                            <span>🛡️</span> LỌC THEO 7 VÙNG HẠ TẦNG AN NINH MẠNG & GIAO THỨC:
-                        </span>
-                        <span id="ctf-filter-count-badge" class="text-[11px] font-mono text-cyan-400 bg-cyan-950/60 px-2.5 py-0.5 rounded border border-cyan-800">23 bài</span>
+                <!-- CTF Mode Switcher: Roadmap vs Lab Arena -->
+                <div class="flex flex-wrap items-center justify-between gap-3 p-2 bg-slate-900/80 rounded-2xl border border-slate-800">
+                    <div class="flex items-center gap-2">
+                        <button id="ctf-toggle-roadmap-btn" class="ctf-view-toggle-btn active">
+                            <span>🗺️</span> <span>Lộ Trình Huấn Luyện (7 Vùng Hạ Tầng)</span>
+                        </button>
+                        <button id="ctf-toggle-arena-btn" class="ctf-view-toggle-btn">
+                            <span>🚩</span> <span>Phòng Lab Thực Chiến (23 Kịch Bản)</span>
+                        </button>
                     </div>
-                    <div id="ctf-domain-filters" class="flex flex-wrap gap-1.5 text-xs">
-                        <button data-domain="all" class="ctf-filter-btn active">🌐 Tất Cả (23)</button>
-                        <button data-domain="user" class="ctf-filter-btn">👤 1. Vùng Người Dùng (2)</button>
-                        <button data-domain="workstation" class="ctf-filter-btn">💻 2. Vùng Máy Trạm (2)</button>
-                        <button data-domain="lan" class="ctf-filter-btn">🏢 3. Vùng Mạng LAN (2)</button>
-                        <button data-domain="lan-to-wan" class="ctf-filter-btn">🚪 4. Vùng LAN-to-WAN (2)</button>
-                        <button data-domain="wan" class="ctf-filter-btn">🌍 5. Vùng Mạng WAN (2)</button>
-                        <button data-domain="remote-access" class="ctf-filter-btn">🔑 6. Truy Nhập Từ Xa (2)</button>
-                        <button data-domain="system-app" class="ctf-filter-btn">⚙️ 7. Hệ Thống & Web (3)</button>
-                        <button data-domain="networking" class="ctf-filter-btn">🖧 8. Giao Thức Mạng CCNA (8)</button>
+                    <div class="text-xs text-slate-400 hidden sm:flex items-center gap-2 px-3">
+                        <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                        <span>Kiến Trúc Phòng Thủ Chiều Sâu (Defense-in-Depth)</span>
                     </div>
                 </div>
 
-                <!-- Main CTF 2-Column Layout -->
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
-                    
-                    <!-- Left Column: Challenge Navigator -->
-                    <div class="lg:col-span-4 space-y-2">
-                        <div class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1 flex items-center justify-between">
-                            <span>📜 PHÒNG LAB THỰC CHIẾN</span>
-                            <span class="text-[11px] text-cyan-400 font-mono">Chọn bài để giải</span>
+                <!-- ======================================================== -->
+                <!-- VIEW 1: ROADMAP VIEW (Lộ Trình Lý Thuyết Tới Thực Hành)  -->
+                <!-- ======================================================== -->
+                <div id="ctf-roadmap-view" class="space-y-4">
+                    <div class="glass-card p-4 border-cyan-500/30 flex flex-wrap items-center justify-between gap-3">
+                        <div>
+                            <h3 class="text-sm font-extrabold text-cyan-300 flex items-center gap-2">
+                                <span>🛡️</span> KHUNG KIẾN TRÚC 7 VÙNG HẠ TẦNG AN NINH MẠNG (IT INFRASTRUCTURE DOMAINS)
+                            </h3>
+                            <p class="text-xs text-slate-400 mt-1">
+                                Mô hình tiêu chuẩn phân tầng kiểm soát bảo mật: Từ lớp con người (User), máy trạm (Workstation), mạng nội bộ (LAN), mạng biên (LAN-to-WAN), mạng Internet (WAN), cổng từ xa (Remote Access) tới máy chủ ứng dụng (System & Apps).
+                            </p>
                         </div>
-                        <div id="ctf-challenge-nav" class="space-y-2 max-h-[580px] overflow-y-auto pr-1">
-                            <!-- Dynamic CTF Nav buttons -->
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs text-slate-400">Tiến độ lộ trình:</span>
+                            <span id="ctf-roadmap-progress-badge" class="px-2.5 py-1 rounded-md bg-cyan-950 border border-cyan-700 text-xs font-mono font-bold text-cyan-300">0%</span>
                         </div>
                     </div>
 
-                    <!-- Right Column: Active Challenge Arena & Terminal -->
-                    <div class="lg:col-span-8 space-y-4">
+                    <!-- Roadmap Layers Container (Dynamic) -->
+                    <div id="ctf-roadmap-layers" class="space-y-3.5">
+                        <!-- Rendered dynamically by CTFEngine.renderRoadmap() -->
+                    </div>
+                </div>
+
+                <!-- ======================================================== -->
+                <!-- VIEW 2: ARENA VIEW (Phòng Lab Thực Chiến Tương Tác)     -->
+                <!-- ======================================================== -->
+                <div id="ctf-arena-view" class="space-y-5 hidden">
+                    
+                    <!-- CTF Domain Filter Bar -->
+                    <div class="glass-card p-3 border-slate-800 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-slate-300 flex items-center gap-1.5">
+                                <span>🛡️</span> LỌC THEO VÙNG HẠ TẦNG:
+                            </span>
+                            <span id="ctf-filter-count-badge" class="text-[11px] font-mono text-cyan-400 bg-cyan-950/60 px-2 py-0.5 rounded border border-cyan-800">23 bài</span>
+                        </div>
+                        <div id="ctf-domain-filters" class="flex flex-wrap gap-1.5 text-xs">
+                            <button data-domain="all" class="ctf-filter-btn active">🌐 Tất Cả (23)</button>
+                            <button data-domain="user" class="ctf-filter-btn">👤 1. Người Dùng (2)</button>
+                            <button data-domain="workstation" class="ctf-filter-btn">💻 2. Máy Trạm (2)</button>
+                            <button data-domain="lan" class="ctf-filter-btn">🏢 3. Mạng LAN (2)</button>
+                            <button data-domain="lan-to-wan" class="ctf-filter-btn">🚪 4. LAN-to-WAN (2)</button>
+                            <button data-domain="wan" class="ctf-filter-btn">🌍 5. Mạng WAN (2)</button>
+                            <button data-domain="remote-access" class="ctf-filter-btn">🔑 6. Truy Nhập Từ Xa (2)</button>
+                            <button data-domain="system-app" class="ctf-filter-btn">⚙️ 7. Hệ Thống & Web (3)</button>
+                            <button data-domain="networking" class="ctf-filter-btn">🖧 8. Giao Thức Mạng (8)</button>
+                        </div>
+                    </div>
+
+                    <!-- Main CTF 2-Column Layout -->
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
                         
-                        <!-- Challenge Card -->
-                        <div class="glass-card p-6 space-y-4 border-cyan-500/30">
-                            <div class="flex flex-wrap justify-between items-center gap-2 border-b border-slate-800 pb-3">
-                                <div class="flex flex-wrap items-center gap-1.5">
-                                    <span id="ctf-card-domain" class="text-xs px-2.5 py-1 rounded-md bg-purple-950 text-purple-300 border border-purple-800 font-bold">1. Vùng Người Dùng</span>
-                                    <span id="ctf-card-category" class="text-xs px-2.5 py-1 rounded-md bg-cyan-950 text-cyan-300 border border-cyan-800 font-bold">Kỹ Nghệ Xã Hội</span>
-                                    <span id="ctf-card-difficulty" class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-300">Dễ</span>
-                                </div>
-                                <span id="ctf-card-points" class="text-xs font-mono font-bold text-emerald-400 bg-emerald-950/60 px-2.5 py-1 rounded-md border border-emerald-800">+100 Điểm</span>
+                        <!-- Left Column: Challenge Navigator -->
+                        <div class="lg:col-span-4 space-y-2">
+                            <div class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1 flex items-center justify-between">
+                                <span>📜 DANH SÁCH BÀI LAB</span>
+                                <span class="text-[11px] text-cyan-400 font-mono">Chọn bài</span>
                             </div>
-
-                            <h3 id="ctf-card-title" class="text-lg font-extrabold text-slate-100">
-                                Tiêu đề thử thách...
-                            </h3>
-
-                            <p id="ctf-card-desc" class="text-sm text-slate-300 leading-relaxed">
-                                Mô tả kịch bản...
-                            </p>
-
-                            <!-- Raw Code / Packet Dump Box -->
-                            <div class="space-y-1">
-                                <div class="text-xs font-mono text-slate-400">📄 Dữ liệu trích xuất (Packet Log / Config / Payload):</div>
-                                <div id="ctf-card-code" class="cyber-code-block"></div>
-                            </div>
-
-                            <!-- Hint Box Accordion -->
-                            <div class="space-y-2">
-                                <button id="ctf-hint-toggle-btn" class="text-xs text-amber-400 hover:text-amber-300 flex items-center gap-1 font-semibold transition">
-                                    💡 <span>Xem gợi ý giải mã cờ (Tools & Methodology Hint)</span>
-                                </button>
-                                <div id="ctf-hint-box" class="p-3.5 rounded-xl bg-amber-950/20 border border-amber-500/40 text-xs text-amber-200 hidden leading-relaxed">
-                                    <div id="ctf-hint-text">Nội dung gợi ý...</div>
-                                </div>
-                            </div>
-
-                            <!-- Flag Submission Input Group -->
-                            <div class="pt-2 border-t border-slate-800/80 space-y-3">
-                                <div class="flex flex-col sm:flex-row gap-2">
-                                    <input type="text" id="ctf-flag-input" placeholder="Nhập cờ định dạng FLAG{...}" class="flex-grow bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-cyan-300 font-mono focus:outline-none focus:border-cyan-400">
-                                    <button id="ctf-submit-btn" class="btn-primary sm:w-48 whitespace-nowrap">
-                                        🚩 Nộp Cờ (Submit)
-                                    </button>
-                                </div>
-                                <div id="ctf-status-box" class="hidden"></div>
+                            <div id="ctf-challenge-nav" class="space-y-2 max-h-[620px] overflow-y-auto pr-1">
+                                <!-- Dynamic CTF Nav buttons -->
                             </div>
                         </div>
 
-                        <!-- Simulated Cyber Terminal -->
-                        <div class="cyber-terminal">
-                            <div class="flex items-center justify-between px-3 py-1.5 bg-slate-900 border-b border-purple-900/40 text-xs text-slate-400">
-                                <div class="flex items-center gap-2">
-                                    <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
-                                    <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
-                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
-                                    <span class="font-mono text-slate-300 font-bold ml-1">NETLAB CYBER TERMINAL v3.0</span>
+                        <!-- Right Column: Interactive Lab Workbench -->
+                        <div class="lg:col-span-8 space-y-4">
+                            
+                            <!-- Challenge Workbench Card -->
+                            <div class="glass-card p-5 sm:p-6 space-y-4 border-cyan-500/30">
+                                
+                                <!-- Card Header Info -->
+                                <div class="flex flex-wrap justify-between items-center gap-2 border-b border-slate-800 pb-3">
+                                    <div class="flex flex-wrap items-center gap-1.5">
+                                        <span id="ctf-card-domain" class="text-xs px-2.5 py-1 rounded-md bg-purple-950 text-purple-300 border border-purple-800 font-bold">1. Vùng Người Dùng</span>
+                                        <span id="ctf-card-category" class="text-xs px-2.5 py-1 rounded-md bg-cyan-950 text-cyan-300 border border-cyan-800 font-bold">Kỹ Nghệ Xã Hội</span>
+                                        <span id="ctf-card-difficulty" class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-300">Dễ</span>
+                                    </div>
+                                    <span id="ctf-card-points" class="text-xs font-mono font-bold text-emerald-400 bg-emerald-950/60 px-2.5 py-1 rounded-md border border-emerald-800">+100 Điểm</span>
                                 </div>
-                                <span class="text-[11px] text-slate-500">Gõ 'help' hoặc 'tools' để xem lệnh</span>
+
+                                <h3 id="ctf-card-title" class="text-lg font-black text-slate-100">
+                                    Tiêu đề thử thách...
+                                </h3>
+
+                                <!-- Workbench 4 Navigation Tabs -->
+                                <div class="flex flex-wrap border-b border-slate-800 gap-1 pt-1">
+                                    <button class="ctf-workbench-tab active" data-tab="theory">
+                                        <span>📖</span> <span>1. Lý Thuyết & Kịch Bản</span>
+                                    </button>
+                                    <button class="ctf-workbench-tab" data-tab="sandbox">
+                                        <span>🔬</span> <span>2. Môi Trường Thực Nghiệm</span>
+                                    </button>
+                                    <button class="ctf-workbench-tab" data-tab="terminal">
+                                        <span>💻</span> <span>3. Cyber Terminal (CLI)</span>
+                                    </button>
+                                    <button class="ctf-workbench-tab" data-tab="defense">
+                                        <span>🛡️</span> <span>4. Phòng Ngự & Vá Lỗi</span>
+                                    </button>
+                                </div>
+
+                                <!-- Panel 1: Theory & Scenario -->
+                                <div id="ctf-panel-theory" class="space-y-3">
+                                    <div class="p-3 rounded-xl bg-slate-900/70 border border-slate-800 space-y-2">
+                                        <div class="flex flex-wrap items-center justify-between gap-2">
+                                            <span class="text-xs font-bold text-cyan-300 flex items-center gap-1.5">
+                                                <span>📋</span> Bối cảnh & Tình huống điều tra (Incident Scenario):
+                                            </span>
+                                            <span id="ctf-mitre-badge" class="text-[11px] px-2 py-0.5 rounded bg-rose-950/80 text-rose-300 border border-rose-800 font-mono font-semibold">
+                                                MITRE ATT&CK: T1566
+                                            </span>
+                                        </div>
+                                        <p id="ctf-card-desc" class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                                            Mô tả kịch bản...
+                                        </p>
+                                    </div>
+
+                                    <div class="p-3 rounded-xl bg-purple-950/20 border border-purple-800/40 space-y-1.5">
+                                        <div class="text-xs font-bold text-purple-300 flex items-center gap-1.5">
+                                            <span>⚡</span> Cơ chế kỹ thuật của lỗ hổng & Nguy cơ:
+                                        </div>
+                                        <div id="ctf-card-theory-content" class="text-xs text-slate-300 leading-relaxed">
+                                            Nội dung lý thuyết chuyên sâu...
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Panel 2: Interactive Sandbox & Evidence -->
+                                <div id="ctf-panel-sandbox" class="space-y-3 hidden">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-xs font-bold text-slate-300 flex items-center gap-1.5">
+                                            <span>🔬</span> KHÔNG GIAN TƯƠNG TÁC THỰC NGHIỆM (INTERACTIVE LAB SANDBOX):
+                                        </span>
+                                        <span id="ctf-sandbox-badge" class="text-[10px] font-mono text-cyan-400 bg-cyan-950 px-2 py-0.5 rounded border border-cyan-800">WIRESHARK INSPECTOR</span>
+                                    </div>
+
+                                    <!-- Interactive Container (Wireshark Table / Web Repeater / Log Search) -->
+                                    <div id="ctf-sandbox-container" class="space-y-2">
+                                        <!-- Rendered dynamically depending on challenge type -->
+                                    </div>
+
+                                    <!-- Raw Data Code Block Fallback -->
+                                    <div class="space-y-1">
+                                        <div class="text-[11px] font-mono text-slate-400">📄 Dữ liệu thô / Log trích xuất (Evidence Dump):</div>
+                                        <div id="ctf-card-code" class="cyber-code-block max-h-56"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Panel 3: Simulated Cyber Terminal -->
+                                <div id="ctf-panel-terminal" class="space-y-2 hidden">
+                                    <div class="cyber-terminal">
+                                        <div class="flex items-center justify-between px-3 py-1.5 bg-slate-900 border-b border-purple-900/40 text-xs text-slate-400">
+                                            <div class="flex items-center gap-2">
+                                                <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
+                                                <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                                                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                                                <span class="font-mono text-slate-300 font-bold ml-1">NETLAB CYBER TERMINAL v3.0 (VIRTUAL OS)</span>
+                                            </div>
+                                            <span class="text-[11px] text-slate-500">Lệnh: ls, cat, grep, strings, b64, crack, nmap, curl, flag</span>
+                                        </div>
+                                        <div id="ctf-terminal-output" class="cyber-terminal-output font-mono">
+                                            <!-- Terminal output lines -->
+                                        </div>
+                                        <div class="flex items-center px-3 py-2 bg-slate-950 border-t border-slate-900">
+                                            <span class="text-cyan-400 font-mono text-xs mr-2">analyst@netlab:~$</span>
+                                            <input type="text" id="ctf-terminal-input" placeholder="Nhập lệnh: ls, cat &lt;file&gt;, grep &lt;str&gt; &lt;file&gt;, b64 decode &lt;str&gt;, crack md5 &lt;hash&gt;, flag FLAG{...}..." class="w-full bg-transparent border-0 text-slate-200 font-mono text-xs focus:outline-none">
+                                        </div>
+                                    </div>
+                                    <div class="text-[11px] text-slate-500 flex items-center justify-between px-1">
+                                        <span>💡 Gõ <b>ls</b> để xem các file chứng cứ của bài lab; gõ <b>cat &lt;file&gt;</b> để đọc.</span>
+                                        <span>Gõ <b>help</b> để xem trợ giúp.</span>
+                                    </div>
+                                </div>
+
+                                <!-- Panel 4: Defense & Remediation -->
+                                <div id="ctf-panel-defense" class="space-y-3 hidden">
+                                    <div class="p-3.5 rounded-xl bg-emerald-950/20 border border-emerald-500/40 space-y-2">
+                                        <div class="text-xs font-bold text-emerald-300 flex items-center gap-1.5">
+                                            <span>🛡️</span> CHIẾN LƯỢC PHÒNG NGỰ CHIỀU SÂU & KHẮC PHỤC (BLUE TEAM HARDENING):
+                                        </div>
+                                        <div id="ctf-card-defense-content" class="text-xs text-slate-300 leading-relaxed space-y-2">
+                                            <!-- Rendered dynamically -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Hint Box Accordion -->
+                                <div class="space-y-2 pt-2 border-t border-slate-800/60">
+                                    <button id="ctf-hint-toggle-btn" class="text-xs text-amber-400 hover:text-amber-300 flex items-center gap-1 font-semibold transition">
+                                        💡 <span>Xem gợi ý phương pháp & công cụ giải (Không spoil đáp án)</span>
+                                    </button>
+                                    <div id="ctf-hint-box" class="p-3.5 rounded-xl bg-amber-950/20 border border-amber-500/40 text-xs text-amber-200 hidden leading-relaxed">
+                                        <div id="ctf-hint-text">Nội dung gợi ý...</div>
+                                    </div>
+                                </div>
+
+                                <!-- Flag Submission Input Group -->
+                                <div class="pt-2 border-t border-slate-800/80 space-y-3">
+                                    <div class="flex flex-col sm:flex-row gap-2">
+                                        <input type="text" id="ctf-flag-input" placeholder="Nhập cờ định dạng FLAG{...}" class="flex-grow bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-cyan-300 font-mono focus:outline-none focus:border-cyan-400">
+                                        <button id="ctf-submit-btn" class="btn-primary sm:w-48 whitespace-nowrap">
+                                            🚩 Nộp Cờ (Submit Flag)
+                                        </button>
+                                    </div>
+                                    <div id="ctf-status-box" class="hidden"></div>
+                                </div>
+
                             </div>
-                            <div id="ctf-terminal-output" class="cyber-terminal-output font-mono">
-                                <div class="text-purple-400 font-bold">[!] NETLAB Virtual Terminal ready. 23 CTF Labs loaded across 7 Infrastructure Domains.</div>
-                                <div class="text-slate-400">Gõ "help", "tools", "list", "cat", "hint", "b64" hoặc "flag FLAG{...}" để tương tác trực tiếp với console.</div>
-                            </div>
-                            <div class="flex items-center px-3 py-2 bg-slate-950 border-t border-slate-900">
-                                <span class="text-cyan-400 font-mono text-xs mr-2">guest@netlab:~$</span>
-                                <input type="text" id="ctf-terminal-input" placeholder="Nhập lệnh hoặc cờ..." class="w-full bg-transparent border-0 text-slate-200 font-mono text-xs focus:outline-none">
-                            </div>
+
                         </div>
 
                     </div>
@@ -2061,16 +2182,16 @@ Mức độ: Thông hiểu</pre>
     </div>
 
     <!-- Scripts with Cache-Busting Versioning -->
-    <script src="js/sound.js?v=20261123_v2"></script>
-    <script src="js/network_bg.js?v=20261123_v2"></script>
-    <script src="js/quiz_data.js?v=20261123_v2"></script>
-    <script src="js/subjects_data.js?v=20261123_v2"></script>
-    <script src="js/auth.js?v=20261123_v2"></script>
-    <script src="js/admin.js?v=20261123_v2"></script>
-    <script src="js/quiz.js?v=20261123_v2"></script>
-    <script src="js/game.js?v=20261123_v2"></script>
-    <script src="js/battle.js?v=20261123_v2"></script>
-    <script src="js/ctf.js?v=20261123_v2"></script>
-    <script src="js/app.js?v=20261123_v2"></script>
+    <script src="js/sound.js?v=20261123_v4"></script>
+    <script src="js/network_bg.js?v=20261123_v4"></script>
+    <script src="js/quiz_data.js?v=20261123_v4"></script>
+    <script src="js/subjects_data.js?v=20261123_v4"></script>
+    <script src="js/auth.js?v=20261123_v4"></script>
+    <script src="js/admin.js?v=20261123_v4"></script>
+    <script src="js/quiz.js?v=20261123_v4"></script>
+    <script src="js/game.js?v=20261123_v4"></script>
+    <script src="js/battle.js?v=20261123_v4"></script>
+    <script src="js/ctf.js?v=20261123_v4"></script>
+    <script src="js/app.js?v=20261123_v4"></script>
 </body>
 </html>
