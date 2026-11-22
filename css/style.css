@@ -821,6 +821,35 @@ body.game-view-active main {
    CTF Challenge Arena Styles
    ========================================================================== */
 
+.ctf-filter-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.4rem 0.75rem;
+    border-radius: 0.5rem;
+    background: rgba(15, 23, 42, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #94a3b8;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+}
+
+.ctf-filter-btn:hover {
+    color: #e2e8f0;
+    border-color: rgba(56, 189, 248, 0.4);
+    background: rgba(30, 41, 59, 0.85);
+}
+
+.ctf-filter-btn.active {
+    background: rgba(6, 182, 212, 0.2);
+    border-color: #06b6d4;
+    color: #38bdf8;
+    box-shadow: 0 0 12px rgba(6, 182, 212, 0.25);
+}
+
 .ctf-nav-btn {
     display: block;
     width: 100%;
