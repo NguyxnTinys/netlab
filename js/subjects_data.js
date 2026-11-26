@@ -45,6 +45,28 @@ window.DEFAULT_SUBJECTS_METADATA = {
             { id: 6, name: 'Chương 6: Đạo Đức Nghề Nghiệp, Pháp Lý & Sự Nghiệp An Ninh Mạng' }
         ]
     },
+    gcyber: {
+        id: 'gcyber',
+        name: 'Google Cybersecurity Cert',
+        shortName: 'Google Cyber',
+        code: 'GCC901',
+        icon: '🔐',
+        themeColor: '#38bdf8',
+        accentGradient: 'from-sky-500 to-indigo-600',
+        badgeClass: 'border-sky-500/40 bg-sky-950/60 text-sky-300',
+        description: 'Bộ 2.140 câu hỏi ôn tập chuyên sâu Chứng chỉ An ninh mạng Google (Google Cybersecurity Certificate) gồm 9 khóa học: Nền tảng, Quản trị rủi ro, Bảo vệ mạng, Linux & SQL, Tài sản & Lỗ hổng, SIEM & Phát hiện, Python tự động hóa, Phỏng vấn & Nghề nghiệp.',
+        chapters: [
+            { id: 1, name: 'Course 1: Foundations of Cybersecurity' },
+            { id: 2, name: 'Course 2: Play It Safe: Manage Security Risks' },
+            { id: 3, name: 'Course 3: Connect and Protect: Networks and Network Security' },
+            { id: 4, name: 'Course 4: Tools of the Trade: Linux and SQL' },
+            { id: 5, name: 'Course 5: Assets, Threats, and Vulnerabilities' },
+            { id: 6, name: 'Course 6: Sound the Alarm: Detection and Response' },
+            { id: 7, name: 'Course 7: Automate Cybersecurity Tasks with Python' },
+            { id: 8, name: 'Course 8: Put It to Work: Prepare for Cybersecurity Jobs' },
+            { id: 9, name: 'Course 9: Accelerate Your Job Search with AI' }
+        ]
+    },
     toan9: {
         id: 'toan9',
         name: 'Toán Học Lớp 9 (Đại Số & Hình Học)',
@@ -7720,7 +7742,7 @@ class SubjectsManager {
     }
 
     init() {
-        const DATA_VERSION = '2026.11.17.shuffled_v2';
+        const DATA_VERSION = '2026.11.27.gcyber_v1';
         const savedVersion = localStorage.getItem('netlab_data_version');
         const forceRefresh = (savedVersion !== DATA_VERSION);
 
@@ -7778,6 +7800,11 @@ class SubjectsManager {
             this.saveQuestions();
         }
 
+        // Ensure Google Cybersecurity Cert questions are populated from window.GOOGLE_CYBERSECURITY_DATA
+        if ((!this.questionsMap.gcyber || this.questionsMap.gcyber.length === 0) && window.GOOGLE_CYBERSECURITY_DATA && window.GOOGLE_CYBERSECURITY_DATA.length > 0) {
+            this.questionsMap.gcyber = window.GOOGLE_CYBERSECURITY_DATA;
+        }
+
         // 3. Load active subject: check URL query param first (?sub=anm or ?subject=anm or #anm)
         let active = null;
         if (typeof window !== 'undefined' && window.location) {
@@ -7815,6 +7842,9 @@ class SubjectsManager {
         this.questionsMap = {
             mmt: (window.QUIZ_DATA && window.QUIZ_DATA.length > 0) ? window.QUIZ_DATA : [],
             anm: JSON.parse(JSON.stringify(window.DEFAULT_EXTRA_QUESTIONS.anm || [])),
+            gcyber: (window.GOOGLE_CYBERSECURITY_DATA && window.GOOGLE_CYBERSECURITY_DATA.length > 0)
+                ? window.GOOGLE_CYBERSECURITY_DATA
+                : JSON.parse(JSON.stringify(window.DEFAULT_EXTRA_QUESTIONS.gcyber || [])),
             toan: JSON.parse(JSON.stringify(window.DEFAULT_EXTRA_QUESTIONS.toan || [])),
             toan9: JSON.parse(JSON.stringify(window.DEFAULT_EXTRA_QUESTIONS.toan9 || [])),
             hdo: JSON.parse(JSON.stringify(window.DEFAULT_EXTRA_QUESTIONS.hdo || []))
@@ -7823,11 +7853,28 @@ class SubjectsManager {
     }
 
     saveSubjects() {
-        localStorage.setItem(this.STORAGE_KEY_SUBJECTS, JSON.stringify(this.subjects));
+        try {
+            localStorage.setItem(this.STORAGE_KEY_SUBJECTS, JSON.stringify(this.subjects));
+        } catch (e) {
+            console.warn('Failed to save subjects to localStorage:', e);
+        }
     }
 
     saveQuestions() {
-        localStorage.setItem(this.STORAGE_KEY_QUESTIONS, JSON.stringify(this.questionsMap));
+        try {
+            localStorage.setItem(this.STORAGE_KEY_QUESTIONS, JSON.stringify(this.questionsMap));
+        } catch (e) {
+            // Fallback: omit large static gcyber dataset from localStorage if quota (~5MB) is exceeded
+            try {
+                const compactMap = {};
+                Object.keys(this.questionsMap).forEach(k => {
+                    if (k !== 'gcyber') compactMap[k] = this.questionsMap[k];
+                });
+                localStorage.setItem(this.STORAGE_KEY_QUESTIONS, JSON.stringify(compactMap));
+            } catch (err) {
+                console.warn('localStorage quota exceeded when saving questions:', err);
+            }
+        }
     }
 
     getAllSubjects() {

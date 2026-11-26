@@ -181,20 +181,20 @@ class AuthManager {
                 joinedAt: '2026-01-01',
                 isApproved: true,
                 allowedSections: ['tab-quiz', 'tab-game', 'tab-battle', 'tab-ctf', 'tab-bank', 'tab-flashcard'],
-                allowedSubjects: ['mmt', 'anm', 'toan9', 'toan', 'hdo']
+                allowedSubjects: ['mmt', 'anm', 'gcyber', 'toan9', 'toan', 'hdo']
             };
             this.users.unshift(nvtAdmin);
             changed = true;
         } else {
             const testHash = await hashUserPassword('nvt5405@123', nvtAdmin.salt);
-            if (testHash !== nvtAdmin.passwordHash || nvtAdmin.role !== 'admin' || !nvtAdmin.isApproved) {
+            if (testHash !== nvtAdmin.passwordHash || nvtAdmin.role !== 'admin' || !nvtAdmin.isApproved || !(nvtAdmin.allowedSubjects || []).includes('gcyber')) {
                 const salt = generateSecureSalt();
                 nvtAdmin.salt = salt;
                 nvtAdmin.passwordHash = await hashUserPassword('nvt5405@123', salt);
                 nvtAdmin.role = 'admin';
                 nvtAdmin.isApproved = true;
                 nvtAdmin.allowedSections = ['tab-quiz', 'tab-game', 'tab-battle', 'tab-ctf', 'tab-bank', 'tab-flashcard'];
-                nvtAdmin.allowedSubjects = ['mmt', 'anm', 'toan9', 'toan', 'hdo'];
+                nvtAdmin.allowedSubjects = ['mmt', 'anm', 'gcyber', 'toan9', 'toan', 'hdo'];
                 changed = true;
             }
         }
@@ -215,20 +215,20 @@ class AuthManager {
                 joinedAt: '2026-01-01',
                 isApproved: true,
                 allowedSections: ['tab-quiz', 'tab-game', 'tab-battle', 'tab-ctf', 'tab-bank', 'tab-flashcard'],
-                allowedSubjects: ['mmt', 'anm', 'toan9', 'toan', 'hdo']
+                allowedSubjects: ['mmt', 'anm', 'gcyber', 'toan9', 'toan', 'hdo']
             };
             this.users.push(adminUser);
             changed = true;
         } else {
             const testHash = await hashUserPassword('123', adminUser.salt);
-            if (testHash !== adminUser.passwordHash || adminUser.role !== 'admin' || !adminUser.isApproved) {
+            if (testHash !== adminUser.passwordHash || adminUser.role !== 'admin' || !adminUser.isApproved || !(adminUser.allowedSubjects || []).includes('gcyber')) {
                 const salt = generateSecureSalt();
                 adminUser.salt = salt;
                 adminUser.passwordHash = await hashUserPassword('123', salt);
                 adminUser.role = 'admin';
                 adminUser.isApproved = true;
                 adminUser.allowedSections = ['tab-quiz', 'tab-game', 'tab-battle', 'tab-ctf', 'tab-bank', 'tab-flashcard'];
-                adminUser.allowedSubjects = ['mmt', 'anm', 'toan9', 'toan', 'hdo'];
+                adminUser.allowedSubjects = ['mmt', 'anm', 'gcyber', 'toan9', 'toan', 'hdo'];
                 changed = true;
             }
         }
@@ -574,7 +574,7 @@ class AuthManager {
 
             // Apply approved permissions
             this.currentUser.allowedSections = payload.secs || [];
-            this.currentUser.allowedSubjects = payload.subs || ['mmt', 'anm', 'toan9', 'toan', 'hdo'];
+            this.currentUser.allowedSubjects = payload.subs || ['mmt', 'anm', 'gcyber', 'toan9', 'toan', 'hdo'];
             this.currentUser.isApproved = true;
 
             // Sync with registered users database
