@@ -649,7 +649,7 @@ body.game-view-active main {
 .flashcard-wrapper {
     perspective: 1200px;
     width: 100%;
-    max-width: 650px;
+    max-width: 780px;
     height: 380px;
     margin: 0 auto;
 }
