@@ -675,9 +675,25 @@ body.game-view-active main {
     -webkit-backface-visibility: hidden;
     border-radius: 1.25rem;
     padding: 2rem;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.cyber-code-inline {
+    background: #020617;
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    border-radius: 0.55rem;
+    padding: 0.65rem 0.8rem;
+    margin: 0.45rem 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: #67e8f9;
+    overflow-x: auto;
+    white-space: pre;
+    line-height: 1.5;
+    text-align: left;
 }
 
 .flashcard-front {
@@ -1169,7 +1185,7 @@ html, body {
     .palette-grid {
         grid-template-columns: repeat(6, 1fr) !important;
         gap: 0.35rem !important;
-        max-height: 220px !important;
+        max-height: 145px !important;
         padding: 0.2rem !important;
     }
 

@@ -22,12 +22,27 @@ window.escapeHTML = function (str) {
 
 window.formatQuestionText = function (str) {
     if (!str) return '';
-    let text = window.escapeHTML(str);
+    const raw = String(str);
+    const codeBlocks = [];
+
+    // Extract fenced code blocks ```lang\n...\n``` before inline formatting
+    let text = raw.replace(/```([a-zA-Z0-9_-]*)\n?([\s\S]*?)```/g, (m, lang, code) => {
+        const idx = codeBlocks.length;
+        const safeCode = window.escapeHTML(code.replace(/\n$/, ''));
+        codeBlocks.push(`<pre class="cyber-code-inline"><code>${safeCode}</code></pre>`);
+        return `__NETLAB_CODE_BLOCK_${idx}__`;
+    });
+
+    text = window.escapeHTML(text);
+
+    // Inline code `...`
+    text = text.replace(/`([^`\n]+)`/g, '<code class="px-1.5 py-0.5 rounded bg-slate-800/90 text-cyan-300 font-mono text-[0.88em] border border-slate-700/70">$1</code>');
+
     // Markdown bold **text** and *italic*
     text = text.replace(/\*\*(.*?)\*\*/g, '<strong class="text-cyan-300 font-bold">$1</strong>');
     text = text.replace(/\*(.*?)\*/g, '<em class="text-slate-300">$1</em>');
     
-    // KaTeX inline math if available: $...$ or \(...\)
+    // KaTeX inline math if available: $...$
     if (window.katex) {
         try {
             text = text.replace(/\$([^\$\n]+)\$/g, (m, expr) => {
@@ -43,7 +58,15 @@ window.formatQuestionText = function (str) {
             // Graceful fallback to plain text
         }
     }
-    return text.replace(/\n/g, '<br>');
+
+    text = text.replace(/\n/g, '<br>');
+
+    // Restore code blocks cleanly without <br> inside <pre>
+    codeBlocks.forEach((html, idx) => {
+        text = text.split(`__NETLAB_CODE_BLOCK_${idx}__`).join(html);
+    });
+
+    return text;
 };
 
 window.formatExplanation = function (str) {
@@ -965,18 +988,18 @@ class AuthManager {
                 );
             
             this.userBadge.className = isAdm ? 
-                'px-2.5 py-1 rounded-xl text-xs font-mono border border-amber-500/50 bg-amber-950/60 text-amber-300 flex items-center gap-1.5 shadow-sm shadow-amber-500/20' :
+                'hidden lg:inline-flex px-2.5 py-1 rounded-xl text-xs font-mono border border-amber-500/50 bg-amber-950/60 text-amber-300 items-center gap-1.5 shadow-sm shadow-amber-500/20 whitespace-nowrap' :
                 (this.currentUser.isApproved ? 
-                    'px-2.5 py-1 rounded-xl text-xs font-mono border border-emerald-500/40 bg-emerald-950/60 text-emerald-300 flex items-center gap-1.5' :
-                    'px-2.5 py-1 rounded-xl text-xs font-mono border border-rose-500/40 bg-rose-950/60 text-rose-300 flex items-center gap-1.5'
+                    'hidden lg:inline-flex px-2.5 py-1 rounded-xl text-xs font-mono border border-emerald-500/40 bg-emerald-950/60 text-emerald-300 items-center gap-1.5 whitespace-nowrap' :
+                    'hidden lg:inline-flex px-2.5 py-1 rounded-xl text-xs font-mono border border-rose-500/40 bg-rose-950/60 text-rose-300 items-center gap-1.5 whitespace-nowrap'
                 );
 
             const firstName = (this.currentUser.name || '').split(' ')[0] || 'User';
             this.authBtn.innerHTML = `
-                <span class="text-base">${window.escapeHTML(this.currentUser.avatar || '👤')}</span>
-                <span class="max-w-[100px] sm:max-w-[130px] truncate font-bold text-slate-100">${window.escapeHTML(firstName)}</span>
+                <span class="text-sm sm:text-base">${window.escapeHTML(this.currentUser.avatar || '👤')}</span>
+                <span class="hidden sm:inline max-w-[110px] truncate font-bold text-slate-100">${window.escapeHTML(firstName)}</span>
             `;
-            this.authBtn.className = 'btn-secondary text-xs py-1.5 px-3 flex items-center gap-1.5 border-slate-700 bg-slate-800/90';
+            this.authBtn.className = 'btn-secondary text-xs py-1.5 px-2.5 sm:px-3 flex items-center gap-1.5 border-slate-700 bg-slate-800/90 rounded-lg sm:rounded-xl whitespace-nowrap';
 
             // Show admin button if admin
             if (this.adminBtn) {
@@ -988,11 +1011,11 @@ class AuthManager {
             }
         } else {
             // Guest mode
-            this.userBadge.innerHTML = `<span class="w-2 h-2 rounded-full bg-slate-500"></span> <span>Khách vãng lai</span>`;
-            this.userBadge.className = 'px-2.5 py-1 rounded-xl text-xs font-mono border border-slate-800 bg-slate-900/60 text-slate-400 flex items-center gap-1.5';
+            this.userBadge.innerHTML = `<span class="w-2 h-2 rounded-full bg-slate-500"></span> <span>Khách</span>`;
+            this.userBadge.className = 'hidden lg:inline-flex px-2.5 py-1 rounded-xl text-xs font-mono border border-slate-800 bg-slate-900/60 text-slate-400 items-center gap-1.5 whitespace-nowrap';
             
-            this.authBtn.innerHTML = `<span>🔑</span> <span class="font-semibold">Đăng nhập</span>`;
-            this.authBtn.className = 'btn-primary text-xs py-1.5 px-3.5 flex items-center gap-1 bg-gradient-to-r from-cyan-600 to-indigo-600 shadow-sm';
+            this.authBtn.innerHTML = `<span>🔑</span> <span class="hidden sm:inline font-semibold">Đăng nhập</span>`;
+            this.authBtn.className = 'btn-primary text-xs py-1.5 px-2.5 sm:px-3 flex items-center gap-1 bg-gradient-to-r from-cyan-600 to-indigo-600 shadow-sm rounded-lg sm:rounded-xl whitespace-nowrap';
 
             if (this.adminBtn) {
                 this.adminBtn.classList.add('hidden');

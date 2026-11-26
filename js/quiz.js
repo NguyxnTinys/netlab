@@ -262,6 +262,18 @@ class QuizEngine {
             this.elements.chapterSelect.innerHTML = html;
         }
 
+        // Dynamically update Question Type filter counts for current subject
+        if (this.elements.typeSelect) {
+            const singleCount = this.questions.filter(q => q.type === 'single').length;
+            const multiCount = this.questions.filter(q => q.type === 'multiple').length;
+            const fillCount = this.questions.filter(q => q.type === 'fill').length;
+            let typeHtml = `<option value="all">Tất cả dạng (${this.questions.length} câu)</option>`;
+            if (singleCount > 0) typeHtml += `<option value="single">Trắc nghiệm 1 đáp án (${singleCount} câu)</option>`;
+            if (multiCount > 0) typeHtml += `<option value="multiple">Chọn nhiều đáp án (${multiCount} câu)</option>`;
+            if (fillCount > 0) typeHtml += `<option value="fill">Điền đáp án / Tính toán (${fillCount} câu)</option>`;
+            this.elements.typeSelect.innerHTML = typeHtml;
+        }
+
         // Update custom count max
         if (this.elements.customCountInput) {
             this.elements.customCountInput.max = this.questions.length;
@@ -502,11 +514,12 @@ class QuizEngine {
                 }
             }
 
-            const safeOptText = window.escapeHTML ? window.escapeHTML(optStr.substring(3).trim()) : optStr.substring(3).trim();
+            const rawOptBody = optStr.replace(/^[A-Z]\.\s*/, '').trim();
+            const safeOptText = window.formatQuestionText ? window.formatQuestionText(rawOptBody) : (window.escapeHTML ? window.escapeHTML(rawOptBody) : rawOptBody);
             btn.innerHTML = `
                 <div class="option-badge">${letter}</div>
-                <div class="option-text">${safeOptText}</div>
-                ${isSelected ? '<span class="text-cyan-400 font-bold ml-auto text-sm">✓</span>' : ''}
+                <div class="option-text min-w-0 overflow-x-auto">${safeOptText}</div>
+                ${isSelected ? '<span class="text-cyan-400 font-bold ml-auto text-sm flex-shrink-0">✓</span>' : ''}
             `;
 
             btn.addEventListener('click', () => {
