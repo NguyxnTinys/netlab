@@ -6,7 +6,7 @@
     <title>Hệ Thống Trắc Nghiệm Mạng Máy Tính - Computer Networks Cyber Exam & Game</title>
     <!-- Tailwind CSS CDN for utility classes -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="css/style.css?v=20261127_v3">
+    <link rel="stylesheet" href="css/style.css?v=20261127_v4">
     <!-- KaTeX for beautiful math formulas rendering -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
@@ -297,38 +297,41 @@
                 <!-- 1B: Active Question View -->
                 <div id="quiz-active-view" class="w-full mx-auto space-y-3.5 sm:space-y-5 hidden">
                     
-                    <!-- Top Bar: Progress & Timer -->
-                    <div class="glass-card p-2.5 sm:p-4 flex items-center justify-between gap-2 sm:gap-4">
+                    <!-- Top Bar: Progress, Timer & Rightbar Toggle (Sticky on mobile so Map button is always accessible) -->
+                    <div id="quiz-top-bar" class="glass-card sticky top-[88px] sm:top-[96px] md:static z-30 p-2.5 sm:p-4 flex items-center justify-between gap-2 sm:gap-4 bg-slate-950/90 md:bg-slate-900/75">
                         <div class="flex items-center gap-2 sm:gap-3 min-w-0">
                             <span id="q-counter" class="text-xs sm:text-sm font-bold text-cyan-300 whitespace-nowrap">Câu 1 / 20</span>
-                            <div class="w-16 sm:w-44 bg-slate-800 rounded-full h-1.5 sm:h-2 overflow-hidden flex-shrink-0">
+                            <div class="w-14 sm:w-44 bg-slate-800 rounded-full h-1.5 sm:h-2 overflow-hidden flex-shrink-0">
                                 <div id="quiz-progress-fill" class="h-full bg-gradient-to-r from-cyan-400 to-indigo-500 transition-all duration-300" style="width: 5%;"></div>
                             </div>
                         </div>
 
-                        <div class="flex items-center gap-1.5 sm:gap-3 flex-shrink-0">
+                        <div class="flex items-center gap-1.5 sm:gap-2.5 flex-shrink-0">
                             <div id="quiz-timer-container" class="flex items-center gap-1 px-2 py-1 sm:px-3 sm:py-1 rounded-lg bg-slate-900 border border-slate-800 font-mono text-xs sm:text-sm font-bold text-cyan-400">
                                 <span>⏱️</span>
                                 <span id="quiz-timer-display">30:00</span>
                             </div>
-                            <!-- Mobile Quick Palette View Button -->
-                            <button id="mobile-palette-toggle-btn" type="button" class="md:hidden btn-secondary text-xs py-1 px-2 rounded-lg flex items-center gap-1 text-cyan-300 border-cyan-800/80 bg-cyan-950/50" title="Mở bảng điều hướng câu hỏi">
-                                <span>🗺️</span><span class="text-[11px] font-semibold">Bản đồ</span>
-                            </button>
                             <button id="flag-q-btn" class="btn-secondary text-xs py-1 px-2 sm:py-1.5 sm:px-3 rounded-lg flex items-center gap-1">
                                 <span>🏳️</span><span class="hidden sm:inline">Gắn cờ</span>
                             </button>
+                            <!-- Unified Rightbar Toggle Button (Opens slide-over Rightbar on mobile; hides/shows right column on desktop) -->
+                            <button id="mobile-palette-toggle-btn" type="button" class="btn-secondary text-xs py-1 px-2.5 sm:py-1.5 sm:px-3 rounded-lg flex items-center gap-1.5 text-cyan-300 border-cyan-500/40 bg-cyan-950/60 hover:bg-cyan-900/70" title="Ẩn / Hiện bảng điều hướng câu hỏi">
+                                <span>🗺️</span><span class="text-[11px] sm:text-xs font-bold">Bản đồ</span>
+                            </button>
                             <button id="submit-quiz-btn" class="btn-primary text-xs py-1 px-2.5 sm:py-1.5 sm:px-3 bg-gradient-to-r from-emerald-600 to-cyan-600 shadow-none font-bold rounded-lg whitespace-nowrap">
-                                <span>📤</span><span class="hidden xs:inline sm:inline"> Nộp bài</span>
+                                <span>📤</span><span class="hidden sm:inline"> Nộp bài</span>
                             </button>
                         </div>
                     </div>
 
-                    <!-- 2-Column Responsive Layout: Mobile = Palette on top (order-1), Question card below (order-2) -->
-                    <div class="grid grid-cols-1 md:grid-cols-12 gap-3.5 sm:gap-4 lg:gap-5 items-start">
+                    <!-- Mobile Backdrop for Slide-Over Rightbar -->
+                    <div id="mobile-palette-backdrop" class="fixed inset-0 bg-slate-950/75 backdrop-blur-sm z-[55] hidden md:hidden"></div>
+
+                    <!-- 2-Column Responsive Layout: Left = Question Card, Right = Sticky Sidebar (Desktop) / Slide-over Rightbar (Mobile) -->
+                    <div id="quiz-layout-grid" class="grid grid-cols-1 md:grid-cols-12 gap-3.5 sm:gap-4 lg:gap-5 items-start">
                         
-                        <!-- Left Column: Main Question Card (Order 2 on mobile, Order 1 on md+) -->
-                        <div class="order-2 md:order-1 md:col-span-7 lg:col-span-8 xl:col-span-9 space-y-3.5 sm:space-y-5">
+                        <!-- Left Column: Main Question Card -->
+                        <div id="quiz-question-col" class="md:col-span-7 lg:col-span-8 xl:col-span-9 space-y-3.5 sm:space-y-5">
                             <div class="glass-card p-3.5 sm:p-8 space-y-4 sm:space-y-6">
                                 
                                 <!-- Badges -->
@@ -388,14 +391,17 @@
                             </div>
                         </div>
 
-                        <!-- Right Column: Question Map / Palette Drawer (Order 1 on mobile, Order 2 on md+) -->
-                        <div class="order-1 md:order-2 md:col-span-5 lg:col-span-4 xl:col-span-3 md:sticky md:top-20 space-y-4">
-                            <div id="palette-drawer" class="glass-card p-3 sm:p-4 space-y-3 sm:space-y-3.5 border border-cyan-500/20 shadow-xl shadow-cyan-950/20">
+                        <!-- Right Column: Question Map / Rightbar Drawer (Slide-over on mobile, Sticky column on md+) -->
+                        <div id="quiz-palette-col" class="md:col-span-5 lg:col-span-4 xl:col-span-3 md:sticky md:top-28 space-y-4">
+                            <div id="palette-drawer" class="palette-rightbar glass-card p-3.5 sm:p-4 space-y-3 sm:space-y-3.5 border border-cyan-500/20 shadow-xl shadow-cyan-950/20">
                                 <div class="flex items-center justify-between gap-2 pb-2 border-b border-slate-800/80">
                                     <h3 class="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-cyan-400 flex items-center gap-1.5 truncate">
                                         <span>🗺️</span> <span class="truncate">BẢNG ĐIỀU HƯỚNG (MAP)</span>
                                     </h3>
-                                    <button id="toggle-palette-btn" class="text-slate-400 hover:text-white px-2 py-0.5 rounded bg-slate-800/80 border border-slate-700 text-[11px] transition flex-shrink-0">
+                                    <button id="close-mobile-palette-btn" type="button" class="md:hidden text-slate-300 hover:text-white px-2.5 py-1 rounded-lg bg-slate-800 border border-slate-700 text-xs font-bold transition flex-shrink-0">
+                                        ✕ Đóng
+                                    </button>
+                                    <button id="toggle-palette-btn" type="button" class="hidden md:inline-block text-slate-400 hover:text-white px-2 py-0.5 rounded bg-slate-800/80 border border-slate-700 text-[11px] transition flex-shrink-0">
                                         Thu gọn / Mở
                                     </button>
                                 </div>
@@ -408,12 +414,12 @@
                                 </div>
 
                                 <!-- Palette Buttons Grid -->
-                                <div id="palette-grid" class="palette-grid max-h-[220px] sm:max-h-96 lg:max-h-[500px] overflow-y-auto admin-scroll p-1">
+                                <div id="palette-grid" class="palette-grid overflow-y-auto admin-scroll">
                                     <!-- Dynamic Palette buttons -->
                                 </div>
 
                                 <!-- Sidebar Action: Nộp Bài -->
-                                <div class="pt-2 border-t border-slate-800/80">
+                                <div class="pt-2 border-t border-slate-800/80 mt-auto">
                                     <button id="sidebar-submit-btn" class="w-full btn-primary py-2.5 text-xs font-bold bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-500 hover:to-cyan-500 flex items-center justify-center gap-1.5 shadow-md shadow-emerald-950/40 rounded-lg">
                                         <span>📤</span> <span>Nộp Bài Thi</span>
                                     </button>
@@ -2171,7 +2177,7 @@ Mức độ: Thông hiểu</pre>
     <script src="js/subjects_data.js?v=20261127_v2"></script>
     <script src="js/auth.js?v=20261127_v2"></script>
     <script src="js/admin.js?v=20261127_v2"></script>
-    <script src="js/quiz.js?v=20261127_v2"></script>
+    <script src="js/quiz.js?v=20261127_v5"></script>
     <script src="js/game.js?v=20261127_v2"></script>
     <script src="js/battle.js?v=20261127_v2"></script>
     <script src="js/ctf.js?v=20261127_v2"></script>

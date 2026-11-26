@@ -128,6 +128,22 @@ class QuizEngine {
             });
         }
 
+        const openMobileDrawer = () => {
+            if (!this.elements.paletteDrawer) return;
+            this.elements.paletteDrawer.classList.add('mobile-open');
+            const backdrop = document.getElementById('mobile-palette-backdrop');
+            if (backdrop) backdrop.classList.remove('hidden');
+        };
+
+        const closeMobileDrawer = () => {
+            if (!this.elements.paletteDrawer) return;
+            this.elements.paletteDrawer.classList.remove('mobile-open');
+            const backdrop = document.getElementById('mobile-palette-backdrop');
+            if (backdrop) backdrop.classList.add('hidden');
+        };
+
+        this.closeMobileDrawer = closeMobileDrawer;
+
         if (this.elements.togglePaletteBtn && this.elements.paletteDrawer) {
             this.elements.togglePaletteBtn.addEventListener('click', () => {
                 window.soundManager.playClick();
@@ -136,13 +152,40 @@ class QuizEngine {
         }
 
         const mobilePaletteToggleBtn = document.getElementById('mobile-palette-toggle-btn');
+        const closeMobilePaletteBtn = document.getElementById('close-mobile-palette-btn');
+        const mobilePaletteBackdrop = document.getElementById('mobile-palette-backdrop');
+
         if (mobilePaletteToggleBtn && this.elements.paletteDrawer) {
             mobilePaletteToggleBtn.addEventListener('click', () => {
                 window.soundManager.playClick();
-                this.elements.paletteDrawer.classList.toggle('collapsed');
-                if (!this.elements.paletteDrawer.classList.contains('collapsed')) {
-                    this.elements.paletteDrawer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                if (window.innerWidth < 768) {
+                    if (this.elements.paletteDrawer.classList.contains('mobile-open')) {
+                        closeMobileDrawer();
+                    } else {
+                        openMobileDrawer();
+                    }
+                } else {
+                    // Desktop: toggle rightbar visibility and expand question column cleanly
+                    const paletteCol = document.getElementById('quiz-palette-col');
+                    const questionCol = document.getElementById('quiz-question-col');
+                    if (paletteCol && questionCol) {
+                        const isHidden = paletteCol.classList.toggle('md:hidden');
+                        questionCol.style.gridColumn = isHidden ? '1 / -1' : '';
+                    }
                 }
+            });
+        }
+
+        if (closeMobilePaletteBtn) {
+            closeMobilePaletteBtn.addEventListener('click', () => {
+                window.soundManager.playClick();
+                closeMobileDrawer();
+            });
+        }
+
+        if (mobilePaletteBackdrop) {
+            mobilePaletteBackdrop.addEventListener('click', () => {
+                closeMobileDrawer();
             });
         }
 
@@ -725,12 +768,9 @@ class QuizEngine {
             btn.addEventListener('click', () => {
                 window.soundManager.playClick();
                 this.goToQuestion(idx);
-                if (this.elements.paletteDrawer) this.elements.paletteDrawer.classList.remove('open');
+                if (this.closeMobileDrawer) this.closeMobileDrawer();
                 if (window.innerWidth < 768) {
-                    const qElem = document.getElementById('question-text');
-                    if (qElem) {
-                        qElem.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    }
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                 }
             });
 
